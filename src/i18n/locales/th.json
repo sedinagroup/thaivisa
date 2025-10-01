@@ -1,0 +1,261 @@
+{
+  "common": {
+    "welcome": "ยินดีต้อนรับสู่ Thaivisa.ai",
+    "loading": "กำลังโหลด...",
+    "error": "เกิดข้อผิดพลาด",
+    "success": "ดำเนินการเสร็จสิ้น",
+    "cancel": "ยกเลิก",
+    "submit": "ส่ง",
+    "save": "บันทึก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "view": "ดู",
+    "back": "กลับ",
+    "next": "ถัดไป",
+    "previous": "ก่อนหน้า",
+    "continue": "ดำเนินการต่อ",
+    "close": "ปิด",
+    "confirm": "ยืนยัน",
+    "yes": "ใช่",
+    "no": "ไม่"
+  },
+  "nav": {
+    "home": "หน้าหลัก",
+    "dashboard": "แดชบอร์ด",
+    "apply": "สมัครวีซ่า",
+    "status": "ติดตามสถานะ",
+    "profile": "โปรไฟล์",
+    "support": "ช่วยเหลือ",
+    "login": "เข้าสู่ระบบ",
+    "logout": "ออกจากระบบ",
+    "language": "ภาษา"
+  },
+  "auth": {
+    "login": "เข้าสู่ระบบ",
+    "register": "สมัครสมาชิก",
+    "logout": "ออกจากระบบ",
+    "email": "อีเมล",
+    "password": "รหัสผ่าน",
+    "confirmPassword": "ยืนยันรหัสผ่าน",
+    "firstName": "ชื่อ",
+    "lastName": "นามสกุล",
+    "nationality": "สัญชาติ",
+    "phoneNumber": "หมายเลขโทรศัพท์",
+    "dateOfBirth": "วันเกิด",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "rememberMe": "จดจำฉัน",
+    "loginSuccess": "เข้าสู่ระบบสำเร็จ",
+    "loginFailed": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+    "registrationSuccess": "สมัครสมาชิกสำเร็จ กรุณาตรวจสอบอีเมลเพื่อยืนยัน",
+    "passwordResetSent": "ส่งคำแนะนำการรีเซ็ตรหัสผ่านไปยังอีเมลแล้ว",
+    "createAccount": "สร้างบัญชี",
+    "haveAccount": "มีบัญชีแล้ว?",
+    "noAccount": "ยังไม่มีบัญชี?",
+    "signInWith": "เข้าสู่ระบบด้วย",
+    "orContinueWith": "หรือดำเนินการต่อด้วย"
+  },
+  "home": {
+    "hero": {
+      "title": "ระบบสมัครวีซ่าไทยด้วย AI",
+      "subtitle": "รับการอนุมัติวีซ่าไทยได้เร็วขึ้นด้วยระบบสมัครอัจฉริยะที่ขับเคลื่อนด้วยเทคโนโลยี AI ขั้นสูง",
+      "cta": "เริ่มสมัครของคุณ",
+      "learnMore": "เรียนรู้เพิ่มเติม"
+    },
+    "features": {
+      "title": "ทำไมต้องเลือก Thaivisa.ai?",
+      "aiConsultation": {
+        "title": "คำปรึกษา AI",
+        "description": "รับคำแนะนำวีซ่าส่วนบุคคลตามโปรไฟล์และแผนการเดินทางของคุณ"
+      },
+      "smartForms": {
+        "title": "การกรอกแบบฟอร์มอัจฉริยะ",
+        "description": "การกรอกแบบฟอร์มด้วยความช่วยเหลือของ AI พร้อมการตรวจสอบข้อมูลอัตโนมัติและการตรวจจับข้อผิดพลาด"
+      },
+      "realTimeTracking": {
+        "title": "การติดตามแบบเรียลไทม์",
+        "description": "ติดตามสถานะใบสมัครของคุณด้วยการอัปเดตและการแจ้งเตือนแบบสด"
+      },
+      "documentOCR": {
+        "title": "การประมวลผลเอกสาร",
+        "description": "เทคโนโลยี OCR ขั้นสูงสำหรับการตรวจสอบเอกสารและการแยกข้อมูลทันที"
+      },
+      "fraudDetection": {
+        "title": "การป้องกันการฉ้อโกง",
+        "description": "ระบบรักษาความปลอดภัยหลายชั้นเพื่อให้แน่ใจว่าใบสมัครแท้และป้องกันการฉ้อโกง"
+      },
+      "multiLanguage": {
+        "title": "รองรับหลายภาษา",
+        "description": "มีให้บริการในภาษาอังกฤษ ไทย โปรตุเกส และจีน เพื่อการเข้าถึงทั่วโลก"
+      }
+    },
+    "stats": {
+      "applications": "ใบสมัครที่ประมวลผล",
+      "successRate": "อัตราความสำเร็จ",
+      "avgProcessingTime": "เวลาประมวลผลเฉลี่ย",
+      "languages": "ภาษาที่รองรับ"
+    }
+  },
+  "application": {
+    "title": "ใบสมัครวีซ่า",
+    "steps": {
+      "eligibility": "ตรวจสอบคุณสมบัติ",
+      "personalInfo": "ข้อมูลส่วนบุคคล",
+      "travelInfo": "ข้อมูลการเดินทาง",
+      "documents": "เอกสาร",
+      "review": "ตรวจสอบและส่ง"
+    },
+    "eligibility": {
+      "title": "ตรวจสอบคุณสมบัติของคุณ",
+      "description": "ให้ AI ของเราประเมินคุณสมบัติของคุณสำหรับวีซ่าไทย",
+      "nationality": "สัญชาติของคุณ",
+      "visaType": "ประเภทวีซ่า",
+      "travelPurpose": "วัตถุประสงค์การเดินทาง",
+      "duration": "ระยะเวลา (วัน)",
+      "checkEligibility": "ตรวจสอบคุณสมบัติ",
+      "eligible": "คุณมีคุณสมบัติ!",
+      "notEligible": "อาจมีข้อกำหนดเพิ่มเติม",
+      "confidence": "คะแนนความมั่นใจ",
+      "requirements": "ข้อกำหนด",
+      "processingTime": "เวลาประมวลผล",
+      "fee": "ค่าธรรมเนียมการประมวลผล"
+    },
+    "personalInfo": {
+      "title": "ข้อมูลส่วนบุคคล",
+      "firstName": "ชื่อ",
+      "lastName": "นามสกุล",
+      "nationality": "สัญชาติ",
+      "passportNumber": "หมายเลขหนังสือเดินทาง",
+      "dateOfBirth": "วันเกิด",
+      "placeOfBirth": "สถานที่เกิด",
+      "gender": "เพศ",
+      "maritalStatus": "สถานภาพสมรส"
+    },
+    "travelInfo": {
+      "title": "ข้อมูลการเดินทาง",
+      "visaType": "ประเภทวีซ่า",
+      "travelPurpose": "วัตถุประสงค์การเดินทาง",
+      "arrivalDate": "วันที่คาดว่าจะเดินทางมา",
+      "departureDate": "วันที่คาดว่าจะเดินทางกลับ",
+      "portOfEntry": "ท่าเข้า",
+      "accommodation": "รายละเอียดที่พัก",
+      "accommodationType": "ประเภทที่พัก",
+      "accommodationName": "ชื่อโรงแรม/ที่พัก",
+      "accommodationAddress": "ที่อยู่",
+      "accommodationContact": "หมายเลขติดต่อ"
+    },
+    "documents": {
+      "title": "อัปโหลดเอกสาร",
+      "passport": "สำเนาหนังสือเดินทาง",
+      "photo": "รูปถ่ายหนังสือเดินทาง",
+      "bankStatement": "หนังสือรับรองธนาคาร",
+      "flightTicket": "ตั๋วเครื่องบิน",
+      "hotelBooking": "การจองโรงแรม",
+      "uploadDocument": "อัปโหลดเอกสาร",
+      "dragDrop": "ลากและวางไฟล์ที่นี่ หรือคลิกเพื่อเลือก",
+      "processing": "กำลังประมวลผลเอกสาร...",
+      "verified": "ตรวจสอบเอกสารแล้ว",
+      "failed": "การตรวจสอบล้มเหลว"
+    },
+    "review": {
+      "title": "ตรวจสอบใบสมัครของคุณ",
+      "personalInfo": "ข้อมูลส่วนบุคคล",
+      "travelInfo": "ข้อมูลการเดินทาง",
+      "documents": "เอกสารที่อัปโหลด",
+      "fraudCheck": "การตรวจสอบความปลอดภัย",
+      "submitApplication": "ส่งใบสมัคร",
+      "declaration": "ข้าพเจ้าขอรับรองว่าข้อมูลทั้งหมดที่ให้ไว้เป็นความจริงและถูกต้อง"
+    }
+  },
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "welcome": "ยินดีต้อนรับกลับมา {{name}}!",
+    "quickStats": "สถิติด่วน",
+    "recentApplications": "ใบสมัครล่าสุด",
+    "notifications": "การแจ้งเตือน",
+    "quickActions": "การดำเนินการด่วน",
+    "newApplication": "ใบสมัครใหม่",
+    "trackStatus": "ติดตามสถานะ",
+    "viewProfile": "ดูโปรไฟล์",
+    "contactSupport": "ติดต่อฝ่ายสนับสนุน",
+    "noApplications": "ยังไม่มีใบสมัคร",
+    "startFirst": "เริ่มใบสมัครวีซ่าแรกของคุณ"
+  },
+  "status": {
+    "title": "สถานะใบสมัคร",
+    "applicationId": "รหัสใบสมัคร",
+    "submittedOn": "ส่งเมื่อ",
+    "currentStatus": "สถานะปัจจุบัน",
+    "progress": "ความคืบหน้า",
+    "nextSteps": "ขั้นตอนถัดไป",
+    "statusHistory": "ประวัติสถานะ",
+    "estimatedCompletion": "การเสร็จสิ้นโดยประมาณ",
+    "downloadVisa": "ดาวน์โหลดวีซ่า",
+    "statuses": {
+      "draft": "ร่าง",
+      "submitted": "ส่งแล้ว",
+      "under_review": "อยู่ระหว่างการตรวจสอบ",
+      "additional_info_required": "ต้องการข้อมูลเพิ่มเติม",
+      "approved": "อนุมัติ",
+      "rejected": "ปฏิเสธ",
+      "cancelled": "ยกเลิก"
+    }
+  },
+  "support": {
+    "title": "ฝ่ายสนับสนุนลูกค้า",
+    "chatbot": {
+      "title": "ผู้ช่วย AI",
+      "placeholder": "พิมพ์ข้อความของคุณ...",
+      "send": "ส่ง",
+      "typing": "AI กำลังพิมพ์...",
+      "welcome": "สวัสดี! ฉันเป็นผู้ช่วย AI ของคุณ วันนี้ฉันสามารถช่วยคุณเรื่องใบสมัครวีซ่าอย่างไร?"
+    },
+    "faq": {
+      "title": "คำถามที่พบบ่อย",
+      "processingTime": "การประมวลผลใช้เวลานานแค่ไหน?",
+      "requiredDocuments": "ฉันต้องการเอกสารอะไรบ้าง?",
+      "applicationFee": "ค่าใช้จ่ายเท่าไหร่?",
+      "trackApplication": "ฉันสามารถติดตามใบสมัครของฉันได้อย่างไร?"
+    },
+    "contact": {
+      "title": "ติดต่อเรา",
+      "email": "สนับสนุนทางอีเมล",
+      "phone": "สนับสนุนทางโทรศัพท์",
+      "hours": "เวลาทำการ"
+    }
+  },
+  "profile": {
+    "title": "โปรไฟล์",
+    "personalInfo": "ข้อมูลส่วนบุคคล",
+    "accountSettings": "การตั้งค่าบัญชี",
+    "preferences": "การตั้งค่า",
+    "security": "ความปลอดภัย",
+    "updateProfile": "อัปเดตโปรไฟล์",
+    "changePassword": "เปลี่ยนรหัสผ่าน",
+    "language": "ภาษาที่ต้องการ",
+    "notifications": "การตั้งค่าการแจ้งเตือน",
+    "emailNotifications": "การแจ้งเตือนทางอีเมล",
+    "smsNotifications": "การแจ้งเตือนทาง SMS"
+  },
+  "visaTypes": {
+    "tourist": "วีซ่าท่องเที่ยว",
+    "business": "วีซ่าธุรกิจ",
+    "transit": "วีซ่าผ่านแดน",
+    "education": "วีซ่าการศึกษา",
+    "retirement": "วีซ่าเกษียณ",
+    "work": "วีซ่าทำงาน"
+  },
+  "countries": {
+    "US": "สหรัฐอเมริกา",
+    "GB": "สหราชอาณาจักร",
+    "CA": "แคนาดา",
+    "AU": "ออสเตรเลีย",
+    "DE": "เยอรมนี",
+    "FR": "ฝรั่งเศส",
+    "JP": "ญี่ปุ่น",
+    "KR": "เกาหลีใต้",
+    "CN": "จีน",
+    "IN": "อินเดีย",
+    "BR": "บราซิล",
+    "MX": "เม็กซิโก"
+  }
+}

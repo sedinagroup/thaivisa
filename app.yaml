@@ -1,0 +1,81 @@
+# Digital Ocean App Platform Configuration
+name: thailand-visa-ai
+services:
+  # Frontend React Application
+  - name: web
+    source_dir: /
+    github:
+      repo: your-username/thailand-visa-ai
+      branch: main
+    run_command: npm start
+    build_command: npm run build
+    environment_slug: node-js
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /
+    health_check:
+      http_path: /health
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: REACT_APP_API_URL
+        value: ${APP_URL}
+      - key: REACT_APP_ENVIRONMENT
+        value: production
+
+  # Backend API (if needed)
+  - name: api
+    source_dir: /api
+    github:
+      repo: your-username/thailand-visa-ai
+      branch: main
+    run_command: node server.js
+    build_command: npm install
+    environment_slug: node-js
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /api
+    health_check:
+      http_path: /api/health
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: ${db.DATABASE_URL}
+      - key: REDIS_URL
+        value: ${redis.REDIS_URL}
+
+# Database
+databases:
+  - name: db
+    engine: PG
+    version: "15"
+    size: basic
+
+# Redis Cache
+services:
+  - name: redis
+    image:
+      registry_type: DOCKER_HUB
+      repository: redis
+      tag: "7-alpine"
+    instance_count: 1
+    instance_size_slug: basic-xxs
+
+# Static Site (Alternative simple deployment)
+static_sites:
+  - name: thailand-visa-static
+    source_dir: /
+    github:
+      repo: your-username/thailand-visa-ai
+      branch: main
+    build_command: npm run build
+    output_dir: /dist
+    environment_slug: node-js
+    routes:
+      - path: /
+    envs:
+      - key: NODE_ENV
+        value: production

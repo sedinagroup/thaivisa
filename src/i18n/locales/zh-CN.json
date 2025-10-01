@@ -1,0 +1,261 @@
+{
+  "common": {
+    "welcome": "欢迎使用 Thaivisa.ai",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "success": "操作成功完成",
+    "cancel": "取消",
+    "submit": "提交",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "view": "查看",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "continue": "继续",
+    "close": "关闭",
+    "confirm": "确认",
+    "yes": "是",
+    "no": "否"
+  },
+  "nav": {
+    "home": "首页",
+    "dashboard": "仪表板",
+    "apply": "申请签证",
+    "status": "跟踪状态",
+    "profile": "个人资料",
+    "support": "支持",
+    "login": "登录",
+    "logout": "退出",
+    "language": "语言"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出",
+    "email": "电子邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "firstName": "名",
+    "lastName": "姓",
+    "nationality": "国籍",
+    "phoneNumber": "电话号码",
+    "dateOfBirth": "出生日期",
+    "forgotPassword": "忘记密码？",
+    "rememberMe": "记住我",
+    "loginSuccess": "登录成功",
+    "loginFailed": "邮箱或密码无效",
+    "registrationSuccess": "注册成功。请检查您的邮箱进行验证。",
+    "passwordResetSent": "密码重置说明已发送至您的邮箱",
+    "createAccount": "创建账户",
+    "haveAccount": "已有账户？",
+    "noAccount": "没有账户？",
+    "signInWith": "使用以下方式登录",
+    "orContinueWith": "或继续使用"
+  },
+  "home": {
+    "hero": {
+      "title": "AI驱动的泰国签证申请",
+      "subtitle": "通过我们由先进AI技术驱动的智能申请系统，更快地获得泰国签证批准。",
+      "cta": "开始您的申请",
+      "learnMore": "了解更多"
+    },
+    "features": {
+      "title": "为什么选择 Thaivisa.ai？",
+      "aiConsultation": {
+        "title": "AI咨询",
+        "description": "根据您的个人资料和旅行计划获得个性化的签证建议"
+      },
+      "smartForms": {
+        "title": "智能表单填写",
+        "description": "AI辅助表单完成，具有自动数据验证和错误检测功能"
+      },
+      "realTimeTracking": {
+        "title": "实时跟踪",
+        "description": "通过实时更新和通知监控您的申请状态"
+      },
+      "documentOCR": {
+        "title": "文档处理",
+        "description": "先进的OCR技术，用于即时文档验证和数据提取"
+      },
+      "fraudDetection": {
+        "title": "欺诈保护",
+        "description": "多层安全系统，确保申请真实性并防止欺诈"
+      },
+      "multiLanguage": {
+        "title": "多语言支持",
+        "description": "提供英语、泰语、葡萄牙语和中文版本，实现全球可访问性"
+      }
+    },
+    "stats": {
+      "applications": "已处理申请",
+      "successRate": "成功率",
+      "avgProcessingTime": "平均处理时间",
+      "languages": "支持语言"
+    }
+  },
+  "application": {
+    "title": "签证申请",
+    "steps": {
+      "eligibility": "资格检查",
+      "personalInfo": "个人信息",
+      "travelInfo": "旅行信息",
+      "documents": "文档",
+      "review": "审核并提交"
+    },
+    "eligibility": {
+      "title": "检查您的资格",
+      "description": "让我们的AI评估您申请泰国签证的资格",
+      "nationality": "您的国籍",
+      "visaType": "签证类型",
+      "travelPurpose": "旅行目的",
+      "duration": "持续时间（天）",
+      "checkEligibility": "检查资格",
+      "eligible": "您符合条件！",
+      "notEligible": "可能需要额外要求",
+      "confidence": "置信度分数",
+      "requirements": "要求",
+      "processingTime": "处理时间",
+      "fee": "处理费用"
+    },
+    "personalInfo": {
+      "title": "个人信息",
+      "firstName": "名",
+      "lastName": "姓",
+      "nationality": "国籍",
+      "passportNumber": "护照号码",
+      "dateOfBirth": "出生日期",
+      "placeOfBirth": "出生地",
+      "gender": "性别",
+      "maritalStatus": "婚姻状况"
+    },
+    "travelInfo": {
+      "title": "旅行信息",
+      "visaType": "签证类型",
+      "travelPurpose": "旅行目的",
+      "arrivalDate": "预计到达日期",
+      "departureDate": "预计离开日期",
+      "portOfEntry": "入境口岸",
+      "accommodation": "住宿详情",
+      "accommodationType": "住宿类型",
+      "accommodationName": "酒店/住宿名称",
+      "accommodationAddress": "地址",
+      "accommodationContact": "联系电话"
+    },
+    "documents": {
+      "title": "上传文档",
+      "passport": "护照复印件",
+      "photo": "护照照片",
+      "bankStatement": "银行对账单",
+      "flightTicket": "机票",
+      "hotelBooking": "酒店预订",
+      "uploadDocument": "上传文档",
+      "dragDrop": "将文件拖放到此处，或点击选择",
+      "processing": "正在处理文档...",
+      "verified": "文档已验证",
+      "failed": "验证失败"
+    },
+    "review": {
+      "title": "审核您的申请",
+      "personalInfo": "个人信息",
+      "travelInfo": "旅行信息",
+      "documents": "已上传文档",
+      "fraudCheck": "安全检查",
+      "submitApplication": "提交申请",
+      "declaration": "我声明所提供的所有信息都是真实准确的"
+    }
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "welcome": "欢迎回来，{{name}}！",
+    "quickStats": "快速统计",
+    "recentApplications": "最近申请",
+    "notifications": "通知",
+    "quickActions": "快速操作",
+    "newApplication": "新申请",
+    "trackStatus": "跟踪状态",
+    "viewProfile": "查看个人资料",
+    "contactSupport": "联系支持",
+    "noApplications": "暂无申请",
+    "startFirst": "开始您的第一个签证申请"
+  },
+  "status": {
+    "title": "申请状态",
+    "applicationId": "申请ID",
+    "submittedOn": "提交于",
+    "currentStatus": "当前状态",
+    "progress": "进度",
+    "nextSteps": "下一步",
+    "statusHistory": "状态历史",
+    "estimatedCompletion": "预计完成",
+    "downloadVisa": "下载签证",
+    "statuses": {
+      "draft": "草稿",
+      "submitted": "已提交",
+      "under_review": "审核中",
+      "additional_info_required": "需要额外信息",
+      "approved": "已批准",
+      "rejected": "已拒绝",
+      "cancelled": "已取消"
+    }
+  },
+  "support": {
+    "title": "客户支持",
+    "chatbot": {
+      "title": "AI助手",
+      "placeholder": "输入您的消息...",
+      "send": "发送",
+      "typing": "AI正在输入...",
+      "welcome": "您好！我是您的AI助手。今天我可以如何帮助您处理签证申请？"
+    },
+    "faq": {
+      "title": "常见问题",
+      "processingTime": "处理需要多长时间？",
+      "requiredDocuments": "我需要什么文档？",
+      "applicationFee": "费用是多少？",
+      "trackApplication": "我如何跟踪我的申请？"
+    },
+    "contact": {
+      "title": "联系我们",
+      "email": "邮件支持",
+      "phone": "电话支持",
+      "hours": "营业时间"
+    }
+  },
+  "profile": {
+    "title": "个人资料",
+    "personalInfo": "个人信息",
+    "accountSettings": "账户设置",
+    "preferences": "偏好设置",
+    "security": "安全",
+    "updateProfile": "更新个人资料",
+    "changePassword": "更改密码",
+    "language": "首选语言",
+    "notifications": "通知设置",
+    "emailNotifications": "邮件通知",
+    "smsNotifications": "短信通知"
+  },
+  "visaTypes": {
+    "tourist": "旅游签证",
+    "business": "商务签证",
+    "transit": "过境签证",
+    "education": "教育签证",
+    "retirement": "退休签证",
+    "work": "工作签证"
+  },
+  "countries": {
+    "US": "美国",
+    "GB": "英国",
+    "CA": "加拿大",
+    "AU": "澳大利亚",
+    "DE": "德国",
+    "FR": "法国",
+    "JP": "日本",
+    "KR": "韩国",
+    "CN": "中国",
+    "IN": "印度",
+    "BR": "巴西",
+    "MX": "墨西哥"
+  }
+}

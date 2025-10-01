@@ -1,0 +1,261 @@
+{
+  "common": {
+    "welcome": "Bem-vindo ao Thaivisa.ai",
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "success": "Operação concluída com sucesso",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "view": "Visualizar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "continue": "Continuar",
+    "close": "Fechar",
+    "confirm": "Confirmar",
+    "yes": "Sim",
+    "no": "Não"
+  },
+  "nav": {
+    "home": "Início",
+    "dashboard": "Painel",
+    "apply": "Solicitar Visto",
+    "status": "Rastrear Status",
+    "profile": "Perfil",
+    "support": "Suporte",
+    "login": "Entrar",
+    "logout": "Sair",
+    "language": "Idioma"
+  },
+  "auth": {
+    "login": "Entrar",
+    "register": "Registrar",
+    "logout": "Sair",
+    "email": "Endereço de Email",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "nationality": "Nacionalidade",
+    "phoneNumber": "Número de Telefone",
+    "dateOfBirth": "Data de Nascimento",
+    "forgotPassword": "Esqueceu a senha?",
+    "rememberMe": "Lembrar de mim",
+    "loginSuccess": "Login realizado com sucesso",
+    "loginFailed": "Email ou senha inválidos",
+    "registrationSuccess": "Registro realizado com sucesso. Verifique seu email para confirmação.",
+    "passwordResetSent": "Instruções de redefinição de senha enviadas para seu email",
+    "createAccount": "Criar Conta",
+    "haveAccount": "Já tem uma conta?",
+    "noAccount": "Não tem uma conta?",
+    "signInWith": "Entrar com",
+    "orContinueWith": "Ou continuar com"
+  },
+  "home": {
+    "hero": {
+      "title": "Solicitações de Visto da Tailândia com IA",
+      "subtitle": "Obtenha seu visto da Tailândia aprovado mais rapidamente com nosso sistema de solicitação inteligente alimentado por tecnologia IA avançada.",
+      "cta": "Iniciar Sua Solicitação",
+      "learnMore": "Saiba Mais"
+    },
+    "features": {
+      "title": "Por que escolher Thaivisa.ai?",
+      "aiConsultation": {
+        "title": "Consulta IA",
+        "description": "Obtenha recomendações de visto personalizadas com base no seu perfil e planos de viagem"
+      },
+      "smartForms": {
+        "title": "Preenchimento Inteligente de Formulários",
+        "description": "Preenchimento de formulários assistido por IA com validação automática de dados e detecção de erros"
+      },
+      "realTimeTracking": {
+        "title": "Rastreamento em Tempo Real",
+        "description": "Monitore o status da sua solicitação com atualizações ao vivo e notificações"
+      },
+      "documentOCR": {
+        "title": "Processamento de Documentos",
+        "description": "Tecnologia OCR avançada para verificação instantânea de documentos e extração de dados"
+      },
+      "fraudDetection": {
+        "title": "Proteção contra Fraude",
+        "description": "Sistema de segurança multicamadas para garantir a autenticidade da solicitação e prevenir fraudes"
+      },
+      "multiLanguage": {
+        "title": "Suporte Multilíngue",
+        "description": "Disponível em inglês, tailandês, português e chinês para acessibilidade global"
+      }
+    },
+    "stats": {
+      "applications": "Solicitações Processadas",
+      "successRate": "Taxa de Sucesso",
+      "avgProcessingTime": "Tempo Médio de Processamento",
+      "languages": "Idiomas Suportados"
+    }
+  },
+  "application": {
+    "title": "Solicitação de Visto",
+    "steps": {
+      "eligibility": "Verificação de Elegibilidade",
+      "personalInfo": "Informações Pessoais",
+      "travelInfo": "Informações de Viagem",
+      "documents": "Documentos",
+      "review": "Revisar e Enviar"
+    },
+    "eligibility": {
+      "title": "Verifique Sua Elegibilidade",
+      "description": "Deixe nossa IA avaliar sua elegibilidade para um visto da Tailândia",
+      "nationality": "Sua Nacionalidade",
+      "visaType": "Tipo de Visto",
+      "travelPurpose": "Propósito da Viagem",
+      "duration": "Duração (dias)",
+      "checkEligibility": "Verificar Elegibilidade",
+      "eligible": "Você é elegível!",
+      "notEligible": "Requisitos adicionais podem se aplicar",
+      "confidence": "Pontuação de Confiança",
+      "requirements": "Requisitos",
+      "processingTime": "Tempo de Processamento",
+      "fee": "Taxa de Processamento"
+    },
+    "personalInfo": {
+      "title": "Informações Pessoais",
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
+      "nationality": "Nacionalidade",
+      "passportNumber": "Número do Passaporte",
+      "dateOfBirth": "Data de Nascimento",
+      "placeOfBirth": "Local de Nascimento",
+      "gender": "Gênero",
+      "maritalStatus": "Estado Civil"
+    },
+    "travelInfo": {
+      "title": "Informações de Viagem",
+      "visaType": "Tipo de Visto",
+      "travelPurpose": "Propósito da Viagem",
+      "arrivalDate": "Data Pretendida de Chegada",
+      "departureDate": "Data Pretendida de Partida",
+      "portOfEntry": "Porto de Entrada",
+      "accommodation": "Detalhes da Acomodação",
+      "accommodationType": "Tipo de Acomodação",
+      "accommodationName": "Nome do Hotel/Acomodação",
+      "accommodationAddress": "Endereço",
+      "accommodationContact": "Número de Contato"
+    },
+    "documents": {
+      "title": "Enviar Documentos",
+      "passport": "Cópia do Passaporte",
+      "photo": "Foto do Passaporte",
+      "bankStatement": "Extrato Bancário",
+      "flightTicket": "Bilhete de Voo",
+      "hotelBooking": "Reserva de Hotel",
+      "uploadDocument": "Enviar Documento",
+      "dragDrop": "Arraste e solte arquivos aqui, ou clique para selecionar",
+      "processing": "Processando documento...",
+      "verified": "Documento verificado",
+      "failed": "Verificação falhou"
+    },
+    "review": {
+      "title": "Revisar Sua Solicitação",
+      "personalInfo": "Informações Pessoais",
+      "travelInfo": "Informações de Viagem",
+      "documents": "Documentos Enviados",
+      "fraudCheck": "Verificação de Segurança",
+      "submitApplication": "Enviar Solicitação",
+      "declaration": "Declaro que todas as informações fornecidas são verdadeiras e precisas"
+    }
+  },
+  "dashboard": {
+    "title": "Painel",
+    "welcome": "Bem-vindo de volta, {{name}}!",
+    "quickStats": "Estatísticas Rápidas",
+    "recentApplications": "Solicitações Recentes",
+    "notifications": "Notificações",
+    "quickActions": "Ações Rápidas",
+    "newApplication": "Nova Solicitação",
+    "trackStatus": "Rastrear Status",
+    "viewProfile": "Ver Perfil",
+    "contactSupport": "Contatar Suporte",
+    "noApplications": "Ainda não há solicitações",
+    "startFirst": "Inicie sua primeira solicitação de visto"
+  },
+  "status": {
+    "title": "Status da Solicitação",
+    "applicationId": "ID da Solicitação",
+    "submittedOn": "Enviado em",
+    "currentStatus": "Status Atual",
+    "progress": "Progresso",
+    "nextSteps": "Próximos Passos",
+    "statusHistory": "Histórico de Status",
+    "estimatedCompletion": "Conclusão Estimada",
+    "downloadVisa": "Baixar Visto",
+    "statuses": {
+      "draft": "Rascunho",
+      "submitted": "Enviado",
+      "under_review": "Em Análise",
+      "additional_info_required": "Informações Adicionais Necessárias",
+      "approved": "Aprovado",
+      "rejected": "Rejeitado",
+      "cancelled": "Cancelado"
+    }
+  },
+  "support": {
+    "title": "Suporte ao Cliente",
+    "chatbot": {
+      "title": "Assistente IA",
+      "placeholder": "Digite sua mensagem...",
+      "send": "Enviar",
+      "typing": "IA está digitando...",
+      "welcome": "Olá! Sou seu assistente IA. Como posso ajudá-lo com sua solicitação de visto hoje?"
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "processingTime": "Quanto tempo leva o processamento?",
+      "requiredDocuments": "Que documentos eu preciso?",
+      "applicationFee": "Quanto custa?",
+      "trackApplication": "Como posso rastrear minha solicitação?"
+    },
+    "contact": {
+      "title": "Entre em Contato",
+      "email": "Suporte por Email",
+      "phone": "Suporte por Telefone",
+      "hours": "Horário Comercial"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "personalInfo": "Informações Pessoais",
+    "accountSettings": "Configurações da Conta",
+    "preferences": "Preferências",
+    "security": "Segurança",
+    "updateProfile": "Atualizar Perfil",
+    "changePassword": "Alterar Senha",
+    "language": "Idioma Preferido",
+    "notifications": "Configurações de Notificação",
+    "emailNotifications": "Notificações por Email",
+    "smsNotifications": "Notificações por SMS"
+  },
+  "visaTypes": {
+    "tourist": "Visto de Turista",
+    "business": "Visto de Negócios",
+    "transit": "Visto de Trânsito",
+    "education": "Visto de Educação",
+    "retirement": "Visto de Aposentadoria",
+    "work": "Visto de Trabalho"
+  },
+  "countries": {
+    "US": "Estados Unidos",
+    "GB": "Reino Unido",
+    "CA": "Canadá",
+    "AU": "Austrália",
+    "DE": "Alemanha",
+    "FR": "França",
+    "JP": "Japão",
+    "KR": "Coreia do Sul",
+    "CN": "China",
+    "IN": "Índia",
+    "BR": "Brasil",
+    "MX": "México"
+  }
+}
