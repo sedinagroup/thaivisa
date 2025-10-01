@@ -1,22 +1,21 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-export interface User {
+interface User {
   id: string;
-  name: string;
   email: string;
+  firstName: string;
+  lastName: string;
   avatar?: string;
-  role: 'user' | 'admin';
-  createdAt: Date;
+  credits: number;
 }
 
 interface AuthContextType {
   user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
   login: (email: string, password: string) => Promise<boolean>;
-  register: (name: string, email: string, password: string) => Promise<boolean>;
+  register: (email: string, password: string, firstName: string, lastName: string) => Promise<boolean>;
   logout: () => void;
-  updateUser: (userData: Partial<User>) => void;
+  isAuthenticated: boolean;
+  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,114 +34,101 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  // Load user from localStorage on mount
   useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
+    // Check for existing session
+    const storedUser = localStorage.getItem('thailand_visa_user');
+    if (storedUser) {
       try {
-        const parsedUser = JSON.parse(savedUser);
-        setUser({
-          ...parsedUser,
-          createdAt: new Date(parsedUser.createdAt)
-        });
+        setUser(JSON.parse(storedUser));
       } catch (error) {
-        console.error('Error parsing saved user:', error);
-        localStorage.removeItem('user');
+        console.error('Error parsing stored user:', error);
+        localStorage.removeItem('thailand_visa_user');
       }
     }
-    setIsLoading(false);
+    setLoading(false);
   }, []);
 
-  // Save user to localStorage whenever user changes
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('user');
-    }
-  }, [user]);
-
   const login = async (email: string, password: string): Promise<boolean> => {
-    setIsLoading(true);
-    
+    setLoading(true);
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Mock authentication - in real app, this would be an API call
-      if (email && password) {
+      if (email && password.length >= 6) {
         const mockUser: User = {
-          id: Date.now().toString(),
-          name: email.split('@')[0],
+          id: '1',
           email,
-          role: 'user',
-          createdAt: new Date()
+          firstName: email.split('@')[0],
+          lastName: 'User',
+          credits: 1000
         };
         
         setUser(mockUser);
+        localStorage.setItem('thailand_visa_user', JSON.stringify(mockUser));
+        setLoading(false);
         return true;
       }
       
+      setLoading(false);
       return false;
     } catch (error) {
       console.error('Login error:', error);
+      setLoading(false);
       return false;
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  const register = async (name: string, email: string, password: string): Promise<boolean> => {
-    setIsLoading(true);
-    
+  const register = async (
+    email: string, 
+    password: string, 
+    firstName: string, 
+    lastName: string
+  ): Promise<boolean> => {
+    setLoading(true);
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Mock registration - in real app, this would be an API call
-      if (name && email && password) {
+      if (email && password.length >= 6 && firstName && lastName) {
         const mockUser: User = {
           id: Date.now().toString(),
-          name,
           email,
-          role: 'user',
-          createdAt: new Date()
+          firstName,
+          lastName,
+          credits: 100 // Welcome bonus
         };
         
         setUser(mockUser);
+        localStorage.setItem('thailand_visa_user', JSON.stringify(mockUser));
+        setLoading(false);
         return true;
       }
       
+      setLoading(false);
       return false;
     } catch (error) {
       console.error('Registration error:', error);
+      setLoading(false);
       return false;
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
-  };
-
-  const updateUser = (userData: Partial<User>) => {
-    if (user) {
-      setUser({ ...user, ...userData });
-    }
+    localStorage.removeItem('thailand_visa_user');
   };
 
   const value: AuthContextType = {
     user,
-    isAuthenticated: !!user,
-    isLoading,
     login,
     register,
     logout,
-    updateUser
+    isAuthenticated: !!user,
+    loading
   };
 
   return (

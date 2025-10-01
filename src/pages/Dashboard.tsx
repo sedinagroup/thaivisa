@@ -1,231 +1,336 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useCredits } from '@/contexts/CreditsContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
-  FileText, 
-  BarChart3, 
-  User, 
+  Coins, 
+  FileCheck, 
+  Brain, 
+  Calendar, 
   MessageCircle, 
-  Plus,
-  ArrowRight,
-  CheckCircle,
+  Plane,
+  Hotel,
+  Car,
+  MapPin,
+  TrendingUp,
   Clock,
-  AlertTriangle,
-  Coins
+  CheckCircle,
+  ArrowRight
 } from 'lucide-react';
-import DashboardNotifications from '@/components/DashboardNotifications';
+import { Link } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
-  const { t } = useTranslation();
   const { user } = useAuth();
-  const navigate = useNavigate();
+  const { credits } = useCredits();
 
-  const quickActions = [
+  const aiServices = [
     {
-      title: t('dashboard.newApplication'),
-      description: 'Start a new visa application',
-      icon: FileText,
-      action: () => navigate('/apply'),
-      color: 'bg-blue-600',
+      id: 'document-checker',
+      title: 'AI Document Checker',
+      description: 'Upload documents for instant AI verification',
+      icon: FileCheck,
+      color: 'bg-blue-500',
+      credits: 20,
+      path: '/ai/document-checker'
     },
     {
-      title: t('dashboard.trackStatus'),
-      description: 'Check your application status',
-      icon: BarChart3,
-      action: () => navigate('/status'),
-      color: 'bg-green-600',
+      id: 'visa-advisor',
+      title: 'AI Visa Advisor',
+      description: 'Get personalized visa recommendations',
+      icon: Brain,
+      color: 'bg-purple-500',
+      credits: 25,
+      path: '/ai/visa-advisor'
     },
     {
-      title: t('dashboard.viewProfile'),
-      description: 'Manage your profile',
-      icon: User,
-      action: () => navigate('/profile'),
-      color: 'bg-purple-600',
+      id: 'trip-planner',
+      title: 'AI Trip Planner',
+      description: 'Complete bureaucratic planning',
+      icon: Calendar,
+      color: 'bg-green-500',
+      credits: 40,
+      path: '/ai/trip-planner'
     },
     {
-      title: t('dashboard.contactSupport'),
-      description: 'Get help with your application',
+      id: 'assistant-chat',
+      title: 'AI Assistant Chat',
+      description: '24/7 AI support for all questions',
       icon: MessageCircle,
-      action: () => navigate('/support'),
-      color: 'bg-orange-600',
-    },
+      color: 'bg-orange-500',
+      credits: 5,
+      path: '/ai/chat'
+    }
   ];
 
-  const recentApplications = [
+  const travelServices = [
     {
-      id: 'APP-001',
-      type: 'Tourist Visa',
-      status: 'under_review',
-      submittedOn: '2024-01-15',
-      progress: 60,
+      title: 'Flight Recommendations',
+      description: 'Smart flight search with price predictions',
+      icon: Plane,
+      color: 'bg-sky-500',
+      path: '/travel/flights'
     },
     {
-      id: 'APP-002',
-      type: 'Business Visa',
-      status: 'approved',
-      submittedOn: '2024-01-10',
-      progress: 100,
+      title: 'Hotel & Accommodation',
+      description: 'Personalized matching and price comparison',
+      icon: Hotel,
+      color: 'bg-emerald-500',
+      path: '/travel/hotels'
     },
+    {
+      title: 'Transportation Services',
+      description: 'Airport transfers and local transport',
+      icon: Car,
+      color: 'bg-violet-500',
+      path: '/travel/transport'
+    },
+    {
+      title: 'Special Services',
+      description: 'Tour packages and cultural experiences',
+      icon: MapPin,
+      color: 'bg-rose-500',
+      path: '/travel/special'
+    }
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'approved':
-        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-      case 'under_review':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-      case 'rejected':
-        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
+  const recentActivity = [
+    {
+      action: 'Document Verification',
+      description: 'Passport scan completed',
+      time: '2 hours ago',
+      status: 'completed',
+      credits: -20
+    },
+    {
+      action: 'Credit Purchase',
+      description: 'Purchased 300 credits',
+      time: '1 day ago',
+      status: 'completed',
+      credits: +300
+    },
+    {
+      action: 'AI Trip Plan',
+      description: 'Generated Bangkok itinerary',
+      time: '2 days ago',
+      status: 'completed',
+      credits: -40
     }
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'approved':
-        return <CheckCircle className="h-4 w-4" />;
-      case 'under_review':
-        return <Clock className="h-4 w-4" />;
-      case 'rejected':
-        return <AlertTriangle className="h-4 w-4" />;
-      default:
-        return <Clock className="h-4 w-4" />;
-    }
-  };
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            {t('dashboard.welcome', { name: user?.firstName || 'User' })}
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Manage your visa applications and track your progress
-          </p>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header */}
+      <div className="bg-white dark:bg-gray-800 shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Welcome back, {user?.firstName}!
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400">
+                Manage your Thailand visa journey with AI-powered tools
+              </p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Card className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
+                <CardContent className="p-4">
+                  <div className="flex items-center space-x-2">
+                    <Coins className="w-5 h-5" />
+                    <span className="font-bold">{credits}</span>
+                    <span className="text-sm opacity-90">credits</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Button asChild variant="outline">
+                <Link to="/credits">Buy Credits</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Available Credits</p>
+                  <p className="text-2xl font-bold text-blue-600">{credits}</p>
+                </div>
+                <Coins className="w-8 h-8 text-blue-600" />
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Services Used</p>
+                  <p className="text-2xl font-bold text-green-600">12</p>
+                </div>
+                <TrendingUp className="w-8 h-8 text-green-600" />
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Plans</p>
+                  <p className="text-2xl font-bold text-purple-600">3</p>
+                </div>
+                <Calendar className="w-8 h-8 text-purple-600" />
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Success Rate</p>
+                  <p className="text-2xl font-bold text-orange-600">98%</p>
+                </div>
+                <CheckCircle className="w-8 h-8 text-orange-600" />
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Quick Actions */}
+          {/* AI Services */}
+          <div className="lg:col-span-2">
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">AI-Powered Services</h2>
+              <p className="text-gray-600 dark:text-gray-400">Access our advanced AI tools for visa processing</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {aiServices.map((service) => {
+                const IconComponent = service.icon;
+                return (
+                  <Card key={service.id} className="group hover:shadow-lg transition-all duration-200 cursor-pointer">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center justify-between">
+                        <div className={`w-12 h-12 ${service.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                          <IconComponent className="w-6 h-6 text-white" />
+                        </div>
+                        <Badge variant="secondary" className="text-xs">
+                          {service.credits} credits
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-lg">{service.title}</CardTitle>
+                      <CardDescription>{service.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Button asChild className="w-full" variant="outline">
+                        <Link to={service.path} className="flex items-center justify-center">
+                          Use Service
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+
+            {/* Travel Services */}
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Travel Services</h2>
+              <p className="text-gray-600 dark:text-gray-400">Complete travel planning with AI assistance</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {travelServices.map((service, index) => {
+                const IconComponent = service.icon;
+                return (
+                  <Card key={index} className="group hover:shadow-lg transition-all duration-200 cursor-pointer">
+                    <CardHeader className="pb-4">
+                      <div className={`w-12 h-12 ${service.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform mb-4`}>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <CardTitle className="text-lg">{service.title}</CardTitle>
+                      <CardDescription>{service.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Button asChild className="w-full" variant="outline">
+                        <Link to={service.path} className="flex items-center justify-center">
+                          Explore
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Recent Activity */}
+          <div>
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Recent Activity</h2>
+              <p className="text-gray-600 dark:text-gray-400">Your latest transactions and activities</p>
+            </div>
+            
             <Card>
-              <CardHeader>
-                <CardTitle>{t('dashboard.quickActions')}</CardTitle>
-                <CardDescription>
-                  Common tasks and actions you can perform
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {quickActions.map((action, index) => (
-                    <Button
-                      key={index}
-                      variant="outline"
-                      className="h-auto p-4 justify-start"
-                      onClick={action.action}
-                    >
-                      <div className={`w-10 h-10 rounded-lg ${action.color} flex items-center justify-center mr-3`}>
-                        <action.icon className="h-5 w-5 text-white" />
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  {recentActivity.map((activity, index) => (
+                    <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="flex-shrink-0">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                          activity.status === 'completed' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'
+                        }`}>
+                          <CheckCircle className="w-4 h-4" />
+                        </div>
                       </div>
-                      <div className="text-left">
-                        <p className="font-medium">{action.title}</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {action.description}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 dark:text-white">
+                          {activity.action}
                         </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {activity.description}
+                        </p>
+                        <div className="flex items-center justify-between mt-1">
+                          <p className="text-xs text-gray-500">{activity.time}</p>
+                          <span className={`text-xs font-medium ${
+                            activity.credits > 0 ? 'text-green-600' : 'text-red-600'
+                          }`}>
+                            {activity.credits > 0 ? '+' : ''}{activity.credits} credits
+                          </span>
+                        </div>
                       </div>
-                    </Button>
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
 
-            {/* Recent Applications */}
-            <Card>
+            {/* Quick Actions */}
+            <Card className="mt-6">
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle>{t('dashboard.recentApplications')}</CardTitle>
-                    <CardDescription>
-                      Your latest visa application submissions
-                    </CardDescription>
-                  </div>
-                  <Button variant="outline" size="sm" onClick={() => navigate('/apply')}>
-                    <Plus className="h-4 w-4 mr-1" />
-                    New Application
-                  </Button>
-                </div>
+                <CardTitle className="text-lg">Quick Actions</CardTitle>
               </CardHeader>
-              <CardContent>
-                {recentApplications.length === 0 ? (
-                  <div className="text-center py-8">
-                    <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                      {t('dashboard.noApplications')}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      {t('dashboard.startFirst')}
-                    </p>
-                    <Button onClick={() => navigate('/apply')}>
-                      <Plus className="h-4 w-4 mr-2" />
-                      Start Application
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    {recentApplications.map((application) => (
-                      <div
-                        key={application.id}
-                        className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
-                      >
-                        <div className="flex items-center space-x-4">
-                          <div className="flex-shrink-0">
-                            {getStatusIcon(application.status)}
-                          </div>
-                          <div>
-                            <h4 className="font-medium text-gray-900 dark:text-white">
-                              {application.type}
-                            </h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                              Application ID: {application.id}
-                            </p>
-                            <p className="text-xs text-gray-500">
-                              Submitted: {new Date(application.submittedOn).toLocaleDateString()}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <Badge className={getStatusColor(application.status)}>
-                            {application.status.replace('_', ' ')}
-                          </Badge>
-                          <div className="mt-2">
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => navigate(`/status/${application.id}`)}
-                            >
-                              View Details
-                              <ArrowRight className="h-3 w-3 ml-1" />
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+              <CardContent className="space-y-3">
+                <Button asChild className="w-full" variant="outline">
+                  <Link to="/apply">Start New Application</Link>
+                </Button>
+                <Button asChild className="w-full" variant="outline">
+                  <Link to="/ai/chat">Ask AI Assistant</Link>
+                </Button>
+                <Button asChild className="w-full" variant="outline">
+                  <Link to="/credits">Purchase Credits</Link>
+                </Button>
               </CardContent>
             </Card>
-          </div>
-
-          {/* Right Column - Notifications */}
-          <div className="space-y-6">
-            <DashboardNotifications />
           </div>
         </div>
       </div>
