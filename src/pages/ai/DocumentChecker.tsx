@@ -208,7 +208,7 @@ const AIDocumentChecker: React.FC = () => {
     
     let documentType = 'Documento Geral';
     let extractedData: ExtractedData = {};
-    let issues: Issue[] = [];
+    const issues: Issue[] = [];
     let validity: 'valid' | 'invalid' | 'expired' | 'warning' = 'valid';
 
     if (isPassport) {

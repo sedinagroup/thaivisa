@@ -11,7 +11,36 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CalendarDays, MapPin, Users, Wallet, Plane, Hotel, Utensils, Camera, Mountain, Waves, Building, TreePine, Heart, Star, Clock, Globe } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { 
+  CalendarDays, 
+  MapPin, 
+  Users, 
+  Wallet, 
+  Plane, 
+  Hotel, 
+  Utensils, 
+  Camera, 
+  Mountain, 
+  Waves, 
+  Building, 
+  TreePine, 
+  Heart, 
+  Star, 
+  Clock, 
+  Globe,
+  Sparkles,
+  History,
+  Download,
+  Share2,
+  AlertCircle,
+  CheckCircle,
+  Loader2
+} from 'lucide-react';
+import { toast } from 'sonner';
+import { useCredits } from '@/contexts/CreditsContext';
+import { useTripPlanRemix, TripPlanVersion } from '@/hooks/useTripPlanRemix';
+import TripPlanRemixModal from '@/components/TripPlanRemixModal';
 
 interface TripPlannerFormData {
   destination: string;
@@ -42,6 +71,18 @@ interface TripPlannerFormData {
 
 export default function TripPlanner() {
   const { t } = useTranslation();
+  const { credits } = useCredits();
+  const {
+    versions,
+    currentVersion,
+    createInitialPlan,
+    selectVersion,
+    deleteVersion,
+    compareVersions,
+    showRemixOptions,
+    setShowRemixOptions
+  } = useTripPlanRemix();
+
   const [formData, setFormData] = useState<TripPlannerFormData>({
     destination: '',
     startDate: '',
@@ -71,7 +112,7 @@ export default function TripPlanner() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedPlan, setGeneratedPlan] = useState<string>('');
+  const [showVersionHistory, setShowVersionHistory] = useState(false);
 
   const handleInputChange = (field: keyof TripPlannerFormData, value: any) => {
     setFormData(prev => ({
@@ -100,43 +141,92 @@ export default function TripPlanner() {
   };
 
   const generateTripPlan = async () => {
+    if (credits < 25) {
+      toast.error(t('notifications.insufficientCredits', 'Insufficient credits. You need 25 credits to generate a trip plan.'));
+      return;
+    }
+
     setIsGenerating(true);
-    // Simulate API call
-    setTimeout(() => {
-      setGeneratedPlan(`
-${t('tripPlanner.generatedPlan.title')}
+    try {
+      // Simulate AI processing
+      await new Promise(resolve => setTimeout(resolve, 3000));
 
-${t('tripPlanner.generatedPlan.destination')}: ${formData.destination}
-${t('tripPlanner.generatedPlan.duration')}: ${formData.startDate} - ${formData.endDate}
-${t('tripPlanner.generatedPlan.travelers')}: ${formData.travelers} ${t('tripPlanner.generatedPlan.people')}
-${t('tripPlanner.generatedPlan.budget')}: ${formData.budget[0]} ${formData.budgetCurrency}
-
-${t('tripPlanner.generatedPlan.dayByDay')}:
-
-${t('tripPlanner.generatedPlan.day')} 1: ${t('tripPlanner.generatedPlan.arrival')}
-- ${t('tripPlanner.generatedPlan.arrivalDetails')}
-- ${t('tripPlanner.generatedPlan.checkIn')}
-- ${t('tripPlanner.generatedPlan.localExploration')}
-
-${t('tripPlanner.generatedPlan.day')} 2: ${t('tripPlanner.generatedPlan.culturalExperience')}
-- ${t('tripPlanner.generatedPlan.culturalDetails')}
-- ${t('tripPlanner.generatedPlan.localCuisine')}
-- ${t('tripPlanner.generatedPlan.shopping')}
-
-${t('tripPlanner.generatedPlan.recommendations')}:
-- ${t('tripPlanner.generatedPlan.accommodation')}: ${formData.accommodationType.join(', ')}
-- ${t('tripPlanner.generatedPlan.transport')}: ${formData.transportPreference}
-- ${t('tripPlanner.generatedPlan.activities')}: ${formData.interests.join(', ')}
-
-${t('tripPlanner.generatedPlan.budgetBreakdown')}:
-- ${t('tripPlanner.budgetBreakdown.accommodation')}: ${formData.budgetBreakdown.accommodation}%
-- ${t('tripPlanner.budgetBreakdown.food')}: ${formData.budgetBreakdown.food}%
-- ${t('tripPlanner.budgetBreakdown.activities')}: ${formData.budgetBreakdown.activities}%
-- ${t('tripPlanner.budgetBreakdown.transport')}: ${formData.budgetBreakdown.transport}%
-- ${t('tripPlanner.budgetBreakdown.shopping')}: ${formData.budgetBreakdown.shopping}%
-      `);
+      // Generate mock trip plan
+      const mockPlan = generateMockPlan();
+      
+      const newPlan = await createInitialPlan(formData, mockPlan);
+      if (newPlan) {
+        toast.success(t('tripPlanner.generatedPlan.success', 'Trip plan generated successfully!'));
+      }
+    } catch (error) {
+      console.error('Trip planning error:', error);
+      toast.error(t('tripPlanner.generatedPlan.error', 'Error generating trip plan. Please try again.'));
+    } finally {
       setIsGenerating(false);
-    }, 3000);
+    }
+  };
+
+  const generateMockPlan = (): string => {
+    const duration = Math.ceil((new Date(formData.endDate).getTime() - new Date(formData.startDate).getTime()) / (1000 * 60 * 60 * 24));
+    
+    return `
+🎯 **YOUR PERSONALIZED THAILAND TRIP PLAN**
+
+**Destination**: ${formData.destination}
+**Duration**: ${duration} days
+**Travelers**: ${formData.travelers} ${t('tripPlanner.generatedPlan.people', 'people')}
+**Budget**: ${formData.budget[0]} ${formData.budgetCurrency}
+**Travel Style**: ${formData.travelStyle}
+
+**📅 DAY-BY-DAY ITINERARY:**
+
+**Day 1: ${t('tripPlanner.generatedPlan.arrival', 'Arrival & Orientation')}**
+- 🛬 ${t('tripPlanner.generatedPlan.arrivalDetails', 'Airport pickup and hotel check-in')}
+- 🏨 ${t('tripPlanner.generatedPlan.checkIn', 'Hotel check-in and rest')}
+- 🌆 ${t('tripPlanner.generatedPlan.localExploration', 'Local area exploration')}
+
+**Day 2: ${t('tripPlanner.generatedPlan.culturalExperience', 'Cultural Experience')}**
+- 🏛️ ${t('tripPlanner.generatedPlan.culturalDetails', 'Visit temples and cultural sites')}
+- 🍜 ${t('tripPlanner.generatedPlan.localCuisine', 'Try authentic local cuisine')}
+- 🛍️ ${t('tripPlanner.generatedPlan.shopping', 'Local market shopping')}
+
+**💰 BUDGET BREAKDOWN:**
+- ${t('tripPlanner.budgetBreakdown.accommodation', 'Accommodation')}: ${formData.budgetBreakdown.accommodation}%
+- ${t('tripPlanner.budgetBreakdown.food', 'Food & Dining')}: ${formData.budgetBreakdown.food}%
+- ${t('tripPlanner.budgetBreakdown.activities', 'Activities & Tours')}: ${formData.budgetBreakdown.activities}%
+- ${t('tripPlanner.budgetBreakdown.transport', 'Transportation')}: ${formData.budgetBreakdown.transport}%
+- ${t('tripPlanner.budgetBreakdown.shopping', 'Shopping & Souvenirs')}: ${formData.budgetBreakdown.shopping}%
+
+**🎯 RECOMMENDATIONS:**
+- ${t('tripPlanner.generatedPlan.accommodation', 'Accommodation')}: ${formData.accommodationType.join(', ')}
+- ${t('tripPlanner.generatedPlan.transport', 'Transportation')}: ${formData.transportPreference}
+- ${t('tripPlanner.generatedPlan.activities', 'Activities')}: ${formData.interests.join(', ')}
+
+---
+*Generated with 25 credits • ${new Date().toLocaleDateString()}*
+    `;
+  };
+
+  const downloadPlan = () => {
+    if (!currentVersion) return;
+    
+    const planText = `Thailand Trip Plan - ${currentVersion.destination}\n\n${currentVersion.generatedPlan}`;
+    const blob = new Blob([planText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `trip-plan-${currentVersion.destination.toLowerCase().replace(/\s+/g, '-')}-v${currentVersion.version}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    toast.success(t('tripPlanner.downloadSuccess', 'Trip plan downloaded successfully!'));
+  };
+
+  const handleRemixComplete = (newPlan: TripPlanVersion) => {
+    // The plan is already added to versions by the hook
+    toast.success(t('tripPlanner.remix.success', 'Remix completed successfully!'));
   };
 
   const renderStep1 = () => (
@@ -408,26 +498,6 @@ ${t('tripPlanner.generatedPlan.budgetBreakdown')}:
         </div>
       </div>
 
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.accessibility')}</Label>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {[
-            'wheelchair', 'mobility-aid', 'visual-impairment', 'hearing-impairment', 'none'
-          ].map((accessibility) => (
-            <div key={accessibility} className="flex items-center space-x-2">
-              <Checkbox
-                id={accessibility}
-                checked={formData.accessibility.includes(accessibility)}
-                onCheckedChange={() => handleArrayToggle('accessibility', accessibility)}
-              />
-              <Label htmlFor={accessibility} className="cursor-pointer">
-                {t(`tripPlanner.accessibility.${accessibility}`)}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="space-y-2">
         <Label htmlFor="languagePreference" className="flex items-center gap-2">
           <Globe className="w-4 h-4" />
@@ -545,7 +615,7 @@ ${t('tripPlanner.generatedPlan.budgetBreakdown')}:
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {t('tripPlanner.title')}
@@ -553,83 +623,254 @@ ${t('tripPlanner.generatedPlan.budgetBreakdown')}:
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {t('tripPlanner.subtitle')}
           </p>
-        </div>
-
-        <Card className="mb-6">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
-                {t('tripPlanner.step')} {currentStep} {t('tripPlanner.of')} 4
-              </CardTitle>
-              <div className="flex space-x-2">
-                {[1, 2, 3, 4].map((step) => (
-                  <div
-                    key={step}
-                    className={`w-3 h-3 rounded-full ${
-                      step <= currentStep ? 'bg-blue-600' : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-            <CardDescription>
-              {currentStep === 1 && t('tripPlanner.stepDescriptions.step1')}
-              {currentStep === 2 && t('tripPlanner.stepDescriptions.step2')}
-              {currentStep === 3 && t('tripPlanner.stepDescriptions.step3')}
-              {currentStep === 4 && t('tripPlanner.stepDescriptions.step4')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {currentStep === 1 && renderStep1()}
-            {currentStep === 2 && renderStep2()}
-            {currentStep === 3 && renderStep3()}
-            {currentStep === 4 && renderStep4()}
-
-            <div className="flex justify-between mt-8">
+          <div className="flex justify-center items-center gap-4 mt-4">
+            <Badge variant="secondary" className="flex items-center gap-2">
+              <Wallet className="w-4 h-4" />
+              {credits} {t('credits.credits', 'credits')}
+            </Badge>
+            {versions.length > 0 && (
               <Button
                 variant="outline"
-                onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
-                disabled={currentStep === 1}
+                size="sm"
+                onClick={() => setShowVersionHistory(!showVersionHistory)}
+                className="flex items-center gap-2"
               >
-                {t('tripPlanner.buttons.previous')}
+                <History className="w-4 h-4" />
+                {t('tripPlanner.versionHistory', 'Version History')} ({versions.length})
               </Button>
-              
-              {currentStep < 4 ? (
-                <Button
-                  onClick={() => setCurrentStep(Math.min(4, currentStep + 1))}
-                  disabled={
-                    (currentStep === 1 && (!formData.destination || !formData.startDate || !formData.endDate)) ||
-                    (currentStep === 2 && (!formData.accommodationType.length || !formData.transportPreference)) ||
-                    (currentStep === 3 && !formData.interests.length)
-                  }
-                >
-                  {t('tripPlanner.buttons.next')}
-                </Button>
-              ) : (
-                <Button
-                  onClick={generateTripPlan}
-                  disabled={isGenerating}
-                  className="bg-blue-600 hover:bg-blue-700"
-                >
-                  {isGenerating ? t('tripPlanner.buttons.generating') : t('tripPlanner.buttons.generatePlan')}
-                </Button>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+            )}
+          </div>
+        </div>
 
-        {generatedPlan && (
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('tripPlanner.generatedPlan.title')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <pre className="whitespace-pre-wrap text-sm bg-gray-50 p-4 rounded-lg">
-                {generatedPlan}
-              </pre>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Form Section */}
+          <div className="lg:col-span-1">
+            {!currentVersion ? (
+              <Card>
+                <CardHeader>
+                  <div className="flex justify-between items-center">
+                    <CardTitle className="flex items-center gap-2">
+                      <Clock className="w-5 h-5" />
+                      {t('tripPlanner.step')} {currentStep} {t('tripPlanner.of')} 4
+                    </CardTitle>
+                    <div className="flex space-x-2">
+                      {[1, 2, 3, 4].map((step) => (
+                        <div
+                          key={step}
+                          className={`w-3 h-3 rounded-full ${
+                            step <= currentStep ? 'bg-blue-600' : 'bg-gray-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <CardDescription>
+                    {currentStep === 1 && t('tripPlanner.stepDescriptions.step1')}
+                    {currentStep === 2 && t('tripPlanner.stepDescriptions.step2')}
+                    {currentStep === 3 && t('tripPlanner.stepDescriptions.step3')}
+                    {currentStep === 4 && t('tripPlanner.stepDescriptions.step4')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {currentStep === 1 && renderStep1()}
+                  {currentStep === 2 && renderStep2()}
+                  {currentStep === 3 && renderStep3()}
+                  {currentStep === 4 && renderStep4()}
+
+                  <div className="flex justify-between mt-8">
+                    <Button
+                      variant="outline"
+                      onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
+                      disabled={currentStep === 1}
+                    >
+                      {t('tripPlanner.buttons.previous')}
+                    </Button>
+                    
+                    {currentStep < 4 ? (
+                      <Button
+                        onClick={() => setCurrentStep(Math.min(4, currentStep + 1))}
+                        disabled={
+                          (currentStep === 1 && (!formData.destination || !formData.startDate || !formData.endDate)) ||
+                          (currentStep === 2 && (!formData.accommodationType.length || !formData.transportPreference)) ||
+                          (currentStep === 3 && !formData.interests.length)
+                        }
+                      >
+                        {t('tripPlanner.buttons.next')}
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={generateTripPlan}
+                        disabled={isGenerating || credits < 25}
+                        className="bg-blue-600 hover:bg-blue-700"
+                      >
+                        {isGenerating ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            {t('tripPlanner.buttons.generating')}
+                          </>
+                        ) : (
+                          <>
+                            <Sparkles className="mr-2 h-4 w-4" />
+                            {t('tripPlanner.buttons.generatePlan')} (25 credits)
+                          </>
+                        )}
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    {t('tripPlanner.planGenerated', 'Plan Generated')}
+                  </CardTitle>
+                  <CardDescription>
+                    Version {currentVersion.version} • {currentVersion.creditsUsed} credits used
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={() => setShowRemixOptions(true)}
+                      className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 flex-1"
+                    >
+                      <Sparkles className="w-4 h-4 mr-2" />
+                      {t('tripPlanner.remix.button', 'REMIX Plan')}
+                    </Button>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" onClick={downloadPlan} className="flex-1">
+                      <Download className="w-4 h-4 mr-2" />
+                      {t('tripPlanner.download', 'Download')}
+                    </Button>
+                    <Button variant="outline" size="sm" className="flex-1">
+                      <Share2 className="w-4 h-4 mr-2" />
+                      {t('tripPlanner.share', 'Share')}
+                    </Button>
+                  </div>
+
+                  <Alert>
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertDescription>
+                      {t('tripPlanner.remix.info', 'Use REMIX to refine your plan with additional preferences. Each remix costs 15-30 credits depending on the enhancement level.')}
+                    </AlertDescription>
+                  </Alert>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+
+          {/* Results Section */}
+          <div className="lg:col-span-2">
+            {currentVersion ? (
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      {currentVersion.destination} - Version {currentVersion.version}
+                      {currentVersion.isRemix && (
+                        <Badge variant="secondary" className="ml-2">
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          REMIX
+                        </Badge>
+                      )}
+                    </CardTitle>
+                  </div>
+                  <CardDescription>
+                    {currentVersion.duration} days • {currentVersion.travelers} travelers • {currentVersion.budget} {formData.budgetCurrency}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <pre className="whitespace-pre-wrap text-sm bg-gray-50 p-4 rounded-lg max-h-96 overflow-y-auto">
+                    {currentVersion.generatedPlan}
+                  </pre>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="h-96 flex items-center justify-center">
+                <CardContent className="text-center">
+                  <Sparkles className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    {t('tripPlanner.readyToPlan', 'Ready to plan your trip?')}
+                  </h3>
+                  <p className="text-gray-600">
+                    {t('tripPlanner.readyToPlanDesc', 'Fill in the details and our AI will create a personalized plan for you.')}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Version History */}
+            {showVersionHistory && versions.length > 1 && (
+              <Card className="mt-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <History className="w-5 h-5" />
+                    {t('tripPlanner.versionHistory', 'Version History')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {versions.map((version) => (
+                      <div
+                        key={version.id}
+                        className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                          currentVersion?.id === version.id 
+                            ? 'bg-blue-50 border-blue-200' 
+                            : 'hover:bg-gray-50'
+                        }`}
+                        onClick={() => selectVersion(version)}
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium">Version {version.version}</span>
+                              {version.isRemix && (
+                                <Badge variant="secondary" size="sm">
+                                  <Sparkles className="w-3 h-3 mr-1" />
+                                  REMIX
+                                </Badge>
+                              )}
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              {version.destination} • {version.duration} days • {version.creditsUsed} credits
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {version.createdAt.toLocaleDateString()}
+                            </p>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              deleteVersion(version.id);
+                            }}
+                          >
+                            ×
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </div>
+
+        {/* Remix Modal */}
+        {currentVersion && (
+          <TripPlanRemixModal
+            isOpen={showRemixOptions}
+            onClose={() => setShowRemixOptions(false)}
+            currentPlan={currentVersion}
+            onRemixComplete={handleRemixComplete}
+          />
         )}
       </div>
     </div>
