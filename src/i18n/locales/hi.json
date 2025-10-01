@@ -1,0 +1,203 @@
+{
+  "nav": {
+    "home": "होम",
+    "apply": "आवेदन करें",
+    "credits": "क्रेडिट",
+    "profile": "प्रोफ़ाइल",
+    "login": "लॉगिन",
+    "logout": "लॉगआउट",
+    "aiDocumentChecker": "AI दस्तावेज़ चेकर",
+    "aiTripPlanner": "AI ट्रिप प्लानर",
+    "aiVisaAdvisor": "AI वीज़ा सलाहकार",
+    "aiAssistantChat": "AI असिस्टेंट चैट"
+  },
+  "home": {
+    "title": "थाईलैंड वीज़ा AI प्लेटफॉर्म",
+    "subtitle": "उन्नत AI-संचालित थाईलैंड वीज़ा आवेदन प्रक्रिया। एक ही स्थान पर दस्तावेज़ सत्यापन, यात्रा योजना और विशेषज्ञ मार्गदर्शन प्राप्त करें।",
+    "startApplication": "अपना आवेदन शुरू करें",
+    "stats": {
+      "accuracy": "AI सटीकता",
+      "processing": "तेज़ प्रसंस्करण",
+      "successRate": "सफलता दर",
+      "rating": "उपयोगकर्ता रेटिंग"
+    },
+    "whyChoose": "थाईलैंड वीज़ा AI क्यों चुनें?",
+    "whyChooseDescription": "हमारा उन्नत AI अभूतपूर्व सटीकता और गति के साथ आपकी थाईलैंड वीज़ा यात्रा के हर पहलू को संभालता है।",
+    "features": {
+      "documentChecker": {
+        "title": "AI दस्तावेज़ चेकर",
+        "description": "हमारी उन्नत AI तकनीक के साथ अपने दस्तावेज़ों को तुरंत सत्यापित करें"
+      },
+      "visaAdvisor": {
+        "title": "AI वीज़ा सलाहकार",
+        "description": "अपनी प्रोफ़ाइल और यात्रा योजनाओं के आधार पर व्यक्तिगत वीज़ा सिफारिशें प्राप्त करें।"
+      },
+      "tripPlanner": {
+        "title": "स्मार्ट ट्रिप प्लानर",
+        "description": "AI द्वारा संचालित व्यक्तिगत यात्रा सिफारिशें प्राप्त करें"
+      },
+      "assistantChat": {
+        "title": "AI असिस्टेंट चैट",
+        "description": "तत्काल, सटीक उत्तरों के साथ सभी वीज़ा और यात्रा प्रश्नों के लिए 24/7 AI सहायता।"
+      }
+    }
+  },
+  "login": {
+    "title": "अपने खाते में लॉगिन करें",
+    "subtitle": "अपने थाईलैंड वीज़ा आवेदन डैशबोर्ड तक पहुंचें",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "loginButton": "लॉगिन",
+    "forgotPassword": "अपना पासवर्ड भूल गए?",
+    "noAccount": "खाता नहीं है?",
+    "signUp": "यहाँ साइन अप करें",
+    "emailPlaceholder": "अपना ईमेल दर्ज करें",
+    "passwordPlaceholder": "अपना पासवर्ड दर्ज करें"
+  },
+  "tripPlanner": {
+    "title": "AI ट्रिप प्लानर",
+    "subtitle": "हमारे बुद्धिमान यात्रा योजना प्रणाली के साथ अपना परफेक्ट थाईलैंड एडवेंचर बनाएं",
+    "step": "चरण",
+    "of": "का",
+    "stepDescriptions": {
+      "step1": "बुनियादी यात्रा जानकारी और यात्रा प्राथमिकताएं",
+      "step2": "आवास और परिवहन प्राथमिकताएं",
+      "step3": "रुचियां, आहार संबंधी आवश्यकताएं और पहुंच आवश्यकताएं",
+      "step4": "बजट विभाजन और विशेष अनुरोध"
+    },
+    "form": {
+      "destination": "गंतव्य",
+      "destinationPlaceholder": "जैसे: बैंकॉक, फुकेत, चियांग माई",
+      "travelers": "यात्रियों की संख्या",
+      "startDate": "प्रारंभ तिथि",
+      "endDate": "समाप्ति तिथि",
+      "budget": "कुल बजट",
+      "accommodationType": "आवास प्रकार",
+      "transportPreference": "परिवहन प्राथमिकता",
+      "travelStyle": "यात्रा शैली",
+      "adventureLevel": "एडवेंचर स्तर",
+      "interests": "रुचियां और गतिविधियां",
+      "dietaryRestrictions": "आहार संबंधी प्रतिबंध",
+      "accessibility": "पहुंच आवश्यकताएं",
+      "travelCompany": "यात्रा साथी",
+      "previousVisits": "थाईलैंड की पिछली यात्राएं",
+      "languagePreference": "भाषा प्राथमिकता",
+      "languagePreferencePlaceholder": "अपनी भाषा प्राथमिकता चुनें",
+      "specialRequests": "विशेष अनुरोध",
+      "specialRequestsPlaceholder": "कोई विशेष अनुरोध, उत्सव या विशिष्ट आवश्यकताएं?",
+      "budgetBreakdown": "बजट विभाजन",
+      "budgetBreakdownNote": "प्रत्येक श्रेणी के लिए प्रतिशत आवंटन समायोजित करें",
+      "summary": "यात्रा सारांश",
+      "dates": "तारीखें"
+    },
+    "travelCompany": {
+      "solo": "अकेली यात्रा",
+      "couple": "जोड़ा",
+      "family": "बच्चों के साथ परिवार",
+      "friends": "दोस्तों का समूह",
+      "business": "व्यापारिक यात्रा"
+    },
+    "accommodation": {
+      "hotel": "होटल",
+      "hostel": "हॉस्टल",
+      "resort": "रिसॉर्ट",
+      "apartment": "अपार्टमेंट/कॉन्डो",
+      "villa": "विला",
+      "guesthouse": "गेस्टहाउस/B&B"
+    },
+    "transport": {
+      "flight": "फ्लाइट",
+      "train": "ट्रेन",
+      "bus": "बस",
+      "car": "कार किराया",
+      "mixed": "मिश्रित परिवहन"
+    },
+    "travelStyle": {
+      "luxury": "लक्जरी",
+      "comfort": "आराम",
+      "budget": "बजट",
+      "backpacker": "बैकपैकर"
+    },
+    "adventureLevel": {
+      "relaxed": "आरामदायक और इत्मीनान से",
+      "moderate": "मध्यम गतिविधि",
+      "adventurous": "साहसिक",
+      "extreme": "अत्यधिक साहसिक"
+    },
+    "interests": {
+      "culture": "संस्कृति और इतिहास",
+      "nature": "प्रकृति और वन्यजीव",
+      "adventure": "साहसिक खेल",
+      "beach": "समुद्र तट और जल गतिविधियां",
+      "food": "भोजन और पाक कला",
+      "photography": "फोटोग्राफी",
+      "nightlife": "नाइटलाइफ और मनोरंजन",
+      "shopping": "शॉपिंग",
+      "wellness": "कल्याण और स्पा"
+    },
+    "dietary": {
+      "vegetarian": "शाकाहारी",
+      "vegan": "वीगन",
+      "halal": "हलाल",
+      "kosher": "कोशर",
+      "gluten-free": "ग्लूटन-फ्री",
+      "dairy-free": "डेयरी-फ्री",
+      "nut-allergy": "नट एलर्जी",
+      "seafood-allergy": "सीफूड एलर्जी",
+      "none": "कोई प्रतिबंध नहीं"
+    },
+    "accessibility": {
+      "wheelchair": "व्हीलचेयर सुलभ",
+      "mobility-aid": "गतिशीलता सहायता आवश्यक",
+      "visual-impairment": "दृष्टि बाधा",
+      "hearing-impairment": "श्रवण बाधा",
+      "none": "कोई विशेष आवश्यकता नहीं"
+    },
+    "languages": {
+      "english": "केवल अंग्रेजी",
+      "local": "स्थानीय भाषा",
+      "translator": "अनुवादक ऐप",
+      "guide": "अंग्रेजी बोलने वाला गाइड"
+    },
+    "previousVisits": {
+      "firstTime": "पहली बार",
+      "returning": "वापस आने वाला आगंतुक",
+      "frequent": "नियमित आगंतुक"
+    },
+    "budgetBreakdown": {
+      "accommodation": "आवास",
+      "food": "भोजन और खाना",
+      "activities": "गतिविधियां और टूर",
+      "transport": "परिवहन",
+      "shopping": "शॉपिंग और स्मृति चिन्ह"
+    },
+    "buttons": {
+      "previous": "पिछला",
+      "next": "अगला",
+      "generatePlan": "यात्रा योजना बनाएं",
+      "generating": "बना रहे हैं..."
+    },
+    "generatedPlan": {
+      "title": "आपकी व्यक्तिगत थाईलैंड यात्रा योजना",
+      "destination": "गंतव्य",
+      "duration": "अवधि",
+      "travelers": "यात्री",
+      "people": "लोग",
+      "budget": "बजट",
+      "dayByDay": "दिन-प्रतिदिन कार्यक्रम",
+      "day": "दिन",
+      "arrival": "आगमन और अभिविन्यास",
+      "arrivalDetails": "हवाई अड्डे से पिकअप और होटल चेक-इन",
+      "checkIn": "होटल चेक-इन और आराम",
+      "localExploration": "स्थानीय क्षेत्र अन्वेषण",
+      "culturalExperience": "सांस्कृतिक अनुभव",
+      "culturalDetails": "मंदिरों और सांस्कृतिक स्थलों का दौरा",
+      "localCuisine": "प्रामाणिक स्थानीय व्यंजन आज़माएं",
+      "shopping": "स्थानीय बाज़ार शॉपिंग",
+      "recommendations": "सिफारिशें",
+      "accommodation": "आवास",
+      "transport": "परिवहन",
+      "activities": "गतिविधियां"
+    }
+  }
+}

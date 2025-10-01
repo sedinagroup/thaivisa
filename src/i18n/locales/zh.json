@@ -2,84 +2,202 @@
   "nav": {
     "home": "首页",
     "apply": "申请",
-    "aiDocumentChecker": "AI文件检查器",
-    "aiTripPlanner": "AI旅行规划师",
     "credits": "积分",
     "profile": "个人资料",
-    "signIn": "登录",
-    "getStarted": "开始使用",
-    "logOut": "退出登录",
-    "creditsAndBilling": "积分与账单"
-  },
-  "common": {
-    "loading": "加载中...",
-    "save": "保存",
-    "cancel": "取消",
-    "edit": "编辑",
-    "delete": "删除",
-    "submit": "提交",
-    "back": "返回",
-    "next": "下一步",
-    "previous": "上一步",
-    "close": "关闭",
-    "confirm": "确认",
-    "yes": "是",
-    "no": "否",
-    "ok": "确定",
-    "error": "错误",
-    "success": "成功",
-    "warning": "警告",
-    "info": "信息"
+    "login": "登录",
+    "logout": "登出",
+    "aiDocumentChecker": "AI文档检查器",
+    "aiTripPlanner": "AI旅行规划师",
+    "aiVisaAdvisor": "AI签证顾问",
+    "aiAssistantChat": "AI助手聊天"
   },
   "home": {
-    "title": "泰国签证AI",
-    "subtitle": "您的AI驱动签证申请助手",
-    "description": "通过先进的AI技术简化您的泰国签证申请流程。在一个地方获得文件验证、旅行规划和专家指导。",
-    "getStarted": "开始使用",
-    "learnMore": "了解更多"
-  },
-  "auth": {
-    "login": {
-      "title": "欢迎回来",
-      "subtitle": "登录您的泰国签证AI账户",
-      "email": "邮箱地址",
-      "password": "密码",
-      "rememberMe": "记住我",
-      "forgotPassword": "忘记密码？",
-      "signIn": "登录",
-      "noAccount": "没有账户？",
-      "signUp": "在此注册",
-      "emailPlaceholder": "输入您的邮箱",
-      "passwordPlaceholder": "输入您的密码"
+    "title": "泰国签证AI平台",
+    "subtitle": "先进的AI驱动泰国签证申请流程。在一个地方获得文件验证、旅行规划和专家指导。",
+    "startApplication": "开始您的申请",
+    "stats": {
+      "accuracy": "AI准确率",
+      "processing": "更快处理",
+      "successRate": "成功率",
+      "rating": "用户评分"
     },
-    "register": {
-      "title": "创建您的账户",
-      "subtitle": "加入泰国签证AI并开始您的签证申请",
-      "firstName": "名字",
-      "lastName": "姓氏",
-      "email": "邮箱地址",
-      "password": "密码",
-      "confirmPassword": "确认密码",
-      "agreeToTerms": "我同意服务条款和隐私政策",
-      "createAccount": "创建账户",
-      "haveAccount": "已有账户？",
-      "signIn": "在此登录",
-      "firstNamePlaceholder": "输入您的名字",
-      "lastNamePlaceholder": "输入您的姓氏",
-      "emailPlaceholder": "输入您的邮箱",
-      "passwordPlaceholder": "创建密码",
-      "confirmPasswordPlaceholder": "确认您的密码"
+    "whyChoose": "为什么选择泰国签证AI？",
+    "whyChooseDescription": "我们的先进AI以前所未有的准确性和速度处理您泰国签证之旅的每个方面。",
+    "features": {
+      "documentChecker": {
+        "title": "AI文档检查器",
+        "description": "使用我们先进的AI技术即时验证您的文档"
+      },
+      "visaAdvisor": {
+        "title": "AI签证顾问",
+        "description": "根据您的个人资料和旅行计划获得个性化签证建议。"
+      },
+      "tripPlanner": {
+        "title": "智能旅行规划师",
+        "description": "获得AI驱动的个性化旅行建议"
+      },
+      "assistantChat": {
+        "title": "AI助手聊天",
+        "description": "24/7 AI支持，为所有签证和旅行问题提供即时、准确的答案。"
+      }
     }
   },
-  "languages": {
-    "en": "English",
-    "pt": "Português",
-    "fr": "Français",
-    "de": "Deutsch",
-    "it": "Italiano",
-    "es": "Español",
-    "zh": "中文",
-    "ja": "日本語",
-    "ko": "한국어"
+  "login": {
+    "title": "登录您的账户",
+    "subtitle": "访问您的泰国签证申请仪表板",
+    "email": "邮箱",
+    "password": "密码",
+    "loginButton": "登录",
+    "forgotPassword": "忘记密码？",
+    "noAccount": "没有账户？",
+    "signUp": "在此注册",
+    "emailPlaceholder": "输入您的邮箱",
+    "passwordPlaceholder": "输入您的密码"
+  },
+  "tripPlanner": {
+    "title": "AI旅行规划师",
+    "subtitle": "使用我们智能的旅行规划系统创建您完美的泰国冒险",
+    "step": "步骤",
+    "of": "共",
+    "stepDescriptions": {
+      "step1": "基本旅行信息和旅行偏好",
+      "step2": "住宿和交通偏好",
+      "step3": "兴趣、饮食需求和无障碍要求",
+      "step4": "预算分解和特殊要求"
+    },
+    "form": {
+      "destination": "目的地",
+      "destinationPlaceholder": "例如：曼谷、普吉岛、清迈",
+      "travelers": "旅行者人数",
+      "startDate": "开始日期",
+      "endDate": "结束日期",
+      "budget": "总预算",
+      "accommodationType": "住宿类型",
+      "transportPreference": "交通偏好",
+      "travelStyle": "旅行风格",
+      "adventureLevel": "冒险等级",
+      "interests": "兴趣和活动",
+      "dietaryRestrictions": "饮食限制",
+      "accessibility": "无障碍需求",
+      "travelCompany": "旅行伙伴",
+      "previousVisits": "之前访问泰国的经历",
+      "languagePreference": "语言偏好",
+      "languagePreferencePlaceholder": "选择您的语言偏好",
+      "specialRequests": "特殊要求",
+      "specialRequestsPlaceholder": "任何特殊要求、庆祝活动或具体需求？",
+      "budgetBreakdown": "预算分解",
+      "budgetBreakdownNote": "调整每个类别的百分比分配",
+      "summary": "旅行摘要",
+      "dates": "日期"
+    },
+    "travelCompany": {
+      "solo": "独自旅行",
+      "couple": "情侣",
+      "family": "带孩子的家庭",
+      "friends": "朋友团体",
+      "business": "商务旅行"
+    },
+    "accommodation": {
+      "hotel": "酒店",
+      "hostel": "青年旅社",
+      "resort": "度假村",
+      "apartment": "公寓/公寓楼",
+      "villa": "别墅",
+      "guesthouse": "民宿/B&B"
+    },
+    "transport": {
+      "flight": "航班",
+      "train": "火车",
+      "bus": "巴士",
+      "car": "租车",
+      "mixed": "混合交通"
+    },
+    "travelStyle": {
+      "luxury": "豪华",
+      "comfort": "舒适",
+      "budget": "预算",
+      "backpacker": "背包客"
+    },
+    "adventureLevel": {
+      "relaxed": "轻松悠闲",
+      "moderate": "适度活动",
+      "adventurous": "冒险",
+      "extreme": "极限冒险"
+    },
+    "interests": {
+      "culture": "文化和历史",
+      "nature": "自然和野生动物",
+      "adventure": "冒险运动",
+      "beach": "海滩和水上活动",
+      "food": "美食和烹饪",
+      "photography": "摄影",
+      "nightlife": "夜生活和娱乐",
+      "shopping": "购物",
+      "wellness": "健康和水疗"
+    },
+    "dietary": {
+      "vegetarian": "素食主义者",
+      "vegan": "纯素食主义者",
+      "halal": "清真",
+      "kosher": "犹太洁食",
+      "gluten-free": "无麸质",
+      "dairy-free": "无乳制品",
+      "nut-allergy": "坚果过敏",
+      "seafood-allergy": "海鲜过敏",
+      "none": "无限制"
+    },
+    "accessibility": {
+      "wheelchair": "轮椅无障碍",
+      "mobility-aid": "需要行动辅助",
+      "visual-impairment": "视觉障碍",
+      "hearing-impairment": "听觉障碍",
+      "none": "无特殊需求"
+    },
+    "languages": {
+      "english": "仅英语",
+      "local": "当地语言",
+      "translator": "翻译应用",
+      "guide": "英语导游"
+    },
+    "previousVisits": {
+      "firstTime": "第一次",
+      "returning": "回访游客",
+      "frequent": "常客"
+    },
+    "budgetBreakdown": {
+      "accommodation": "住宿",
+      "food": "餐饮",
+      "activities": "活动和旅游",
+      "transport": "交通",
+      "shopping": "购物和纪念品"
+    },
+    "buttons": {
+      "previous": "上一步",
+      "next": "下一步",
+      "generatePlan": "生成旅行计划",
+      "generating": "生成中..."
+    },
+    "generatedPlan": {
+      "title": "您的个性化泰国旅行计划",
+      "destination": "目的地",
+      "duration": "持续时间",
+      "travelers": "旅行者",
+      "people": "人",
+      "budget": "预算",
+      "dayByDay": "每日行程",
+      "day": "第",
+      "arrival": "到达和入住",
+      "arrivalDetails": "机场接机和酒店入住",
+      "checkIn": "酒店入住和休息",
+      "localExploration": "当地区域探索",
+      "culturalExperience": "文化体验",
+      "culturalDetails": "参观寺庙和文化景点",
+      "localCuisine": "品尝正宗当地美食",
+      "shopping": "当地市场购物",
+      "recommendations": "推荐",
+      "accommodation": "住宿",
+      "transport": "交通",
+      "activities": "活动"
+    }
   }
 }

@@ -2,114 +2,202 @@
   "nav": {
     "home": "Início",
     "apply": "Aplicar",
-    "aiDocumentChecker": "Verificador de Documentos IA",
-    "aiTripPlanner": "Planejador de Viagem IA",
     "credits": "Créditos",
     "profile": "Perfil",
-    "signIn": "Entrar",
-    "getStarted": "Começar",
-    "logOut": "Sair",
-    "creditsAndBilling": "Créditos e Cobrança"
-  },
-  "common": {
-    "loading": "Carregando...",
-    "save": "Salvar",
-    "cancel": "Cancelar",
-    "edit": "Editar",
-    "delete": "Excluir",
-    "submit": "Enviar",
-    "back": "Voltar",
-    "next": "Próximo",
-    "previous": "Anterior",
-    "close": "Fechar",
-    "confirm": "Confirmar",
-    "yes": "Sim",
-    "no": "Não",
-    "ok": "OK",
-    "error": "Erro",
-    "success": "Sucesso",
-    "warning": "Aviso",
-    "info": "Informação"
+    "login": "Entrar",
+    "logout": "Sair",
+    "aiDocumentChecker": "Verificador de Documentos IA",
+    "aiTripPlanner": "Planejador de Viagem IA",
+    "aiVisaAdvisor": "Consultor de Visto IA",
+    "aiAssistantChat": "Chat Assistente IA"
   },
   "home": {
-    "title": "Visto Tailândia IA",
-    "subtitle": "Seu Assistente de Solicitação de Visto com IA",
-    "description": "Simplifique seu processo de solicitação de visto para a Tailândia com tecnologia de IA avançada. Obtenha verificação de documentos, planejamento de viagem e orientação especializada em um só lugar.",
-    "getStarted": "Começar",
-    "learnMore": "Saiba Mais",
+    "title": "Plataforma de Visto da Tailândia com IA",
+    "subtitle": "Processo avançado de solicitação de visto da Tailândia com IA. Obtenha verificação de documentos, planejamento de viagem e orientação especializada em um só lugar.",
+    "startApplication": "Iniciar Sua Solicitação",
+    "stats": {
+      "accuracy": "Precisão da IA",
+      "processing": "Processamento Mais Rápido",
+      "successRate": "Taxa de Sucesso",
+      "rating": "Avaliação do Usuário"
+    },
+    "whyChoose": "Por Que Escolher o Visto da Tailândia com IA?",
+    "whyChooseDescription": "Nossa IA avançada cuida de todos os aspectos da sua jornada de visto da Tailândia com precisão e velocidade sem precedentes.",
     "features": {
-      "title": "Por que Escolher o Visto Tailândia IA?",
-      "aiDocumentChecker": {
+      "documentChecker": {
         "title": "Verificador de Documentos IA",
-        "description": "Verifique seus documentos instantaneamente com nossa tecnologia de IA avançada"
+        "description": "Verifique seus documentos instantaneamente com nossa tecnologia IA avançada"
+      },
+      "visaAdvisor": {
+        "title": "Consultor de Visto IA",
+        "description": "Obtenha recomendações personalizadas de visto baseadas em seu perfil e planos de viagem."
       },
       "tripPlanner": {
         "title": "Planejador de Viagem Inteligente",
         "description": "Obtenha recomendações de viagem personalizadas com IA"
       },
-      "expertSupport": {
-        "title": "Suporte Especializado",
-        "description": "Assistência 24/7 de especialistas em solicitação de visto"
-      },
-      "fastProcessing": {
-        "title": "Processamento Rápido",
-        "description": "Processamento de solicitação de visto rápido e eficiente"
+      "assistantChat": {
+        "title": "Chat Assistente IA",
+        "description": "Suporte IA 24/7 para todas as questões de visto e viagem com respostas instantâneas e precisas."
       }
-    },
-    "stats": {
-      "applicationsProcessed": "Solicitações Processadas",
-      "successRate": "Taxa de Sucesso",
-      "countriesSupported": "Países Suportados",
-      "avgProcessingTime": "Tempo Médio de Processamento"
-    },
-    "cta": {
-      "title": "Pronto para Solicitar seu Visto para a Tailândia?",
-      "description": "Junte-se a milhares de viajantes que obtiveram com sucesso seu visto para a Tailândia com nossa plataforma com IA.",
-      "startApplication": "Iniciar sua Solicitação"
     }
   },
-  "auth": {
-    "login": {
-      "title": "Bem-vindo de Volta",
-      "subtitle": "Entre na sua conta do Visto Tailândia IA",
-      "email": "Endereço de Email",
-      "password": "Senha",
-      "rememberMe": "Lembrar de mim",
-      "forgotPassword": "Esqueceu sua senha?",
-      "signIn": "Entrar",
-      "noAccount": "Não tem uma conta?",
-      "signUp": "Cadastre-se aqui",
-      "emailPlaceholder": "Digite seu email",
-      "passwordPlaceholder": "Digite sua senha"
-    },
-    "register": {
-      "title": "Crie sua Conta",
-      "subtitle": "Junte-se ao Visto Tailândia IA e inicie sua solicitação de visto",
-      "firstName": "Nome",
-      "lastName": "Sobrenome",
-      "email": "Endereço de Email",
-      "password": "Senha",
-      "confirmPassword": "Confirmar Senha",
-      "agreeToTerms": "Concordo com os Termos de Serviço e Política de Privacidade",
-      "createAccount": "Criar Conta",
-      "haveAccount": "Já tem uma conta?",
-      "signIn": "Entre aqui",
-      "firstNamePlaceholder": "Digite seu nome",
-      "lastNamePlaceholder": "Digite seu sobrenome",
-      "emailPlaceholder": "Digite seu email",
-      "passwordPlaceholder": "Crie uma senha",
-      "confirmPasswordPlaceholder": "Confirme sua senha"
-    }
+  "login": {
+    "title": "Entrar na Sua Conta",
+    "subtitle": "Acesse seu painel de solicitação de visto da Tailândia",
+    "email": "E-mail",
+    "password": "Senha",
+    "loginButton": "Entrar",
+    "forgotPassword": "Esqueceu sua senha?",
+    "noAccount": "Não tem uma conta?",
+    "signUp": "Cadastre-se aqui",
+    "emailPlaceholder": "Digite seu e-mail",
+    "passwordPlaceholder": "Digite sua senha"
   },
-  "languages": {
-    "en": "English",
-    "pt": "Português",
-    "fr": "Français",
-    "de": "Deutsch",
-    "it": "Italiano",
-    "es": "Español",
-    "zh": "中文",
-    "ja": "日本語",
-    "ko": "한국어"
+  "tripPlanner": {
+    "title": "Planejador de Viagem IA",
+    "subtitle": "Crie sua aventura perfeita na Tailândia com nosso sistema inteligente de planejamento de viagem",
+    "step": "Etapa",
+    "of": "de",
+    "stepDescriptions": {
+      "step1": "Informações básicas da viagem e preferências de viagem",
+      "step2": "Preferências de acomodação e transporte",
+      "step3": "Interesses, necessidades dietéticas e requisitos de acessibilidade",
+      "step4": "Divisão do orçamento e solicitações especiais"
+    },
+    "form": {
+      "destination": "Destino",
+      "destinationPlaceholder": "ex: Bangkok, Phuket, Chiang Mai",
+      "travelers": "Número de Viajantes",
+      "startDate": "Data de Início",
+      "endDate": "Data de Término",
+      "budget": "Orçamento Total",
+      "accommodationType": "Tipo de Acomodação",
+      "transportPreference": "Preferência de Transporte",
+      "travelStyle": "Estilo de Viagem",
+      "adventureLevel": "Nível de Aventura",
+      "interests": "Interesses e Atividades",
+      "dietaryRestrictions": "Restrições Alimentares",
+      "accessibility": "Necessidades de Acessibilidade",
+      "travelCompany": "Companhia de Viagem",
+      "previousVisits": "Visitas Anteriores à Tailândia",
+      "languagePreference": "Preferência de Idioma",
+      "languagePreferencePlaceholder": "Selecione sua preferência de idioma",
+      "specialRequests": "Solicitações Especiais",
+      "specialRequestsPlaceholder": "Alguma solicitação especial, celebrações ou necessidades específicas?",
+      "budgetBreakdown": "Divisão do Orçamento",
+      "budgetBreakdownNote": "Ajuste a alocação percentual para cada categoria",
+      "summary": "Resumo da Viagem",
+      "dates": "Datas"
+    },
+    "travelCompany": {
+      "solo": "Viagem Solo",
+      "couple": "Casal",
+      "family": "Família com Crianças",
+      "friends": "Grupo de Amigos",
+      "business": "Viagem de Negócios"
+    },
+    "accommodation": {
+      "hotel": "Hotel",
+      "hostel": "Hostel",
+      "resort": "Resort",
+      "apartment": "Apartamento/Condomínio",
+      "villa": "Villa",
+      "guesthouse": "Pousada/B&B"
+    },
+    "transport": {
+      "flight": "Voo",
+      "train": "Trem",
+      "bus": "Ônibus",
+      "car": "Aluguel de Carro",
+      "mixed": "Transporte Misto"
+    },
+    "travelStyle": {
+      "luxury": "Luxo",
+      "comfort": "Conforto",
+      "budget": "Econômico",
+      "backpacker": "Mochileiro"
+    },
+    "adventureLevel": {
+      "relaxed": "Relaxante e Tranquilo",
+      "moderate": "Atividade Moderada",
+      "adventurous": "Aventureiro",
+      "extreme": "Aventura Extrema"
+    },
+    "interests": {
+      "culture": "Cultura e História",
+      "nature": "Natureza e Vida Selvagem",
+      "adventure": "Esportes de Aventura",
+      "beach": "Praia e Atividades Aquáticas",
+      "food": "Comida e Culinária",
+      "photography": "Fotografia",
+      "nightlife": "Vida Noturna e Entretenimento",
+      "shopping": "Compras",
+      "wellness": "Bem-estar e Spa"
+    },
+    "dietary": {
+      "vegetarian": "Vegetariano",
+      "vegan": "Vegano",
+      "halal": "Halal",
+      "kosher": "Kosher",
+      "gluten-free": "Sem Glúten",
+      "dairy-free": "Sem Laticínios",
+      "nut-allergy": "Alergia a Nozes",
+      "seafood-allergy": "Alergia a Frutos do Mar",
+      "none": "Sem Restrições"
+    },
+    "accessibility": {
+      "wheelchair": "Acessível para Cadeira de Rodas",
+      "mobility-aid": "Auxílio de Mobilidade Necessário",
+      "visual-impairment": "Deficiência Visual",
+      "hearing-impairment": "Deficiência Auditiva",
+      "none": "Sem Necessidades Especiais"
+    },
+    "languages": {
+      "english": "Apenas Inglês",
+      "local": "Idioma Local",
+      "translator": "App Tradutor",
+      "guide": "Guia que Fala Inglês"
+    },
+    "previousVisits": {
+      "firstTime": "Primeira Vez",
+      "returning": "Visitante Retornando",
+      "frequent": "Visitante Frequente"
+    },
+    "budgetBreakdown": {
+      "accommodation": "Acomodação",
+      "food": "Comida e Refeições",
+      "activities": "Atividades e Tours",
+      "transport": "Transporte",
+      "shopping": "Compras e Lembranças"
+    },
+    "buttons": {
+      "previous": "Anterior",
+      "next": "Próximo",
+      "generatePlan": "Gerar Plano de Viagem",
+      "generating": "Gerando..."
+    },
+    "generatedPlan": {
+      "title": "Seu Plano de Viagem Personalizado para a Tailândia",
+      "destination": "Destino",
+      "duration": "Duração",
+      "travelers": "Viajantes",
+      "people": "pessoas",
+      "budget": "Orçamento",
+      "dayByDay": "Itinerário Dia a Dia",
+      "day": "Dia",
+      "arrival": "Chegada e Orientação",
+      "arrivalDetails": "Busca no aeroporto e check-in no hotel",
+      "checkIn": "Check-in no hotel e descanso",
+      "localExploration": "Exploração da área local",
+      "culturalExperience": "Experiência Cultural",
+      "culturalDetails": "Visitar templos e locais culturais",
+      "localCuisine": "Experimentar culinária local autêntica",
+      "shopping": "Compras no mercado local",
+      "recommendations": "Recomendações",
+      "accommodation": "Acomodação",
+      "transport": "Transporte",
+      "activities": "Atividades"
+    }
   }
 }

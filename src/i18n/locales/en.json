@@ -2,437 +2,202 @@
   "nav": {
     "home": "Home",
     "apply": "Apply",
-    "aiDocumentChecker": "AI Document Checker",
-    "aiTripPlanner": "AI Trip Planner",
     "credits": "Credits",
     "profile": "Profile",
-    "signIn": "Sign in",
-    "getStarted": "Get Started",
-    "logOut": "Log out",
-    "creditsAndBilling": "Credits & Billing"
-  },
-  "common": {
-    "loading": "Loading...",
-    "save": "Save",
-    "cancel": "Cancel",
-    "edit": "Edit",
-    "delete": "Delete",
-    "submit": "Submit",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "close": "Close",
-    "confirm": "Confirm",
-    "yes": "Yes",
-    "no": "No",
-    "ok": "OK",
-    "error": "Error",
-    "success": "Success",
-    "warning": "Warning",
-    "info": "Information"
+    "login": "Login",
+    "logout": "Logout",
+    "aiDocumentChecker": "AI Document Checker",
+    "aiTripPlanner": "AI Trip Planner",
+    "aiVisaAdvisor": "AI Visa Advisor",
+    "aiAssistantChat": "AI Assistant Chat"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "Your AI-Powered Visa Application Assistant",
-    "description": "Streamline your Thailand visa application process with advanced AI technology. Get document verification, trip planning, and expert guidance all in one place.",
-    "getStarted": "Get Started",
-    "learnMore": "Learn More",
+    "title": "Thailand Visa AI Platform",
+    "subtitle": "Advanced AI-powered Thailand visa application process. Get document verification, travel planning, and expert guidance in one place.",
+    "startApplication": "Start Your Application",
+    "stats": {
+      "accuracy": "AI Accuracy",
+      "processing": "Faster Processing",
+      "successRate": "Success Rate",
+      "rating": "User Rating"
+    },
+    "whyChoose": "Why Choose Thailand Visa AI?",
+    "whyChooseDescription": "Our advanced AI handles every aspect of your Thailand visa journey with unprecedented accuracy and speed.",
     "features": {
-      "title": "Why Choose Thailand Visa AI?",
-      "aiDocumentChecker": {
+      "documentChecker": {
         "title": "AI Document Checker",
         "description": "Verify your documents instantly with our advanced AI technology"
+      },
+      "visaAdvisor": {
+        "title": "AI Visa Advisor",
+        "description": "Get personalized visa recommendations based on your profile and travel plans."
       },
       "tripPlanner": {
         "title": "Smart Trip Planner",
         "description": "Get personalized travel recommendations powered by AI"
       },
-      "expertSupport": {
-        "title": "Expert Support",
-        "description": "24/7 assistance from visa application specialists"
-      },
-      "fastProcessing": {
-        "title": "Fast Processing",
-        "description": "Quick and efficient visa application processing"
+      "assistantChat": {
+        "title": "AI Assistant Chat",
+        "description": "24/7 AI support for all visa and travel questions with instant, accurate responses."
       }
-    },
-    "stats": {
-      "applicationsProcessed": "Applications Processed",
-      "successRate": "Success Rate",
-      "countriesSupported": "Countries Supported",
-      "avgProcessingTime": "Avg Processing Time"
-    },
-    "cta": {
-      "title": "Ready to Apply for Your Thailand Visa?",
-      "description": "Join thousands of travelers who have successfully obtained their Thailand visa with our AI-powered platform.",
-      "startApplication": "Start Your Application"
     }
   },
-  "auth": {
-    "login": {
-      "title": "Welcome Back",
-      "subtitle": "Sign in to your Thailand Visa AI account",
-      "email": "Email Address",
-      "password": "Password",
-      "rememberMe": "Remember me",
-      "forgotPassword": "Forgot your password?",
-      "signIn": "Sign In",
-      "noAccount": "Don't have an account?",
-      "signUp": "Sign up here",
-      "emailPlaceholder": "Enter your email",
-      "passwordPlaceholder": "Enter your password"
-    },
-    "register": {
-      "title": "Create Your Account",
-      "subtitle": "Join Thailand Visa AI and start your visa application",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email Address",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "agreeToTerms": "I agree to the Terms of Service and Privacy Policy",
-      "createAccount": "Create Account",
-      "haveAccount": "Already have an account?",
-      "signIn": "Sign in here",
-      "firstNamePlaceholder": "Enter your first name",
-      "lastNamePlaceholder": "Enter your last name",
-      "emailPlaceholder": "Enter your email",
-      "passwordPlaceholder": "Create a password",
-      "confirmPasswordPlaceholder": "Confirm your password"
-    }
+  "login": {
+    "title": "Login to Your Account",
+    "subtitle": "Access your Thailand visa application dashboard",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Login",
+    "forgotPassword": "Forgot your password?",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up here",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password"
   },
-  "apply": {
-    "title": "Thailand Visa Application",
-    "subtitle": "Apply for your Thailand visa online",
-    "welcomeBack": "Welcome back, {{name}}! Complete your visa application below.",
-    "visaTypeSelection": {
-      "title": "Visa Type Selection",
-      "description": "Choose the type of visa that best fits your travel purpose",
-      "visaType": "Visa Type",
-      "selectVisaType": "Select visa type",
-      "purpose": "Purpose of Visit",
-      "purposePlaceholder": "e.g., Tourism, Business meeting",
-      "duration": "Duration of Stay (days)",
-      "durationPlaceholder": "e.g., 14",
-      "arrivalDate": "Arrival Date",
-      "departureDate": "Departure Date"
-    },
-    "personalInfo": {
-      "title": "Personal Information",
-      "description": "Provide your personal details as they appear on your passport",
-      "passportNumber": "Passport Number",
-      "passportNumberPlaceholder": "e.g., A12345678",
-      "passportExpiry": "Passport Expiry Date",
-      "nationality": "Nationality",
-      "nationalityPlaceholder": "e.g., American",
-      "phoneNumber": "Phone Number",
-      "phoneNumberPlaceholder": "e.g., +1 555 123 4567",
-      "homeAddress": "Home Address",
-      "homeAddressPlaceholder": "Enter your full home address",
-      "emergencyContact": "Emergency Contact Name",
-      "emergencyContactPlaceholder": "Full name",
-      "emergencyPhone": "Emergency Contact Phone",
-      "emergencyPhonePlaceholder": "Phone number"
-    },
-    "documents": {
-      "title": "Required Documents",
-      "description": "Upload clear, high-quality scans or photos of your documents",
-      "passportBioPage": "Passport Bio Page",
-      "passportBioPageDesc": "Clear scan of passport bio page",
-      "passportPhoto": "Passport Photo",
-      "passportPhotoDesc": "Recent passport-style photo",
-      "bankStatement": "Bank Statement",
-      "bankStatementDesc": "Last 3 months (optional)",
-      "flightTicket": "Flight Ticket",
-      "flightTicketDesc": "Round-trip booking (optional)",
-      "hotelBooking": "Hotel Booking",
-      "hotelBookingDesc": "Accommodation proof (optional)"
-    },
-    "additionalInfo": {
-      "title": "Additional Information",
-      "description": "Please answer the following questions honestly",
-      "previousVisits": "Have you visited Thailand before?",
-      "firstVisit": "No, this is my first visit",
-      "returnVisit": "Yes, I have visited before",
-      "criminalRecord": "Do you have any criminal record?",
-      "additionalInfo": "Additional Information (Optional)",
-      "additionalInfoPlaceholder": "Any additional information you'd like to provide"
-    },
-    "submit": "Submit Visa Application",
-    "submitting": "Submitting Application..."
-  },
-  "credits": {
-    "title": "Credits Management",
-    "subtitle": "Manage your AI service credits and purchase more",
-    "currentBalance": "Current Balance",
-    "availableCredits": "Available Credits",
-    "creditUsageLevel": "Credit Usage Level",
-    "highBalance": "High Balance",
-    "mediumBalance": "Medium Balance",
-    "lowBalance": "Low Balance",
-    "documentCheck": "Document Check",
-    "tripPlanning": "Trip Planning",
-    "premiumSupport": "Premium Support",
-    "purchaseCredits": "Purchase Credits",
-    "choosePackage": "Choose a credit package that fits your needs",
-    "packages": {
-      "starter": {
-        "name": "Starter Pack",
-        "description": "Perfect for basic document checking"
-      },
-      "professional": {
-        "name": "Professional Pack",
-        "description": "Best value for regular travelers"
-      },
-      "enterprise": {
-        "name": "Enterprise Pack",
-        "description": "For travel agencies and frequent travelers"
-      }
-    },
-    "features": {
-      "aiDocumentVerification": "AI Document Verification",
-      "basicSupport": "Basic Support",
-      "emailNotifications": "Email Notifications",
-      "tripPlanning": "Trip Planning",
-      "prioritySupport": "Priority Support",
-      "advancedAnalytics": "Advanced Analytics",
-      "allFeatures": "All Features",
-      "bulkProcessing": "Bulk Processing",
-      "support24x7": "24/7 Support",
-      "customIntegration": "Custom Integration"
-    },
-    "purchase": "Purchase",
-    "processing": "Processing...",
-    "usageStats": "Usage Stats",
-    "thisMonth": "This Month",
-    "mostUsed": "Most Used",
-    "avgPerDay": "Avg. per day",
-    "recentActivity": "Recent Activity",
-    "earnFreeCredits": "Earn Free Credits",
-    "referFriends": "Refer Friends",
-    "forEachFriend": "For each friend you refer"
-  },
-  "profile": {
-    "title": "Profile Settings",
-    "subtitle": "Manage your account information and preferences",
-    "editProfile": "Edit Profile",
-    "saveChanges": "Save Changes",
-    "saving": "Saving...",
-    "personalInfo": {
-      "title": "Personal Information",
-      "description": "Update your personal details and contact information",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email Address",
-      "emailNote": "Email cannot be changed. Contact support if needed.",
-      "phoneNumber": "Phone Number",
-      "phoneNumberPlaceholder": "+1 555 123 4567",
-      "dateOfBirth": "Date of Birth",
-      "nationality": "Nationality",
-      "selectNationality": "Select your nationality"
-    },
-    "accountSettings": {
-      "title": "Account Settings",
-      "description": "Manage your account preferences and security settings",
-      "preferredLanguage": "Preferred Language",
-      "timezone": "Timezone",
-      "notificationPreferences": "Notification Preferences",
-      "emailNotifications": "Email Notifications",
-      "emailNotificationsDesc": "Receive updates via email",
-      "smsNotifications": "SMS Notifications",
-      "smsNotificationsDesc": "Receive updates via SMS",
-      "pushNotifications": "Push Notifications",
-      "pushNotificationsDesc": "Receive browser notifications"
-    },
-    "security": {
-      "title": "Security",
-      "description": "Manage your account security and privacy",
-      "changePassword": "Change Password",
-      "changePasswordDesc": "Update your account password",
-      "twoFactorAuth": "Two-Factor Authentication",
-      "twoFactorAuthDesc": "Add an extra layer of security",
-      "downloadData": "Download Data",
-      "downloadDataDesc": "Export your account data",
-      "change": "Change",
-      "enable": "Enable",
-      "download": "Download"
-    },
-    "dangerZone": {
-      "title": "Danger Zone",
-      "description": "Irreversible and destructive actions",
-      "deleteAccount": "Delete Account",
-      "deleteAccountDesc": "Permanently delete your account and all data"
-    },
-    "verifiedAccount": "Verified Account",
-    "memberSince": "Member since",
-    "applications": "Applications",
-    "completedApplications": "completed"
-  },
-  "aiDocumentChecker": {
-    "title": "AI Document Checker",
-    "subtitle": "Verify your travel documents with advanced AI analysis",
-    "creditsPerDocument": "credits per document",
-    "available": "Available",
-    "uploadDocuments": {
-      "title": "Upload Documents",
-      "description": "Upload clear photos or scans of your travel documents for AI analysis",
-      "dropHere": "Drop documents here or click to upload",
-      "supportedFormats": "Supports JPG, PNG, PDF files up to 10MB each",
-      "chooseFiles": "Choose Files"
-    },
-    "uploadedDocuments": "Uploaded Documents",
-    "analyzing": "Analyzing documents with AI...",
-    "complete": "complete",
-    "analyzeDocuments": "Analyze Documents",
-    "analyzingDocuments": "Analyzing Documents...",
-    "analysisResults": {
-      "title": "Analysis Results",
-      "description": "AI-powered analysis of your documents",
-      "confidence": "confidence",
-      "document": "Document",
-      "extractedInfo": "Extracted Information",
-      "analysisDetails": "Analysis Details",
-      "status": "Status",
-      "analyzed": "Analyzed",
-      "issuesFound": "Issues Found:",
-      "recommendations": "Recommendations:"
-    },
-    "supportedDocuments": "Supported Documents",
-    "aiAnalysisFeatures": "AI Analysis Features",
-    "features": {
-      "documentAuthentication": "Document Authentication",
-      "documentAuthenticationDesc": "Verify document authenticity",
-      "dataExtraction": "Data Extraction",
-      "dataExtractionDesc": "Extract key information automatically",
-      "qualityAssessment": "Quality Assessment",
-      "qualityAssessmentDesc": "Check document condition and clarity",
-      "expiryValidation": "Expiry Validation",
-      "expiryValidationDesc": "Verify document validity dates"
-    },
-    "tips": {
-      "title": "Tips for Best Results",
-      "goodLighting": "Use good lighting and avoid shadows",
-      "flatDocument": "Ensure document is flat and fully visible",
-      "highResolution": "Take photos at high resolution",
-      "avoidGlare": "Avoid glare and reflections"
-    },
-    "documentTypes": {
-      "passport": "Passport",
-      "visa": "Visa",
-      "nationalId": "National ID",
-      "other": "Other Document"
-    },
-    "status": {
-      "valid": "Valid",
-      "invalid": "Invalid",
-      "warning": "Warning"
-    }
-  },
-  "aiTripPlanner": {
+  "tripPlanner": {
     "title": "AI Trip Planner",
-    "subtitle": "Create the perfect travel plan for Thailand with artificial intelligence",
-    "creditsPerPlan": "credits per plan",
-    "travelDetails": {
-      "title": "Travel Details",
-      "description": "Fill in the information to generate your personalized plan",
-      "destination": "Destination in Thailand",
+    "subtitle": "Create your perfect Thailand adventure with our intelligent trip planning system",
+    "step": "Step",
+    "of": "of",
+    "stepDescriptions": {
+      "step1": "Basic trip information and travel preferences",
+      "step2": "Accommodation and transportation preferences",
+      "step3": "Interests, dietary needs, and accessibility requirements",
+      "step4": "Budget breakdown and special requests"
+    },
+    "form": {
+      "destination": "Destination",
       "destinationPlaceholder": "e.g., Bangkok, Phuket, Chiang Mai",
+      "travelers": "Number of Travelers",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "travelers": "Travelers",
-      "budget": "Budget",
+      "budget": "Total Budget",
+      "accommodationType": "Accommodation Type",
+      "transportPreference": "Transport Preference",
       "travelStyle": "Travel Style",
-      "economical": "Economical",
-      "balanced": "Balanced",
-      "luxury": "Luxury",
-      "interests": "Interests (select up to 5)"
+      "adventureLevel": "Adventure Level",
+      "interests": "Interests & Activities",
+      "dietaryRestrictions": "Dietary Restrictions",
+      "accessibility": "Accessibility Needs",
+      "travelCompany": "Travel Company",
+      "previousVisits": "Previous Visits to Thailand",
+      "languagePreference": "Language Preference",
+      "languagePreferencePlaceholder": "Select your language preference",
+      "specialRequests": "Special Requests",
+      "specialRequestsPlaceholder": "Any special requests, celebrations, or specific needs?",
+      "budgetBreakdown": "Budget Breakdown",
+      "budgetBreakdownNote": "Adjust the percentage allocation for each category",
+      "summary": "Trip Summary",
+      "dates": "Dates"
     },
-    "generateTripPlan": "Generate Trip Plan",
-    "generatingPlan": "Generating Plan...",
-    "readyToPlan": "Ready to plan your trip?",
-    "readyToPlanDesc": "Fill in the details on the side and our AI will create a personalized plan for you.",
-    "tripPlanFor": "Trip Plan for",
-    "days": "days",
-    "travelers": "traveler(s)",
-    "estimated": "estimated",
-    "download": "Download",
-    "share": "Share",
-    "dailyItinerary": "Daily Itinerary",
-    "day": "Day",
-    "activities": "Activities",
-    "meals": "Meals",
-    "accommodation": "Accommodation",
-    "transportation": "Transportation",
-    "recommendedHotels": "Recommended Hotels",
-    "suggestedFlights": "Suggested Flights",
-    "departure": "Departure",
-    "arrival": "Arrival",
-    "duration": "Duration",
-    "stops": "Stops",
-    "direct": "Direct",
-    "stop": "stop(s)",
-    "night": "/night",
-    "interestOptions": {
-      "cultureHistory": "Culture and History",
-      "beachesRelaxation": "Beaches and Relaxation",
-      "adventureSports": "Adventure and Sports",
-      "gastronomy": "Gastronomy",
-      "nightlife": "Nightlife",
-      "natureWildlife": "Nature and Wildlife",
+    "travelCompany": {
+      "solo": "Solo Travel",
+      "couple": "Couple",
+      "family": "Family with Children",
+      "friends": "Group of Friends",
+      "business": "Business Travel"
+    },
+    "accommodation": {
+      "hotel": "Hotel",
+      "hostel": "Hostel",
+      "resort": "Resort",
+      "apartment": "Apartment/Condo",
+      "villa": "Villa",
+      "guesthouse": "Guesthouse/B&B"
+    },
+    "transport": {
+      "flight": "Flight",
+      "train": "Train",
+      "bus": "Bus",
+      "car": "Car Rental",
+      "mixed": "Mixed Transport"
+    },
+    "travelStyle": {
+      "luxury": "Luxury",
+      "comfort": "Comfort",
+      "budget": "Budget",
+      "backpacker": "Backpacker"
+    },
+    "adventureLevel": {
+      "relaxed": "Relaxed & Leisurely",
+      "moderate": "Moderate Activity",
+      "adventurous": "Adventurous",
+      "extreme": "Extreme Adventure"
+    },
+    "interests": {
+      "culture": "Culture & History",
+      "nature": "Nature & Wildlife",
+      "adventure": "Adventure Sports",
+      "beach": "Beach & Water Activities",
+      "food": "Food & Culinary",
+      "photography": "Photography",
+      "nightlife": "Nightlife & Entertainment",
       "shopping": "Shopping",
-      "templesSpiritual": "Temples and Spirituality",
-      "artMuseums": "Art and Museums",
-      "photography": "Photography"
+      "wellness": "Wellness & Spa"
+    },
+    "dietary": {
+      "vegetarian": "Vegetarian",
+      "vegan": "Vegan",
+      "halal": "Halal",
+      "kosher": "Kosher",
+      "gluten-free": "Gluten-Free",
+      "dairy-free": "Dairy-Free",
+      "nut-allergy": "Nut Allergy",
+      "seafood-allergy": "Seafood Allergy",
+      "none": "No Restrictions"
+    },
+    "accessibility": {
+      "wheelchair": "Wheelchair Accessible",
+      "mobility-aid": "Mobility Aid Required",
+      "visual-impairment": "Visual Impairment",
+      "hearing-impairment": "Hearing Impairment",
+      "none": "No Special Needs"
+    },
+    "languages": {
+      "english": "English Only",
+      "local": "Local Language",
+      "translator": "Translator App",
+      "guide": "English-Speaking Guide"
+    },
+    "previousVisits": {
+      "firstTime": "First Time",
+      "returning": "Returning Visitor",
+      "frequent": "Frequent Visitor"
+    },
+    "budgetBreakdown": {
+      "accommodation": "Accommodation",
+      "food": "Food & Dining",
+      "activities": "Activities & Tours",
+      "transport": "Transportation",
+      "shopping": "Shopping & Souvenirs"
+    },
+    "buttons": {
+      "previous": "Previous",
+      "next": "Next",
+      "generatePlan": "Generate Trip Plan",
+      "generating": "Generating..."
+    },
+    "generatedPlan": {
+      "title": "Your Personalized Thailand Trip Plan",
+      "destination": "Destination",
+      "duration": "Duration",
+      "travelers": "Travelers",
+      "people": "people",
+      "budget": "Budget",
+      "dayByDay": "Day-by-Day Itinerary",
+      "day": "Day",
+      "arrival": "Arrival & Orientation",
+      "arrivalDetails": "Airport pickup and hotel check-in",
+      "checkIn": "Hotel check-in and rest",
+      "localExploration": "Local area exploration",
+      "culturalExperience": "Cultural Experience",
+      "culturalDetails": "Visit temples and cultural sites",
+      "localCuisine": "Try authentic local cuisine",
+      "shopping": "Local market shopping",
+      "recommendations": "Recommendations",
+      "accommodation": "Accommodation",
+      "transport": "Transportation",
+      "activities": "Activities"
     }
-  },
-  "payment": {
-    "title": "Secure Payment",
-    "subtitle": "Purchase credits using PayPal",
-    "backToCredits": "Back to Credits",
-    "selectCreditPackage": "Select Credit Package",
-    "selectPackageDesc": "Choose the package that best fits your needs",
-    "paymentSummary": "Payment Summary",
-    "reviewOrder": "Review your order before completing payment",
-    "total": "Total",
-    "whatsIncluded": "What's included:",
-    "payWithPayPal": "Pay with PayPal",
-    "processingPayment": "Processing Payment...",
-    "selectPackage": "Please select a credit package to continue",
-    "securePayment": "Secure Payment",
-    "securePaymentDesc": "Your payment is processed securely through PayPal's encrypted servers",
-    "sslEncrypted": "SSL Encrypted",
-    "pciCompliant": "PCI Compliant",
-    "moneyBackGuarantee": "Money Back Guarantee",
-    "perCredit": "per credit",
-    "youSave": "You save",
-    "credits": "credits"
-  },
-  "languages": {
-    "en": "English",
-    "pt": "Português",
-    "fr": "Français",
-    "de": "Deutsch",
-    "it": "Italiano",
-    "es": "Español",
-    "zh": "中文",
-    "ja": "日本語",
-    "ko": "한국어"
-  },
-  "notifications": {
-    "loginSuccess": "Login successful! Welcome back.",
-    "loginError": "Login failed. Please check your credentials.",
-    "registerSuccess": "Account created successfully! Welcome to Thailand Visa AI.",
-    "registerError": "Registration failed. Please try again.",
-    "profileUpdated": "Profile updated successfully!",
-    "profileUpdateError": "Failed to update profile. Please try again.",
-    "documentAnalysisComplete": "Document analysis completed successfully!",
-    "documentAnalysisError": "Document analysis failed. Please try again.",
-    "tripPlanGenerated": "Trip plan generated successfully!",
-    "tripPlanError": "Failed to generate trip plan. Please try again.",
-    "paymentSuccess": "Payment successful! Credits added to your account.",
-    "paymentError": "Payment failed. Please try again.",
-    "insufficientCredits": "Insufficient credits. Please purchase more credits.",
-    "applicationSubmitted": "Visa application submitted successfully!",
-    "applicationError": "Failed to submit application. Please try again."
   }
 }

@@ -2,84 +2,202 @@
   "nav": {
     "home": "홈",
     "apply": "신청",
-    "aiDocumentChecker": "AI 문서 검사기",
-    "aiTripPlanner": "AI 여행 계획기",
     "credits": "크레딧",
     "profile": "프로필",
-    "signIn": "로그인",
-    "getStarted": "시작하기",
-    "logOut": "로그아웃",
-    "creditsAndBilling": "크레딧 및 결제"
-  },
-  "common": {
-    "loading": "로딩 중...",
-    "save": "저장",
-    "cancel": "취소",
-    "edit": "편집",
-    "delete": "삭제",
-    "submit": "제출",
-    "back": "뒤로",
-    "next": "다음",
-    "previous": "이전",
-    "close": "닫기",
-    "confirm": "확인",
-    "yes": "예",
-    "no": "아니오",
-    "ok": "확인",
-    "error": "오류",
-    "success": "성공",
-    "warning": "경고",
-    "info": "정보"
+    "login": "로그인",
+    "logout": "로그아웃",
+    "aiDocumentChecker": "AI 문서 검사기",
+    "aiTripPlanner": "AI 여행 계획자",
+    "aiVisaAdvisor": "AI 비자 어드바이저",
+    "aiAssistantChat": "AI 어시스턴트 채팅"
   },
   "home": {
-    "title": "태국 비자 AI",
-    "subtitle": "AI 기반 비자 신청 도우미",
-    "description": "첨단 AI 기술로 태국 비자 신청 과정을 간소화하세요. 문서 검증, 여행 계획, 전문가 가이드를 한 곳에서.",
-    "getStarted": "시작하기",
-    "learnMore": "자세히 보기"
-  },
-  "auth": {
-    "login": {
-      "title": "다시 오신 것을 환영합니다",
-      "subtitle": "태국 비자 AI 계정에 로그인",
-      "email": "이메일 주소",
-      "password": "비밀번호",
-      "rememberMe": "로그인 상태 유지",
-      "forgotPassword": "비밀번호를 잊으셨나요?",
-      "signIn": "로그인",
-      "noAccount": "계정이 없으신가요?",
-      "signUp": "여기서 가입하세요",
-      "emailPlaceholder": "이메일을 입력하세요",
-      "passwordPlaceholder": "비밀번호를 입력하세요"
+    "title": "태국 비자 AI 플랫폼",
+    "subtitle": "첨단 AI 기반 태국 비자 신청 프로세스. 문서 확인, 여행 계획, 전문가 가이드를 한 곳에서 받으세요.",
+    "startApplication": "신청 시작하기",
+    "stats": {
+      "accuracy": "AI 정확도",
+      "processing": "빠른 처리",
+      "successRate": "성공률",
+      "rating": "사용자 평점"
     },
-    "register": {
-      "title": "계정 만들기",
-      "subtitle": "태국 비자 AI에 가입하고 비자 신청을 시작하세요",
-      "firstName": "이름",
-      "lastName": "성",
-      "email": "이메일 주소",
-      "password": "비밀번호",
-      "confirmPassword": "비밀번호 확인",
-      "agreeToTerms": "서비스 약관 및 개인정보 보호정책에 동의합니다",
-      "createAccount": "계정 만들기",
-      "haveAccount": "이미 계정이 있으신가요?",
-      "signIn": "여기서 로그인하세요",
-      "firstNamePlaceholder": "이름을 입력하세요",
-      "lastNamePlaceholder": "성을 입력하세요",
-      "emailPlaceholder": "이메일을 입력하세요",
-      "passwordPlaceholder": "비밀번호를 만드세요",
-      "confirmPasswordPlaceholder": "비밀번호를 확인하세요"
+    "whyChoose": "왜 태국 비자 AI를 선택해야 할까요?",
+    "whyChooseDescription": "우리의 첨단 AI는 전례 없는 정확성과 속도로 태국 비자 여행의 모든 측면을 처리합니다.",
+    "features": {
+      "documentChecker": {
+        "title": "AI 문서 검사기",
+        "description": "첨단 AI 기술로 문서를 즉시 확인"
+      },
+      "visaAdvisor": {
+        "title": "AI 비자 어드바이저",
+        "description": "프로필과 여행 계획을 기반으로 개인화된 비자 추천을 받으세요."
+      },
+      "tripPlanner": {
+        "title": "스마트 여행 계획자",
+        "description": "AI 기반 개인화된 여행 추천 받기"
+      },
+      "assistantChat": {
+        "title": "AI 어시스턴트 채팅",
+        "description": "모든 비자 및 여행 질문에 대한 24/7 AI 지원과 즉시 정확한 답변."
+      }
     }
   },
-  "languages": {
-    "en": "English",
-    "pt": "Português",
-    "fr": "Français",
-    "de": "Deutsch",
-    "it": "Italiano",
-    "es": "Español",
-    "zh": "中文",
-    "ja": "日本語",
-    "ko": "한국어"
+  "login": {
+    "title": "계정에 로그인",
+    "subtitle": "태국 비자 신청 대시보드에 액세스",
+    "email": "이메일",
+    "password": "비밀번호",
+    "loginButton": "로그인",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "noAccount": "계정이 없으신가요?",
+    "signUp": "여기서 가입하세요",
+    "emailPlaceholder": "이메일을 입력하세요",
+    "passwordPlaceholder": "비밀번호를 입력하세요"
+  },
+  "tripPlanner": {
+    "title": "AI 여행 계획자",
+    "subtitle": "지능형 여행 계획 시스템으로 완벽한 태국 모험을 만드세요",
+    "step": "단계",
+    "of": "중",
+    "stepDescriptions": {
+      "step1": "기본 여행 정보 및 여행 선호도",
+      "step2": "숙박 및 교통 선호도",
+      "step3": "관심사, 식이 요구사항 및 접근성 요구사항",
+      "step4": "예산 분석 및 특별 요청"
+    },
+    "form": {
+      "destination": "목적지",
+      "destinationPlaceholder": "예: 방콕, 푸켓, 치앙마이",
+      "travelers": "여행자 수",
+      "startDate": "시작 날짜",
+      "endDate": "종료 날짜",
+      "budget": "총 예산",
+      "accommodationType": "숙박 유형",
+      "transportPreference": "교통 선호도",
+      "travelStyle": "여행 스타일",
+      "adventureLevel": "모험 수준",
+      "interests": "관심사 및 활동",
+      "dietaryRestrictions": "식이 제한",
+      "accessibility": "접근성 요구사항",
+      "travelCompany": "여행 동반자",
+      "previousVisits": "태국 이전 방문",
+      "languagePreference": "언어 선호도",
+      "languagePreferencePlaceholder": "언어 선호도를 선택하세요",
+      "specialRequests": "특별 요청",
+      "specialRequestsPlaceholder": "특별한 요청, 축하 행사 또는 특정 요구사항이 있나요?",
+      "budgetBreakdown": "예산 분석",
+      "budgetBreakdownNote": "각 카테고리의 백분율 할당을 조정하세요",
+      "summary": "여행 요약",
+      "dates": "날짜"
+    },
+    "travelCompany": {
+      "solo": "혼자 여행",
+      "couple": "커플",
+      "family": "아이가 있는 가족",
+      "friends": "친구 그룹",
+      "business": "출장"
+    },
+    "accommodation": {
+      "hotel": "호텔",
+      "hostel": "호스텔",
+      "resort": "리조트",
+      "apartment": "아파트/콘도",
+      "villa": "빌라",
+      "guesthouse": "게스트하우스/B&B"
+    },
+    "transport": {
+      "flight": "항공편",
+      "train": "기차",
+      "bus": "버스",
+      "car": "렌터카",
+      "mixed": "혼합 교통"
+    },
+    "travelStyle": {
+      "luxury": "럭셔리",
+      "comfort": "컴포트",
+      "budget": "예산",
+      "backpacker": "배낭여행"
+    },
+    "adventureLevel": {
+      "relaxed": "편안하고 여유로운",
+      "moderate": "적당한 활동",
+      "adventurous": "모험적인",
+      "extreme": "극한 모험"
+    },
+    "interests": {
+      "culture": "문화와 역사",
+      "nature": "자연과 야생동물",
+      "adventure": "어드벤처 스포츠",
+      "beach": "해변과 수상 활동",
+      "food": "음식과 요리",
+      "photography": "사진 촬영",
+      "nightlife": "나이트라이프와 엔터테인먼트",
+      "shopping": "쇼핑",
+      "wellness": "웰니스와 스파"
+    },
+    "dietary": {
+      "vegetarian": "채식주의자",
+      "vegan": "비건",
+      "halal": "할랄",
+      "kosher": "코셔",
+      "gluten-free": "글루텐 프리",
+      "dairy-free": "유제품 프리",
+      "nut-allergy": "견과류 알레르기",
+      "seafood-allergy": "해산물 알레르기",
+      "none": "제한 없음"
+    },
+    "accessibility": {
+      "wheelchair": "휠체어 접근 가능",
+      "mobility-aid": "이동 보조 필요",
+      "visual-impairment": "시각 장애",
+      "hearing-impairment": "청각 장애",
+      "none": "특별한 요구사항 없음"
+    },
+    "languages": {
+      "english": "영어만",
+      "local": "현지 언어",
+      "translator": "번역 앱",
+      "guide": "영어 가이드"
+    },
+    "previousVisits": {
+      "firstTime": "처음",
+      "returning": "재방문자",
+      "frequent": "단골 방문자"
+    },
+    "budgetBreakdown": {
+      "accommodation": "숙박",
+      "food": "음식과 식사",
+      "activities": "활동과 투어",
+      "transport": "교통",
+      "shopping": "쇼핑과 기념품"
+    },
+    "buttons": {
+      "previous": "이전",
+      "next": "다음",
+      "generatePlan": "여행 계획 생성",
+      "generating": "생성 중..."
+    },
+    "generatedPlan": {
+      "title": "개인화된 태국 여행 계획",
+      "destination": "목적지",
+      "duration": "기간",
+      "travelers": "여행자",
+      "people": "명",
+      "budget": "예산",
+      "dayByDay": "일별 일정",
+      "day": "일차",
+      "arrival": "도착 및 오리엔테이션",
+      "arrivalDetails": "공항 픽업 및 호텔 체크인",
+      "checkIn": "호텔 체크인 및 휴식",
+      "localExploration": "현지 지역 탐방",
+      "culturalExperience": "문화 체험",
+      "culturalDetails": "사원과 문화 유적지 방문",
+      "localCuisine": "정통 현지 요리 체험",
+      "shopping": "현지 시장 쇼핑",
+      "recommendations": "추천",
+      "accommodation": "숙박",
+      "transport": "교통",
+      "activities": "활동"
+    }
   }
 }

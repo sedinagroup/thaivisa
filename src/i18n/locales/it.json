@@ -1,85 +1,203 @@
 {
   "nav": {
     "home": "Home",
-    "apply": "Candidati",
-    "aiDocumentChecker": "Verificatore Documenti IA",
-    "aiTripPlanner": "Pianificatore Viaggio IA",
+    "apply": "Applica",
     "credits": "Crediti",
     "profile": "Profilo",
-    "signIn": "Accedi",
-    "getStarted": "Inizia",
-    "logOut": "Esci",
-    "creditsAndBilling": "Crediti e Fatturazione"
-  },
-  "common": {
-    "loading": "Caricamento...",
-    "save": "Salva",
-    "cancel": "Annulla",
-    "edit": "Modifica",
-    "delete": "Elimina",
-    "submit": "Invia",
-    "back": "Indietro",
-    "next": "Avanti",
-    "previous": "Precedente",
-    "close": "Chiudi",
-    "confirm": "Conferma",
-    "yes": "Sì",
-    "no": "No",
-    "ok": "OK",
-    "error": "Errore",
-    "success": "Successo",
-    "warning": "Avviso",
-    "info": "Informazione"
+    "login": "Accedi",
+    "logout": "Esci",
+    "aiDocumentChecker": "Verificatore Documenti IA",
+    "aiTripPlanner": "Pianificatore Viaggio IA",
+    "aiVisaAdvisor": "Consulente Visto IA",
+    "aiAssistantChat": "Chat Assistente IA"
   },
   "home": {
-    "title": "Visto Thailandia IA",
-    "subtitle": "Il Tuo Assistente per la Richiesta di Visto Alimentato dall'IA",
-    "description": "Semplifica il tuo processo di richiesta del visto per la Thailandia con tecnologia IA avanzata. Ottieni verifica documenti, pianificazione viaggi e consulenza esperta in un unico posto.",
-    "getStarted": "Inizia",
-    "learnMore": "Scopri di Più"
-  },
-  "auth": {
-    "login": {
-      "title": "Bentornato",
-      "subtitle": "Accedi al tuo account Visto Thailandia IA",
-      "email": "Indirizzo Email",
-      "password": "Password",
-      "rememberMe": "Ricordami",
-      "forgotPassword": "Hai dimenticato la password?",
-      "signIn": "Accedi",
-      "noAccount": "Non hai un account?",
-      "signUp": "Registrati qui",
-      "emailPlaceholder": "Inserisci la tua email",
-      "passwordPlaceholder": "Inserisci la tua password"
+    "title": "Piattaforma Visto Thailandia IA",
+    "subtitle": "Processo avanzato di richiesta visto thailandese alimentato dall'IA. Ottieni verifica documenti, pianificazione viaggio e consulenza esperta in un unico posto.",
+    "startApplication": "Inizia la Tua Richiesta",
+    "stats": {
+      "accuracy": "Precisione IA",
+      "processing": "Elaborazione Più Veloce",
+      "successRate": "Tasso di Successo",
+      "rating": "Valutazione Utenti"
     },
-    "register": {
-      "title": "Crea il Tuo Account",
-      "subtitle": "Unisciti a Visto Thailandia IA e inizia la tua richiesta di visto",
-      "firstName": "Nome",
-      "lastName": "Cognome",
-      "email": "Indirizzo Email",
-      "password": "Password",
-      "confirmPassword": "Conferma Password",
-      "agreeToTerms": "Accetto i Termini di Servizio e la Politica sulla Privacy",
-      "createAccount": "Crea Account",
-      "haveAccount": "Hai già un account?",
-      "signIn": "Accedi qui",
-      "firstNamePlaceholder": "Inserisci il tuo nome",
-      "lastNamePlaceholder": "Inserisci il tuo cognome",
-      "emailPlaceholder": "Inserisci la tua email",
-      "passwordPlaceholder": "Crea una password",
-      "confirmPasswordPlaceholder": "Conferma la tua password"
+    "whyChoose": "Perché Scegliere Visto Thailandia IA?",
+    "whyChooseDescription": "La nostra IA avanzata gestisce ogni aspetto del tuo viaggio per il visto thailandese con precisione e velocità senza precedenti.",
+    "features": {
+      "documentChecker": {
+        "title": "Verificatore Documenti IA",
+        "description": "Verifica i tuoi documenti istantaneamente con la nostra tecnologia IA avanzata"
+      },
+      "visaAdvisor": {
+        "title": "Consulente Visto IA",
+        "description": "Ottieni raccomandazioni personalizzate per il visto basate sul tuo profilo e piani di viaggio."
+      },
+      "tripPlanner": {
+        "title": "Pianificatore Viaggio Intelligente",
+        "description": "Ottieni raccomandazioni di viaggio personalizzate alimentate dall'IA"
+      },
+      "assistantChat": {
+        "title": "Chat Assistente IA",
+        "description": "Supporto IA 24/7 per tutte le domande su visti e viaggi con risposte istantanee e accurate."
+      }
     }
   },
-  "languages": {
-    "en": "English",
-    "pt": "Português",
-    "fr": "Français",
-    "de": "Deutsch",
-    "it": "Italiano",
-    "es": "Español",
-    "zh": "中文",
-    "ja": "日本語",
-    "ko": "한국어"
+  "login": {
+    "title": "Accedi al Tuo Account",
+    "subtitle": "Accedi alla tua dashboard di richiesta visto thailandese",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Accedi",
+    "forgotPassword": "Password dimenticata?",
+    "noAccount": "Non hai un account?",
+    "signUp": "Registrati qui",
+    "emailPlaceholder": "Inserisci la tua email",
+    "passwordPlaceholder": "Inserisci la tua password"
+  },
+  "tripPlanner": {
+    "title": "Pianificatore Viaggio IA",
+    "subtitle": "Crea la tua avventura perfetta in Thailandia con il nostro sistema intelligente di pianificazione viaggi",
+    "step": "Passo",
+    "of": "di",
+    "stepDescriptions": {
+      "step1": "Informazioni di viaggio di base e preferenze di viaggio",
+      "step2": "Preferenze di alloggio e trasporto",
+      "step3": "Interessi, esigenze dietetiche e requisiti di accessibilità",
+      "step4": "Ripartizione budget e richieste speciali"
+    },
+    "form": {
+      "destination": "Destinazione",
+      "destinationPlaceholder": "es. Bangkok, Phuket, Chiang Mai",
+      "travelers": "Numero di Viaggiatori",
+      "startDate": "Data di Inizio",
+      "endDate": "Data di Fine",
+      "budget": "Budget Totale",
+      "accommodationType": "Tipo di Alloggio",
+      "transportPreference": "Preferenza Trasporto",
+      "travelStyle": "Stile di Viaggio",
+      "adventureLevel": "Livello di Avventura",
+      "interests": "Interessi e Attività",
+      "dietaryRestrictions": "Restrizioni Dietetiche",
+      "accessibility": "Esigenze di Accessibilità",
+      "travelCompany": "Compagnia di Viaggio",
+      "previousVisits": "Visite Precedenti in Thailandia",
+      "languagePreference": "Preferenza Linguistica",
+      "languagePreferencePlaceholder": "Seleziona la tua preferenza linguistica",
+      "specialRequests": "Richieste Speciali",
+      "specialRequestsPlaceholder": "Richieste speciali, celebrazioni o esigenze specifiche?",
+      "budgetBreakdown": "Ripartizione Budget",
+      "budgetBreakdownNote": "Regola l'allocazione percentuale per ogni categoria",
+      "summary": "Riassunto Viaggio",
+      "dates": "Date"
+    },
+    "travelCompany": {
+      "solo": "Viaggio da Solo",
+      "couple": "Coppia",
+      "family": "Famiglia con Bambini",
+      "friends": "Gruppo di Amici",
+      "business": "Viaggio di Lavoro"
+    },
+    "accommodation": {
+      "hotel": "Hotel",
+      "hostel": "Ostello",
+      "resort": "Resort",
+      "apartment": "Appartamento/Condominio",
+      "villa": "Villa",
+      "guesthouse": "Pensione/B&B"
+    },
+    "transport": {
+      "flight": "Volo",
+      "train": "Treno",
+      "bus": "Autobus",
+      "car": "Noleggio Auto",
+      "mixed": "Trasporto Misto"
+    },
+    "travelStyle": {
+      "luxury": "Lusso",
+      "comfort": "Comfort",
+      "budget": "Budget",
+      "backpacker": "Zaino in Spalla"
+    },
+    "adventureLevel": {
+      "relaxed": "Rilassato e Tranquillo",
+      "moderate": "Attività Moderata",
+      "adventurous": "Avventuroso",
+      "extreme": "Avventura Estrema"
+    },
+    "interests": {
+      "culture": "Cultura e Storia",
+      "nature": "Natura e Fauna",
+      "adventure": "Sport d'Avventura",
+      "beach": "Spiaggia e Attività Acquatiche",
+      "food": "Cibo e Culinaria",
+      "photography": "Fotografia",
+      "nightlife": "Vita Notturna e Intrattenimento",
+      "shopping": "Shopping",
+      "wellness": "Benessere e Spa"
+    },
+    "dietary": {
+      "vegetarian": "Vegetariano",
+      "vegan": "Vegano",
+      "halal": "Halal",
+      "kosher": "Kosher",
+      "gluten-free": "Senza Glutine",
+      "dairy-free": "Senza Latticini",
+      "nut-allergy": "Allergia alle Noci",
+      "seafood-allergy": "Allergia ai Frutti di Mare",
+      "none": "Nessuna Restrizione"
+    },
+    "accessibility": {
+      "wheelchair": "Accessibile in Sedia a Rotelle",
+      "mobility-aid": "Aiuto alla Mobilità Richiesto",
+      "visual-impairment": "Disabilità Visiva",
+      "hearing-impairment": "Disabilità Uditiva",
+      "none": "Nessuna Esigenza Speciale"
+    },
+    "languages": {
+      "english": "Solo Inglese",
+      "local": "Lingua Locale",
+      "translator": "App Traduttore",
+      "guide": "Guida Anglofona"
+    },
+    "previousVisits": {
+      "firstTime": "Prima Volta",
+      "returning": "Visitatore di Ritorno",
+      "frequent": "Visitatore Frequente"
+    },
+    "budgetBreakdown": {
+      "accommodation": "Alloggio",
+      "food": "Cibo e Ristorazione",
+      "activities": "Attività e Tour",
+      "transport": "Trasporto",
+      "shopping": "Shopping e Souvenir"
+    },
+    "buttons": {
+      "previous": "Precedente",
+      "next": "Successivo",
+      "generatePlan": "Genera Piano Viaggio",
+      "generating": "Generazione..."
+    },
+    "generatedPlan": {
+      "title": "Il Tuo Piano Viaggio Personalizzato in Thailandia",
+      "destination": "Destinazione",
+      "duration": "Durata",
+      "travelers": "Viaggiatori",
+      "people": "persone",
+      "budget": "Budget",
+      "dayByDay": "Itinerario Giorno per Giorno",
+      "day": "Giorno",
+      "arrival": "Arrivo e Orientamento",
+      "arrivalDetails": "Ritiro aeroporto e check-in hotel",
+      "checkIn": "Check-in hotel e riposo",
+      "localExploration": "Esplorazione zona locale",
+      "culturalExperience": "Esperienza Culturale",
+      "culturalDetails": "Visitare templi e siti culturali",
+      "localCuisine": "Provare cucina locale autentica",
+      "shopping": "Shopping al mercato locale",
+      "recommendations": "Raccomandazioni",
+      "accommodation": "Alloggio",
+      "transport": "Trasporto",
+      "activities": "Attività"
+    }
   }
 }

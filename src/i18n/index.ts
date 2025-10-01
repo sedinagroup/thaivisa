@@ -12,6 +12,8 @@ import es from './locales/es.json';
 import zh from './locales/zh.json';
 import ja from './locales/ja.json';
 import ko from './locales/ko.json';
+import ru from './locales/ru.json';
+import hi from './locales/hi.json';
 
 const resources = {
   en: { translation: en },
@@ -23,6 +25,8 @@ const resources = {
   zh: { translation: zh },
   ja: { translation: ja },
   ko: { translation: ko },
+  ru: { translation: ru },
+  hi: { translation: hi },
 };
 
 i18n
@@ -31,16 +35,15 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
-    lng: 'en', // Default language
     debug: false,
+    
+    interpolation: {
+      escapeValue: false,
+    },
     
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
-    },
-
-    interpolation: {
-      escapeValue: false,
     },
   });
 

@@ -1,808 +1,637 @@
 import React, { useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
-import { useCredits } from '@/contexts/CreditsContext';
+import { useTranslation } from 'react-i18next';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { 
-  MapPin, 
-  Calendar, 
-  Users, 
-  DollarSign, 
-  Plane, 
-  Hotel, 
-  Car, 
-  Utensils, 
-  Camera, 
-  Clock,
-  Star,
-  AlertCircle,
-  CheckCircle,
-  Loader2,
-  Download,
-  Share2
-} from 'lucide-react';
-import { toast } from 'sonner';
+import { CalendarDays, MapPin, Users, Wallet, Plane, Hotel, Utensils, Camera, Mountain, Waves, Building, TreePine, Heart, Star, Clock, Globe } from 'lucide-react';
 
-interface TripPlan {
+interface TripPlannerFormData {
   destination: string;
-  duration: number;
-  budget: number;
+  startDate: string;
+  endDate: string;
   travelers: number;
-  itinerary: DayPlan[];
-  recommendations: {
-    flights: FlightOption[];
-    hotels: HotelOption[];
-    activities: ActivityOption[];
-    restaurants: RestaurantOption[];
+  budget: number[];
+  budgetCurrency: string;
+  accommodationType: string[];
+  transportPreference: string;
+  travelStyle: string;
+  adventureLevel: string;
+  interests: string[];
+  dietaryRestrictions: string[];
+  accessibility: string[];
+  travelCompany: string;
+  previousVisits: string;
+  languagePreference: string;
+  specialRequests: string;
+  budgetBreakdown: {
+    accommodation: number;
+    food: number;
+    activities: number;
+    transport: number;
+    shopping: number;
   };
-  totalCost: number;
-  budgetBreakdown: BudgetBreakdown;
 }
 
-interface DayPlan {
-  day: number;
-  date: string;
-  activities: Activity[];
-  meals: Meal[];
-  accommodation: string;
-  transportation: string;
-  estimatedCost: number;
-}
-
-interface Activity {
-  time: string;
-  name: string;
-  description: string;
-  location: string;
-  duration: string;
-  cost: number;
-  rating: number;
-  category: string;
-}
-
-interface Meal {
-  time: string;
-  restaurant: string;
-  cuisine: string;
-  cost: number;
-  rating: number;
-}
-
-interface FlightOption {
-  airline: string;
-  departure: string;
-  arrival: string;
-  duration: string;
-  price: number;
-  stops: number;
-}
-
-interface HotelOption {
-  name: string;
-  location: string;
-  rating: number;
-  pricePerNight: number;
-  amenities: string[];
-  description: string;
-}
-
-interface ActivityOption {
-  name: string;
-  category: string;
-  description: string;
-  location: string;
-  price: number;
-  rating: number;
-  duration: string;
-}
-
-interface RestaurantOption {
-  name: string;
-  cuisine: string;
-  location: string;
-  rating: number;
-  averageCost: number;
-  specialty: string;
-}
-
-interface BudgetBreakdown {
-  accommodation: number;
-  food: number;
-  activities: number;
-  transportation: number;
-  miscellaneous: number;
-}
-
-const AITripPlanner: React.FC = () => {
-  const { user } = useAuth();
-  const { credits, consumeCredits } = useCredits();
-  const [loading, setLoading] = useState(false);
-  const [tripPlan, setTripPlan] = useState<TripPlan | null>(null);
-  const [error, setError] = useState('');
-
-  const [formData, setFormData] = useState({
+export default function TripPlanner() {
+  const { t } = useTranslation();
+  const [formData, setFormData] = useState<TripPlannerFormData>({
     destination: '',
     startDate: '',
     endDate: '',
-    travelers: 2,
-    budget: 1000,
-    interests: [] as string[],
-    travelStyle: 'balanced' as 'budget' | 'balanced' | 'luxury'
+    travelers: 1,
+    budget: [1000],
+    budgetCurrency: 'USD',
+    accommodationType: [],
+    transportPreference: '',
+    travelStyle: '',
+    adventureLevel: '',
+    interests: [],
+    dietaryRestrictions: [],
+    accessibility: [],
+    travelCompany: '',
+    previousVisits: '',
+    languagePreference: '',
+    specialRequests: '',
+    budgetBreakdown: {
+      accommodation: 40,
+      food: 25,
+      activities: 20,
+      transport: 10,
+      shopping: 5
+    }
   });
 
-  const interestOptions = [
-    'Cultura e História',
-    'Praias e Relaxamento',
-    'Aventura e Esportes',
-    'Gastronomia',
-    'Vida Noturna',
-    'Natureza e Vida Selvagem',
-    'Compras',
-    'Templos e Espiritualidade',
-    'Arte e Museus',
-    'Fotografia'
-  ];
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedPlan, setGeneratedPlan] = useState<string>('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
+  const handleInputChange = (field: keyof TripPlannerFormData, value: any) => {
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'number' ? parseInt(value) || 0 : value
+      [field]: value
     }));
   };
 
-  const handleInterestToggle = (interest: string) => {
+  const handleArrayToggle = (field: keyof TripPlannerFormData, value: string) => {
     setFormData(prev => ({
       ...prev,
-      interests: prev.interests.includes(interest)
-        ? prev.interests.filter(i => i !== interest)
-        : [...prev.interests, interest]
+      [field]: (prev[field] as string[]).includes(value)
+        ? (prev[field] as string[]).filter(item => item !== value)
+        : [...(prev[field] as string[]), value]
+    }));
+  };
+
+  const handleBudgetBreakdownChange = (category: keyof typeof formData.budgetBreakdown, value: number) => {
+    setFormData(prev => ({
+      ...prev,
+      budgetBreakdown: {
+        ...prev.budgetBreakdown,
+        [category]: value
+      }
     }));
   };
 
   const generateTripPlan = async () => {
-    if (!formData.destination || !formData.startDate || !formData.endDate) {
-      setError('Por favor, preencha todos os campos obrigatórios');
-      return;
-    }
+    setIsGenerating(true);
+    // Simulate API call
+    setTimeout(() => {
+      setGeneratedPlan(`
+${t('tripPlanner.generatedPlan.title')}
 
-    if (credits < 40) {
-      setError('Créditos insuficientes. Você precisa de 40 créditos para gerar um plano de viagem.');
-      return;
-    }
+${t('tripPlanner.generatedPlan.destination')}: ${formData.destination}
+${t('tripPlanner.generatedPlan.duration')}: ${formData.startDate} - ${formData.endDate}
+${t('tripPlanner.generatedPlan.travelers')}: ${formData.travelers} ${t('tripPlanner.generatedPlan.people')}
+${t('tripPlanner.generatedPlan.budget')}: ${formData.budget[0]} ${formData.budgetCurrency}
 
-    setLoading(true);
-    setError('');
+${t('tripPlanner.generatedPlan.dayByDay')}:
 
-    try {
-      // Consume credits first
-      await consumeCredits(40, 'AI Trip Planner', `Plano de viagem para ${formData.destination}`);
+${t('tripPlanner.generatedPlan.day')} 1: ${t('tripPlanner.generatedPlan.arrival')}
+- ${t('tripPlanner.generatedPlan.arrivalDetails')}
+- ${t('tripPlanner.generatedPlan.checkIn')}
+- ${t('tripPlanner.generatedPlan.localExploration')}
 
-      // Simulate AI processing
-      await new Promise(resolve => setTimeout(resolve, 3000));
+${t('tripPlanner.generatedPlan.day')} 2: ${t('tripPlanner.generatedPlan.culturalExperience')}
+- ${t('tripPlanner.generatedPlan.culturalDetails')}
+- ${t('tripPlanner.generatedPlan.localCuisine')}
+- ${t('tripPlanner.generatedPlan.shopping')}
 
-      // Generate mock trip plan
-      const startDate = new Date(formData.startDate);
-      const endDate = new Date(formData.endDate);
-      const duration = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+${t('tripPlanner.generatedPlan.recommendations')}:
+- ${t('tripPlanner.generatedPlan.accommodation')}: ${formData.accommodationType.join(', ')}
+- ${t('tripPlanner.generatedPlan.transport')}: ${formData.transportPreference}
+- ${t('tripPlanner.generatedPlan.activities')}: ${formData.interests.join(', ')}
 
-      const mockTripPlan: TripPlan = {
-        destination: formData.destination,
-        duration,
-        budget: formData.budget,
-        travelers: formData.travelers,
-        itinerary: generateItinerary(duration, startDate),
-        recommendations: generateRecommendations(),
-        totalCost: Math.floor(formData.budget * 0.95),
-        budgetBreakdown: generateBudgetBreakdown(formData.budget)
-      };
-
-      setTripPlan(mockTripPlan);
-      toast.success('Plano de viagem gerado com sucesso!');
-    } catch (err) {
-      setError('Erro ao gerar plano de viagem. Tente novamente.');
-      console.error('Trip planning error:', err);
-    } finally {
-      setLoading(false);
-    }
+${t('tripPlanner.generatedPlan.budgetBreakdown')}:
+- ${t('tripPlanner.budgetBreakdown.accommodation')}: ${formData.budgetBreakdown.accommodation}%
+- ${t('tripPlanner.budgetBreakdown.food')}: ${formData.budgetBreakdown.food}%
+- ${t('tripPlanner.budgetBreakdown.activities')}: ${formData.budgetBreakdown.activities}%
+- ${t('tripPlanner.budgetBreakdown.transport')}: ${formData.budgetBreakdown.transport}%
+- ${t('tripPlanner.budgetBreakdown.shopping')}: ${formData.budgetBreakdown.shopping}%
+      `);
+      setIsGenerating(false);
+    }, 3000);
   };
 
-  const generateItinerary = (duration: number, startDate: Date): DayPlan[] => {
-    const days: DayPlan[] = [];
-    
-    for (let i = 0; i < duration; i++) {
-      const currentDate = new Date(startDate);
-      currentDate.setDate(startDate.getDate() + i);
-      
-      days.push({
-        day: i + 1,
-        date: currentDate.toLocaleDateString('pt-BR'),
-        activities: generateDayActivities(i + 1),
-        meals: generateDayMeals(),
-        accommodation: i === 0 ? 'Check-in no hotel' : 'Hotel Bangkok Palace',
-        transportation: i === 0 ? 'Chegada ao aeroporto' : 'Transporte local',
-        estimatedCost: Math.floor(formData.budget / duration)
-      });
-    }
-    
-    return days;
-  };
-
-  const generateDayActivities = (day: number): Activity[] => {
-    const activities = [
-      {
-        time: '09:00',
-        name: 'Grande Palácio Real',
-        description: 'Visite o complexo histórico mais importante da Tailândia',
-        location: 'Bangkok Centro',
-        duration: '3 horas',
-        cost: 500,
-        rating: 4.8,
-        category: 'Cultura'
-      },
-      {
-        time: '14:00',
-        name: 'Templo Wat Pho',
-        description: 'Famoso templo com o Buda Reclinado gigante',
-        location: 'Bangkok Centro',
-        duration: '2 horas',
-        cost: 200,
-        rating: 4.7,
-        category: 'Religioso'
-      },
-      {
-        time: '17:00',
-        name: 'Mercado Flutuante',
-        description: 'Experiência única de compras em barcos tradicionais',
-        location: 'Damnoen Saduak',
-        duration: '2 horas',
-        cost: 300,
-        rating: 4.5,
-        category: 'Compras'
-      }
-    ];
-
-    return activities.slice(0, day === 1 ? 2 : 3);
-  };
-
-  const generateDayMeals = (): Meal[] => {
-    return [
-      {
-        time: '08:00',
-        restaurant: 'Café da Manhã do Hotel',
-        cuisine: 'Internacional',
-        cost: 150,
-        rating: 4.2
-      },
-      {
-        time: '12:30',
-        restaurant: 'Som Tam Nua',
-        cuisine: 'Tailandesa',
-        cost: 200,
-        rating: 4.6
-      },
-      {
-        time: '19:00',
-        restaurant: 'Blue Elephant',
-        cuisine: 'Tailandesa Premium',
-        cost: 800,
-        rating: 4.8
-      }
-    ];
-  };
-
-  const generateRecommendations = () => {
-    return {
-      flights: [
-        {
-          airline: 'Thai Airways',
-          departure: '10:30',
-          arrival: '14:45',
-          duration: '15h 15m',
-          price: 2500,
-          stops: 1
-        },
-        {
-          airline: 'Emirates',
-          departure: '23:40',
-          arrival: '18:30+1',
-          duration: '16h 50m',
-          price: 2800,
-          stops: 1
-        }
-      ],
-      hotels: [
-        {
-          name: 'Bangkok Palace Hotel',
-          location: 'Centro de Bangkok',
-          rating: 4.5,
-          pricePerNight: 300,
-          amenities: ['Wi-Fi', 'Piscina', 'Spa', 'Academia'],
-          description: 'Hotel luxuoso no coração de Bangkok'
-        },
-        {
-          name: 'Riverside Resort',
-          location: 'Rio Chao Phraya',
-          rating: 4.3,
-          pricePerNight: 250,
-          amenities: ['Wi-Fi', 'Vista do Rio', 'Restaurante'],
-          description: 'Resort com vista panorâmica do rio'
-        }
-      ],
-      activities: [
-        {
-          name: 'Tour de Templos',
-          category: 'Cultura',
-          description: 'Visite os principais templos de Bangkok',
-          location: 'Bangkok',
-          price: 800,
-          rating: 4.7,
-          duration: '6 horas'
-        },
-        {
-          name: 'Aula de Culinária Tailandesa',
-          category: 'Gastronomia',
-          description: 'Aprenda a cozinhar pratos tradicionais',
-          location: 'Bangkok',
-          price: 600,
-          rating: 4.8,
-          duration: '4 horas'
-        }
-      ],
-      restaurants: [
-        {
-          name: 'Gaggan',
-          cuisine: 'Molecular Tailandesa',
-          location: 'Bangkok',
-          rating: 4.9,
-          averageCost: 1200,
-          specialty: 'Menu degustação inovador'
-        },
-        {
-          name: 'Jay Fai',
-          cuisine: 'Street Food',
-          location: 'Bangkok',
-          rating: 4.6,
-          averageCost: 300,
-          specialty: 'Pad Thai com caranguejo'
-        }
-      ]
-    };
-  };
-
-  const generateBudgetBreakdown = (budget: number): BudgetBreakdown => {
-    return {
-      accommodation: Math.floor(budget * 0.35),
-      food: Math.floor(budget * 0.25),
-      activities: Math.floor(budget * 0.20),
-      transportation: Math.floor(budget * 0.15),
-      miscellaneous: Math.floor(budget * 0.05)
-    };
-  };
-
-  const downloadPlan = () => {
-    if (!tripPlan) return;
-    
-    const planText = `
-PLANO DE VIAGEM - ${tripPlan.destination.toUpperCase()}
-Gerado por Thailand Visa AI
-
-INFORMAÇÕES GERAIS:
-- Destino: ${tripPlan.destination}
-- Duração: ${tripPlan.duration} dias
-- Viajantes: ${tripPlan.travelers}
-- Orçamento: R$ ${tripPlan.budget}
-- Custo Estimado: R$ ${tripPlan.totalCost}
-
-ROTEIRO DIÁRIO:
-${tripPlan.itinerary.map(day => `
-DIA ${day.day} - ${day.date}
-Atividades:
-${day.activities.map(activity => `- ${activity.time}: ${activity.name} (${activity.duration})`).join('\n')}
-
-Refeições:
-${day.meals.map(meal => `- ${meal.time}: ${meal.restaurant} (${meal.cuisine})`).join('\n')}
-
-Custo estimado do dia: R$ ${day.estimatedCost}
-`).join('\n')}
-
-ORÇAMENTO DETALHADO:
-- Hospedagem: R$ ${tripPlan.budgetBreakdown.accommodation}
-- Alimentação: R$ ${tripPlan.budgetBreakdown.food}
-- Atividades: R$ ${tripPlan.budgetBreakdown.activities}
-- Transporte: R$ ${tripPlan.budgetBreakdown.transportation}
-- Diversos: R$ ${tripPlan.budgetBreakdown.miscellaneous}
-
-Gerado em: ${new Date().toLocaleString('pt-BR')}
-    `;
-
-    const blob = new Blob([planText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `plano-viagem-${tripPlan.destination.toLowerCase().replace(/\s+/g, '-')}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    toast.success('Plano de viagem baixado com sucesso!');
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 p-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <MapPin className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            AI Trip Planner
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Crie o plano de viagem perfeito para a Tailândia com inteligência artificial
-          </p>
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <Badge variant="secondary" className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4" />
-              {credits} créditos disponíveis
-            </Badge>
-            <Badge variant="outline" className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              40 créditos por plano
-            </Badge>
-          </div>
+  const renderStep1 = () => (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="destination" className="flex items-center gap-2">
+            <MapPin className="w-4 h-4" />
+            {t('tripPlanner.form.destination')}
+          </Label>
+          <Input
+            id="destination"
+            placeholder={t('tripPlanner.form.destinationPlaceholder')}
+            value={formData.destination}
+            onChange={(e) => handleInputChange('destination', e.target.value)}
+          />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Form Section */}
-          <div className="lg:col-span-1">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Detalhes da Viagem
-                </CardTitle>
-                <CardDescription>
-                  Preencha as informações para gerar seu plano personalizado
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {error && (
-                  <Alert variant="destructive">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>{error}</AlertDescription>
-                  </Alert>
-                )}
-
-                <div className="space-y-2">
-                  <Label htmlFor="destination">Destino na Tailândia</Label>
-                  <Input
-                    id="destination"
-                    name="destination"
-                    placeholder="Ex: Bangkok, Phuket, Chiang Mai"
-                    value={formData.destination}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="startDate">Data de Início</Label>
-                    <Input
-                      id="startDate"
-                      name="startDate"
-                      type="date"
-                      value={formData.startDate}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="endDate">Data de Fim</Label>
-                    <Input
-                      id="endDate"
-                      name="endDate"
-                      type="date"
-                      value={formData.endDate}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="travelers">Viajantes</Label>
-                    <Input
-                      id="travelers"
-                      name="travelers"
-                      type="number"
-                      min="1"
-                      max="10"
-                      value={formData.travelers}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="budget">Orçamento (R$)</Label>
-                    <Input
-                      id="budget"
-                      name="budget"
-                      type="number"
-                      min="500"
-                      step="100"
-                      value={formData.budget}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Estilo de Viagem</Label>
-                  <select
-                    name="travelStyle"
-                    value={formData.travelStyle}
-                    onChange={handleInputChange}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                  >
-                    <option value="budget">Econômica</option>
-                    <option value="balanced">Equilibrada</option>
-                    <option value="luxury">Luxuosa</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Interesses (selecione até 5)</Label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {interestOptions.map((interest) => (
-                      <Button
-                        key={interest}
-                        variant={formData.interests.includes(interest) ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => handleInterestToggle(interest)}
-                        disabled={!formData.interests.includes(interest) && formData.interests.length >= 5}
-                        className="text-xs"
-                      >
-                        {interest}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                <Button
-                  onClick={generateTripPlan}
-                  disabled={loading || credits < 40}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                >
-                  {loading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Gerando Plano...
-                    </>
-                  ) : (
-                    <>
-                      <MapPin className="mr-2 h-4 w-4" />
-                      Gerar Plano de Viagem
-                    </>
-                  )}
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Results Section */}
-          <div className="lg:col-span-2">
-            {tripPlan ? (
-              <div className="space-y-6">
-                {/* Trip Overview */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-500" />
-                        Plano de Viagem para {tripPlan.destination}
-                      </CardTitle>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={downloadPlan}>
-                          <Download className="w-4 h-4 mr-2" />
-                          Baixar
-                        </Button>
-                        <Button variant="outline" size="sm">
-                          <Share2 className="w-4 h-4 mr-2" />
-                          Compartilhar
-                        </Button>
-                      </div>
-                    </div>
-                    <CardDescription>
-                      {tripPlan.duration} dias • {tripPlan.travelers} viajante(s) • R$ {tripPlan.totalCost} estimado
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-                      <div className="text-center">
-                        <Hotel className="w-8 h-8 mx-auto mb-2 text-blue-600" />
-                        <div className="text-sm text-gray-600">Hospedagem</div>
-                        <div className="font-semibold">R$ {tripPlan.budgetBreakdown.accommodation}</div>
-                      </div>
-                      <div className="text-center">
-                        <Utensils className="w-8 h-8 mx-auto mb-2 text-green-600" />
-                        <div className="text-sm text-gray-600">Alimentação</div>
-                        <div className="font-semibold">R$ {tripPlan.budgetBreakdown.food}</div>
-                      </div>
-                      <div className="text-center">
-                        <Camera className="w-8 h-8 mx-auto mb-2 text-purple-600" />
-                        <div className="text-sm text-gray-600">Atividades</div>
-                        <div className="font-semibold">R$ {tripPlan.budgetBreakdown.activities}</div>
-                      </div>
-                      <div className="text-center">
-                        <Car className="w-8 h-8 mx-auto mb-2 text-orange-600" />
-                        <div className="text-sm text-gray-600">Transporte</div>
-                        <div className="font-semibold">R$ {tripPlan.budgetBreakdown.transportation}</div>
-                      </div>
-                      <div className="text-center">
-                        <DollarSign className="w-8 h-8 mx-auto mb-2 text-gray-600" />
-                        <div className="text-sm text-gray-600">Diversos</div>
-                        <div className="font-semibold">R$ {tripPlan.budgetBreakdown.miscellaneous}</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Daily Itinerary */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Roteiro Diário</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-6">
-                      {tripPlan.itinerary.map((day, index) => (
-                        <div key={index} className="border-l-4 border-blue-500 pl-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <h3 className="text-lg font-semibold">Dia {day.day} - {day.date}</h3>
-                            <Badge variant="outline">R$ {day.estimatedCost}</Badge>
-                          </div>
-                          
-                          <div className="space-y-4">
-                            <div>
-                              <h4 className="font-medium mb-2 flex items-center gap-2">
-                                <Camera className="w-4 h-4" />
-                                Atividades
-                              </h4>
-                              <div className="space-y-2">
-                                {day.activities.map((activity, actIndex) => (
-                                  <div key={actIndex} className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                    <div className="flex items-center justify-between mb-1">
-                                      <div className="flex items-center gap-2">
-                                        <Clock className="w-4 h-4 text-gray-500" />
-                                        <span className="font-medium">{activity.time}</span>
-                                        <span>{activity.name}</span>
-                                      </div>
-                                      <div className="flex items-center gap-2">
-                                        <Star className="w-4 h-4 text-yellow-500" />
-                                        <span className="text-sm">{activity.rating}</span>
-                                      </div>
-                                    </div>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400 ml-6">
-                                      {activity.description} • {activity.duration} • R$ {activity.cost}
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div>
-                              <h4 className="font-medium mb-2 flex items-center gap-2">
-                                <Utensils className="w-4 h-4" />
-                                Refeições
-                              </h4>
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                                {day.meals.map((meal, mealIndex) => (
-                                  <div key={mealIndex} className="bg-gray-50 dark:bg-gray-800 p-2 rounded">
-                                    <div className="text-sm font-medium">{meal.time}</div>
-                                    <div className="text-sm">{meal.restaurant}</div>
-                                    <div className="text-xs text-gray-600">{meal.cuisine} • R$ {meal.cost}</div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Recommendations */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Hotels */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Hotel className="w-5 h-5" />
-                        Hotéis Recomendados
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        {tripPlan.recommendations.hotels.map((hotel, index) => (
-                          <div key={index} className="border rounded-lg p-4">
-                            <div className="flex items-center justify-between mb-2">
-                              <h4 className="font-medium">{hotel.name}</h4>
-                              <div className="flex items-center gap-1">
-                                <Star className="w-4 h-4 text-yellow-500" />
-                                <span className="text-sm">{hotel.rating}</span>
-                              </div>
-                            </div>
-                            <p className="text-sm text-gray-600 mb-2">{hotel.description}</p>
-                            <div className="flex items-center justify-between">
-                              <span className="text-sm text-gray-500">{hotel.location}</span>
-                              <span className="font-semibold">R$ {hotel.pricePerNight}/noite</span>
-                            </div>
-                            <div className="flex flex-wrap gap-1 mt-2">
-                              {hotel.amenities.map((amenity, aIndex) => (
-                                <Badge key={aIndex} variant="secondary" className="text-xs">
-                                  {amenity}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Flights */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Plane className="w-5 h-5" />
-                        Voos Sugeridos
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        {tripPlan.recommendations.flights.map((flight, index) => (
-                          <div key={index} className="border rounded-lg p-4">
-                            <div className="flex items-center justify-between mb-2">
-                              <h4 className="font-medium">{flight.airline}</h4>
-                              <span className="font-semibold">R$ {flight.price}</span>
-                            </div>
-                            <div className="text-sm text-gray-600">
-                              <div>Saída: {flight.departure}</div>
-                              <div>Chegada: {flight.arrival}</div>
-                              <div>Duração: {flight.duration}</div>
-                              <div>Escalas: {flight.stops === 0 ? 'Direto' : `${flight.stops} escala(s)`}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            ) : (
-              <Card className="h-96 flex items-center justify-center">
-                <CardContent className="text-center">
-                  <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    Pronto para planejar sua viagem?
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Preencha os detalhes ao lado e nossa IA criará um plano personalizado para você.
-                  </p>
-                </CardContent>
-              </Card>
-            )}
-          </div>
+        <div className="space-y-2">
+          <Label htmlFor="travelers" className="flex items-center gap-2">
+            <Users className="w-4 h-4" />
+            {t('tripPlanner.form.travelers')}
+          </Label>
+          <Input
+            id="travelers"
+            type="number"
+            min="1"
+            max="20"
+            value={formData.travelers}
+            onChange={(e) => handleInputChange('travelers', parseInt(e.target.value))}
+          />
         </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="startDate" className="flex items-center gap-2">
+            <CalendarDays className="w-4 h-4" />
+            {t('tripPlanner.form.startDate')}
+          </Label>
+          <Input
+            id="startDate"
+            type="date"
+            value={formData.startDate}
+            onChange={(e) => handleInputChange('startDate', e.target.value)}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="endDate" className="flex items-center gap-2">
+            <CalendarDays className="w-4 h-4" />
+            {t('tripPlanner.form.endDate')}
+          </Label>
+          <Input
+            id="endDate"
+            type="date"
+            value={formData.endDate}
+            onChange={(e) => handleInputChange('endDate', e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Label className="flex items-center gap-2">
+          <Wallet className="w-4 h-4" />
+          {t('tripPlanner.form.budget')}: {formData.budget[0]} {formData.budgetCurrency}
+        </Label>
+        <div className="flex gap-4 items-center">
+          <Slider
+            value={formData.budget}
+            onValueChange={(value) => handleInputChange('budget', value)}
+            max={10000}
+            min={100}
+            step={100}
+            className="flex-1"
+          />
+          <Select value={formData.budgetCurrency} onValueChange={(value) => handleInputChange('budgetCurrency', value)}>
+            <SelectTrigger className="w-20">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="USD">USD</SelectItem>
+              <SelectItem value="EUR">EUR</SelectItem>
+              <SelectItem value="THB">THB</SelectItem>
+              <SelectItem value="GBP">GBP</SelectItem>
+              <SelectItem value="JPY">JPY</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.travelCompany')}</Label>
+        <RadioGroup value={formData.travelCompany} onValueChange={(value) => handleInputChange('travelCompany', value)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="solo" id="solo" />
+            <Label htmlFor="solo">{t('tripPlanner.travelCompany.solo')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="couple" id="couple" />
+            <Label htmlFor="couple">{t('tripPlanner.travelCompany.couple')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="family" id="family" />
+            <Label htmlFor="family">{t('tripPlanner.travelCompany.family')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="friends" id="friends" />
+            <Label htmlFor="friends">{t('tripPlanner.travelCompany.friends')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="business" id="business" />
+            <Label htmlFor="business">{t('tripPlanner.travelCompany.business')}</Label>
+          </div>
+        </RadioGroup>
       </div>
     </div>
   );
-};
 
-export default AITripPlanner;
+  const renderStep2 = () => (
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.accommodationType')}</Label>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {[
+            { id: 'hotel', label: t('tripPlanner.accommodation.hotel'), icon: Hotel },
+            { id: 'hostel', label: t('tripPlanner.accommodation.hostel'), icon: Building },
+            { id: 'resort', label: t('tripPlanner.accommodation.resort'), icon: TreePine },
+            { id: 'apartment', label: t('tripPlanner.accommodation.apartment'), icon: Building },
+            { id: 'villa', label: t('tripPlanner.accommodation.villa'), icon: Heart },
+            { id: 'guesthouse', label: t('tripPlanner.accommodation.guesthouse'), icon: Star }
+          ].map(({ id, label, icon: Icon }) => (
+            <div key={id} className="flex items-center space-x-2">
+              <Checkbox
+                id={id}
+                checked={formData.accommodationType.includes(id)}
+                onCheckedChange={() => handleArrayToggle('accommodationType', id)}
+              />
+              <Label htmlFor={id} className="flex items-center gap-2 cursor-pointer">
+                <Icon className="w-4 h-4" />
+                {label}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.transportPreference')}</Label>
+        <RadioGroup value={formData.transportPreference} onValueChange={(value) => handleInputChange('transportPreference', value)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="flight" id="flight" />
+            <Label htmlFor="flight" className="flex items-center gap-2">
+              <Plane className="w-4 h-4" />
+              {t('tripPlanner.transport.flight')}
+            </Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="train" id="train" />
+            <Label htmlFor="train">{t('tripPlanner.transport.train')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="bus" id="bus" />
+            <Label htmlFor="bus">{t('tripPlanner.transport.bus')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="car" id="car" />
+            <Label htmlFor="car">{t('tripPlanner.transport.car')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="mixed" id="mixed" />
+            <Label htmlFor="mixed">{t('tripPlanner.transport.mixed')}</Label>
+          </div>
+        </RadioGroup>
+      </div>
+
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.travelStyle')}</Label>
+        <RadioGroup value={formData.travelStyle} onValueChange={(value) => handleInputChange('travelStyle', value)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="luxury" id="luxury" />
+            <Label htmlFor="luxury">{t('tripPlanner.travelStyle.luxury')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="comfort" id="comfort" />
+            <Label htmlFor="comfort">{t('tripPlanner.travelStyle.comfort')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="budget" id="budget" />
+            <Label htmlFor="budget">{t('tripPlanner.travelStyle.budget')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="backpacker" id="backpacker" />
+            <Label htmlFor="backpacker">{t('tripPlanner.travelStyle.backpacker')}</Label>
+          </div>
+        </RadioGroup>
+      </div>
+
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.adventureLevel')}</Label>
+        <RadioGroup value={formData.adventureLevel} onValueChange={(value) => handleInputChange('adventureLevel', value)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="relaxed" id="relaxed" />
+            <Label htmlFor="relaxed">{t('tripPlanner.adventureLevel.relaxed')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="moderate" id="moderate" />
+            <Label htmlFor="moderate">{t('tripPlanner.adventureLevel.moderate')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="adventurous" id="adventurous" />
+            <Label htmlFor="adventurous">{t('tripPlanner.adventureLevel.adventurous')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="extreme" id="extreme" />
+            <Label htmlFor="extreme">{t('tripPlanner.adventureLevel.extreme')}</Label>
+          </div>
+        </RadioGroup>
+      </div>
+    </div>
+  );
+
+  const renderStep3 = () => (
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.interests')}</Label>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {[
+            { id: 'culture', label: t('tripPlanner.interests.culture'), icon: Building },
+            { id: 'nature', label: t('tripPlanner.interests.nature'), icon: TreePine },
+            { id: 'adventure', label: t('tripPlanner.interests.adventure'), icon: Mountain },
+            { id: 'beach', label: t('tripPlanner.interests.beach'), icon: Waves },
+            { id: 'food', label: t('tripPlanner.interests.food'), icon: Utensils },
+            { id: 'photography', label: t('tripPlanner.interests.photography'), icon: Camera },
+            { id: 'nightlife', label: t('tripPlanner.interests.nightlife'), icon: Star },
+            { id: 'shopping', label: t('tripPlanner.interests.shopping'), icon: Building },
+            { id: 'wellness', label: t('tripPlanner.interests.wellness'), icon: Heart }
+          ].map(({ id, label, icon: Icon }) => (
+            <div key={id} className="flex items-center space-x-2">
+              <Checkbox
+                id={id}
+                checked={formData.interests.includes(id)}
+                onCheckedChange={() => handleArrayToggle('interests', id)}
+              />
+              <Label htmlFor={id} className="flex items-center gap-2 cursor-pointer">
+                <Icon className="w-4 h-4" />
+                {label}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.dietaryRestrictions')}</Label>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {[
+            'vegetarian', 'vegan', 'halal', 'kosher', 'gluten-free', 'dairy-free', 'nut-allergy', 'seafood-allergy', 'none'
+          ].map((restriction) => (
+            <div key={restriction} className="flex items-center space-x-2">
+              <Checkbox
+                id={restriction}
+                checked={formData.dietaryRestrictions.includes(restriction)}
+                onCheckedChange={() => handleArrayToggle('dietaryRestrictions', restriction)}
+              />
+              <Label htmlFor={restriction} className="cursor-pointer">
+                {t(`tripPlanner.dietary.${restriction}`)}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.accessibility')}</Label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            'wheelchair', 'mobility-aid', 'visual-impairment', 'hearing-impairment', 'none'
+          ].map((accessibility) => (
+            <div key={accessibility} className="flex items-center space-x-2">
+              <Checkbox
+                id={accessibility}
+                checked={formData.accessibility.includes(accessibility)}
+                onCheckedChange={() => handleArrayToggle('accessibility', accessibility)}
+              />
+              <Label htmlFor={accessibility} className="cursor-pointer">
+                {t(`tripPlanner.accessibility.${accessibility}`)}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="languagePreference" className="flex items-center gap-2">
+          <Globe className="w-4 h-4" />
+          {t('tripPlanner.form.languagePreference')}
+        </Label>
+        <Select value={formData.languagePreference} onValueChange={(value) => handleInputChange('languagePreference', value)}>
+          <SelectTrigger>
+            <SelectValue placeholder={t('tripPlanner.form.languagePreferencePlaceholder')} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="english">{t('tripPlanner.languages.english')}</SelectItem>
+            <SelectItem value="local">{t('tripPlanner.languages.local')}</SelectItem>
+            <SelectItem value="translator">{t('tripPlanner.languages.translator')}</SelectItem>
+            <SelectItem value="guide">{t('tripPlanner.languages.guide')}</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="previousVisits">{t('tripPlanner.form.previousVisits')}</Label>
+        <RadioGroup value={formData.previousVisits} onValueChange={(value) => handleInputChange('previousVisits', value)}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="first-time" id="first-time" />
+            <Label htmlFor="first-time">{t('tripPlanner.previousVisits.firstTime')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="returning" id="returning" />
+            <Label htmlFor="returning">{t('tripPlanner.previousVisits.returning')}</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="frequent" id="frequent" />
+            <Label htmlFor="frequent">{t('tripPlanner.previousVisits.frequent')}</Label>
+          </div>
+        </RadioGroup>
+      </div>
+    </div>
+  );
+
+  const renderStep4 = () => (
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <Label>{t('tripPlanner.form.budgetBreakdown')}</Label>
+        <div className="space-y-4">
+          {Object.entries(formData.budgetBreakdown).map(([category, percentage]) => (
+            <div key={category} className="space-y-2">
+              <div className="flex justify-between items-center">
+                <Label className="capitalize">{t(`tripPlanner.budgetBreakdown.${category}`)}</Label>
+                <Badge variant="secondary">{percentage}%</Badge>
+              </div>
+              <Slider
+                value={[percentage]}
+                onValueChange={(value) => handleBudgetBreakdownChange(category as keyof typeof formData.budgetBreakdown, value[0])}
+                max={70}
+                min={0}
+                step={5}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="text-sm text-muted-foreground">
+          {t('tripPlanner.form.budgetBreakdownNote')}
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="specialRequests">{t('tripPlanner.form.specialRequests')}</Label>
+        <Textarea
+          id="specialRequests"
+          placeholder={t('tripPlanner.form.specialRequestsPlaceholder')}
+          value={formData.specialRequests}
+          onChange={(e) => handleInputChange('specialRequests', e.target.value)}
+          rows={4}
+        />
+      </div>
+
+      <Separator />
+
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">{t('tripPlanner.form.summary')}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <strong>{t('tripPlanner.form.destination')}:</strong> {formData.destination}
+          </div>
+          <div>
+            <strong>{t('tripPlanner.form.travelers')}:</strong> {formData.travelers}
+          </div>
+          <div>
+            <strong>{t('tripPlanner.form.dates')}:</strong> {formData.startDate} - {formData.endDate}
+          </div>
+          <div>
+            <strong>{t('tripPlanner.form.budget')}:</strong> {formData.budget[0]} {formData.budgetCurrency}
+          </div>
+          <div>
+            <strong>{t('tripPlanner.form.travelStyle')}:</strong> {formData.travelStyle}
+          </div>
+          <div>
+            <strong>{t('tripPlanner.form.adventureLevel')}:</strong> {formData.adventureLevel}
+          </div>
+        </div>
+        {formData.interests.length > 0 && (
+          <div>
+            <strong>{t('tripPlanner.form.interests')}:</strong>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {formData.interests.map(interest => (
+                <Badge key={interest} variant="outline">
+                  {t(`tripPlanner.interests.${interest}`)}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            {t('tripPlanner.title')}
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            {t('tripPlanner.subtitle')}
+          </p>
+        </div>
+
+        <Card className="mb-6">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                {t('tripPlanner.step')} {currentStep} {t('tripPlanner.of')} 4
+              </CardTitle>
+              <div className="flex space-x-2">
+                {[1, 2, 3, 4].map((step) => (
+                  <div
+                    key={step}
+                    className={`w-3 h-3 rounded-full ${
+                      step <= currentStep ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+            <CardDescription>
+              {currentStep === 1 && t('tripPlanner.stepDescriptions.step1')}
+              {currentStep === 2 && t('tripPlanner.stepDescriptions.step2')}
+              {currentStep === 3 && t('tripPlanner.stepDescriptions.step3')}
+              {currentStep === 4 && t('tripPlanner.stepDescriptions.step4')}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {currentStep === 1 && renderStep1()}
+            {currentStep === 2 && renderStep2()}
+            {currentStep === 3 && renderStep3()}
+            {currentStep === 4 && renderStep4()}
+
+            <div className="flex justify-between mt-8">
+              <Button
+                variant="outline"
+                onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
+                disabled={currentStep === 1}
+              >
+                {t('tripPlanner.buttons.previous')}
+              </Button>
+              
+              {currentStep < 4 ? (
+                <Button
+                  onClick={() => setCurrentStep(Math.min(4, currentStep + 1))}
+                  disabled={
+                    (currentStep === 1 && (!formData.destination || !formData.startDate || !formData.endDate)) ||
+                    (currentStep === 2 && (!formData.accommodationType.length || !formData.transportPreference)) ||
+                    (currentStep === 3 && !formData.interests.length)
+                  }
+                >
+                  {t('tripPlanner.buttons.next')}
+                </Button>
+              ) : (
+                <Button
+                  onClick={generateTripPlan}
+                  disabled={isGenerating}
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  {isGenerating ? t('tripPlanner.buttons.generating') : t('tripPlanner.buttons.generatePlan')}
+                </Button>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        {generatedPlan && (
+          <Card>
+            <CardHeader>
+              <CardTitle>{t('tripPlanner.generatedPlan.title')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <pre className="whitespace-pre-wrap text-sm bg-gray-50 p-4 rounded-lg">
+                {generatedPlan}
+              </pre>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+}
