@@ -141,7 +141,7 @@ dependencies:
     specifier: ^19.1.1
     version: 19.1.1(react@19.1.1)
   react-dropzone:
-    specifier: ^14.2.3
+    specifier: ^14.3.8
     version: 14.3.8(react@19.1.1)
   react-error-boundary:
     specifier: ^4.0.12

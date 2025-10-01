@@ -1,374 +1,339 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/contexts/AuthContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Separator } from '@/components/ui/separator';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { 
   User, 
-  Settings, 
-  Bell, 
-  Shield, 
-  Globe,
+  Mail, 
+  Calendar, 
+  MapPin, 
+  Phone,
   Save,
-  Camera,
-  Loader2
+  Shield,
+  CreditCard,
+  Bell,
+  Globe
 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const Profile: React.FC = () => {
-  const { t } = useTranslation();
-  const { user, updateProfile } = useAuth();
-  const { currentLanguage, changeLanguage, supportedLanguages } = useLanguage();
-  const [isLoading, setIsLoading] = useState(false);
-  const [profileData, setProfileData] = useState({
+  const { user, updateUser } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
     email: user?.email || '',
-    phoneNumber: user?.phoneNumber || '',
-    nationality: user?.nationality || '',
-    dateOfBirth: user?.dateOfBirth || '',
+    phone: '',
+    country: '',
+    dateOfBirth: '',
+    passportNumber: '',
+    nationality: ''
   });
 
-  const [preferences, setPreferences] = useState({
-    emailNotifications: true,
-    smsNotifications: false,
-    marketingEmails: false,
-    securityAlerts: true,
-  });
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-  const handleUpdateProfile = async () => {
-    setIsLoading(true);
+  const handleSave = async () => {
+    setLoading(true);
+    
     try {
-      await updateProfile(profileData);
-      toast.success('Profile updated successfully');
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      updateUser({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email
+      });
+      
+      toast.success('Profile updated successfully!');
     } catch (error) {
-      toast.error('Failed to update profile');
+      toast.error('Failed to update profile. Please try again.');
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
-  const handleLanguageChange = (languageCode: string) => {
-    changeLanguage(languageCode as any);
-    toast.success('Language updated successfully');
-  };
-
-  const countries = [
-    { code: 'US', name: t('countries.US') },
-    { code: 'GB', name: t('countries.GB') },
-    { code: 'CA', name: t('countries.CA') },
-    { code: 'AU', name: t('countries.AU') },
-    { code: 'DE', name: t('countries.DE') },
-    { code: 'FR', name: t('countries.FR') },
-    { code: 'JP', name: t('countries.JP') },
-    { code: 'KR', name: t('countries.KR') },
-    { code: 'CN', name: t('countries.CN') },
-    { code: 'IN', name: t('countries.IN') },
-    { code: 'BR', name: t('countries.BR') },
-    { code: 'MX', name: t('countries.MX') },
-  ];
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Please log in to view your profile
+          </h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            {t('profile.title')}
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Manage your account settings and preferences
-          </p>
+          <div className="flex items-center space-x-4 mb-6">
+            <Avatar className="w-20 h-20">
+              <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-2xl">
+                {user.firstName?.[0]}{user.lastName?.[0]}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                {user.firstName} {user.lastName}
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400">{user.email}</p>
+              <div className="flex items-center space-x-2 mt-2">
+                <Badge variant="secondary">Free Plan</Badge>
+                <Badge variant="outline" className="flex items-center">
+                  <CreditCard className="w-3 h-3 mr-1" />
+                  {user.credits} Credits
+                </Badge>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <Tabs defaultValue="personal" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="personal" className="flex items-center">
-              <User className="h-4 w-4 mr-2" />
-              {t('profile.personalInfo')}
-            </TabsTrigger>
-            <TabsTrigger value="preferences" className="flex items-center">
-              <Settings className="h-4 w-4 mr-2" />
-              {t('profile.preferences')}
-            </TabsTrigger>
-            <TabsTrigger value="notifications" className="flex items-center">
-              <Bell className="h-4 w-4 mr-2" />
-              {t('profile.notifications')}
-            </TabsTrigger>
-            <TabsTrigger value="security" className="flex items-center">
-              <Shield className="h-4 w-4 mr-2" />
-              {t('profile.security')}
-            </TabsTrigger>
-          </TabsList>
-
-          {/* Personal Information */}
-          <TabsContent value="personal">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Profile Information */}
+          <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle>{t('profile.personalInfo')}</CardTitle>
+                <CardTitle className="flex items-center">
+                  <User className="w-5 h-5 mr-2" />
+                  Profile Information
+                </CardTitle>
                 <CardDescription>
-                  Update your personal information and profile details
+                  Update your personal information and contact details
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Avatar Section */}
-                <div className="flex items-center space-x-4">
-                  <Avatar className="h-20 w-20">
-                    <AvatarImage src={user?.avatar} alt={user?.firstName} />
-                    <AvatarFallback className="text-lg">
-                      {user?.firstName?.[0]}{user?.lastName?.[0]}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <Button variant="outline" size="sm">
-                      <Camera className="h-4 w-4 mr-2" />
-                      Change Photo
-                    </Button>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      JPG, PNG or GIF. Max size 2MB.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Form Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="firstName">{t('auth.firstName')}</Label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">First Name</Label>
                     <Input
                       id="firstName"
-                      value={profileData.firstName}
-                      onChange={(e) => setProfileData({ ...profileData, firstName: e.target.value })}
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      placeholder="Enter your first name"
                     />
                   </div>
-                  <div>
-                    <Label htmlFor="lastName">{t('auth.lastName')}</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName">Last Name</Label>
                     <Input
                       id="lastName"
-                      value={profileData.lastName}
-                      onChange={(e) => setProfileData({ ...profileData, lastName: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">{t('auth.email')}</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={profileData.email}
-                      onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phoneNumber">{t('auth.phoneNumber')}</Label>
-                    <Input
-                      id="phoneNumber"
-                      value={profileData.phoneNumber}
-                      onChange={(e) => setProfileData({ ...profileData, phoneNumber: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="nationality">{t('auth.nationality')}</Label>
-                    <Select
-                      value={profileData.nationality}
-                      onValueChange={(value) => setProfileData({ ...profileData, nationality: value })}
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {countries.map((country) => (
-                          <SelectItem key={country.code} value={country.code}>
-                            {country.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="dateOfBirth">{t('auth.dateOfBirth')}</Label>
-                    <Input
-                      id="dateOfBirth"
-                      type="date"
-                      value={profileData.dateOfBirth}
-                      onChange={(e) => setProfileData({ ...profileData, dateOfBirth: e.target.value })}
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      placeholder="Enter your last name"
                     />
                   </div>
                 </div>
 
-                <Button onClick={handleUpdateProfile} disabled={isLoading}>
-                  {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  <Save className="mr-2 h-4 w-4" />
-                  {t('profile.updateProfile')}
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="pl-10"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Input
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="pl-10"
+                        placeholder="+1 (555) 123-4567"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="country">Country</Label>
+                    <div className="relative">
+                      <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Input
+                        id="country"
+                        name="country"
+                        value={formData.country}
+                        onChange={handleInputChange}
+                        className="pl-10"
+                        placeholder="United States"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium">Travel Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                      <div className="relative">
+                        <Calendar className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <Input
+                          id="dateOfBirth"
+                          name="dateOfBirth"
+                          type="date"
+                          value={formData.dateOfBirth}
+                          onChange={handleInputChange}
+                          className="pl-10"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="nationality">Nationality</Label>
+                      <div className="relative">
+                        <Globe className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <Input
+                          id="nationality"
+                          name="nationality"
+                          value={formData.nationality}
+                          onChange={handleInputChange}
+                          className="pl-10"
+                          placeholder="American"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="passportNumber">Passport Number</Label>
+                    <Input
+                      id="passportNumber"
+                      name="passportNumber"
+                      value={formData.passportNumber}
+                      onChange={handleInputChange}
+                      placeholder="Enter your passport number"
+                    />
+                  </div>
+                </div>
+
+                <Button onClick={handleSave} disabled={loading} className="w-full">
+                  {loading ? (
+                    'Saving...'
+                  ) : (
+                    <>
+                      <Save className="w-4 h-4 mr-2" />
+                      Save Changes
+                    </>
+                  )}
                 </Button>
               </CardContent>
             </Card>
-          </TabsContent>
+          </div>
 
-          {/* Preferences */}
-          <TabsContent value="preferences">
+          {/* Account Settings */}
+          <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>{t('profile.preferences')}</CardTitle>
-                <CardDescription>
-                  Customize your application experience
-                </CardDescription>
+                <CardTitle className="flex items-center">
+                  <Shield className="w-5 h-5 mr-2" />
+                  Account Security
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <Label className="flex items-center mb-3">
-                    <Globe className="h-4 w-4 mr-2" />
-                    {t('profile.language')}
-                  </Label>
-                  <Select value={currentLanguage} onValueChange={handleLanguageChange}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {supportedLanguages.map((language) => (
-                        <SelectItem key={language.code} value={language.code}>
-                          <div className="flex items-center space-x-2">
-                            <span>{language.flag}</span>
-                            <span>{language.nativeName}</span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Notifications */}
-          <TabsContent value="notifications">
-            <Card>
-              <CardHeader>
-                <CardTitle>{t('profile.notifications')}</CardTitle>
-                <CardDescription>
-                  Manage how you receive notifications
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label className="text-base font-medium">{t('profile.emailNotifications')}</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Receive application updates via email
-                    </p>
+                    <div className="font-medium">Password</div>
+                    <div className="text-sm text-gray-600">Last updated 30 days ago</div>
                   </div>
-                  <Switch
-                    checked={preferences.emailNotifications}
-                    onCheckedChange={(checked) => 
-                      setPreferences({ ...preferences, emailNotifications: checked })
-                    }
-                  />
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <Label className="text-base font-medium">{t('profile.smsNotifications')}</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Receive urgent updates via SMS
-                    </p>
-                  </div>
-                  <Switch
-                    checked={preferences.smsNotifications}
-                    onCheckedChange={(checked) => 
-                      setPreferences({ ...preferences, smsNotifications: checked })
-                    }
-                  />
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <Label className="text-base font-medium">Marketing Emails</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Receive promotional offers and updates
-                    </p>
-                  </div>
-                  <Switch
-                    checked={preferences.marketingEmails}
-                    onCheckedChange={(checked) => 
-                      setPreferences({ ...preferences, marketingEmails: checked })
-                    }
-                  />
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <Label className="text-base font-medium">Security Alerts</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Receive notifications about account security
-                    </p>
-                  </div>
-                  <Switch
-                    checked={preferences.securityAlerts}
-                    onCheckedChange={(checked) => 
-                      setPreferences({ ...preferences, securityAlerts: checked })
-                    }
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Security */}
-          <TabsContent value="security">
-            <Card>
-              <CardHeader>
-                <CardTitle>{t('profile.security')}</CardTitle>
-                <CardDescription>
-                  Manage your account security settings
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <Label className="text-base font-medium mb-2 block">
-                    {t('profile.changePassword')}
-                  </Label>
-                  <div className="space-y-4">
-                    <Input type="password" placeholder="Current password" />
-                    <Input type="password" placeholder="New password" />
-                    <Input type="password" placeholder="Confirm new password" />
-                    <Button variant="outline">
-                      {t('profile.changePassword')}
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t">
-                  <Label className="text-base font-medium mb-2 block">
-                    Two-Factor Authentication
-                  </Label>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    Add an extra layer of security to your account
-                  </p>
-                  <Button variant="outline">
-                    Enable 2FA
+                  <Button variant="outline" size="sm">
+                    Change
                   </Button>
                 </div>
-
-                <div className="pt-4 border-t">
-                  <Label className="text-base font-medium mb-2 block">
-                    Active Sessions
-                  </Label>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    Manage your active login sessions
-                  </p>
-                  <Button variant="outline">
-                    View Sessions
+                
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-medium">Two-Factor Authentication</div>
+                    <div className="text-sm text-gray-600">Not enabled</div>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    Enable
                   </Button>
                 </div>
               </CardContent>
             </Card>
-          </TabsContent>
-        </Tabs>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Bell className="w-5 h-5 mr-2" />
+                  Notifications
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-medium">Email Notifications</div>
+                    <div className="text-sm text-gray-600">Application updates</div>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    Manage
+                  </Button>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-medium">SMS Notifications</div>
+                    <div className="text-sm text-gray-600">Important alerts</div>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    Setup
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Account Statistics</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Member since</span>
+                  <span className="font-medium">January 2024</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Applications</span>
+                  <span className="font-medium">3</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Documents scanned</span>
+                  <span className="font-medium">12</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Trip plans created</span>
+                  <span className="font-medium">2</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
