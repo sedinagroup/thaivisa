@@ -6,78 +6,103 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
+import { Loader2, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const { login, loading } = useAuth();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
-    if (!email || !password) {
-      setError('Please fill in all fields');
-      return;
+    try {
+      const success = await login(formData.email, formData.password);
+      if (success) {
+        toast.success('Login successful!');
+        navigate('/');
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      setError('Login failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-
-    const success = await login(email, password);
-    if (success) {
-      toast.success('Login successful!');
-      navigate('/dashboard');
-    } else {
-      setError('Invalid email or password');
+  const handleDemoLogin = async () => {
+    setLoading(true);
+    try {
+      const success = await login('demo@thaivisa.ai', 'demo123');
+      if (success) {
+        toast.success('Demo login successful!');
+        navigate('/');
+      }
+    } catch (error) {
+      setError('Demo login failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 p-4">
-      <div className="w-full max-w-md">
-        <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm">
-          <CardHeader className="text-center pb-6">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-white">TV</span>
-            </div>
-            <CardTitle className="text-2xl font-bold text-gray-900">Welcome Back</CardTitle>
-            <CardDescription className="text-gray-600">
-              Sign in to your Thailand Visa AI account
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        {/* Header */}
+        <div className="text-center">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold text-2xl">TV</span>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Welcome Back
+          </h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Sign in to your Thailand Visa AI account
+          </p>
+        </div>
+
+        {/* Login Form */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Sign In</CardTitle>
+            <CardDescription>
+              Enter your credentials to access your account
             </CardDescription>
           </CardHeader>
-          
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
                 <Alert variant="destructive">
                   <AlertDescription>{error}</AlertDescription>
                 </Alert>
               )}
-              
+
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Email Address</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="email"
                     type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     className="pl-10"
+                    placeholder="Enter your email"
                     required
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
@@ -85,66 +110,90 @@ const Login: React.FC = () => {
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={formData.password}
+                    onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
                     className="pl-10 pr-10"
+                    placeholder="Enter your password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-3 h-4 w-4 text-gray-400 hover:text-gray-600"
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    {showPassword ? <EyeOff /> : <Eye />}
                   </button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between">
-                <Link 
-                  to="/forgot-password" 
-                  className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
-                >
-                  Forgot password?
-                </Link>
-              </div>
-              
-              <Button 
-                type="submit" 
+
+              <Button
+                type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                 disabled={loading}
               >
                 {loading ? (
-                  <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Signing in...
-                  </div>
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Signing In...
+                  </>
                 ) : (
-                  <div className="flex items-center">
-                    Sign In
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </div>
+                  'Sign In'
+                )}
+              </Button>
+
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white dark:bg-gray-800 px-2 text-gray-500">Or</span>
+                </div>
+              </div>
+
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={handleDemoLogin}
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Loading Demo...
+                  </>
+                ) : (
+                  'Try Demo Account'
                 )}
               </Button>
             </form>
-            
+
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?{' '}
-                <Link 
-                  to="/register" 
-                  className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
+                <Link
+                  to="/register"
+                  className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
                 >
-                  Sign up
+                  Sign up here
                 </Link>
               </p>
             </div>
-            
-            <div className="mt-4 text-center">
-              <p className="text-xs text-gray-500">
-                Demo credentials: any email + password (6+ chars)
-              </p>
+          </CardContent>
+        </Card>
+
+        {/* Demo Account Info */}
+        <Card className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+          <CardContent className="pt-6">
+            <div className="text-center">
+              <h3 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
+                Demo Account
+              </h3>
+              <div className="text-xs text-blue-600 dark:text-blue-400 space-y-1">
+                <p>Email: demo@thaivisa.ai</p>
+                <p>Password: demo123</p>
+                <p>Includes 150 credits for testing</p>
+              </div>
             </div>
           </CardContent>
         </Card>
