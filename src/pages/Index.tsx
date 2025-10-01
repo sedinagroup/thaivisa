@@ -63,15 +63,14 @@ const Index: React.FC = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-            AI-Powered Thailand
+            {t('home.title')}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
-              Visa & Travel Assistant
+              {t('home.subtitle')}
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Complete AI support for document verification, visa information, and trip bureaucracy management. 
-            Let our advanced AI handle all the complexity while you focus on your journey.
+            {t('home.description')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -79,7 +78,7 @@ const Index: React.FC = () => {
               <Button asChild size="lg" className="px-8 py-4 text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                 <Link to="/apply" className="flex items-center">
                   <Scan className="w-5 h-5 mr-2" />
-                  Start AI Visa Check
+                  {t('home.cta.startApplication')}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
@@ -95,7 +94,7 @@ const Index: React.FC = () => {
                 <Button asChild variant="outline" size="lg" className="px-8 py-4 text-lg border-2">
                   <Link to="#visa-types" className="flex items-center">
                     <Globe className="w-5 h-5 mr-2" />
-                    Explore Visa Types
+                    {t('home.learnMore')}
                   </Link>
                 </Button>
               </>
@@ -114,7 +113,7 @@ const Index: React.FC = () => {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">98%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Approval Rate</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('home.stats.successRate')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">4.9</div>
@@ -129,7 +128,7 @@ const Index: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              AI-Powered Services
+              {t('home.features.title')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Our advanced AI handles every aspect of your Thailand visa journey with unprecedented accuracy and speed.
@@ -377,7 +376,7 @@ const Index: React.FC = () => {
               <CardHeader>
                 <CardTitle className="text-lg">Basic Trip Plan</CardTitle>
                 <div className="text-3xl font-bold text-blue-600">25</div>
-                <div className="text-sm text-gray-600">credits</div>
+                <div className="text-sm text-gray-600">{t('credits.credits')}</div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Basic AI recommendations for flights, hotels, and transport</p>
@@ -391,7 +390,7 @@ const Index: React.FC = () => {
               <CardHeader>
                 <CardTitle className="text-lg">Advanced Trip Plan</CardTitle>
                 <div className="text-3xl font-bold text-purple-600">50</div>
-                <div className="text-sm text-gray-600">credits</div>
+                <div className="text-sm text-gray-600">{t('credits.credits')}</div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Detailed itinerary with alternatives and optimization</p>
@@ -405,7 +404,7 @@ const Index: React.FC = () => {
               <CardHeader>
                 <CardTitle className="text-lg">Premium Trip Plan</CardTitle>
                 <div className="text-3xl font-bold text-green-600">100</div>
-                <div className="text-sm text-gray-600">credits</div>
+                <div className="text-sm text-gray-600">{t('credits.credits')}</div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Complete travel management with real-time updates</p>
@@ -419,7 +418,7 @@ const Index: React.FC = () => {
               <CardHeader>
                 <CardTitle className="text-lg">VIP Concierge</CardTitle>
                 <div className="text-3xl font-bold text-orange-600">200</div>
-                <div className="text-sm text-gray-600">credits</div>
+                <div className="text-sm text-gray-600">{t('credits.credits')}</div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Personal AI travel assistant with 24/7 support</p>
@@ -869,7 +868,7 @@ const Index: React.FC = () => {
             <div>
               <Award className="w-8 h-8 mx-auto mb-2 opacity-80" />
               <div className="text-2xl font-bold">98%</div>
-              <div className="opacity-80">Success Rate</div>
+              <div className="opacity-80">{t('home.stats.successRate')}</div>
             </div>
             <div>
               <TrendingUp className="w-8 h-8 mx-auto mb-2 opacity-80" />
