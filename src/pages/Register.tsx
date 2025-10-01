@@ -6,24 +6,23 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2, Mail, Lock, User, Eye, EyeOff, Gift } from 'lucide-react';
+import { Eye, EyeOff, User, Mail, Lock, AlertCircle, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 const Register: React.FC = () => {
-  const { register } = useAuth();
+  const { register, loading } = useAuth();
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    firstName: '',
+    lastName: ''
   });
-  const [loading, setLoading] = useState(false);
+  
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +30,7 @@ const Register: React.FC = () => {
     setError('');
 
     // Validation
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+    if (!formData.email || !formData.password || !formData.firstName || !formData.lastName) {
       setError('Please fill in all fields');
       return;
     }
@@ -46,66 +45,54 @@ const Register: React.FC = () => {
       return;
     }
 
-    if (!acceptTerms) {
-      setError('Please accept the terms and conditions');
-      return;
-    }
-
-    setLoading(true);
-
     try {
-      const success = await register({
-        email: formData.email,
-        password: formData.password,
-        firstName: formData.firstName,
-        lastName: formData.lastName
-      });
-
-      if (success) {
-        toast.success('Account created successfully! Welcome bonus: 100 credits');
-        navigate('/');
-      } else {
-        setError('Registration failed. Please try again.');
-      }
-    } catch (error) {
-      setError('Registration failed. Please try again.');
-    } finally {
-      setLoading(false);
+      await register(formData.email, formData.password, formData.firstName, formData.lastName);
+      toast.success('Account created successfully! Welcome to Thailand Visa AI!');
+      navigate('/');
+    } catch (err: any) {
+      setError(err.message || 'Registration failed. Please try again.');
+      console.error('Registration error:', err);
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        {/* Header */}
-        <div className="text-center">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        {/* Logo */}
+        <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-2xl">TV</span>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Create Account
-          </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            Join Thailand Visa AI and get started with your visa journey
-          </p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Thailand Visa AI</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">Create your account to get started</p>
         </div>
 
-        {/* Registration Form */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Sign Up</CardTitle>
-            <CardDescription>
-              Create your account to access AI-powered visa services
+        <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm dark:bg-gray-800/80">
+          <CardHeader className="space-y-1 pb-6">
+            <CardTitle className="text-2xl font-bold text-center">Create Account</CardTitle>
+            <CardDescription className="text-center">
+              Join thousands of travelers using AI for visa processing
             </CardDescription>
           </CardHeader>
+          
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
                 <Alert variant="destructive">
+                  <AlertCircle className="h-4 w-4" />
                   <AlertDescription>{error}</AlertDescription>
                 </Alert>
               )}
 
+              {/* Name Fields */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>
@@ -113,155 +100,158 @@ const Register: React.FC = () => {
                     <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="firstName"
+                      name="firstName"
                       type="text"
-                      value={formData.firstName}
-                      onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
-                      className="pl-10"
                       placeholder="John"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      className="pl-10"
                       required
                     />
                   </div>
                 </div>
-
+                
                 <div className="space-y-2">
                   <Label htmlFor="lastName">Last Name</Label>
                   <div className="relative">
                     <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="lastName"
+                      name="lastName"
                       type="text"
-                      value={formData.lastName}
-                      onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
-                      className="pl-10"
                       placeholder="Doe"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      className="pl-10"
                       required
                     />
                   </div>
                 </div>
               </div>
 
+              {/* Email */}
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="email"
+                    name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                    className="pl-10"
                     placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="pl-10"
                     required
                   />
                 </div>
               </div>
 
+              {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="password"
-                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
                     value={formData.password}
-                    onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+                    onChange={handleInputChange}
                     className="pl-10 pr-10"
-                    placeholder="Create a strong password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 h-4 w-4 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
                   >
-                    {showPassword ? <EyeOff /> : <Eye />}
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
-                <p className="text-xs text-gray-500">Must be at least 6 characters long</p>
               </div>
 
+              {/* Confirm Password */}
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="confirmPassword"
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    value={formData.confirmPassword}
-                    onChange={(e) => setFormData(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                    className="pl-10 pr-10"
+                    name="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirm your password"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    className="pl-10 pr-10"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-3 h-4 w-4 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
                   >
-                    {showConfirmPassword ? <EyeOff /> : <Eye />}
+                    {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="terms"
-                  checked={acceptTerms}
-                  onCheckedChange={setAcceptTerms}
-                />
-                <Label htmlFor="terms" className="text-sm">
-                  I agree to the{' '}
-                  <Link to="/terms" className="text-blue-600 hover:text-blue-500">
-                    Terms of Service
-                  </Link>{' '}
-                  and{' '}
-                  <Link to="/privacy" className="text-blue-600 hover:text-blue-500">
-                    Privacy Policy
-                  </Link>
-                </Label>
-              </div>
-
-              <Button
-                type="submit"
+              {/* Submit Button */}
+              <Button 
+                type="submit" 
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                 disabled={loading}
               >
                 {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                     Creating Account...
-                  </>
+                  </div>
                 ) : (
-                  'Create Account'
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Create Account
+                  </div>
                 )}
               </Button>
             </form>
 
+            {/* Login Link */}
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?{' '}
-                <Link
-                  to="/login"
+                <Link 
+                  to="/login" 
                   className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
                 >
                   Sign in here
                 </Link>
               </p>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Welcome Bonus */}
-        <Card className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
-          <CardContent className="pt-6">
-            <div className="text-center">
-              <Gift className="w-8 h-8 text-green-600 mx-auto mb-2" />
-              <h3 className="text-sm font-medium text-green-800 dark:text-green-300 mb-2">
-                Welcome Bonus
-              </h3>
-              <div className="text-xs text-green-600 dark:text-green-400">
-                <p>Get 100 free credits when you sign up!</p>
-                <p>Perfect for trying our AI services</p>
+            {/* Features */}
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <div className="text-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+                What you get with your account:
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  100 welcome credits for AI services
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  AI-powered document verification
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  Personalized visa recommendations
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  24/7 AI travel assistant
+                </div>
               </div>
             </div>
           </CardContent>

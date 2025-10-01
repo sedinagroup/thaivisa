@@ -7,11 +7,11 @@ interface CreditsContextType {
   addCredits: (amount: number) => void;
 }
 
-const CreditsContext = createContext<CreditsContextType | undefined>(undefined);
+const CreditsContext = createContext<CreditsContextType | null>(null);
 
 export const useCredits = () => {
   const context = useContext(CreditsContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useCredits must be used within a CreditsProvider');
   }
   return context;
@@ -22,30 +22,30 @@ interface CreditsProviderProps {
 }
 
 export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) => {
-  const { user, updateUser } = useAuth();
+  const auth = useAuth();
 
-  const consumeCredits = async (amount: number, service: string, description?: string) => {
-    if (!user) {
+  const consumeCredits = async (amount: number, service: string, description?: string): Promise<void> => {
+    if (!auth.user) {
       throw new Error('User not authenticated');
     }
     
-    if (user.credits < amount) {
+    if (auth.user.credits < amount) {
       throw new Error('Insufficient credits');
     }
 
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 100));
     
-    updateUser({ credits: user.credits - amount });
+    auth.updateUser({ credits: auth.user.credits - amount });
   };
 
   const addCredits = (amount: number) => {
-    if (!user) return;
-    updateUser({ credits: user.credits + amount });
+    if (!auth.user) return;
+    auth.updateUser({ credits: auth.user.credits + amount });
   };
 
   const value: CreditsContextType = {
-    credits: user?.credits || 0,
+    credits: auth.user?.credits || 0,
     consumeCredits,
     addCredits
   };
