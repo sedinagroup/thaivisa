@@ -11,8 +11,8 @@ import Register from '@/pages/Register';
 import Apply from '@/pages/Apply';
 import Credits from '@/pages/Credits';
 import Profile from '@/pages/Profile';
-import AIDocumentChecker from '@/pages/AIDocumentChecker';
-import AITripPlanner from '@/pages/AITripPlanner';
+import AIDocumentChecker from '@/pages/ai/DocumentChecker';
+import AITripPlanner from '@/pages/ai/TripPlanner';
 import PayPalPayment from '@/pages/PayPalPayment';
 
 // 404 Page Component
