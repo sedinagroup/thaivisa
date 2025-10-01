@@ -1,14 +1,15 @@
 {
   "nav": {
     "home": "Home",
-    "apply": "Richiedi Visto",
-    "aiDocumentChecker": "Verificatore Documenti AI",
-    "aiTripPlanner": "Pianificatore Viaggio AI",
+    "apply": "Candidati",
+    "aiDocumentChecker": "Verificatore Documenti IA",
+    "aiTripPlanner": "Pianificatore Viaggio IA",
     "credits": "Crediti",
     "profile": "Profilo",
-    "login": "Accedi",
-    "register": "Registrati",
-    "logout": "Esci"
+    "signIn": "Accedi",
+    "getStarted": "Inizia",
+    "logOut": "Esci",
+    "creditsAndBilling": "Crediti e Fatturazione"
   },
   "common": {
     "loading": "Caricamento...",
@@ -16,8 +17,6 @@
     "cancel": "Annulla",
     "edit": "Modifica",
     "delete": "Elimina",
-    "download": "Scarica",
-    "upload": "Carica",
     "submit": "Invia",
     "back": "Indietro",
     "next": "Avanti",
@@ -26,18 +25,56 @@
     "confirm": "Conferma",
     "yes": "Sì",
     "no": "No",
-    "language": "Lingua"
+    "ok": "OK",
+    "error": "Errore",
+    "success": "Successo",
+    "warning": "Avviso",
+    "info": "Informazione"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "Il tuo compagno intelligente per le richieste di visto thailandese",
+    "title": "Visto Thailandia IA",
+    "subtitle": "Il Tuo Assistente per la Richiesta di Visto Alimentato dall'IA",
+    "description": "Semplifica il tuo processo di richiesta del visto per la Thailandia con tecnologia IA avanzata. Ottieni verifica documenti, pianificazione viaggi e consulenza esperta in un unico posto.",
     "getStarted": "Inizia",
-    "learnMore": "Scopri di più"
+    "learnMore": "Scopri di Più"
+  },
+  "auth": {
+    "login": {
+      "title": "Bentornato",
+      "subtitle": "Accedi al tuo account Visto Thailandia IA",
+      "email": "Indirizzo Email",
+      "password": "Password",
+      "rememberMe": "Ricordami",
+      "forgotPassword": "Hai dimenticato la password?",
+      "signIn": "Accedi",
+      "noAccount": "Non hai un account?",
+      "signUp": "Registrati qui",
+      "emailPlaceholder": "Inserisci la tua email",
+      "passwordPlaceholder": "Inserisci la tua password"
+    },
+    "register": {
+      "title": "Crea il Tuo Account",
+      "subtitle": "Unisciti a Visto Thailandia IA e inizia la tua richiesta di visto",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Indirizzo Email",
+      "password": "Password",
+      "confirmPassword": "Conferma Password",
+      "agreeToTerms": "Accetto i Termini di Servizio e la Politica sulla Privacy",
+      "createAccount": "Crea Account",
+      "haveAccount": "Hai già un account?",
+      "signIn": "Accedi qui",
+      "firstNamePlaceholder": "Inserisci il tuo nome",
+      "lastNamePlaceholder": "Inserisci il tuo cognome",
+      "emailPlaceholder": "Inserisci la tua email",
+      "passwordPlaceholder": "Crea una password",
+      "confirmPasswordPlaceholder": "Conferma la tua password"
+    }
   },
   "languages": {
     "en": "English",
     "pt": "Português",
-    "fr": "Français", 
+    "fr": "Français",
     "de": "Deutsch",
     "it": "Italiano",
     "es": "Español",

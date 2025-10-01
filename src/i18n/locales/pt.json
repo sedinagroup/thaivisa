@@ -1,14 +1,15 @@
 {
   "nav": {
     "home": "Início",
-    "apply": "Solicitar Visto",
+    "apply": "Aplicar",
     "aiDocumentChecker": "Verificador de Documentos IA",
     "aiTripPlanner": "Planejador de Viagem IA",
     "credits": "Créditos",
     "profile": "Perfil",
-    "login": "Entrar",
-    "register": "Registrar",
-    "logout": "Sair"
+    "signIn": "Entrar",
+    "getStarted": "Começar",
+    "logOut": "Sair",
+    "creditsAndBilling": "Créditos e Cobrança"
   },
   "common": {
     "loading": "Carregando...",
@@ -16,8 +17,6 @@
     "cancel": "Cancelar",
     "edit": "Editar",
     "delete": "Excluir",
-    "download": "Baixar",
-    "upload": "Enviar",
     "submit": "Enviar",
     "back": "Voltar",
     "next": "Próximo",
@@ -26,51 +25,35 @@
     "confirm": "Confirmar",
     "yes": "Sim",
     "no": "Não",
-    "optional": "Opcional",
-    "required": "Obrigatório",
-    "search": "Pesquisar",
-    "filter": "Filtrar",
-    "sort": "Ordenar",
-    "clear": "Limpar",
-    "reset": "Redefinir",
-    "refresh": "Atualizar",
-    "share": "Compartilhar",
-    "copy": "Copiar",
-    "print": "Imprimir",
-    "export": "Exportar",
-    "import": "Importar",
-    "settings": "Configurações",
-    "help": "Ajuda",
-    "support": "Suporte",
-    "contact": "Contato",
-    "about": "Sobre",
-    "terms": "Termos de Serviço",
-    "privacy": "Política de Privacidade",
-    "language": "Idioma"
+    "ok": "OK",
+    "error": "Erro",
+    "success": "Sucesso",
+    "warning": "Aviso",
+    "info": "Informação"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "Seu companheiro inteligente para solicitações de visto da Tailândia",
-    "description": "Simplifique seu processo de solicitação de visto da Tailândia com verificação de documentos por IA, planejamento de viagem e orientação especializada.",
+    "title": "Visto Tailândia IA",
+    "subtitle": "Seu Assistente de Solicitação de Visto com IA",
+    "description": "Simplifique seu processo de solicitação de visto para a Tailândia com tecnologia de IA avançada. Obtenha verificação de documentos, planejamento de viagem e orientação especializada em um só lugar.",
     "getStarted": "Começar",
     "learnMore": "Saiba Mais",
     "features": {
-      "title": "Por que escolher Thailand Visa AI?",
+      "title": "Por que Escolher o Visto Tailândia IA?",
       "aiDocumentChecker": {
         "title": "Verificador de Documentos IA",
         "description": "Verifique seus documentos instantaneamente com nossa tecnologia de IA avançada"
       },
-      "aiTripPlanner": {
-        "title": "Planejador de Viagem IA",
-        "description": "Obtenha itinerários de viagem personalizados adaptados às suas preferências"
+      "tripPlanner": {
+        "title": "Planejador de Viagem Inteligente",
+        "description": "Obtenha recomendações de viagem personalizadas com IA"
       },
       "expertSupport": {
         "title": "Suporte Especializado",
-        "description": "Assistência 24/7 de especialistas em visto e orientação por IA"
+        "description": "Assistência 24/7 de especialistas em solicitação de visto"
       },
       "fastProcessing": {
         "title": "Processamento Rápido",
-        "description": "Processamento rápido de solicitação de visto com atualizações de status em tempo real"
+        "description": "Processamento de solicitação de visto rápido e eficiente"
       }
     },
     "stats": {
@@ -80,27 +63,28 @@
       "avgProcessingTime": "Tempo Médio de Processamento"
     },
     "cta": {
-      "title": "Pronto para começar sua jornada?",
-      "description": "Junte-se a milhares de viajantes que obtiveram com sucesso seu visto da Tailândia com nossa assistência de IA.",
-      "startApplication": "Iniciar Solicitação"
+      "title": "Pronto para Solicitar seu Visto para a Tailândia?",
+      "description": "Junte-se a milhares de viajantes que obtiveram com sucesso seu visto para a Tailândia com nossa plataforma com IA.",
+      "startApplication": "Iniciar sua Solicitação"
     }
   },
   "auth": {
     "login": {
-      "title": "Bem-vindo de volta",
-      "subtitle": "Entre na sua conta Thailand Visa AI",
+      "title": "Bem-vindo de Volta",
+      "subtitle": "Entre na sua conta do Visto Tailândia IA",
       "email": "Endereço de Email",
       "password": "Senha",
       "rememberMe": "Lembrar de mim",
-      "forgotPassword": "Esqueceu a senha?",
+      "forgotPassword": "Esqueceu sua senha?",
       "signIn": "Entrar",
       "noAccount": "Não tem uma conta?",
-      "signUp": "Registre-se",
-      "orContinueWith": "Ou continue com"
+      "signUp": "Cadastre-se aqui",
+      "emailPlaceholder": "Digite seu email",
+      "passwordPlaceholder": "Digite sua senha"
     },
     "register": {
-      "title": "Criar Conta",
-      "subtitle": "Comece sua jornada de visto da Tailândia hoje",
+      "title": "Crie sua Conta",
+      "subtitle": "Junte-se ao Visto Tailândia IA e inicie sua solicitação de visto",
       "firstName": "Nome",
       "lastName": "Sobrenome",
       "email": "Endereço de Email",
@@ -108,482 +92,13 @@
       "confirmPassword": "Confirmar Senha",
       "agreeToTerms": "Concordo com os Termos de Serviço e Política de Privacidade",
       "createAccount": "Criar Conta",
-      "alreadyHaveAccount": "Já tem uma conta?",
-      "signIn": "Entrar"
-    },
-    "errors": {
-      "invalidCredentials": "Email ou senha inválidos",
-      "emailRequired": "Email é obrigatório",
-      "passwordRequired": "Senha é obrigatória",
-      "passwordMismatch": "As senhas não coincidem",
-      "emailInvalid": "Por favor, insira um endereço de email válido",
-      "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
-      "termsRequired": "Você deve concordar com os termos e condições"
-    },
-    "success": {
-      "loginSuccess": "Bem-vindo de volta! Login realizado com sucesso.",
-      "registerSuccess": "Conta criada com sucesso! Bem-vindo ao Thailand Visa AI.",
-      "logoutSuccess": "Você foi desconectado com sucesso."
-    }
-  },
-  "apply": {
-    "title": "Solicitação de Visto",
-    "subtitle": "Solicite seu visto da Tailândia online",
-    "welcome": "Bem-vindo de volta, {{name}}! Complete sua solicitação de visto abaixo.",
-    "sections": {
-      "visaType": {
-        "title": "Seleção do Tipo de Visto",
-        "description": "Escolha o tipo de visto que melhor se adequa ao seu propósito de viagem",
-        "visaType": "Tipo de Visto",
-        "selectVisaType": "Selecionar tipo de visto",
-        "purpose": "Propósito da Visita",
-        "purposePlaceholder": "ex: Turismo, Reunião de negócios",
-        "duration": "Duração da Estadia (dias)",
-        "durationPlaceholder": "ex: 14",
-        "arrivalDate": "Data de Chegada",
-        "departureDate": "Data de Partida"
-      },
-      "personalInfo": {
-        "title": "Informações Pessoais",
-        "description": "Forneça seus dados pessoais como aparecem no seu passaporte",
-        "passportNumber": "Número do Passaporte",
-        "passportNumberPlaceholder": "ex: A12345678",
-        "passportExpiry": "Data de Expiração do Passaporte",
-        "nationality": "Nacionalidade",
-        "nationalityPlaceholder": "ex: Brasileiro",
-        "phoneNumber": "Número de Telefone",
-        "phoneNumberPlaceholder": "ex: +55 11 99999-9999",
-        "address": "Endereço Residencial",
-        "addressPlaceholder": "Digite seu endereço completo",
-        "emergencyContact": "Nome do Contato de Emergência",
-        "emergencyContactPlaceholder": "Nome completo",
-        "emergencyPhone": "Telefone do Contato de Emergência",
-        "emergencyPhonePlaceholder": "Número de telefone"
-      },
-      "documents": {
-        "title": "Documentos Obrigatórios",
-        "description": "Envie digitalizações ou fotos claras e de alta qualidade dos seus documentos",
-        "passportBioPage": "Página Biográfica do Passaporte",
-        "passportBioPageDescription": "Digitalização clara da página biográfica do passaporte",
-        "passportPhoto": "Foto do Passaporte",
-        "passportPhotoDescription": "Foto recente no estilo passaporte",
-        "bankStatement": "Extrato Bancário",
-        "bankStatementDescription": "Últimos 3 meses (opcional)",
-        "flightTicket": "Passagem Aérea",
-        "flightTicketDescription": "Reserva de ida e volta (opcional)",
-        "hotelBooking": "Reserva de Hotel",
-        "hotelBookingDescription": "Comprovante de acomodação (opcional)"
-      },
-      "additionalInfo": {
-        "title": "Informações Adicionais",
-        "description": "Por favor, responda às seguintes perguntas honestamente",
-        "previousVisits": "Você já visitou a Tailândia antes?",
-        "firstVisit": "Não, esta é minha primeira visita",
-        "previousVisit": "Sim, já visitei antes",
-        "criminalRecord": "Você tem algum registro criminal?",
-        "additionalInfo": "Informações Adicionais (Opcional)",
-        "additionalInfoPlaceholder": "Qualquer informação adicional que gostaria de fornecer"
-      }
-    },
-    "visaTypes": {
-      "tourist": "Visto de Turista (TR)",
-      "business": "Visto de Negócios (B)",
-      "transit": "Visto de Trânsito",
-      "student": "Visto de Estudante (ED)",
-      "retirement": "Visto de Aposentadoria (O-A)"
-    },
-    "purposes": {
-      "tourism": "Turismo",
-      "business": "Negócios",
-      "transit": "Trânsito",
-      "medical": "Médico"
-    },
-    "submitApplication": "Enviar Solicitação de Visto",
-    "submittingApplication": "Enviando Solicitação...",
-    "applicationStatus": {
-      "title": "Status da Solicitação",
-      "documentUpload": "Upload de Documentos",
-      "aiVerification": "Verificação por IA",
-      "embassyReview": "Revisão da Embaixada",
-      "approval": "Aprovação",
-      "pending": "Pendente",
-      "waiting": "Aguardando"
-    },
-    "requiredDocuments": {
-      "title": "Documentos Obrigatórios",
-      "passport": "Passaporte (válido por 6+ meses)",
-      "photo": "Foto recente de passaporte",
-      "flight": "Itinerário de voo",
-      "hotel": "Confirmação de reserva de hotel",
-      "bank": "Extrato bancário (3 meses)"
-    },
-    "processingInfo": {
-      "title": "Informações de Processamento",
-      "processingTime": "Tempo de Processamento: 3-5 dias úteis",
-      "visaFee": "Taxa do Visto: $35 USD",
-      "validity": "Validade: 60 dias a partir da data de emissão",
-      "stayDuration": "Duração da Estadia: Até 30 dias"
-    },
-    "success": "Solicitação de visto enviada com sucesso! Você receberá um email de confirmação em breve.",
-    "error": "Falha ao enviar solicitação. Tente novamente."
-  },
-  "documentChecker": {
-    "title": "Verificador de Documentos IA",
-    "subtitle": "Verifique seus documentos de viagem com análise avançada de IA",
-    "creditsPerDocument": "{{credits}} créditos por documento",
-    "availableCredits": "Disponível: {{credits}} créditos",
-    "upload": {
-      "title": "Enviar Documentos",
-      "description": "Envie fotos ou digitalizações claras dos seus documentos de viagem para análise de IA",
-      "dropZone": "Solte os documentos aqui ou clique para enviar",
-      "supportedFormats": "Suporta arquivos JPG, PNG, PDF até 10MB cada",
-      "chooseFiles": "Escolher Arquivos"
-    },
-    "uploadedDocuments": "Documentos Enviados ({{count}})",
-    "analyzing": "Analisando documentos com IA...",
-    "analyzeDocuments": "Analisar Documentos ({{credits}} créditos)",
-    "analyzingDocuments": "Analisando Documentos...",
-    "results": {
-      "title": "Resultados da Análise",
-      "description": "Análise dos seus documentos por IA",
-      "confidence": "{{confidence}}% de confiança",
-      "extractedInfo": "Informações Extraídas",
-      "analysisDetails": "Detalhes da Análise",
-      "status": "Status",
-      "analyzed": "Analisado",
-      "issuesFound": "Problemas Encontrados",
-      "recommendations": "Recomendações"
-    },
-    "status": {
-      "valid": "Válido",
-      "invalid": "Inválido",
-      "warning": "Atenção",
-      "expired": "Expirado"
-    },
-    "documentTypes": {
-      "passport": "Passaporte",
-      "visa": "Visto",
-      "id": "Identidade Nacional",
-      "other": "Outro Documento"
-    },
-    "supportedDocuments": {
-      "title": "Documentos Suportados"
-    },
-    "features": {
-      "title": "Recursos de Análise IA",
-      "authentication": {
-        "title": "Autenticação de Documentos",
-        "description": "Verificar autenticidade do documento"
-      },
-      "extraction": {
-        "title": "Extração de Dados",
-        "description": "Extrair informações-chave automaticamente"
-      },
-      "quality": {
-        "title": "Avaliação de Qualidade",
-        "description": "Verificar condição e clareza do documento"
-      },
-      "expiry": {
-        "title": "Validação de Expiração",
-        "description": "Verificar datas de validade do documento"
-      }
-    },
-    "tips": {
-      "title": "Dicas para Melhores Resultados",
-      "lighting": "Use boa iluminação e evite sombras",
-      "flat": "Certifique-se de que o documento esteja plano e totalmente visível",
-      "resolution": "Tire fotos em alta resolução",
-      "glare": "Evite reflexos e brilhos"
-    },
-    "errors": {
-      "noDocuments": "Por favor, envie pelo menos um documento para analisar.",
-      "insufficientCredits": "Créditos insuficientes. Você precisa de {{credits}} créditos para analisar {{count}} documento(s).",
-      "analysisError": "Análise falhou. Tente novamente.",
-      "unsupportedFormat": "{{filename}}: Formato não suportado. Use imagens ou PDF.",
-      "fileTooLarge": "{{filename}}: Arquivo muito grande. Máximo 10MB."
-    },
-    "success": {
-      "analysisComplete": "{{count}} documento(s) analisado(s) com sucesso!"
-    }
-  },
-  "tripPlanner": {
-    "title": "Planejador de Viagem IA",
-    "subtitle": "Crie o plano de viagem perfeito para a Tailândia com inteligência artificial",
-    "creditsPerPlan": "{{credits}} créditos por plano",
-    "availableCredits": "{{credits}} créditos disponíveis",
-    "form": {
-      "title": "Detalhes da Viagem",
-      "description": "Preencha as informações para gerar seu plano personalizado",
-      "destination": "Destino na Tailândia",
-      "destinationPlaceholder": "ex: Bangkok, Phuket, Chiang Mai",
-      "startDate": "Data de Início",
-      "endDate": "Data de Fim",
-      "travelers": "Viajantes",
-      "budget": "Orçamento ($)",
-      "travelStyle": "Estilo de Viagem",
-      "interests": "Interesses (selecione até 5)",
-      "generatePlan": "Gerar Plano de Viagem",
-      "generatingPlan": "Gerando Plano..."
-    },
-    "travelStyles": {
-      "budget": "Econômica",
-      "balanced": "Equilibrada",
-      "luxury": "Luxuosa"
-    },
-    "interests": {
-      "culture": "Cultura e História",
-      "beaches": "Praias e Relaxamento",
-      "adventure": "Aventura e Esportes",
-      "food": "Comida e Culinária",
-      "nightlife": "Vida Noturna",
-      "nature": "Natureza e Vida Selvagem",
-      "shopping": "Compras",
-      "temples": "Templos e Espiritualidade",
-      "art": "Arte e Museus",
-      "photography": "Fotografia"
-    },
-    "results": {
-      "title": "Plano de Viagem para {{destination}}",
-      "duration": "{{duration}} dias • {{travelers}} viajante(s) • ${{cost}} estimado",
-      "budgetBreakdown": {
-        "accommodation": "Hospedagem",
-        "food": "Alimentação",
-        "activities": "Atividades",
-        "transportation": "Transporte",
-        "miscellaneous": "Diversos"
-      },
-      "dailyItinerary": "Roteiro Diário",
-      "activities": "Atividades",
-      "meals": "Refeições",
-      "estimatedCost": "${{cost}}",
-      "recommendedHotels": "Hotéis Recomendados",
-      "suggestedFlights": "Voos Sugeridos",
-      "perNight": "/noite",
-      "departure": "Saída",
-      "arrival": "Chegada",
-      "duration": "Duração",
-      "stops": "Escalas",
-      "direct": "Direto",
-      "stop": "{{count}} escala(s)"
-    },
-    "placeholder": {
-      "title": "Pronto para planejar sua viagem?",
-      "description": "Preencha os detalhes ao lado e nossa IA criará um plano personalizado para você."
-    },
-    "errors": {
-      "fillRequired": "Por favor, preencha todos os campos obrigatórios",
-      "insufficientCredits": "Créditos insuficientes. Você precisa de {{credits}} créditos para gerar um plano de viagem.",
-      "generationError": "Erro ao gerar plano de viagem. Tente novamente."
-    },
-    "success": {
-      "planGenerated": "Plano de viagem gerado com sucesso!",
-      "planDownloaded": "Plano de viagem baixado com sucesso!"
-    }
-  },
-  "credits": {
-    "title": "Gerenciamento de Créditos",
-    "subtitle": "Gerencie seus créditos de serviços de IA e compre mais",
-    "currentBalance": {
-      "title": "Saldo Atual",
-      "description": "Seus créditos disponíveis para serviços de IA",
-      "availableCredits": "Créditos Disponíveis",
-      "creditUsageLevel": "Nível de Uso de Créditos",
-      "documentCheck": "Verificação de Documentos",
-      "tripPlanning": "Planejamento de Viagem",
-      "premiumSupport": "Suporte Premium"
-    },
-    "purchaseCredits": {
-      "title": "Comprar Créditos",
-      "description": "Escolha um pacote de créditos que atenda às suas necessidades"
-    },
-    "packages": {
-      "starter": {
-        "name": "Pacote Iniciante",
-        "description": "Perfeito para verificação básica de documentos",
-        "features": ["Verificação de Documentos IA", "Suporte Básico", "Notificações por Email"]
-      },
-      "professional": {
-        "name": "Pacote Profissional",
-        "description": "Melhor valor para viajantes regulares",
-        "features": ["Verificação de Documentos IA", "Planejamento de Viagem", "Suporte Prioritário", "Análises Avançadas"]
-      },
-      "enterprise": {
-        "name": "Pacote Empresarial",
-        "description": "Para agências de viagem e viajantes frequentes",
-        "features": ["Todos os Recursos", "Processamento em Lote", "Suporte 24/7", "Integração Personalizada"]
-      }
-    },
-    "mostPopular": "Mais Popular",
-    "purchase": "Comprar",
-    "processing": "Processando...",
-    "usageStats": {
-      "title": "Estatísticas de Uso",
-      "thisMonth": "Este Mês",
-      "mostUsed": "Mais Usado",
-      "avgPerDay": "Média por dia",
-      "creditsUsed": "{{credits}} créditos usados",
-      "documentCheck": "Verificação de Documentos",
-      "avgCredits": "{{credits}} créditos"
-    },
-    "recentActivity": {
-      "title": "Atividade Recente",
-      "professionalPackPurchase": "Compra do Pacote Profissional",
-      "aiDocumentVerification": "Verificação de Documentos IA",
-      "aiTripPlanning": "Planejamento de Viagem IA",
-      "welcomeBonus": "Bônus de Boas-vindas"
-    },
-    "earnCredits": {
-      "title": "Ganhe Créditos Grátis",
-      "referralBonus": "{{credits}} Créditos",
-      "referralDescription": "Para cada amigo que você indicar",
-      "referFriends": "Indicar Amigos"
-    },
-    "balanceLevels": {
-      "high": "Alto",
-      "medium": "Médio",
-      "low": "Baixo"
-    },
-    "success": {
-      "purchaseSuccess": "{{credits}} créditos comprados com sucesso!"
-    },
-    "errors": {
-      "purchaseFailed": "Compra falhou. Tente novamente."
-    }
-  },
-  "profile": {
-    "title": "Configurações do Perfil",
-    "subtitle": "Gerencie suas informações de conta e preferências",
-    "editProfile": "Editar Perfil",
-    "saveChanges": "Salvar Alterações",
-    "saving": "Salvando...",
-    "verifiedAccount": "Conta Verificada",
-    "memberSince": "Membro desde",
-    "applicationsCompleted": "{{count}} concluídas",
-    "personalInfo": {
-      "title": "Informações Pessoais",
-      "description": "Atualize seus dados pessoais e informações de contato",
-      "firstName": "Nome",
-      "lastName": "Sobrenome",
-      "email": "Endereço de Email",
-      "emailNote": "O email não pode ser alterado. Entre em contato com o suporte se necessário.",
-      "phoneNumber": "Número de Telefone",
-      "phoneNumberPlaceholder": "+55 11 99999-9999",
-      "dateOfBirth": "Data de Nascimento",
-      "nationality": "Nacionalidade",
-      "selectNationality": "Selecione sua nacionalidade"
-    },
-    "accountSettings": {
-      "title": "Configurações da Conta",
-      "description": "Gerencie suas preferências de conta e configurações de segurança",
-      "preferredLanguage": "Idioma Preferido",
-      "timezone": "Fuso Horário",
-      "notificationPreferences": "Preferências de Notificação",
-      "emailNotifications": {
-        "title": "Notificações por Email",
-        "description": "Receber atualizações por email"
-      },
-      "smsNotifications": {
-        "title": "Notificações por SMS",
-        "description": "Receber atualizações por SMS"
-      },
-      "pushNotifications": {
-        "title": "Notificações Push",
-        "description": "Receber notificações do navegador"
-      }
-    },
-    "security": {
-      "title": "Segurança",
-      "description": "Gerencie a segurança e privacidade da sua conta",
-      "changePassword": {
-        "title": "Alterar Senha",
-        "description": "Atualize a senha da sua conta",
-        "button": "Alterar"
-      },
-      "twoFactor": {
-        "title": "Autenticação de Dois Fatores",
-        "description": "Adicione uma camada extra de segurança",
-        "button": "Ativar"
-      },
-      "downloadData": {
-        "title": "Baixar Dados",
-        "description": "Exporte os dados da sua conta",
-        "button": "Baixar"
-      }
-    },
-    "dangerZone": {
-      "title": "Zona de Perigo",
-      "description": "Ações irreversíveis e destrutivas",
-      "deleteAccount": {
-        "title": "Excluir Conta",
-        "description": "Excluir permanentemente sua conta e todos os dados",
-        "button": "Excluir Conta"
-      }
-    },
-    "countries": {
-      "unitedStates": "Estados Unidos",
-      "canada": "Canadá",
-      "unitedKingdom": "Reino Unido",
-      "australia": "Austrália",
-      "germany": "Alemanha",
-      "france": "França",
-      "japan": "Japão",
-      "southKorea": "Coreia do Sul",
-      "singapore": "Singapura",
-      "malaysia": "Malásia",
-      "other": "Outro"
-    },
-    "languages": {
-      "english": "Inglês",
-      "thai": "ไทย (Tailandês)",
-      "chinese": "中文 (Chinês)",
-      "japanese": "日本語 (Japonês)"
-    },
-    "timezones": {
-      "utc": "UTC",
-      "bangkok": "Asia/Bangkok",
-      "newYork": "America/New_York",
-      "london": "Europe/London"
-    },
-    "success": {
-      "profileUpdated": "Perfil atualizado com sucesso!"
-    },
-    "errors": {
-      "updateFailed": "Falha ao atualizar perfil. Tente novamente."
-    }
-  },
-  "payment": {
-    "title": "Pagamento Seguro",
-    "subtitle": "Compre créditos usando PayPal",
-    "backToCredits": "Voltar aos Créditos",
-    "selectPackage": {
-      "title": "Selecionar Pacote de Créditos",
-      "description": "Escolha o pacote que melhor atende às suas necessidades"
-    },
-    "paymentSummary": {
-      "title": "Resumo do Pagamento",
-      "description": "Revise seu pedido antes de concluir o pagamento"
-    },
-    "packageDetails": {
-      "credits": "{{credits}} créditos",
-      "perCredit": "${{price}} por crédito",
-      "save": "Economize {{percentage}}%",
-      "youSave": "Você economiza {{percentage}}%"
-    },
-    "total": "Total",
-    "whatsIncluded": "O que está incluído:",
-    "payWithPayPal": "Pagar com PayPal",
-    "processingPayment": "Processando Pagamento...",
-    "selectPackageFirst": "Por favor, selecione um pacote de créditos para continuar",
-    "securePayment": {
-      "title": "Pagamento Seguro",
-      "description": "Seu pagamento é processado com segurança através dos servidores criptografados do PayPal",
-      "features": ["Criptografado SSL", "Compatível com PCI", "Garantia de Devolução do Dinheiro"]
-    },
-    "success": {
-      "paymentSuccess": "Pagamento realizado com sucesso! {{credits}} créditos adicionados à sua conta."
-    },
-    "errors": {
-      "paymentFailed": "Pagamento falhou. Tente novamente."
+      "haveAccount": "Já tem uma conta?",
+      "signIn": "Entre aqui",
+      "firstNamePlaceholder": "Digite seu nome",
+      "lastNamePlaceholder": "Digite seu sobrenome",
+      "emailPlaceholder": "Digite seu email",
+      "passwordPlaceholder": "Crie uma senha",
+      "confirmPasswordPlaceholder": "Confirme sua senha"
     }
   },
   "languages": {
@@ -596,20 +111,5 @@
     "zh": "中文",
     "ja": "日本語",
     "ko": "한국어"
-  },
-  "notifications": {
-    "success": {
-      "saved": "Alterações salvas com sucesso!",
-      "deleted": "Item excluído com sucesso!",
-      "uploaded": "Arquivo enviado com sucesso!",
-      "copied": "Copiado para a área de transferência!"
-    },
-    "errors": {
-      "generic": "Algo deu errado. Tente novamente.",
-      "network": "Erro de rede. Verifique sua conexão.",
-      "unauthorized": "Você não está autorizado a realizar esta ação.",
-      "notFound": "O recurso solicitado não foi encontrado.",
-      "validation": "Verifique sua entrada e tente novamente."
-    }
   }
 }

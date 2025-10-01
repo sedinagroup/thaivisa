@@ -1,23 +1,22 @@
 {
   "nav": {
     "home": "Accueil",
-    "apply": "Demander un Visa",
+    "apply": "Postuler",
     "aiDocumentChecker": "Vérificateur de Documents IA",
     "aiTripPlanner": "Planificateur de Voyage IA",
     "credits": "Crédits",
     "profile": "Profil",
-    "login": "Connexion",
-    "register": "S'inscrire",
-    "logout": "Déconnexion"
+    "signIn": "Se connecter",
+    "getStarted": "Commencer",
+    "logOut": "Se déconnecter",
+    "creditsAndBilling": "Crédits et Facturation"
   },
   "common": {
     "loading": "Chargement...",
-    "save": "Enregistrer",
+    "save": "Sauvegarder",
     "cancel": "Annuler",
     "edit": "Modifier",
     "delete": "Supprimer",
-    "download": "Télécharger",
-    "upload": "Téléverser",
     "submit": "Soumettre",
     "back": "Retour",
     "next": "Suivant",
@@ -26,104 +25,50 @@
     "confirm": "Confirmer",
     "yes": "Oui",
     "no": "Non",
-    "optional": "Optionnel",
-    "required": "Requis",
-    "search": "Rechercher",
-    "filter": "Filtrer",
-    "sort": "Trier",
-    "clear": "Effacer",
-    "reset": "Réinitialiser",
-    "refresh": "Actualiser",
-    "share": "Partager",
-    "copy": "Copier",
-    "print": "Imprimer",
-    "export": "Exporter",
-    "import": "Importer",
-    "settings": "Paramètres",
-    "help": "Aide",
-    "support": "Support",
-    "contact": "Contact",
-    "about": "À propos",
-    "terms": "Conditions d'utilisation",
-    "privacy": "Politique de confidentialité",
-    "language": "Langue"
+    "ok": "OK",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Avertissement",
+    "info": "Information"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "Votre compagnon intelligent pour les demandes de visa thaïlandais",
-    "description": "Simplifiez votre processus de demande de visa thaïlandais avec la vérification de documents par IA, la planification de voyage et les conseils d'experts.",
+    "title": "Visa Thaïlande IA",
+    "subtitle": "Votre Assistant de Demande de Visa Alimenté par l'IA",
+    "description": "Simplifiez votre processus de demande de visa pour la Thaïlande avec une technologie IA avancée. Obtenez la vérification de documents, la planification de voyage et des conseils d'experts en un seul endroit.",
     "getStarted": "Commencer",
-    "learnMore": "En savoir plus",
-    "features": {
-      "title": "Pourquoi choisir Thailand Visa AI ?",
-      "aiDocumentChecker": {
-        "title": "Vérificateur de Documents IA",
-        "description": "Vérifiez vos documents instantanément avec notre technologie IA avancée"
-      },
-      "aiTripPlanner": {
-        "title": "Planificateur de Voyage IA",
-        "description": "Obtenez des itinéraires de voyage personnalisés adaptés à vos préférences"
-      },
-      "expertSupport": {
-        "title": "Support Expert",
-        "description": "Assistance 24/7 d'experts en visa et conseils alimentés par l'IA"
-      },
-      "fastProcessing": {
-        "title": "Traitement Rapide",
-        "description": "Traitement rapide des demandes de visa avec mises à jour de statut en temps réel"
-      }
-    },
-    "stats": {
-      "applicationsProcessed": "Demandes Traitées",
-      "successRate": "Taux de Réussite",
-      "countriesSupported": "Pays Supportés",
-      "avgProcessingTime": "Temps de Traitement Moyen"
-    },
-    "cta": {
-      "title": "Prêt à commencer votre voyage ?",
-      "description": "Rejoignez des milliers de voyageurs qui ont obtenu avec succès leur visa thaïlandais avec notre assistance IA.",
-      "startApplication": "Commencer la Demande"
-    }
+    "learnMore": "En Savoir Plus"
   },
   "auth": {
     "login": {
-      "title": "Bon retour",
-      "subtitle": "Connectez-vous à votre compte Thailand Visa AI",
+      "title": "Bon Retour",
+      "subtitle": "Connectez-vous à votre compte Visa Thaïlande IA",
       "email": "Adresse Email",
-      "password": "Mot de passe",
+      "password": "Mot de Passe",
       "rememberMe": "Se souvenir de moi",
-      "forgotPassword": "Mot de passe oublié ?",
-      "signIn": "Se connecter",
-      "noAccount": "Vous n'avez pas de compte ?",
-      "signUp": "S'inscrire",
-      "orContinueWith": "Ou continuer avec"
+      "forgotPassword": "Mot de passe oublié?",
+      "signIn": "Se Connecter",
+      "noAccount": "Vous n'avez pas de compte?",
+      "signUp": "Inscrivez-vous ici",
+      "emailPlaceholder": "Entrez votre email",
+      "passwordPlaceholder": "Entrez votre mot de passe"
     },
     "register": {
-      "title": "Créer un Compte",
-      "subtitle": "Commencez votre voyage de visa thaïlandais aujourd'hui",
+      "title": "Créez Votre Compte",
+      "subtitle": "Rejoignez Visa Thaïlande IA et commencez votre demande de visa",
       "firstName": "Prénom",
-      "lastName": "Nom",
+      "lastName": "Nom de Famille",
       "email": "Adresse Email",
-      "password": "Mot de passe",
-      "confirmPassword": "Confirmer le mot de passe",
-      "agreeToTerms": "J'accepte les Conditions d'utilisation et la Politique de confidentialité",
+      "password": "Mot de Passe",
+      "confirmPassword": "Confirmer le Mot de Passe",
+      "agreeToTerms": "J'accepte les Conditions de Service et la Politique de Confidentialité",
       "createAccount": "Créer un Compte",
-      "alreadyHaveAccount": "Vous avez déjà un compte ?",
-      "signIn": "Se connecter"
-    },
-    "errors": {
-      "invalidCredentials": "Email ou mot de passe invalide",
-      "emailRequired": "L'email est requis",
-      "passwordRequired": "Le mot de passe est requis",
-      "passwordMismatch": "Les mots de passe ne correspondent pas",
-      "emailInvalid": "Veuillez saisir une adresse email valide",
-      "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
-      "termsRequired": "Vous devez accepter les termes et conditions"
-    },
-    "success": {
-      "loginSuccess": "Bon retour ! Connexion réussie.",
-      "registerSuccess": "Compte créé avec succès ! Bienvenue sur Thailand Visa AI.",
-      "logoutSuccess": "Vous avez été déconnecté avec succès."
+      "haveAccount": "Vous avez déjà un compte?",
+      "signIn": "Connectez-vous ici",
+      "firstNamePlaceholder": "Entrez votre prénom",
+      "lastNamePlaceholder": "Entrez votre nom de famille",
+      "emailPlaceholder": "Entrez votre email",
+      "passwordPlaceholder": "Créez un mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez votre mot de passe"
     }
   },
   "languages": {

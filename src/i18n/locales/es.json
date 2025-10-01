@@ -1,14 +1,15 @@
 {
   "nav": {
     "home": "Inicio",
-    "apply": "Solicitar Visa",
+    "apply": "Aplicar",
     "aiDocumentChecker": "Verificador de Documentos IA",
     "aiTripPlanner": "Planificador de Viaje IA",
     "credits": "Créditos",
     "profile": "Perfil",
-    "login": "Iniciar Sesión",
-    "register": "Registrarse",
-    "logout": "Cerrar Sesión"
+    "signIn": "Iniciar Sesión",
+    "getStarted": "Comenzar",
+    "logOut": "Cerrar Sesión",
+    "creditsAndBilling": "Créditos y Facturación"
   },
   "common": {
     "loading": "Cargando...",
@@ -16,8 +17,6 @@
     "cancel": "Cancelar",
     "edit": "Editar",
     "delete": "Eliminar",
-    "download": "Descargar",
-    "upload": "Subir",
     "submit": "Enviar",
     "back": "Atrás",
     "next": "Siguiente",
@@ -26,13 +25,51 @@
     "confirm": "Confirmar",
     "yes": "Sí",
     "no": "No",
-    "language": "Idioma"
+    "ok": "OK",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "Tu compañero inteligente para solicitudes de visa tailandesa",
+    "title": "Visa Tailandia IA",
+    "subtitle": "Tu Asistente de Solicitud de Visa Impulsado por IA",
+    "description": "Simplifica tu proceso de solicitud de visa para Tailandia con tecnología IA avanzada. Obtén verificación de documentos, planificación de viajes y orientación experta en un solo lugar.",
     "getStarted": "Comenzar",
-    "learnMore": "Saber más"
+    "learnMore": "Saber Más"
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenido de Vuelta",
+      "subtitle": "Inicia sesión en tu cuenta de Visa Tailandia IA",
+      "email": "Dirección de Correo",
+      "password": "Contraseña",
+      "rememberMe": "Recordarme",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "signIn": "Iniciar Sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Regístrate aquí",
+      "emailPlaceholder": "Ingresa tu correo",
+      "passwordPlaceholder": "Ingresa tu contraseña"
+    },
+    "register": {
+      "title": "Crea Tu Cuenta",
+      "subtitle": "Únete a Visa Tailandia IA y comienza tu solicitud de visa",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Dirección de Correo",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "agreeToTerms": "Acepto los Términos de Servicio y la Política de Privacidad",
+      "createAccount": "Crear Cuenta",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Inicia sesión aquí",
+      "firstNamePlaceholder": "Ingresa tu nombre",
+      "lastNamePlaceholder": "Ingresa tu apellido",
+      "emailPlaceholder": "Ingresa tu correo",
+      "passwordPlaceholder": "Crea una contraseña",
+      "confirmPasswordPlaceholder": "Confirma tu contraseña"
+    }
   },
   "languages": {
     "en": "English",

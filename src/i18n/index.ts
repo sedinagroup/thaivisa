@@ -34,13 +34,13 @@ i18n
     lng: 'en', // Default language
     debug: false,
     
-    interpolation: {
-      escapeValue: false,
-    },
-    
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
+    },
+
+    interpolation: {
+      escapeValue: false,
     },
   });
 

@@ -1,24 +1,23 @@
 {
   "nav": {
     "home": "Startseite",
-    "apply": "Visum beantragen",
+    "apply": "Bewerben",
     "aiDocumentChecker": "KI-Dokumentenprüfer",
     "aiTripPlanner": "KI-Reiseplaner",
     "credits": "Credits",
     "profile": "Profil",
-    "login": "Anmelden",
-    "register": "Registrieren",
-    "logout": "Abmelden"
+    "signIn": "Anmelden",
+    "getStarted": "Loslegen",
+    "logOut": "Abmelden",
+    "creditsAndBilling": "Credits & Abrechnung"
   },
   "common": {
-    "loading": "Wird geladen...",
+    "loading": "Laden...",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
-    "download": "Herunterladen",
-    "upload": "Hochladen",
-    "submit": "Absenden",
+    "submit": "Einreichen",
     "back": "Zurück",
     "next": "Weiter",
     "previous": "Vorherige",
@@ -26,17 +25,55 @@
     "confirm": "Bestätigen",
     "yes": "Ja",
     "no": "Nein",
-    "language": "Sprache"
+    "ok": "OK",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "warning": "Warnung",
+    "info": "Information"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "Ihr intelligenter Begleiter für Thailand-Visumanträge",
+    "title": "Thailand Visa KI",
+    "subtitle": "Ihr KI-gestützter Visa-Antragsassistent",
+    "description": "Vereinfachen Sie Ihren Thailand-Visa-Antragsprozess mit fortschrittlicher KI-Technologie. Erhalten Sie Dokumentenverifizierung, Reiseplanung und Expertenberatung an einem Ort.",
     "getStarted": "Loslegen",
-    "learnMore": "Mehr erfahren"
+    "learnMore": "Mehr Erfahren"
+  },
+  "auth": {
+    "login": {
+      "title": "Willkommen Zurück",
+      "subtitle": "Melden Sie sich bei Ihrem Thailand Visa KI-Konto an",
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "rememberMe": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "signIn": "Anmelden",
+      "noAccount": "Haben Sie kein Konto?",
+      "signUp": "Hier registrieren",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+      "passwordPlaceholder": "Geben Sie Ihr Passwort ein"
+    },
+    "register": {
+      "title": "Erstellen Sie Ihr Konto",
+      "subtitle": "Treten Sie Thailand Visa KI bei und starten Sie Ihren Visa-Antrag",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "confirmPassword": "Passwort Bestätigen",
+      "agreeToTerms": "Ich stimme den Nutzungsbedingungen und der Datenschutzrichtlinie zu",
+      "createAccount": "Konto Erstellen",
+      "haveAccount": "Haben Sie bereits ein Konto?",
+      "signIn": "Hier anmelden",
+      "firstNamePlaceholder": "Geben Sie Ihren Vornamen ein",
+      "lastNamePlaceholder": "Geben Sie Ihren Nachnamen ein",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+      "passwordPlaceholder": "Erstellen Sie ein Passwort",
+      "confirmPasswordPlaceholder": "Bestätigen Sie Ihr Passwort"
+    }
   },
   "languages": {
     "en": "English",
-    "pt": "Português", 
+    "pt": "Português",
     "fr": "Français",
     "de": "Deutsch",
     "it": "Italiano",

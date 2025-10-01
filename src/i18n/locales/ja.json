@@ -1,14 +1,15 @@
 {
   "nav": {
     "home": "ホーム",
-    "apply": "ビザ申請",
-    "aiDocumentChecker": "AI文書チェッカー",
+    "apply": "申請",
+    "aiDocumentChecker": "AI書類チェッカー",
     "aiTripPlanner": "AI旅行プランナー",
     "credits": "クレジット",
     "profile": "プロフィール",
-    "login": "ログイン",
-    "register": "登録",
-    "logout": "ログアウト"
+    "signIn": "サインイン",
+    "getStarted": "始める",
+    "logOut": "ログアウト",
+    "creditsAndBilling": "クレジットと請求"
   },
   "common": {
     "loading": "読み込み中...",
@@ -16,8 +17,6 @@
     "cancel": "キャンセル",
     "edit": "編集",
     "delete": "削除",
-    "download": "ダウンロード",
-    "upload": "アップロード",
     "submit": "送信",
     "back": "戻る",
     "next": "次へ",
@@ -26,13 +25,51 @@
     "confirm": "確認",
     "yes": "はい",
     "no": "いいえ",
-    "language": "言語"
+    "ok": "OK",
+    "error": "エラー",
+    "success": "成功",
+    "warning": "警告",
+    "info": "情報"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "タイビザ申請のためのインテリジェントなコンパニオン",
+    "title": "タイビザAI",
+    "subtitle": "AIによるビザ申請アシスタント",
+    "description": "先進的なAI技術でタイのビザ申請プロセスを簡素化。書類確認、旅行計画、専門家のガイダンスを一箇所で。",
     "getStarted": "始める",
-    "learnMore": "詳細を見る"
+    "learnMore": "詳しく見る"
+  },
+  "auth": {
+    "login": {
+      "title": "おかえりなさい",
+      "subtitle": "タイビザAIアカウントにサインイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "rememberMe": "ログイン状態を保持",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "signIn": "サインイン",
+      "noAccount": "アカウントをお持ちでない方は",
+      "signUp": "こちらで登録",
+      "emailPlaceholder": "メールアドレスを入力",
+      "passwordPlaceholder": "パスワードを入力"
+    },
+    "register": {
+      "title": "アカウントを作成",
+      "subtitle": "タイビザAIに参加してビザ申請を開始",
+      "firstName": "名前",
+      "lastName": "姓",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "confirmPassword": "パスワード確認",
+      "agreeToTerms": "利用規約とプライバシーポリシーに同意します",
+      "createAccount": "アカウント作成",
+      "haveAccount": "すでにアカウントをお持ちですか？",
+      "signIn": "こちらでサインイン",
+      "firstNamePlaceholder": "名前を入力",
+      "lastNamePlaceholder": "姓を入力",
+      "emailPlaceholder": "メールアドレスを入力",
+      "passwordPlaceholder": "パスワードを作成",
+      "confirmPasswordPlaceholder": "パスワードを確認"
+    }
   },
   "languages": {
     "en": "English",

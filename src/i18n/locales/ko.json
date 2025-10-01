@@ -1,14 +1,15 @@
 {
   "nav": {
     "home": "홈",
-    "apply": "비자 신청",
+    "apply": "신청",
     "aiDocumentChecker": "AI 문서 검사기",
-    "aiTripPlanner": "AI 여행 계획자",
+    "aiTripPlanner": "AI 여행 계획기",
     "credits": "크레딧",
     "profile": "프로필",
-    "login": "로그인",
-    "register": "회원가입",
-    "logout": "로그아웃"
+    "signIn": "로그인",
+    "getStarted": "시작하기",
+    "logOut": "로그아웃",
+    "creditsAndBilling": "크레딧 및 결제"
   },
   "common": {
     "loading": "로딩 중...",
@@ -16,8 +17,6 @@
     "cancel": "취소",
     "edit": "편집",
     "delete": "삭제",
-    "download": "다운로드",
-    "upload": "업로드",
     "submit": "제출",
     "back": "뒤로",
     "next": "다음",
@@ -26,13 +25,51 @@
     "confirm": "확인",
     "yes": "예",
     "no": "아니오",
-    "language": "언어"
+    "ok": "확인",
+    "error": "오류",
+    "success": "성공",
+    "warning": "경고",
+    "info": "정보"
   },
   "home": {
-    "title": "Thailand Visa AI",
-    "subtitle": "태국 비자 신청을 위한 지능형 동반자",
+    "title": "태국 비자 AI",
+    "subtitle": "AI 기반 비자 신청 도우미",
+    "description": "첨단 AI 기술로 태국 비자 신청 과정을 간소화하세요. 문서 검증, 여행 계획, 전문가 가이드를 한 곳에서.",
     "getStarted": "시작하기",
-    "learnMore": "더 알아보기"
+    "learnMore": "자세히 보기"
+  },
+  "auth": {
+    "login": {
+      "title": "다시 오신 것을 환영합니다",
+      "subtitle": "태국 비자 AI 계정에 로그인",
+      "email": "이메일 주소",
+      "password": "비밀번호",
+      "rememberMe": "로그인 상태 유지",
+      "forgotPassword": "비밀번호를 잊으셨나요?",
+      "signIn": "로그인",
+      "noAccount": "계정이 없으신가요?",
+      "signUp": "여기서 가입하세요",
+      "emailPlaceholder": "이메일을 입력하세요",
+      "passwordPlaceholder": "비밀번호를 입력하세요"
+    },
+    "register": {
+      "title": "계정 만들기",
+      "subtitle": "태국 비자 AI에 가입하고 비자 신청을 시작하세요",
+      "firstName": "이름",
+      "lastName": "성",
+      "email": "이메일 주소",
+      "password": "비밀번호",
+      "confirmPassword": "비밀번호 확인",
+      "agreeToTerms": "서비스 약관 및 개인정보 보호정책에 동의합니다",
+      "createAccount": "계정 만들기",
+      "haveAccount": "이미 계정이 있으신가요?",
+      "signIn": "여기서 로그인하세요",
+      "firstNamePlaceholder": "이름을 입력하세요",
+      "lastNamePlaceholder": "성을 입력하세요",
+      "emailPlaceholder": "이메일을 입력하세요",
+      "passwordPlaceholder": "비밀번호를 만드세요",
+      "confirmPasswordPlaceholder": "비밀번호를 확인하세요"
+    }
   },
   "languages": {
     "en": "English",

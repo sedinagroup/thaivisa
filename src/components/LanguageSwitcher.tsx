@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Globe, Check } from 'lucide-react';
+import { Globe } from 'lucide-react';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -27,7 +27,7 @@ const LanguageSwitcher: React.FC = () => {
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
-  const handleLanguageChange = (languageCode: string) => {
+  const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
     setIsOpen(false);
   };
@@ -35,25 +35,25 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="flex items-center gap-2">
+        <Button variant="ghost" size="sm" className="flex items-center space-x-2">
           <Globe className="w-4 h-4" />
-          <span className="hidden sm:inline">{currentLanguage.flag}</span>
-          <span className="hidden md:inline">{currentLanguage.name}</span>
+          <span className="text-lg">{currentLanguage.flag}</span>
+          <span className="hidden sm:inline">{currentLanguage.name}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
-            onClick={() => handleLanguageChange(language.code)}
-            className="flex items-center justify-between cursor-pointer"
+            onClick={() => changeLanguage(language.code)}
+            className={`flex items-center space-x-3 cursor-pointer ${
+              i18n.language === language.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''
+            }`}
           >
-            <div className="flex items-center gap-2">
-              <span>{language.flag}</span>
-              <span>{language.name}</span>
-            </div>
+            <span className="text-lg">{language.flag}</span>
+            <span>{language.name}</span>
             {i18n.language === language.code && (
-              <Check className="w-4 h-4 text-blue-600" />
+              <span className="ml-auto text-blue-600">✓</span>
             )}
           </DropdownMenuItem>
         ))}
