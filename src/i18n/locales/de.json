@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "apply": "Visum beantragen",
+    "aiDocumentChecker": "KI-Dokumentenprüfer",
+    "aiTripPlanner": "KI-Reiseplaner",
+    "credits": "Credits",
+    "profile": "Profil",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "submit": "Absenden",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "close": "Schließen",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "language": "Sprache"
+  },
+  "home": {
+    "title": "Thailand Visa AI",
+    "subtitle": "Ihr intelligenter Begleiter für Thailand-Visumanträge",
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr erfahren"
+  },
+  "languages": {
+    "en": "English",
+    "pt": "Português", 
+    "fr": "Français",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  }
+}

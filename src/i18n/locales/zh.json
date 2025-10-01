@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "首页",
+    "apply": "申请签证",
+    "aiDocumentChecker": "AI文档检查器",
+    "aiTripPlanner": "AI旅行规划师",
+    "credits": "积分",
+    "profile": "个人资料",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出"
+  },
+  "common": {
+    "loading": "加载中...",
+    "save": "保存",
+    "cancel": "取消",
+    "edit": "编辑",
+    "delete": "删除",
+    "download": "下载",
+    "upload": "上传",
+    "submit": "提交",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "close": "关闭",
+    "confirm": "确认",
+    "yes": "是",
+    "no": "否",
+    "language": "语言"
+  },
+  "home": {
+    "title": "Thailand Visa AI",
+    "subtitle": "您的泰国签证申请智能助手",
+    "getStarted": "开始使用",
+    "learnMore": "了解更多"
+  },
+  "languages": {
+    "en": "English",
+    "pt": "Português",
+    "fr": "Français",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  }
+}

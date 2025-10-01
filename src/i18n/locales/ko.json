@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "홈",
+    "apply": "비자 신청",
+    "aiDocumentChecker": "AI 문서 검사기",
+    "aiTripPlanner": "AI 여행 계획자",
+    "credits": "크레딧",
+    "profile": "프로필",
+    "login": "로그인",
+    "register": "회원가입",
+    "logout": "로그아웃"
+  },
+  "common": {
+    "loading": "로딩 중...",
+    "save": "저장",
+    "cancel": "취소",
+    "edit": "편집",
+    "delete": "삭제",
+    "download": "다운로드",
+    "upload": "업로드",
+    "submit": "제출",
+    "back": "뒤로",
+    "next": "다음",
+    "previous": "이전",
+    "close": "닫기",
+    "confirm": "확인",
+    "yes": "예",
+    "no": "아니오",
+    "language": "언어"
+  },
+  "home": {
+    "title": "Thailand Visa AI",
+    "subtitle": "태국 비자 신청을 위한 지능형 동반자",
+    "getStarted": "시작하기",
+    "learnMore": "더 알아보기"
+  },
+  "languages": {
+    "en": "English",
+    "pt": "Português",
+    "fr": "Français",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  }
+}
