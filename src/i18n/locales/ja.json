@@ -12,192 +12,51 @@
     "aiAssistantChat": "AIアシスタントチャット"
   },
   "home": {
-    "title": "タイビザAIプラットフォーム",
-    "subtitle": "先進的なAI駆動のタイビザ申請プロセス。書類確認、旅行計画、専門ガイダンスを一箇所で取得。",
-    "startApplication": "申請を開始",
-    "stats": {
-      "accuracy": "AI精度",
-      "processing": "高速処理",
-      "successRate": "成功率",
-      "rating": "ユーザー評価"
+    "hero": {
+      "badge": "AI搭載プラットフォーム",
+      "title": "タイビザAIプラットフォーム",
+      "subtitle": "スマートビザソリューション",
+      "description": "AI搭載の高度なタイビザ申請プロセス。書類確認、旅行計画、専門的なガイダンスを一箇所で取得できます。",
+      "startApplication": "申請を開始",
+      "getStarted": "始める",
+      "learnMore": "詳細を見る",
+      "stats": {
+        "aiAccuracy": "AI精度",
+        "fasterProcessing": "高速処理",
+        "successRate": "成功率",
+        "userRating": "ユーザー評価"
+      }
     },
-    "whyChoose": "なぜタイビザAIを選ぶのか？",
-    "whyChooseDescription": "私たちの先進的なAIは、前例のない精度とスピードでタイビザ取得の全ての側面を処理します。",
-    "features": {
+    "aiFeatures": {
+      "title": "AI搭載機能",
+      "description": "当社の高度なAIは、前例のない精度とスピードでタイビザの旅のあらゆる側面を処理します。",
       "documentChecker": {
         "title": "AI書類チェッカー",
-        "description": "先進的なAI技術で書類を瞬時に確認"
+        "description": "高度なAI技術で書類を瞬時に確認"
       },
       "visaAdvisor": {
         "title": "AIビザアドバイザー",
-        "description": "プロフィールと旅行計画に基づいた個人向けビザ推奨を取得。"
+        "description": "プロフィールと旅行計画に基づいたパーソナライズされたビザ推奨を取得。"
       },
       "tripPlanner": {
         "title": "スマート旅行プランナー",
-        "description": "AIによる個人向け旅行推奨を取得"
+        "description": "AIによるパーソナライズされた旅行推奨を取得"
       },
       "assistantChat": {
         "title": "AIアシスタントチャット",
-        "description": "全てのビザと旅行に関する質問に対する24/7 AIサポートと即座で正確な回答。"
+        "description": "ビザと旅行に関するすべての質問に対する24/7 AIサポート、瞬時で正確な回答。"
       }
-    }
-  },
-  "login": {
-    "title": "アカウントにログイン",
-    "subtitle": "タイビザ申請ダッシュボードにアクセス",
-    "email": "メールアドレス",
-    "password": "パスワード",
-    "loginButton": "ログイン",
-    "forgotPassword": "パスワードを忘れましたか？",
-    "noAccount": "アカウントをお持ちでないですか？",
-    "signUp": "こちらで登録",
-    "emailPlaceholder": "メールアドレスを入力",
-    "passwordPlaceholder": "パスワードを入力"
-  },
-  "tripPlanner": {
-    "title": "AI旅行プランナー",
-    "subtitle": "インテリジェント旅行計画システムで完璧なタイ冒険を作成",
-    "step": "ステップ",
-    "of": "の",
-    "stepDescriptions": {
-      "step1": "基本旅行情報と旅行の好み",
-      "step2": "宿泊と交通の好み",
-      "step3": "興味、食事のニーズ、アクセシビリティ要件",
-      "step4": "予算の内訳と特別なリクエスト"
     },
-    "form": {
-      "destination": "目的地",
-      "destinationPlaceholder": "例：バンコク、プーケット、チェンマイ",
-      "travelers": "旅行者数",
-      "startDate": "開始日",
-      "endDate": "終了日",
-      "budget": "総予算",
-      "accommodationType": "宿泊タイプ",
-      "transportPreference": "交通手段の好み",
-      "travelStyle": "旅行スタイル",
-      "adventureLevel": "冒険レベル",
-      "interests": "興味とアクティビティ",
-      "dietaryRestrictions": "食事制限",
-      "accessibility": "アクセシビリティのニーズ",
-      "travelCompany": "旅行仲間",
-      "previousVisits": "タイへの過去の訪問",
-      "languagePreference": "言語の好み",
-      "languagePreferencePlaceholder": "言語の好みを選択",
-      "specialRequests": "特別なリクエスト",
-      "specialRequestsPlaceholder": "特別なリクエスト、お祝い、または特定のニーズはありますか？",
-      "budgetBreakdown": "予算の内訳",
-      "budgetBreakdownNote": "各カテゴリーのパーセンテージ配分を調整",
-      "summary": "旅行概要",
-      "dates": "日付"
+    "cta": {
+      "title": "タイ旅行を始める準備はできましたか？",
+      "description": "タイビザ申請のためにAI搭載プラットフォームを信頼する何千人もの旅行者に参加してください。",
+      "startApplication": "申請を開始",
+      "getStarted": "始める",
+      "viewPricing": "料金を見る",
+      "happyTravelers": "満足した旅行者",
+      "successRate": "成功率",
+      "aiSupport": "AIサポート"
     },
-    "travelCompany": {
-      "solo": "一人旅",
-      "couple": "カップル",
-      "family": "子供連れの家族",
-      "friends": "友人グループ",
-      "business": "出張"
-    },
-    "accommodation": {
-      "hotel": "ホテル",
-      "hostel": "ホステル",
-      "resort": "リゾート",
-      "apartment": "アパート/コンドミニアム",
-      "villa": "ヴィラ",
-      "guesthouse": "ゲストハウス/B&B"
-    },
-    "transport": {
-      "flight": "フライト",
-      "train": "電車",
-      "bus": "バス",
-      "car": "レンタカー",
-      "mixed": "混合交通"
-    },
-    "travelStyle": {
-      "luxury": "ラグジュアリー",
-      "comfort": "コンフォート",
-      "budget": "バジェット",
-      "backpacker": "バックパッカー"
-    },
-    "adventureLevel": {
-      "relaxed": "リラックス＆のんびり",
-      "moderate": "適度なアクティビティ",
-      "adventurous": "冒険的",
-      "extreme": "エクストリーム冒険"
-    },
-    "interests": {
-      "culture": "文化と歴史",
-      "nature": "自然と野生動物",
-      "adventure": "アドベンチャースポーツ",
-      "beach": "ビーチと水上アクティビティ",
-      "food": "食べ物と料理",
-      "photography": "写真撮影",
-      "nightlife": "ナイトライフとエンターテイメント",
-      "shopping": "ショッピング",
-      "wellness": "ウェルネスとスパ"
-    },
-    "dietary": {
-      "vegetarian": "ベジタリアン",
-      "vegan": "ビーガン",
-      "halal": "ハラル",
-      "kosher": "コーシャー",
-      "gluten-free": "グルテンフリー",
-      "dairy-free": "乳製品フリー",
-      "nut-allergy": "ナッツアレルギー",
-      "seafood-allergy": "シーフードアレルギー",
-      "none": "制限なし"
-    },
-    "accessibility": {
-      "wheelchair": "車椅子対応",
-      "mobility-aid": "移動補助が必要",
-      "visual-impairment": "視覚障害",
-      "hearing-impairment": "聴覚障害",
-      "none": "特別なニーズなし"
-    },
-    "languages": {
-      "english": "英語のみ",
-      "local": "現地語",
-      "translator": "翻訳アプリ",
-      "guide": "英語ガイド"
-    },
-    "previousVisits": {
-      "firstTime": "初回",
-      "returning": "リピーター",
-      "frequent": "常連客"
-    },
-    "budgetBreakdown": {
-      "accommodation": "宿泊",
-      "food": "食事",
-      "activities": "アクティビティとツアー",
-      "transport": "交通",
-      "shopping": "ショッピングとお土産"
-    },
-    "buttons": {
-      "previous": "前へ",
-      "next": "次へ",
-      "generatePlan": "旅行プランを生成",
-      "generating": "生成中..."
-    },
-    "generatedPlan": {
-      "title": "あなたの個人向けタイ旅行プラン",
-      "destination": "目的地",
-      "duration": "期間",
-      "travelers": "旅行者",
-      "people": "人",
-      "budget": "予算",
-      "dayByDay": "日別行程",
-      "day": "日目",
-      "arrival": "到着とオリエンテーション",
-      "arrivalDetails": "空港送迎とホテルチェックイン",
-      "checkIn": "ホテルチェックインと休憩",
-      "localExploration": "地元エリア探索",
-      "culturalExperience": "文化体験",
-      "culturalDetails": "寺院と文化的な場所を訪問",
-      "localCuisine": "本格的な地元料理を試す",
-      "shopping": "地元市場でのショッピング",
-      "recommendations": "推奨",
-      "accommodation": "宿泊",
-      "transport": "交通",
-      "activities": "アクティビティ"
-    }
+    "chatWidget": "AIアシスタントとチャット"
   }
 }

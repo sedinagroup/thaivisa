@@ -6,198 +6,57 @@
     "profile": "Profil",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "aiDocumentChecker": "KI Dokumentenprüfer",
-    "aiTripPlanner": "KI Reiseplaner",
-    "aiVisaAdvisor": "KI Visa-Berater",
-    "aiAssistantChat": "KI Assistent Chat"
+    "aiDocumentChecker": "KI-Dokumentenprüfer",
+    "aiTripPlanner": "KI-Reiseplaner",
+    "aiVisaAdvisor": "KI-Visa-Berater",
+    "aiAssistantChat": "KI-Assistent Chat"
   },
   "home": {
-    "title": "Thailand Visa KI Plattform",
-    "subtitle": "Fortschrittlicher KI-gesteuerter Thailand-Visa-Antragsprozess. Erhalten Sie Dokumentenverifizierung, Reiseplanung und Expertenberatung an einem Ort.",
-    "startApplication": "Ihren Antrag Starten",
-    "stats": {
-      "accuracy": "KI Genauigkeit",
-      "processing": "Schnellere Bearbeitung",
-      "successRate": "Erfolgsquote",
-      "rating": "Nutzerbewertung"
+    "hero": {
+      "badge": "KI-betriebene Plattform",
+      "title": "Thailand Visa KI-Plattform",
+      "subtitle": "Intelligente Visa-Lösungen",
+      "description": "Fortschrittlicher KI-betriebener Thailand-Visa-Antragsprozess. Erhalten Sie Dokumentenverifizierung, Reiseplanung und Expertenberatung an einem Ort.",
+      "startApplication": "Ihren Antrag Starten",
+      "getStarted": "Loslegen",
+      "learnMore": "Mehr Erfahren",
+      "stats": {
+        "aiAccuracy": "KI-Genauigkeit",
+        "fasterProcessing": "Schnellere Bearbeitung",
+        "successRate": "Erfolgsrate",
+        "userRating": "Nutzerbewertung"
+      }
     },
-    "whyChoose": "Warum Thailand Visa KI Wählen?",
-    "whyChooseDescription": "Unsere fortschrittliche KI bewältigt jeden Aspekt Ihrer Thailand-Visa-Reise mit beispielloser Genauigkeit und Geschwindigkeit.",
-    "features": {
+    "aiFeatures": {
+      "title": "KI-betriebene Funktionen",
+      "description": "Unsere fortschrittliche KI bewältigt jeden Aspekt Ihrer Thailand-Visa-Reise mit beispielloser Genauigkeit und Geschwindigkeit.",
       "documentChecker": {
-        "title": "KI Dokumentenprüfer",
+        "title": "KI-Dokumentenprüfer",
         "description": "Verifizieren Sie Ihre Dokumente sofort mit unserer fortschrittlichen KI-Technologie"
       },
       "visaAdvisor": {
-        "title": "KI Visa-Berater",
-        "description": "Erhalten Sie personalisierte Visa-Empfehlungen basierend auf Ihrem Profil und Reiseplänen."
+        "title": "KI-Visa-Berater",
+        "description": "Erhalten Sie personalisierte Visa-Empfehlungen basierend auf Ihrem Profil und Ihren Reiseplänen."
       },
       "tripPlanner": {
         "title": "Intelligenter Reiseplaner",
-        "description": "Erhalten Sie personalisierte Reiseempfehlungen mit KI"
+        "description": "Erhalten Sie personalisierte Reiseempfehlungen powered by KI"
       },
       "assistantChat": {
-        "title": "KI Assistent Chat",
+        "title": "KI-Assistent Chat",
         "description": "24/7 KI-Support für alle Visa- und Reisefragen mit sofortigen, genauen Antworten."
       }
-    }
-  },
-  "login": {
-    "title": "In Ihr Konto Einloggen",
-    "subtitle": "Zugriff auf Ihr Thailand-Visa-Antrags-Dashboard",
-    "email": "E-Mail",
-    "password": "Passwort",
-    "loginButton": "Anmelden",
-    "forgotPassword": "Passwort vergessen?",
-    "noAccount": "Kein Konto?",
-    "signUp": "Hier registrieren",
-    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
-    "passwordPlaceholder": "Geben Sie Ihr Passwort ein"
-  },
-  "tripPlanner": {
-    "title": "KI Reiseplaner",
-    "subtitle": "Erstellen Sie Ihr perfektes Thailand-Abenteuer mit unserem intelligenten Reiseplanungssystem",
-    "step": "Schritt",
-    "of": "von",
-    "stepDescriptions": {
-      "step1": "Grundlegende Reiseinformationen und Reisepräferenzen",
-      "step2": "Unterkunfts- und Transportpräferenzen",
-      "step3": "Interessen, Ernährungsbedürfnisse und Barrierefreiheitsanforderungen",
-      "step4": "Budgetaufschlüsselung und spezielle Wünsche"
     },
-    "form": {
-      "destination": "Reiseziel",
-      "destinationPlaceholder": "z.B. Bangkok, Phuket, Chiang Mai",
-      "travelers": "Anzahl der Reisenden",
-      "startDate": "Startdatum",
-      "endDate": "Enddatum",
-      "budget": "Gesamtbudget",
-      "accommodationType": "Unterkunftsart",
-      "transportPreference": "Transportpräferenz",
-      "travelStyle": "Reisestil",
-      "adventureLevel": "Abenteuerlevel",
-      "interests": "Interessen und Aktivitäten",
-      "dietaryRestrictions": "Ernährungseinschränkungen",
-      "accessibility": "Barrierefreiheitsbedürfnisse",
-      "travelCompany": "Reisebegleitung",
-      "previousVisits": "Vorherige Besuche in Thailand",
-      "languagePreference": "Sprachpräferenz",
-      "languagePreferencePlaceholder": "Wählen Sie Ihre Sprachpräferenz",
-      "specialRequests": "Spezielle Wünsche",
-      "specialRequestsPlaceholder": "Spezielle Wünsche, Feiern oder spezifische Bedürfnisse?",
-      "budgetBreakdown": "Budgetaufschlüsselung",
-      "budgetBreakdownNote": "Passen Sie die prozentuale Zuteilung für jede Kategorie an",
-      "summary": "Reisezusammenfassung",
-      "dates": "Daten"
+    "cta": {
+      "title": "Bereit, Ihre Thailand-Reise zu Beginnen?",
+      "description": "Schließen Sie sich Tausenden von Reisenden an, die unserer KI-betriebenen Plattform für ihre Thailand-Visa-Anträge vertrauen.",
+      "startApplication": "Ihren Antrag Starten",
+      "getStarted": "Loslegen",
+      "viewPricing": "Preise Ansehen",
+      "happyTravelers": "Glückliche Reisende",
+      "successRate": "Erfolgsrate",
+      "aiSupport": "KI-Support"
     },
-    "travelCompany": {
-      "solo": "Alleinreise",
-      "couple": "Paar",
-      "family": "Familie mit Kindern",
-      "friends": "Freundesgruppe",
-      "business": "Geschäftsreise"
-    },
-    "accommodation": {
-      "hotel": "Hotel",
-      "hostel": "Hostel",
-      "resort": "Resort",
-      "apartment": "Apartment/Eigentumswohnung",
-      "villa": "Villa",
-      "guesthouse": "Gästehaus/B&B"
-    },
-    "transport": {
-      "flight": "Flug",
-      "train": "Zug",
-      "bus": "Bus",
-      "car": "Mietwagen",
-      "mixed": "Gemischter Transport"
-    },
-    "travelStyle": {
-      "luxury": "Luxus",
-      "comfort": "Komfort",
-      "budget": "Budget",
-      "backpacker": "Rucksacktourist"
-    },
-    "adventureLevel": {
-      "relaxed": "Entspannt und Gemütlich",
-      "moderate": "Moderate Aktivität",
-      "adventurous": "Abenteuerlich",
-      "extreme": "Extremes Abenteuer"
-    },
-    "interests": {
-      "culture": "Kultur und Geschichte",
-      "nature": "Natur und Tierwelt",
-      "adventure": "Abenteuersport",
-      "beach": "Strand und Wasseraktivitäten",
-      "food": "Essen und Kulinarik",
-      "photography": "Fotografie",
-      "nightlife": "Nachtleben und Unterhaltung",
-      "shopping": "Einkaufen",
-      "wellness": "Wellness und Spa"
-    },
-    "dietary": {
-      "vegetarian": "Vegetarisch",
-      "vegan": "Vegan",
-      "halal": "Halal",
-      "kosher": "Koscher",
-      "gluten-free": "Glutenfrei",
-      "dairy-free": "Milchfrei",
-      "nut-allergy": "Nussallergie",
-      "seafood-allergy": "Meeresfrüchte-Allergie",
-      "none": "Keine Einschränkungen"
-    },
-    "accessibility": {
-      "wheelchair": "Rollstuhlgerecht",
-      "mobility-aid": "Mobilitätshilfe Erforderlich",
-      "visual-impairment": "Sehbehinderung",
-      "hearing-impairment": "Hörbehinderung",
-      "none": "Keine Besonderen Bedürfnisse"
-    },
-    "languages": {
-      "english": "Nur Englisch",
-      "local": "Lokale Sprache",
-      "translator": "Übersetzer-App",
-      "guide": "Englischsprachiger Guide"
-    },
-    "previousVisits": {
-      "firstTime": "Erstes Mal",
-      "returning": "Wiederkehrender Besucher",
-      "frequent": "Häufiger Besucher"
-    },
-    "budgetBreakdown": {
-      "accommodation": "Unterkunft",
-      "food": "Essen und Gastronomie",
-      "activities": "Aktivitäten und Touren",
-      "transport": "Transport",
-      "shopping": "Einkaufen und Souvenirs"
-    },
-    "buttons": {
-      "previous": "Zurück",
-      "next": "Weiter",
-      "generatePlan": "Reiseplan Erstellen",
-      "generating": "Erstelle..."
-    },
-    "generatedPlan": {
-      "title": "Ihr Personalisierter Thailand-Reiseplan",
-      "destination": "Reiseziel",
-      "duration": "Dauer",
-      "travelers": "Reisende",
-      "people": "Personen",
-      "budget": "Budget",
-      "dayByDay": "Täglicher Reiseplan",
-      "day": "Tag",
-      "arrival": "Ankunft und Orientierung",
-      "arrivalDetails": "Flughafenabholung und Hotel-Check-in",
-      "checkIn": "Hotel-Check-in und Erholung",
-      "localExploration": "Erkundung der örtlichen Umgebung",
-      "culturalExperience": "Kulturelle Erfahrung",
-      "culturalDetails": "Tempel und kulturelle Stätten besuchen",
-      "localCuisine": "Authentische lokale Küche probieren",
-      "shopping": "Lokaler Markt-Shopping",
-      "recommendations": "Empfehlungen",
-      "accommodation": "Unterkunft",
-      "transport": "Transport",
-      "activities": "Aktivitäten"
-    }
+    "chatWidget": "Mit KI-Assistent Chatten"
   }
 }

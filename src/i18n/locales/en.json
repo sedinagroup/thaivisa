@@ -12,18 +12,24 @@
     "aiAssistantChat": "AI Assistant Chat"
   },
   "home": {
-    "title": "Thailand Visa AI Platform",
-    "subtitle": "Advanced AI-powered Thailand visa application process. Get document verification, travel planning, and expert guidance in one place.",
-    "startApplication": "Start Your Application",
-    "stats": {
-      "accuracy": "AI Accuracy",
-      "processing": "Faster Processing",
-      "successRate": "Success Rate",
-      "rating": "User Rating"
+    "hero": {
+      "badge": "AI-Powered Platform",
+      "title": "Thailand Visa AI Platform",
+      "subtitle": "Smart Visa Solutions",
+      "description": "Advanced AI-powered Thailand visa application process. Get document verification, travel planning, and expert guidance in one place.",
+      "startApplication": "Start Your Application",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "stats": {
+        "aiAccuracy": "AI Accuracy",
+        "fasterProcessing": "Faster Processing",
+        "successRate": "Success Rate",
+        "userRating": "User Rating"
+      }
     },
-    "whyChoose": "Why Choose Thailand Visa AI?",
-    "whyChooseDescription": "Our advanced AI handles every aspect of your Thailand visa journey with unprecedented accuracy and speed.",
-    "features": {
+    "aiFeatures": {
+      "title": "AI-Powered Features",
+      "description": "Our advanced AI handles every aspect of your Thailand visa journey with unprecedented accuracy and speed.",
       "documentChecker": {
         "title": "AI Document Checker",
         "description": "Verify your documents instantly with our advanced AI technology"
@@ -40,7 +46,271 @@
         "title": "AI Assistant Chat",
         "description": "24/7 AI support for all visa and travel questions with instant, accurate responses."
       }
-    }
+    },
+    "tripPlannerSection": {
+      "title": "AI Trip Planner - Complete Travel Management",
+      "description": "Get personalized AI recommendations for flights, accommodations, transportation, and special services in Thailand. Save time and money with intelligent travel planning.",
+      "services": {
+        "flightRecommendations": {
+          "title": "Flight Recommendations",
+          "features": {
+            "smartFlightSearch": "Smart flight search",
+            "pricePredictions": "Price predictions",
+            "bestRouteAnalysis": "Best route analysis",
+            "seatRecommendations": "Seat recommendations"
+          }
+        },
+        "hotelAccommodation": {
+          "title": "Hotel & Accommodation",
+          "features": {
+            "personalizedMatching": "Personalized matching",
+            "locationOptimizer": "Location optimizer",
+            "priceComparison": "Price comparison",
+            "amenityMatching": "Amenity matching"
+          }
+        },
+        "transportationServices": {
+          "title": "Transportation Services",
+          "features": {
+            "airportTransfers": "Airport transfers",
+            "localTransport": "Local transport",
+            "carRentalOptimizer": "Car rental optimizer",
+            "routePlanning": "Route planning"
+          }
+        },
+        "specialServices": {
+          "title": "Special Services",
+          "features": {
+            "tourPackages": "Tour packages",
+            "restaurantRecommendations": "Restaurant recommendations",
+            "culturalExperiences": "Cultural experiences",
+            "emergencySupport": "Emergency support"
+          }
+        }
+      },
+      "interactiveFeatures": {
+        "title": "Interactive AI Features",
+        "smartItinerary": {
+          "title": "Smart Itinerary Builder",
+          "description": "AI creates personalized day-by-day travel plans based on your interests and preferences."
+        },
+        "budgetOptimizer": {
+          "title": "Budget Optimizer",
+          "description": "AI analyzes thousands of options to find the best value for your travel budget."
+        },
+        "weatherIntegration": {
+          "title": "Weather Integration",
+          "description": "AI adjusts recommendations based on weather forecasts and seasonal conditions."
+        },
+        "realTimeUpdates": {
+          "title": "Real-time Updates",
+          "description": "AI provides live travel updates, flight changes, and alternative recommendations."
+        }
+      },
+      "interface": {
+        "title": "AI Trip Planner Interface",
+        "subtitle": "Personalized travel planning powered by AI",
+        "travelDates": "Travel Dates",
+        "budgetRange": "Budget Range",
+        "aiRecommendations": "AI Recommendations",
+        "generatePlan": "Generate AI Trip Plan",
+        "sampleDates": "Dec 15 - Dec 25, 2024",
+        "sampleBudget": "$2,000 - $3,000 USD",
+        "sampleRecommendations": "15 personalized suggestions ready"
+      },
+      "creditServices": {
+        "basicPlan": {
+          "title": "Basic Trip Plan",
+          "credits": "credits",
+          "description": "Basic AI recommendations for flights, hotels, and transport",
+          "button": "Get Basic Plan"
+        },
+        "advancedPlan": {
+          "title": "Advanced Trip Plan",
+          "credits": "credits",
+          "description": "Detailed itinerary with alternatives and optimization",
+          "button": "Get Advanced Plan"
+        },
+        "premiumPlan": {
+          "title": "Premium Trip Plan",
+          "credits": "credits",
+          "description": "Complete travel management with real-time updates",
+          "button": "Get Premium Plan"
+        },
+        "vipConcierge": {
+          "title": "VIP Concierge",
+          "credits": "credits",
+          "description": "Personal AI travel assistant with 24/7 support",
+          "button": "Get VIP Service"
+        }
+      },
+      "successStories": {
+        "title": "AI Trip Planning Success Stories",
+        "userBookings": "Users book AI-recommended services",
+        "averageSavings": "Average savings with AI optimization",
+        "planningRating": "Stars for AI travel planning",
+        "timeSaved": "Hours saved with AI research"
+      },
+      "howItWorks": {
+        "title": "How AI Trip Planning Works",
+        "step1": {
+          "title": "Tell AI Your Preferences",
+          "description": "Share your travel style, budget, interests, and dates with our AI system."
+        },
+        "step2": {
+          "title": "AI Analyzes Options",
+          "description": "AI compares thousands of flights, hotels, and activities to find the best matches."
+        },
+        "step3": {
+          "title": "Get Personalized Plan",
+          "description": "Receive tailored recommendations with explanations and alternative options."
+        },
+        "step4": {
+          "title": "Book with Confidence",
+          "description": "AI monitors and updates your trip with real-time information and support."
+        }
+      }
+    },
+    "visaHub": {
+      "title": "Complete Visa Information Hub",
+      "description": "AI-powered guidance for every type of Thailand visa with personalized recommendations.",
+      "touristVisa": {
+        "title": "Tourist Visa (TR)",
+        "badge": "Most Popular",
+        "description": "Complete guide and AI-assisted application for tourism and leisure visits.",
+        "features": {
+          "aiDocumentVerification": "AI document verification",
+          "instantEligibilityCheck": "Instant eligibility check",
+          "smartFormFilling": "Smart form filling"
+        }
+      },
+      "businessVisa": {
+        "title": "Business Visa (B)",
+        "badge": "Professional",
+        "description": "Requirements and AI document verification for business activities.",
+        "features": {
+          "businessDocumentAnalysis": "Business document analysis",
+          "invitationLetterVerification": "Invitation letter verification",
+          "companyRegistrationCheck": "Company registration check"
+        }
+      },
+      "educationVisa": {
+        "title": "Education Visa (ED)",
+        "badge": "Students",
+        "description": "Student visa support with AI guidance for educational institutions.",
+        "features": {
+          "academicDocumentVerification": "Academic document verification",
+          "institutionValidation": "Institution validation",
+          "financialProofAnalysis": "Financial proof analysis"
+        }
+      },
+      "transitVisa": {
+        "title": "Transit Visa (TS)",
+        "badge": "Quick",
+        "description": "Quick processing with AI assistance for transit passengers.",
+        "features": {
+          "flightItineraryVerification": "Flight itinerary verification",
+          "transitTimeCalculation": "Transit time calculation",
+          "expressProcessing": "Express processing"
+        }
+      },
+      "specialVisas": {
+        "title": "Special Visas",
+        "badge": "Premium",
+        "description": "Retirement, Investment, and other special visa categories with AI recommendations.",
+        "features": {
+          "eligibilityAssessment": "Eligibility assessment",
+          "investmentVerification": "Investment verification",
+          "personalizedGuidance": "Personalized guidance"
+        }
+      },
+      "aiRecommendations": {
+        "title": "AI Recommendations",
+        "badge": "Smart",
+        "description": "Let AI analyze your profile and recommend the best visa type for your needs.",
+        "button": "Get AI Recommendation"
+      }
+    },
+    "aiPoweredFeatures": {
+      "title": "AI-Powered Features",
+      "description": "Experience the future of visa processing with our cutting-edge AI technology.",
+      "smartDocumentAnalysis": {
+        "title": "Smart Document Analysis",
+        "description": "AI scans and verifies all your documents with 95% accuracy in seconds."
+      },
+      "intelligentFormFilling": {
+        "title": "Intelligent Form Filling",
+        "description": "OCR + AI automatically fills all forms with extracted passport data."
+      },
+      "riskAssessment": {
+        "title": "Risk Assessment",
+        "description": "AI predicts approval chances and suggests improvements before submission."
+      },
+      "realTimeUpdates": {
+        "title": "Real-time Updates",
+        "description": "AI monitors your application status and provides instant updates."
+      }
+    },
+    "howItWorks": {
+      "title": "How AI Makes It Simple",
+      "description": "Four simple steps powered by advanced AI to get your Thailand visa approved.",
+      "step1": {
+        "title": "Upload Passport",
+        "description": "AI extracts data instantly from your passport photo using advanced OCR technology."
+      },
+      "step2": {
+        "title": "AI Analysis",
+        "description": "AI analyzes your profile and recommends the best visa type for your needs."
+      },
+      "step3": {
+        "title": "Document Verification",
+        "description": "AI verifies all documents and ensures 100% compliance with requirements."
+      },
+      "step4": {
+        "title": "Smart Submission",
+        "description": "AI submits your application and monitors progress with real-time updates."
+      }
+    },
+    "tripManagement": {
+      "title": "Complete Trip Management",
+      "description": "AI manages all bureaucratic aspects of your Thailand trip so you can focus on planning the fun parts.",
+      "bureaucraticPlanning": {
+        "title": "Bureaucratic Planning",
+        "description": "AI manages all paperwork and deadlines with intelligent scheduling and reminders."
+      },
+      "documentTimeline": {
+        "title": "Document Timeline",
+        "description": "Smart scheduling for document preparation with automated progress tracking."
+      },
+      "complianceMonitoring": {
+        "title": "Compliance Monitoring",
+        "description": "AI ensures all requirements are met and alerts you to any issues instantly."
+      },
+      "emergencySupport": {
+        "title": "Emergency Support",
+        "description": "AI-powered urgent assistance for time-sensitive visa and travel issues."
+      },
+      "aiTravelAssistant": {
+        "title": "AI Travel Assistant",
+        "subtitle": "Your personal AI assistant for all Thailand visa and travel needs",
+        "documentStatus": "Document Status",
+        "applicationProgress": "Application Progress",
+        "nextStep": "Next Step",
+        "allDocumentsVerified": "All documents verified and compliant",
+        "submitFinalDocuments": "Submit final documents by Dec 15"
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Thailand Journey?",
+      "description": "Join thousands of travelers who trust our AI-powered platform for their Thailand visa applications.",
+      "startApplication": "Start Your Application",
+      "getStarted": "Get Started",
+      "viewPricing": "View Pricing",
+      "happyTravelers": "Happy Travelers",
+      "successRate": "Success Rate",
+      "aiSupport": "AI Support"
+    },
+    "chatWidget": "Chat with AI Assistant"
   },
   "login": {
     "title": "Login to Your Account",

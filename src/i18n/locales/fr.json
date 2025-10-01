@@ -4,26 +4,32 @@
     "apply": "Postuler",
     "credits": "Crédits",
     "profile": "Profil",
-    "login": "Connexion",
-    "logout": "Déconnexion",
+    "login": "Se Connecter",
+    "logout": "Se Déconnecter",
     "aiDocumentChecker": "Vérificateur de Documents IA",
     "aiTripPlanner": "Planificateur de Voyage IA",
     "aiVisaAdvisor": "Conseiller Visa IA",
     "aiAssistantChat": "Chat Assistant IA"
   },
   "home": {
-    "title": "Plateforme de Visa Thaïlandais IA",
-    "subtitle": "Processus avancé de demande de visa thaïlandais alimenté par l'IA. Obtenez la vérification de documents, la planification de voyage et des conseils d'experts en un seul endroit.",
-    "startApplication": "Commencer Votre Demande",
-    "stats": {
-      "accuracy": "Précision IA",
-      "processing": "Traitement Plus Rapide",
-      "successRate": "Taux de Réussite",
-      "rating": "Note des Utilisateurs"
+    "hero": {
+      "badge": "Plateforme Alimentée par IA",
+      "title": "Plateforme Visa Thaïlande IA",
+      "subtitle": "Solutions Visa Intelligentes",
+      "description": "Processus avancé de demande de visa thaïlandais alimenté par IA. Obtenez la vérification de documents, la planification de voyage et les conseils d'experts en un seul endroit.",
+      "startApplication": "Commencer Votre Demande",
+      "getStarted": "Commencer",
+      "learnMore": "En Savoir Plus",
+      "stats": {
+        "aiAccuracy": "Précision IA",
+        "fasterProcessing": "Traitement Plus Rapide",
+        "successRate": "Taux de Réussite",
+        "userRating": "Note Utilisateur"
+      }
     },
-    "whyChoose": "Pourquoi Choisir le Visa Thaïlandais IA ?",
-    "whyChooseDescription": "Notre IA avancée gère chaque aspect de votre voyage de visa thaïlandais avec une précision et une vitesse sans précédent.",
-    "features": {
+    "aiFeatures": {
+      "title": "Fonctionnalités Alimentées par IA",
+      "description": "Notre IA avancée gère tous les aspects de votre parcours visa thaïlandais avec une précision et une vitesse sans précédent.",
       "documentChecker": {
         "title": "Vérificateur de Documents IA",
         "description": "Vérifiez vos documents instantanément avec notre technologie IA avancée"
@@ -34,170 +40,23 @@
       },
       "tripPlanner": {
         "title": "Planificateur de Voyage Intelligent",
-        "description": "Obtenez des recommandations de voyage personnalisées alimentées par l'IA"
+        "description": "Obtenez des recommandations de voyage personnalisées alimentées par IA"
       },
       "assistantChat": {
         "title": "Chat Assistant IA",
         "description": "Support IA 24/7 pour toutes les questions de visa et de voyage avec des réponses instantanées et précises."
       }
-    }
-  },
-  "login": {
-    "title": "Se Connecter à Votre Compte",
-    "subtitle": "Accédez à votre tableau de bord de demande de visa thaïlandais",
-    "email": "E-mail",
-    "password": "Mot de passe",
-    "loginButton": "Se connecter",
-    "forgotPassword": "Mot de passe oublié ?",
-    "noAccount": "Pas de compte ?",
-    "signUp": "Inscrivez-vous ici",
-    "emailPlaceholder": "Entrez votre e-mail",
-    "passwordPlaceholder": "Entrez votre mot de passe"
-  },
-  "tripPlanner": {
-    "title": "Planificateur de Voyage IA",
-    "subtitle": "Créez votre aventure parfaite en Thaïlande avec notre système intelligent de planification de voyage",
-    "step": "Étape",
-    "of": "sur",
-    "stepDescriptions": {
-      "step1": "Informations de voyage de base et préférences de voyage",
-      "step2": "Préférences d'hébergement et de transport",
-      "step3": "Intérêts, besoins alimentaires et exigences d'accessibilité",
-      "step4": "Répartition du budget et demandes spéciales"
     },
-    "form": {
-      "destination": "Destination",
-      "destinationPlaceholder": "ex: Bangkok, Phuket, Chiang Mai",
-      "travelers": "Nombre de Voyageurs",
-      "startDate": "Date de Début",
-      "endDate": "Date de Fin",
-      "budget": "Budget Total",
-      "accommodationType": "Type d'Hébergement",
-      "transportPreference": "Préférence de Transport",
-      "travelStyle": "Style de Voyage",
-      "adventureLevel": "Niveau d'Aventure",
-      "interests": "Intérêts et Activités",
-      "dietaryRestrictions": "Restrictions Alimentaires",
-      "accessibility": "Besoins d'Accessibilité",
-      "travelCompany": "Compagnie de Voyage",
-      "previousVisits": "Visites Précédentes en Thaïlande",
-      "languagePreference": "Préférence Linguistique",
-      "languagePreferencePlaceholder": "Sélectionnez votre préférence linguistique",
-      "specialRequests": "Demandes Spéciales",
-      "specialRequestsPlaceholder": "Des demandes spéciales, célébrations ou besoins spécifiques ?",
-      "budgetBreakdown": "Répartition du Budget",
-      "budgetBreakdownNote": "Ajustez l'allocation en pourcentage pour chaque catégorie",
-      "summary": "Résumé du Voyage",
-      "dates": "Dates"
+    "cta": {
+      "title": "Prêt à Commencer Votre Voyage en Thaïlande?",
+      "description": "Rejoignez des milliers de voyageurs qui font confiance à notre plateforme alimentée par IA pour leurs demandes de visa thaïlandais.",
+      "startApplication": "Commencer Votre Demande",
+      "getStarted": "Commencer",
+      "viewPricing": "Voir les Prix",
+      "happyTravelers": "Voyageurs Heureux",
+      "successRate": "Taux de Réussite",
+      "aiSupport": "Support IA"
     },
-    "travelCompany": {
-      "solo": "Voyage Solo",
-      "couple": "Couple",
-      "family": "Famille avec Enfants",
-      "friends": "Groupe d'Amis",
-      "business": "Voyage d'Affaires"
-    },
-    "accommodation": {
-      "hotel": "Hôtel",
-      "hostel": "Auberge",
-      "resort": "Resort",
-      "apartment": "Appartement/Condo",
-      "villa": "Villa",
-      "guesthouse": "Maison d'Hôtes/B&B"
-    },
-    "transport": {
-      "flight": "Vol",
-      "train": "Train",
-      "bus": "Bus",
-      "car": "Location de Voiture",
-      "mixed": "Transport Mixte"
-    },
-    "travelStyle": {
-      "luxury": "Luxe",
-      "comfort": "Confort",
-      "budget": "Budget",
-      "backpacker": "Routard"
-    },
-    "adventureLevel": {
-      "relaxed": "Détendu et Tranquille",
-      "moderate": "Activité Modérée",
-      "adventurous": "Aventureux",
-      "extreme": "Aventure Extrême"
-    },
-    "interests": {
-      "culture": "Culture et Histoire",
-      "nature": "Nature et Faune",
-      "adventure": "Sports d'Aventure",
-      "beach": "Plage et Activités Aquatiques",
-      "food": "Nourriture et Culinaire",
-      "photography": "Photographie",
-      "nightlife": "Vie Nocturne et Divertissement",
-      "shopping": "Shopping",
-      "wellness": "Bien-être et Spa"
-    },
-    "dietary": {
-      "vegetarian": "Végétarien",
-      "vegan": "Végétalien",
-      "halal": "Halal",
-      "kosher": "Casher",
-      "gluten-free": "Sans Gluten",
-      "dairy-free": "Sans Produits Laitiers",
-      "nut-allergy": "Allergie aux Noix",
-      "seafood-allergy": "Allergie aux Fruits de Mer",
-      "none": "Aucune Restriction"
-    },
-    "accessibility": {
-      "wheelchair": "Accessible en Fauteuil Roulant",
-      "mobility-aid": "Aide à la Mobilité Requise",
-      "visual-impairment": "Déficience Visuelle",
-      "hearing-impairment": "Déficience Auditive",
-      "none": "Aucun Besoin Spécial"
-    },
-    "languages": {
-      "english": "Anglais Seulement",
-      "local": "Langue Locale",
-      "translator": "Application Traducteur",
-      "guide": "Guide Anglophone"
-    },
-    "previousVisits": {
-      "firstTime": "Première Fois",
-      "returning": "Visiteur de Retour",
-      "frequent": "Visiteur Fréquent"
-    },
-    "budgetBreakdown": {
-      "accommodation": "Hébergement",
-      "food": "Nourriture et Restauration",
-      "activities": "Activités et Tours",
-      "transport": "Transport",
-      "shopping": "Shopping et Souvenirs"
-    },
-    "buttons": {
-      "previous": "Précédent",
-      "next": "Suivant",
-      "generatePlan": "Générer le Plan de Voyage",
-      "generating": "Génération..."
-    },
-    "generatedPlan": {
-      "title": "Votre Plan de Voyage Personnalisé en Thaïlande",
-      "destination": "Destination",
-      "duration": "Durée",
-      "travelers": "Voyageurs",
-      "people": "personnes",
-      "budget": "Budget",
-      "dayByDay": "Itinéraire Jour par Jour",
-      "day": "Jour",
-      "arrival": "Arrivée et Orientation",
-      "arrivalDetails": "Prise en charge à l'aéroport et enregistrement à l'hôtel",
-      "checkIn": "Enregistrement à l'hôtel et repos",
-      "localExploration": "Exploration de la région locale",
-      "culturalExperience": "Expérience Culturelle",
-      "culturalDetails": "Visiter les temples et sites culturels",
-      "localCuisine": "Essayer la cuisine locale authentique",
-      "shopping": "Shopping au marché local",
-      "recommendations": "Recommandations",
-      "accommodation": "Hébergement",
-      "transport": "Transport",
-      "activities": "Activités"
-    }
+    "chatWidget": "Discuter avec l'Assistant IA"
   }
 }
