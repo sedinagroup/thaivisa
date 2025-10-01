@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useCredits } from '@/contexts/CreditsContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { 
   CreditCard, 
-  Shield, 
+  DollarSign, 
   CheckCircle, 
-  ArrowLeft, 
-  Loader2,
-  Coins,
   Star,
-  Gift
+  Gift,
+  Zap,
+  Crown,
+  Shield,
+  ArrowRight
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -22,305 +22,332 @@ interface CreditPackage {
   name: string;
   credits: number;
   price: number;
+  originalPrice?: number;
   popular?: boolean;
   bonus?: number;
-  description: string;
+  features: string[];
+  icon: React.ReactNode;
 }
 
-const creditPackages: CreditPackage[] = [
-  {
-    id: 'starter',
-    name: 'Starter Pack',
-    credits: 100,
-    price: 9.99,
-    description: 'Perfect for single visa applications',
-    bonus: 0
-  },
-  {
-    id: 'professional',
-    name: 'Professional Pack',
-    credits: 300,
-    price: 24.99,
-    popular: true,
-    description: 'Best value for multiple applications',
-    bonus: 50
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise Pack',
-    credits: 1000,
-    price: 79.99,
-    description: 'For agencies and frequent travelers',
-    bonus: 200
-  }
-];
-
 const PayPalPayment: React.FC = () => {
-  const { user, updateUser } = useAuth();
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const packageId = searchParams.get('package');
-  
-  const [loading, setLoading] = useState(false);
-  const [paypalLoaded, setPaypalLoaded] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState<CreditPackage | null>(null);
+  const { user } = useAuth();
+  const { credits, addCredits } = useCredits();
+  const [selectedPackage, setSelectedPackage] = useState<string>('');
+  const [processing, setProcessing] = useState(false);
 
-  useEffect(() => {
-    // Find the selected package
-    const pkg = creditPackages.find(p => p.id === packageId);
-    if (pkg) {
-      setSelectedPackage(pkg);
-    } else {
-      // Default to starter pack if no package specified
-      setSelectedPackage(creditPackages[0]);
+  const creditPackages: CreditPackage[] = [
+    {
+      id: 'starter',
+      name: 'Starter Pack',
+      credits: 100,
+      price: 9.99,
+      originalPrice: 12.99,
+      bonus: 20,
+      features: [
+        '5 Document Analyses',
+        '2 Trip Plans',
+        'Basic Support',
+        'Valid for 6 months'
+      ],
+      icon: <Gift className="w-6 h-6" />
+    },
+    {
+      id: 'professional',
+      name: 'Professional',
+      credits: 300,
+      price: 24.99,
+      originalPrice: 34.99,
+      popular: true,
+      bonus: 75,
+      features: [
+        '15 Document Analyses',
+        '7 Trip Plans',
+        'Priority Support',
+        'Valid for 12 months',
+        'Advanced AI Features'
+      ],
+      icon: <Zap className="w-6 h-6" />
+    },
+    {
+      id: 'enterprise',
+      name: 'Enterprise',
+      credits: 1000,
+      price: 79.99,
+      originalPrice: 99.99,
+      bonus: 300,
+      features: [
+        '50 Document Analyses',
+        '25 Trip Plans',
+        'VIP Support',
+        'Valid for 24 months',
+        'All Premium Features',
+        'Custom Solutions'
+      ],
+      icon: <Crown className="w-6 h-6" />
+    }
+  ];
+
+  const handlePackageSelect = (packageId: string) => {
+    setSelectedPackage(packageId);
+  };
+
+  const handlePayment = async () => {
+    if (!selectedPackage) {
+      toast.error('Please select a credit package');
+      return;
     }
 
-    // Simulate PayPal SDK loading
-    setTimeout(() => {
-      setPaypalLoaded(true);
-    }, 1000);
-  }, [packageId]);
+    const pkg = creditPackages.find(p => p.id === selectedPackage);
+    if (!pkg) return;
 
-  const handlePayPalPayment = async () => {
-    if (!selectedPackage || !user) return;
+    setProcessing(true);
 
-    setLoading(true);
-    
     try {
       // Simulate PayPal payment processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Simulate successful payment
-      const totalCredits = selectedPackage.credits + (selectedPackage.bonus || 0);
-      updateUser({ credits: user.credits + totalCredits });
-      
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
+      // Add credits to user account
+      const totalCredits = pkg.credits + (pkg.bonus || 0);
+      addCredits(totalCredits);
+
       toast.success(`Payment successful! ${totalCredits} credits added to your account.`);
-      navigate('/credits?success=true');
+      setSelectedPackage('');
     } catch (error) {
       toast.error('Payment failed. Please try again.');
     } finally {
-      setLoading(false);
+      setProcessing(false);
     }
   };
 
-  const handleMockPayment = async () => {
-    if (!selectedPackage || !user) return;
-
-    setLoading(true);
-    
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    const totalCredits = selectedPackage.credits + (selectedPackage.bonus || 0);
-    updateUser({ credits: user.credits + totalCredits });
-    
-    toast.success(`Mock payment successful! ${totalCredits} credits added to your account.`);
-    navigate('/credits?success=true');
-    setLoading(false);
+  const getPackageColor = (packageId: string) => {
+    switch (packageId) {
+      case 'starter':
+        return 'from-green-500 to-emerald-600';
+      case 'professional':
+        return 'from-blue-500 to-purple-600';
+      case 'enterprise':
+        return 'from-purple-500 to-pink-600';
+      default:
+        return 'from-gray-500 to-gray-600';
+    }
   };
 
-  if (!selectedPackage) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
-          <p className="text-gray-600">Loading payment details...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/credits')}
-            className="mr-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Credits
-          </Button>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Complete Your Purchase
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              Secure payment powered by PayPal
-            </p>
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <CreditCard className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            Purchase Credits
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400">
+            Choose the perfect credit package for your needs
+          </p>
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <Badge variant="secondary" className="flex items-center gap-2">
+              <DollarSign className="w-4 h-4" />
+              Current Balance: {credits} credits
+            </Badge>
+            <Badge variant="outline" className="flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              Secure PayPal Payment
+            </Badge>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Order Summary */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Coins className="w-5 h-5 mr-2 text-amber-500" />
-                Order Summary
-              </CardTitle>
-              <CardDescription>
-                Review your credit package purchase
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="border rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-lg">{selectedPackage.name}</h3>
-                  {selectedPackage.popular && (
-                    <Badge className="bg-blue-500">
-                      <Star className="w-3 h-3 mr-1" />
-                      Popular
-                    </Badge>
-                  )}
+        {/* Credit Packages */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          {creditPackages.map((pkg) => (
+            <Card 
+              key={pkg.id}
+              className={`relative cursor-pointer transition-all duration-300 hover:shadow-xl ${
+                selectedPackage === pkg.id 
+                  ? 'ring-2 ring-blue-500 shadow-lg transform scale-105' 
+                  : 'hover:shadow-lg'
+              } ${pkg.popular ? 'border-blue-500' : ''}`}
+              onClick={() => handlePackageSelect(pkg.id)}
+            >
+              {pkg.popular && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                    <Star className="w-3 h-3 mr-1" />
+                    Most Popular
+                  </Badge>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {selectedPackage.description}
-                </p>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span>Base Credits:</span>
-                    <span className="font-medium">{selectedPackage.credits}</span>
-                  </div>
-                  {selectedPackage.bonus && selectedPackage.bonus > 0 && (
-                    <div className="flex justify-between text-green-600">
-                      <span className="flex items-center">
-                        <Gift className="w-4 h-4 mr-1" />
-                        Bonus Credits:
+              )}
+              
+              <CardHeader className="text-center pb-4">
+                <div className={`w-12 h-12 bg-gradient-to-r ${getPackageColor(pkg.id)} rounded-xl flex items-center justify-center mx-auto mb-4 text-white`}>
+                  {pkg.icon}
+                </div>
+                <CardTitle className="text-xl">{pkg.name}</CardTitle>
+                <CardDescription>Perfect for your needs</CardDescription>
+              </CardHeader>
+              
+              <CardContent className="text-center">
+                <div className="mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                      ${pkg.price}
+                    </span>
+                    {pkg.originalPrice && (
+                      <span className="text-lg text-gray-500 line-through">
+                        ${pkg.originalPrice}
                       </span>
-                      <span className="font-medium">+{selectedPackage.bonus}</span>
+                    )}
+                  </div>
+                  <div className="text-lg font-semibold text-blue-600">
+                    {pkg.credits} Credits
+                  </div>
+                  {pkg.bonus && (
+                    <div className="text-sm text-green-600 font-medium">
+                      + {pkg.bonus} Bonus Credits
                     </div>
                   )}
-                  <Separator />
-                  <div className="flex justify-between text-lg font-semibold">
-                    <span>Total Credits:</span>
-                    <span className="text-blue-600">
-                      {selectedPackage.credits + (selectedPackage.bonus || 0)}
-                    </span>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  {pkg.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-center">
+                  <div className="text-xs text-gray-500 mb-2">
+                    Total: {pkg.credits + (pkg.bonus || 0)} credits
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    ${(pkg.price / (pkg.credits + (pkg.bonus || 0))).toFixed(3)} per credit
                   </div>
                 </div>
-              </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-              <div className="border-t pt-4">
-                <div className="flex justify-between items-center text-2xl font-bold">
-                  <span>Total:</span>
-                  <span className="text-green-600">${selectedPackage.price}</span>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  One-time payment • No recurring charges
-                </p>
-              </div>
+        {/* Payment Section */}
+        {selectedPackage && (
+          <Card className="max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <CreditCard className="w-5 h-5" />
+                Payment Summary
+              </CardTitle>
+              <CardDescription>
+                Complete your purchase with PayPal
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {(() => {
+                const pkg = creditPackages.find(p => p.id === selectedPackage);
+                if (!pkg) return null;
+
+                return (
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 bg-gradient-to-r ${getPackageColor(pkg.id)} rounded-lg flex items-center justify-center text-white`}>
+                            {pkg.icon}
+                          </div>
+                          <div>
+                            <div className="font-semibold">{pkg.name}</div>
+                            <div className="text-sm text-gray-600">{pkg.credits} + {pkg.bonus || 0} bonus credits</div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold">${pkg.price}</div>
+                          {pkg.originalPrice && (
+                            <div className="text-sm text-gray-500 line-through">${pkg.originalPrice}</div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="border-t pt-4">
+                        <div className="flex justify-between items-center">
+                          <span className="font-semibold">Total Credits:</span>
+                          <span className="font-bold text-blue-600">{pkg.credits + (pkg.bonus || 0)}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <Button
+                        onClick={handlePayment}
+                        disabled={processing}
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 h-12"
+                      >
+                        {processing ? (
+                          <>
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            Processing Payment...
+                          </>
+                        ) : (
+                          <>
+                            <CreditCard className="w-5 h-5 mr-2" />
+                            Pay with PayPal
+                            <ArrowRight className="w-5 h-5 ml-2" />
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => setSelectedPackage('')}
+                        disabled={processing}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+
+                    <div className="text-center text-xs text-gray-500">
+                      <Shield className="w-4 h-4 inline mr-1" />
+                      Secure payment powered by PayPal. Your payment information is encrypted and secure.
+                    </div>
+                  </div>
+                );
+              })()}
             </CardContent>
           </Card>
+        )}
 
-          {/* Payment Methods */}
+        {/* Features Section */}
+        <div className="mt-12">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <CreditCard className="w-5 h-5 mr-2" />
-                Payment Method
-              </CardTitle>
-              <CardDescription>
-                Choose your preferred payment method
+              <CardTitle className="text-center">Why Choose Our Credits?</CardTitle>
+              <CardDescription className="text-center">
+                Get the most value from your AI-powered visa services
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              {/* PayPal Payment */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                      <span className="text-white font-bold text-sm">PP</span>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">PayPal</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Secure payment with PayPal
-                      </p>
-                    </div>
-                  </div>
-                  <CheckCircle className="w-5 h-5 text-blue-600" />
-                </div>
-
-                {/* PayPal Button Container */}
-                <div id="paypal-button-container" className="min-h-[50px]">
-                  {paypalLoaded ? (
-                    <Button
-                      onClick={handlePayPalPayment}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3"
-                      disabled={loading}
-                    >
-                      {loading ? (
-                        <>
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          Processing Payment...
-                        </>
-                      ) : (
-                        <>
-                          <CreditCard className="w-4 h-4 mr-2" />
-                          Pay with PayPal - ${selectedPackage.price}
-                        </>
-                      )}
-                    </Button>
-                  ) : (
-                    <div className="w-full h-12 bg-gray-200 dark:bg-gray-700 rounded animate-pulse flex items-center justify-center">
-                      <span className="text-gray-500">Loading PayPal...</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Demo Payment Button */}
-                <Separator />
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                    For demo purposes only:
-                  </p>
-                  <Button
-                    onClick={handleMockPayment}
-                    variant="outline"
-                    className="w-full"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Processing...
-                      </>
-                    ) : (
-                      'Simulate Payment (Demo)'
-                    )}
-                  </Button>
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Zap className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Instant Processing</h3>
+                  <p className="text-sm text-gray-600">Credits are added to your account immediately after payment</p>
                 </div>
-              </div>
-
-              {/* Security Information */}
-              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-                <div className="flex items-center mb-2">
-                  <Shield className="w-5 h-5 text-green-600 mr-2" />
-                  <h4 className="font-semibold text-green-800 dark:text-green-300">
-                    Secure Payment
-                  </h4>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Shield className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Secure Payment</h3>
+                  <p className="text-sm text-gray-600">Protected by PayPal's industry-leading security</p>
                 </div>
-                <ul className="text-sm text-green-700 dark:text-green-400 space-y-1">
-                  <li>• 256-bit SSL encryption</li>
-                  <li>• PCI DSS compliant</li>
-                  <li>• Your payment info is never stored</li>
-                  <li>• 30-day money-back guarantee</li>
-                </ul>
-              </div>
-
-              {/* Terms */}
-              <div className="text-xs text-gray-600 dark:text-gray-400">
-                <p>
-                  By completing this purchase, you agree to our{' '}
-                  <a href="/terms" className="text-blue-600 hover:underline">Terms of Service</a>
-                  {' '}and{' '}
-                  <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>.
-                  Credits are non-refundable and do not expire.
-                </p>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Gift className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Bonus Credits</h3>
+                  <p className="text-sm text-gray-600">Get extra credits with every package purchase</p>
+                </div>
               </div>
             </CardContent>
           </Card>

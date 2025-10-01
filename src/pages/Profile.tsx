@@ -2,103 +2,93 @@ import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
   User, 
   Mail, 
-  Calendar, 
+  Phone, 
   MapPin, 
-  Phone,
+  Calendar, 
+  Edit,
   Save,
-  Shield,
+  Camera,
+  Settings,
   CreditCard,
-  Bell,
-  Globe
+  FileText,
+  Shield
 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
-  const [loading, setLoading] = useState(false);
+  const { user, updateProfile } = useAuth();
+  const [editing, setEditing] = useState(false);
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
     email: user?.email || '',
-    phone: '',
-    country: '',
-    dateOfBirth: '',
-    passportNumber: '',
-    nationality: ''
+    phoneNumber: user?.phoneNumber || '',
+    nationality: user?.nationality || '',
+    dateOfBirth: user?.dateOfBirth || ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSave = async () => {
-    setLoading(true);
-    
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      updateUser({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email
-      });
-      
+      await updateProfile(formData);
+      setEditing(false);
       toast.success('Profile updated successfully!');
     } catch (error) {
-      toast.error('Failed to update profile. Please try again.');
-    } finally {
-      setLoading(false);
+      toast.error('Failed to update profile');
     }
   };
 
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Please log in to view your profile
-          </h2>
-        </div>
-      </div>
-    );
-  }
+  const handleCancel = () => {
+    setFormData({
+      firstName: user?.firstName || '',
+      lastName: user?.lastName || '',
+      email: user?.email || '',
+      phoneNumber: user?.phoneNumber || '',
+      nationality: user?.nationality || '',
+      dateOfBirth: user?.dateOfBirth || ''
+    });
+    setEditing(false);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center space-x-4 mb-6">
-            <Avatar className="w-20 h-20">
-              <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-2xl">
-                {user.firstName?.[0]}{user.lastName?.[0]}
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                {user.firstName} {user.lastName}
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400">{user.email}</p>
-              <div className="flex items-center space-x-2 mt-2">
-                <Badge variant="secondary">Free Plan</Badge>
-                <Badge variant="outline" className="flex items-center">
-                  <CreditCard className="w-3 h-3 mr-1" />
-                  {user.credits} Credits
-                </Badge>
-              </div>
-            </div>
+        <div className="text-center mb-8">
+          <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 relative">
+            <User className="w-12 h-12 text-white" />
+            <button className="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <Camera className="w-4 h-4 text-gray-600" />
+            </button>
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            {user?.firstName} {user?.lastName}
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400">
+            Member since {new Date().toLocaleDateString()}
+          </p>
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <Badge variant="secondary" className="flex items-center gap-2">
+              <CreditCard className="w-4 h-4" />
+              {user?.credits || 0} créditos
+            </Badge>
+            <Badge variant="outline" className="flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              Verified Account
+            </Badge>
           </div>
         </div>
 
@@ -107,228 +97,224 @@ const Profile: React.FC = () => {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center">
-                  <User className="w-5 h-5 mr-2" />
-                  Profile Information
-                </CardTitle>
-                <CardDescription>
-                  Update your personal information and contact details
-                </CardDescription>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="flex items-center gap-2">
+                      <User className="w-5 h-5" />
+                      Personal Information
+                    </CardTitle>
+                    <CardDescription>
+                      Manage your account details and preferences
+                    </CardDescription>
+                  </div>
+                  <Button
+                    variant={editing ? "outline" : "default"}
+                    onClick={() => editing ? handleCancel() : setEditing(true)}
+                  >
+                    {editing ? (
+                      <>
+                        <Settings className="w-4 h-4 mr-2" />
+                        Cancel
+                      </>
+                    ) : (
+                      <>
+                        <Edit className="w-4 h-4 mr-2" />
+                        Edit Profile
+                      </>
+                    )}
+                  </Button>
+                </div>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      placeholder="Enter your first name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      placeholder="Enter your last name"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="pl-10"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                      <Input
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="pl-10"
-                        placeholder="+1 (555) 123-4567"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                      <Input
-                        id="country"
-                        name="country"
-                        value={formData.country}
-                        onChange={handleInputChange}
-                        className="pl-10"
-                        placeholder="United States"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h3 className="text-lg font-medium">Travel Information</h3>
+              <CardContent>
+                <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                      <Label htmlFor="firstName">First Name</Label>
                       <div className="relative">
-                        <Calendar className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
-                          id="dateOfBirth"
-                          name="dateOfBirth"
-                          type="date"
-                          value={formData.dateOfBirth}
+                          id="firstName"
+                          name="firstName"
+                          value={formData.firstName}
                           onChange={handleInputChange}
                           className="pl-10"
+                          disabled={!editing}
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name</Label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <Input
+                          id="lastName"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          className="pl-10"
+                          disabled={!editing}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email Address</Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="pl-10"
+                        disabled={!editing}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="phoneNumber">Phone Number</Label>
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <Input
+                          id="phoneNumber"
+                          name="phoneNumber"
+                          type="tel"
+                          value={formData.phoneNumber}
+                          onChange={handleInputChange}
+                          className="pl-10"
+                          disabled={!editing}
+                          placeholder="+1 (555) 123-4567"
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="nationality">Nationality</Label>
                       <div className="relative">
-                        <Globe className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
                           id="nationality"
                           name="nationality"
                           value={formData.nationality}
                           onChange={handleInputChange}
                           className="pl-10"
-                          placeholder="American"
+                          disabled={!editing}
+                          placeholder="e.g., Brazilian"
                         />
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="passportNumber">Passport Number</Label>
-                    <Input
-                      id="passportNumber"
-                      name="passportNumber"
-                      value={formData.passportNumber}
-                      onChange={handleInputChange}
-                      placeholder="Enter your passport number"
-                    />
-                  </div>
-                </div>
 
-                <Button onClick={handleSave} disabled={loading} className="w-full">
-                  {loading ? (
-                    'Saving...'
-                  ) : (
-                    <>
-                      <Save className="w-4 h-4 mr-2" />
-                      Save Changes
-                    </>
+                  <div className="space-y-2">
+                    <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                    <div className="relative">
+                      <Calendar className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Input
+                        id="dateOfBirth"
+                        name="dateOfBirth"
+                        type="date"
+                        value={formData.dateOfBirth}
+                        onChange={handleInputChange}
+                        className="pl-10"
+                        disabled={!editing}
+                      />
+                    </div>
+                  </div>
+
+                  {editing && (
+                    <div className="flex gap-4">
+                      <Button
+                        onClick={handleSave}
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                      >
+                        <Save className="w-4 h-4 mr-2" />
+                        Save Changes
+                      </Button>
+                      <Button variant="outline" onClick={handleCancel}>
+                        Cancel
+                      </Button>
+                    </div>
                   )}
-                </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Account Settings */}
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Shield className="w-5 h-5 mr-2" />
-                  Account Security
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium">Password</div>
-                    <div className="text-sm text-gray-600">Last updated 30 days ago</div>
-                  </div>
-                  <Button variant="outline" size="sm">
-                    Change
-                  </Button>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium">Two-Factor Authentication</div>
-                    <div className="text-sm text-gray-600">Not enabled</div>
-                  </div>
-                  <Button variant="outline" size="sm">
-                    Enable
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Bell className="w-5 h-5 mr-2" />
-                  Notifications
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium">Email Notifications</div>
-                    <div className="text-sm text-gray-600">Application updates</div>
-                  </div>
-                  <Button variant="outline" size="sm">
-                    Manage
-                  </Button>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium">SMS Notifications</div>
-                    <div className="text-sm text-gray-600">Important alerts</div>
-                  </div>
-                  <Button variant="outline" size="sm">
-                    Setup
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
+          {/* Account Statistics & Quick Actions */}
+          <div className="lg:col-span-1 space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>Account Statistics</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Member since</span>
-                  <span className="font-medium">January 2024</span>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Credits Balance</span>
+                    <Badge variant="secondary">{user?.credits || 0}</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Documents Analyzed</span>
+                    <Badge variant="outline">0</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Trip Plans Created</span>
+                    <Badge variant="outline">0</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Visa Applications</span>
+                    <Badge variant="outline">0</Badge>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Applications</span>
-                  <span className="font-medium">3</span>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <Button variant="outline" className="w-full justify-start">
+                    <FileText className="w-4 h-4 mr-2" />
+                    Apply for Visa
+                  </Button>
+                  <Button variant="outline" className="w-full justify-start">
+                    <CreditCard className="w-4 h-4 mr-2" />
+                    Buy Credits
+                  </Button>
+                  <Button variant="outline" className="w-full justify-start">
+                    <Settings className="w-4 h-4 mr-2" />
+                    Account Settings
+                  </Button>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Documents scanned</span>
-                  <span className="font-medium">12</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Trip plans created</span>
-                  <span className="font-medium">2</span>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Security</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Two-Factor Auth</span>
+                    <Badge variant="outline">Disabled</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Email Verified</span>
+                    <Badge variant="secondary">Verified</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Phone Verified</span>
+                    <Badge variant="outline">Pending</Badge>
+                  </div>
+                  <Button variant="outline" size="sm" className="w-full">
+                    <Shield className="w-4 h-4 mr-2" />
+                    Security Settings
+                  </Button>
                 </div>
               </CardContent>
             </Card>
