@@ -513,7 +513,7 @@ const TripPlanner: React.FC = () => {
                       Generate AI Trip Plan
                     </Button>
                   </div>
-                </div>
+                </CardContent>
               </Card>
 
               {/* How It Works */}

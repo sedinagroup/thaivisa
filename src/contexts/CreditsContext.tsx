@@ -3,7 +3,7 @@ import { useAuth } from './AuthContext';
 
 interface CreditsContextType {
   credits: number;
-  consumeCredits: (amount: number, service: string, description: string) => Promise<void>;
+  consumeCredits: (amount: number, service: string, description?: string) => Promise<void>;
   addCredits: (amount: number) => void;
 }
 
@@ -24,15 +24,17 @@ interface CreditsProviderProps {
 export const CreditsProvider: React.FC<CreditsProviderProps> = ({ children }) => {
   const { user, updateUser } = useAuth();
 
-  const consumeCredits = async (amount: number, service: string, description: string) => {
-    if (!user) throw new Error('User not authenticated');
+  const consumeCredits = async (amount: number, service: string, description?: string) => {
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
     
     if (user.credits < amount) {
       throw new Error('Insufficient credits');
     }
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 100));
     
     updateUser({ credits: user.credits - amount });
   };

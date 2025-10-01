@@ -5,17 +5,16 @@ interface User {
   email: string;
   firstName: string;
   lastName: string;
-  avatar?: string;
   credits: number;
 }
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<boolean>;
-  register: (email: string, password: string, firstName: string, lastName: string) => Promise<boolean>;
-  logout: () => void;
-  isAuthenticated: boolean;
   loading: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
+  logout: () => void;
+  updateUser: (updates: Partial<User>) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -38,97 +37,88 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     // Check for existing session
-    const storedUser = localStorage.getItem('thailand_visa_user');
-    if (storedUser) {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        setUser(JSON.parse(savedUser));
       } catch (error) {
-        console.error('Error parsing stored user:', error);
-        localStorage.removeItem('thailand_visa_user');
+        console.error('Error parsing saved user:', error);
+        localStorage.removeItem('user');
       }
     }
     setLoading(false);
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, password: string) => {
     setLoading(true);
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock authentication - in real app, this would be an API call
-      if (email && password.length >= 6) {
-        const mockUser: User = {
+      // Demo user for testing
+      if (email === 'demo@thaivisa.ai' && password === 'demo123') {
+        const demoUser: User = {
           id: '1',
-          email,
-          firstName: email.split('@')[0],
+          email: 'demo@thaivisa.ai',
+          firstName: 'Demo',
           lastName: 'User',
-          credits: 1000
+          credits: 100
         };
-        
-        setUser(mockUser);
-        localStorage.setItem('thailand_visa_user', JSON.stringify(mockUser));
-        setLoading(false);
-        return true;
+        setUser(demoUser);
+        localStorage.setItem('user', JSON.stringify(demoUser));
+      } else {
+        throw new Error('Invalid credentials');
       }
-      
-      setLoading(false);
-      return false;
     } catch (error) {
-      console.error('Login error:', error);
+      throw error;
+    } finally {
       setLoading(false);
-      return false;
     }
   };
 
-  const register = async (
-    email: string, 
-    password: string, 
-    firstName: string, 
-    lastName: string
-  ): Promise<boolean> => {
+  const register = async (email: string, password: string, firstName: string, lastName: string) => {
     setLoading(true);
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock registration - in real app, this would be an API call
-      if (email && password.length >= 6 && firstName && lastName) {
-        const mockUser: User = {
-          id: Date.now().toString(),
-          email,
-          firstName,
-          lastName,
-          credits: 100 // Welcome bonus
-        };
-        
-        setUser(mockUser);
-        localStorage.setItem('thailand_visa_user', JSON.stringify(mockUser));
-        setLoading(false);
-        return true;
-      }
+      const newUser: User = {
+        id: Date.now().toString(),
+        email,
+        firstName,
+        lastName,
+        credits: 50 // Welcome bonus
+      };
       
-      setLoading(false);
-      return false;
+      setUser(newUser);
+      localStorage.setItem('user', JSON.stringify(newUser));
     } catch (error) {
-      console.error('Registration error:', error);
+      throw error;
+    } finally {
       setLoading(false);
-      return false;
     }
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('thailand_visa_user');
+    localStorage.removeItem('user');
+  };
+
+  const updateUser = (updates: Partial<User>) => {
+    if (user) {
+      const updatedUser = { ...user, ...updates };
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
   };
 
   const value: AuthContextType = {
     user,
+    loading,
     login,
     register,
     logout,
-    isAuthenticated: !!user,
-    loading
+    updateUser
   };
 
   return (
