@@ -14,6 +14,7 @@ import Profile from '@/pages/Profile';
 import AIDocumentChecker from '@/pages/ai/DocumentChecker';
 import AITripPlanner from '@/pages/ai/TripPlanner';
 import PayPalPayment from '@/pages/PayPalPayment';
+import ARGuide from '@/pages/ARGuide';
 
 // 404 Page Component
 const NotFound: React.FC = () => (
@@ -59,6 +60,13 @@ function App() {
                   <ProtectedRoute>
                     <Apply />
                   </ProtectedRoute>
+                </>
+              } />
+              
+              <Route path="/ar-guide" element={
+                <>
+                  <Navbar />
+                  <ARGuide />
                 </>
               } />
               

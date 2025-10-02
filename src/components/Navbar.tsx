@@ -2,142 +2,184 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/contexts/AuthContext';
+import { useCredits } from '@/contexts/CreditsContext';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
   DropdownMenuTrigger,
+  DropdownMenuSeparator 
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { 
   User, 
   LogOut, 
+  Settings, 
   CreditCard, 
-  Menu, 
+  FileText, 
+  MapPin, 
+  Plane,
+  Eye,
+  Menu,
   X,
-  Coins,
-  FileCheck,
-  Compass
+  Globe,
+  ChevronDown
 } from 'lucide-react';
-import LanguageSwitcher from './LanguageSwitcher';
+import { toast } from 'sonner';
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
-  const { t } = useTranslation();
+  const { credits } = useCredits();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleLogout = () => {
-    logout();
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success(t('auth.logoutSuccess'));
+      navigate('/');
+    } catch (error) {
+      toast.error(t('auth.logoutError'));
+    }
   };
 
-  const navigation = [
-    { name: t('nav.home'), href: '/', icon: null },
-    { name: t('nav.apply'), href: '/apply', icon: FileCheck },
-    { name: t('nav.aiDocumentChecker'), href: '/ai-document-checker', icon: FileCheck },
-    { name: t('nav.aiTripPlanner'), href: '/ai-trip-planner', icon: Compass },
-    { name: t('nav.credits'), href: '/credits', icon: Coins },
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('language', lng);
+  };
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'pt', name: 'Português', flag: '🇧🇷' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' },
+    { code: 'ko', name: '한국어', flag: '🇰🇷' },
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'th', name: 'ไทย', flag: '🇹🇭' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' }
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const navLinks = [
+    { path: '/', label: t('nav.home'), icon: null },
+    { path: '/ar-guide', label: 'AR Guide', icon: Eye },
+    { path: '/apply', label: t('nav.apply'), icon: FileText, protected: true },
+    { path: '/ai-trip-planner', label: t('nav.tripPlanner'), icon: MapPin, protected: true },
+    { path: '/ai-document-checker', label: t('nav.documentChecker'), icon: Plane, protected: true }
+  ];
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800">
+    <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          {/* Logo and primary navigation */}
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">TV</span>
-              </div>
-              <span className="font-bold text-xl text-gray-900 dark:text-white">
-                Thailand Visa AI
-              </span>
-            </Link>
-
-            {/* Desktop navigation */}
-            <div className="hidden md:ml-8 md:flex md:space-x-1">
-              {navigation.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-1 ${
-                      isActive(item.href)
-                        ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    {Icon && <Icon className="w-4 h-4" />}
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">N</span>
             </div>
+            <span className="text-xl font-bold text-gray-900 dark:text-white">
+              NEO
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => {
+              if (link.protected && !user) return null;
+              
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isActive(link.path)
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  <span>{link.label}</span>
+                </Link>
+              );
+            })}
           </div>
 
-          {/* User menu and language switcher */}
+          {/* Right Side */}
           <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
-            <LanguageSwitcher />
+            {/* Language Selector */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                  <Globe className="w-4 h-4" />
+                  <span className="hidden sm:inline">{currentLanguage.flag}</span>
+                  <ChevronDown className="w-3 h-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className={`flex items-center space-x-2 ${
+                      i18n.language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''
+                    }`}
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {user ? (
               <>
-                {/* Credits display */}
-                <div className="hidden sm:flex items-center space-x-2 bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">
-                  <Coins className="w-4 h-4 text-amber-600" />
-                  <span className="text-sm font-medium text-amber-700 dark:text-amber-300">
-                    {user.credits}
-                  </span>
-                </div>
+                {/* Credits Display */}
+                <Link to="/credits">
+                  <Badge variant="outline" className="flex items-center space-x-1 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+                    <CreditCard className="w-3 h-3" />
+                    <span>{credits} {t('nav.credits')}</span>
+                  </Badge>
+                </Link>
 
-                {/* User dropdown */}
+                {/* User Menu */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                      <Avatar className="h-8 w-8">
-                        <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-                          {user.firstName?.[0]}{user.lastName?.[0]}
-                        </AvatarFallback>
-                      </Avatar>
+                    <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                      <User className="w-4 h-4" />
+                      <span className="hidden sm:inline">{user.firstName}</span>
+                      <ChevronDown className="w-3 h-3" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56" align="end" forceMount>
-                    <DropdownMenuLabel className="font-normal">
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">
-                          {user.firstName} {user.lastName}
-                        </p>
-                        <p className="text-xs leading-none text-muted-foreground">
-                          {user.email}
-                        </p>
-                      </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
+                  <DropdownMenuContent align="end" className="w-48">
                     <DropdownMenuItem asChild>
-                      <Link to="/profile" className="flex items-center">
-                        <User className="mr-2 h-4 w-4" />
+                      <Link to="/profile" className="flex items-center space-x-2">
+                        <Settings className="w-4 h-4" />
                         <span>{t('nav.profile')}</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link to="/credits" className="flex items-center">
-                        <CreditCard className="mr-2 h-4 w-4" />
-                        <span>{t('nav.creditsAndBilling')}</span>
+                      <Link to="/credits" className="flex items-center space-x-2">
+                        <CreditCard className="w-4 h-4" />
+                        <span>{t('nav.credits')}</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout}>
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>{t('nav.logOut')}</span>
+                    <DropdownMenuItem onClick={handleLogout} className="flex items-center space-x-2 text-red-600">
+                      <LogOut className="w-4 h-4" />
+                      <span>{t('nav.logout')}</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -145,67 +187,50 @@ const Navbar: React.FC = () => {
             ) : (
               <div className="flex items-center space-x-2">
                 <Button variant="ghost" asChild>
-                  <Link to="/login">{t('nav.signIn')}</Link>
+                  <Link to="/login">{t('nav.login')}</Link>
                 </Button>
                 <Button asChild>
-                  <Link to="/register">{t('nav.getStarted')}</Link>
+                  <Link to="/register">{t('nav.register')}</Link>
                 </Button>
               </div>
             )}
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-              </Button>
-            </div>
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-800">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => {
-                const Icon = item.icon;
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
+            <div className="flex flex-col space-y-2">
+              {navLinks.map((link) => {
+                if (link.protected && !user) return null;
+                
+                const Icon = link.icon;
                 return (
                   <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center space-x-2 ${
-                      isActive(item.href)
-                        ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
+                    key={link.path}
+                    to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      isActive(link.path)
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`}
                   >
                     {Icon && <Icon className="w-4 h-4" />}
-                    <span>{item.name}</span>
+                    <span>{link.label}</span>
                   </Link>
                 );
               })}
-              
-              {user && (
-                <>
-                  <div className="border-t border-gray-200 dark:border-gray-800 pt-2 mt-2">
-                    <div className="flex items-center justify-between px-3 py-2">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">{t('nav.credits')}</span>
-                      <Badge variant="secondary" className="flex items-center space-x-1">
-                        <Coins className="w-3 h-3" />
-                        <span>{user.credits}</span>
-                      </Badge>
-                    </div>
-                  </div>
-                </>
-              )}
             </div>
           </div>
         )}
