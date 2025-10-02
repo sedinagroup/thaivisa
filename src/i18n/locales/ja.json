@@ -1,23 +1,22 @@
 {
   "nav": {
     "home": "ホーム",
-    "apply": "申請",
+    "apply": "ビザ申請",
+    "tripPlanner": "旅行プランナー",
+    "documentChecker": "書類チェッカー",
     "credits": "クレジット",
     "profile": "プロフィール",
     "login": "ログイン",
-    "logout": "ログアウト",
-    "aiDocumentChecker": "AI書類チェッカー",
-    "aiTripPlanner": "AI旅行プランナー",
-    "aiVisaAdvisor": "AIビザアドバイザー",
-    "aiAssistantChat": "AIアシスタントチャット"
+    "register": "登録",
+    "logout": "ログアウト"
   },
   "home": {
     "hero": {
       "badge": "AI搭載プラットフォーム",
-      "title": "タイビザAIプラットフォーム",
-      "subtitle": "スマートビザソリューション",
-      "description": "AI搭載の高度なタイビザ申請プロセス。書類確認、旅行計画、専門的なガイダンスを一箇所で取得できます。",
-      "startApplication": "申請を開始",
+      "title": "あなたのAIタイビザ",
+      "subtitle": "＆旅行アシスタント",
+      "description": "書類確認から個別旅行プランまで、すべてを処理する先進AI技術でビザ処理の未来を体験してください。",
+      "startApplication": "申請開始",
       "getStarted": "始める",
       "learnMore": "詳細を見る",
       "stats": {
@@ -29,34 +28,516 @@
     },
     "aiFeatures": {
       "title": "AI搭載機能",
-      "description": "当社の高度なAIは、前例のない精度とスピードでタイビザの旅のあらゆる側面を処理します。",
+      "description": "私たちの先進AIは、前例のない精度とスピードでタイビザの旅のあらゆる側面を処理します。",
       "documentChecker": {
         "title": "AI書類チェッカー",
-        "description": "高度なAI技術で書類を瞬時に確認"
+        "description": "先進AI技術を使用して、95%の精度ですべてのビザ書類を即座に確認・検証します。"
       },
       "visaAdvisor": {
         "title": "AIビザアドバイザー",
-        "description": "プロフィールと旅行計画に基づいたパーソナライズされたビザ推奨を取得。"
+        "description": "あなたのプロフィールと旅行計画に基づいて、個別のビザ推奨を取得します。"
       },
       "tripPlanner": {
-        "title": "スマート旅行プランナー",
-        "description": "AIによるパーソナライズされた旅行推奨を取得"
+        "title": "AI旅行プランナー",
+        "description": "完璧なタイ体験のためのAI推奨で個別旅行行程を作成します。"
       },
       "assistantChat": {
         "title": "AIアシスタントチャット",
-        "description": "ビザと旅行に関するすべての質問に対する24/7 AIサポート、瞬時で正確な回答。"
+        "description": "すべてのビザ・旅行質問に対する24/7 AIサポートで、即座で正確な回答を提供します。"
+      }
+    },
+    "tripPlannerSection": {
+      "title": "AI旅行プランナー - 完全旅行管理",
+      "description": "タイでのフライト、宿泊、交通、特別サービスのAI個別推奨を取得。インテリジェント旅行プランで時間とお金を節約。",
+      "services": {
+        "flightRecommendations": {
+          "title": "フライト推奨",
+          "features": {
+            "smartFlightSearch": "スマートフライト検索",
+            "pricePredictions": "価格予測",
+            "bestRouteAnalysis": "最適ルート分析",
+            "seatRecommendations": "座席推奨"
+          }
+        },
+        "hotelAccommodation": {
+          "title": "ホテル・宿泊",
+          "features": {
+            "personalizedMatching": "個別マッチング",
+            "locationOptimizer": "場所最適化",
+            "priceComparison": "価格比較",
+            "amenityMatching": "設備マッチング"
+          }
+        },
+        "transportationServices": {
+          "title": "交通サービス",
+          "features": {
+            "airportTransfers": "空港送迎",
+            "localTransport": "現地交通",
+            "carRentalOptimizer": "レンタカー最適化",
+            "routePlanning": "ルート計画"
+          }
+        },
+        "specialServices": {
+          "title": "特別サービス",
+          "features": {
+            "tourPackages": "ツアーパッケージ",
+            "restaurantRecommendations": "レストラン推奨",
+            "culturalExperiences": "文化体験",
+            "emergencySupport": "緊急サポート"
+          }
+        }
+      },
+      "interactiveFeatures": {
+        "title": "AIインタラクティブ機能",
+        "smartItinerary": {
+          "title": "スマート行程ビルダー",
+          "description": "AIがあなたの興味と好みに基づいて個別の日別旅行プランを作成します。"
+        },
+        "budgetOptimizer": {
+          "title": "予算最適化",
+          "description": "AIが数千のオプションを分析して、あなたの旅行予算に最適な価値を見つけます。"
+        },
+        "weatherIntegration": {
+          "title": "天気統合",
+          "description": "AIが天気予報と季節条件に基づいて推奨を調整します。"
+        },
+        "realTimeUpdates": {
+          "title": "リアルタイム更新",
+          "description": "AIがライブ旅行更新、フライト変更、代替推奨を提供します。"
+        }
+      },
+      "interface": {
+        "title": "AI旅行プランナーインターフェース",
+        "subtitle": "AI個別旅行プラン",
+        "travelDates": "旅行日程",
+        "sampleDates": "12月15日 - 12月25日, 2024",
+        "budgetRange": "予算範囲",
+        "sampleBudget": "$2,000 - $3,000 USD",
+        "aiRecommendations": "AI推奨",
+        "sampleRecommendations": "15個の個別提案準備完了",
+        "generatePlan": "AI旅行プラン生成"
+      },
+      "creditServices": {
+        "basicPlan": {
+          "title": "基本旅行プラン",
+          "credits": "クレジット",
+          "description": "フライト、ホテル、交通の基本AI推奨",
+          "button": "基本プラン取得"
+        },
+        "advancedPlan": {
+          "title": "上級旅行プラン",
+          "credits": "クレジット",
+          "description": "代替案と最適化を含む詳細行程",
+          "button": "上級プラン取得"
+        },
+        "premiumPlan": {
+          "title": "プレミアム旅行プラン",
+          "credits": "クレジット",
+          "description": "リアルタイム更新付き完全旅行管理",
+          "button": "プレミアムプラン取得"
+        },
+        "vipConcierge": {
+          "title": "VIPコンシェルジュ",
+          "credits": "クレジット",
+          "description": "24/7サポート付き個人AI旅行アシスタント",
+          "button": "VIPサービス取得"
+        }
+      },
+      "successStories": {
+        "title": "AI旅行プラン成功事例",
+        "userBookings": "ユーザーがAI推奨サービスを予約",
+        "averageSavings": "AI最適化による平均節約",
+        "planningRating": "AI旅行プランの星評価",
+        "timeSaved": "AI調査で節約した時間"
+      },
+      "howItWorks": {
+        "title": "AI旅行プランの仕組み",
+        "step1": {
+          "title": "AIにあなたの好みを伝える",
+          "description": "旅行スタイル、予算、興味、日程をAIシステムと共有します。"
+        },
+        "step2": {
+          "title": "AIがオプションを分析",
+          "description": "AIが数千のフライト、ホテル、アクティビティを比較して最適なマッチを見つけます。"
+        },
+        "step3": {
+          "title": "個別プランを受け取る",
+          "description": "説明と代替オプション付きのカスタマイズ推奨を受け取ります。"
+        },
+        "step4": {
+          "title": "安心して予約",
+          "description": "AIがリアルタイム情報とサポートであなたの旅行を監視・更新します。"
+        }
+      }
+    },
+    "visaHub": {
+      "title": "完全ビザ情報ハブ",
+      "description": "個別推奨付きすべてのタイビザタイプのAIガイダンス。",
+      "touristVisa": {
+        "title": "観光ビザ (TR)",
+        "badge": "最人気",
+        "description": "観光・レジャー訪問の完全ガイドとAI支援申請。",
+        "features": {
+          "aiDocumentVerification": "AI書類確認",
+          "instantEligibilityCheck": "即座資格チェック",
+          "smartFormFilling": "スマートフォーム記入"
+        }
+      },
+      "businessVisa": {
+        "title": "ビジネスビザ (B)",
+        "badge": "プロフェッショナル",
+        "description": "ビジネス活動のAI要件と書類確認。",
+        "features": {
+          "businessDocumentAnalysis": "ビジネス書類分析",
+          "invitationLetterVerification": "招待状確認",
+          "companyRegistrationCheck": "会社登録チェック"
+        }
+      },
+      "educationVisa": {
+        "title": "教育ビザ (ED)",
+        "badge": "学生",
+        "description": "教育機関のAIガイダンス付き学生ビザサポート。",
+        "features": {
+          "academicDocumentVerification": "学術書類確認",
+          "institutionValidation": "機関検証",
+          "financialProofAnalysis": "財政証明分析"
+        }
+      },
+      "transitVisa": {
+        "title": "トランジットビザ (TS)",
+        "badge": "高速",
+        "description": "トランジット乗客のAI支援による迅速処理。",
+        "features": {
+          "flightItineraryVerification": "フライト行程確認",
+          "transitTimeCalculation": "トランジット時間計算",
+          "expressProcessing": "エクスプレス処理"
+        }
+      },
+      "specialVisas": {
+        "title": "特別ビザ",
+        "badge": "プレミアム",
+        "description": "AI推奨付き退職、投資、その他特別ビザカテゴリー。",
+        "features": {
+          "eligibilityAssessment": "資格評価",
+          "investmentVerification": "投資確認",
+          "personalizedGuidance": "個別ガイダンス"
+        }
+      },
+      "aiRecommendations": {
+        "title": "AI推奨",
+        "badge": "スマート",
+        "description": "AIにあなたのプロフィールを分析させ、ニーズに最適なビザタイプを推奨させます。",
+        "button": "AI推奨取得"
+      }
+    },
+    "aiPoweredFeatures": {
+      "title": "AI搭載機能",
+      "description": "最先端AI技術でビザ処理の未来を体験してください。",
+      "smartDocumentAnalysis": {
+        "title": "スマート書類分析",
+        "description": "AIが数秒で95%の精度ですべての書類をスキャン・確認します。"
+      },
+      "intelligentFormFilling": {
+        "title": "インテリジェントフォーム記入",
+        "description": "OCR + AIがパスポート抽出データですべてのフォームを自動記入します。"
+      },
+      "riskAssessment": {
+        "title": "リスク評価",
+        "description": "AIが承認確率を予測し、提出前の改善を提案します。"
+      },
+      "realTimeUpdates": {
+        "title": "リアルタイム更新",
+        "description": "AIがあなたの申請状況を監視し、即座に更新を提供します。"
+      }
+    },
+    "howItWorks": {
+      "title": "AIが簡単にする方法",
+      "description": "先進AIによる4つの簡単ステップでタイビザ承認を取得。",
+      "step1": {
+        "title": "パスポートアップロード",
+        "description": "AIが先進OCR技術を使用してパスポート写真からデータを即座に抽出します。"
+      },
+      "step2": {
+        "title": "AI分析",
+        "description": "AIがあなたのプロフィールを分析し、ニーズに最適なビザタイプを推奨します。"
+      },
+      "step3": {
+        "title": "書類確認",
+        "description": "AIがすべての書類を確認し、要件との100%適合を保証します。"
+      },
+      "step4": {
+        "title": "スマート提出",
+        "description": "AIがあなたの申請を提出し、リアルタイム更新で進捗を監視します。"
+      }
+    },
+    "tripManagement": {
+      "title": "完全旅行管理",
+      "description": "AIがあなたのタイ旅行のすべての官僚的側面を管理するので、楽しい部分の計画に集中できます。",
+      "bureaucraticPlanning": {
+        "title": "官僚的計画",
+        "description": "AIがスマートスケジューリングとリマインダーですべての書類作業と締切を処理します。"
+      },
+      "documentTimeline": {
+        "title": "書類タイムライン",
+        "description": "自動進捗追跡付き書類準備のスマートスケジューリング。"
+      },
+      "complianceMonitoring": {
+        "title": "コンプライアンス監視",
+        "description": "AIがすべての要件が満たされることを保証し、問題を即座に警告します。"
+      },
+      "emergencySupport": {
+        "title": "緊急サポート",
+        "description": "時間に敏感なビザ・旅行問題の緊急AI支援。"
+      },
+      "aiTravelAssistant": {
+        "title": "AI旅行アシスタント",
+        "subtitle": "すべてのタイビザ・旅行ニーズのための個人AIアシスタント",
+        "documentStatus": "書類状況",
+        "allDocumentsVerified": "すべての書類確認済み・適合",
+        "applicationProgress": "申請進捗",
+        "nextStep": "次のステップ",
+        "submitFinalDocuments": "12月15日までに最終書類提出"
       }
     },
     "cta": {
-      "title": "タイ旅行を始める準備はできましたか？",
-      "description": "タイビザ申請のためにAI搭載プラットフォームを信頼する何千人もの旅行者に参加してください。",
-      "startApplication": "申請を開始",
+      "title": "タイの旅を始める準備はできましたか？",
+      "description": "ビザ・旅行ニーズでAI搭載プラットフォームを信頼する数千の旅行者に参加してください。",
+      "startApplication": "申請開始",
       "getStarted": "始める",
-      "viewPricing": "料金を見る",
+      "viewPricing": "価格を見る",
       "happyTravelers": "満足した旅行者",
       "successRate": "成功率",
       "aiSupport": "AIサポート"
+    }
+  },
+  "tripPlanner": {
+    "title": "AI旅行プランナー",
+    "subtitle": "私たちの先進AIにあなただけの完璧なタイ旅行体験を作成させてください。フライトからアクティビティまで、すべての詳細を処理します。",
+    "progress": {
+      "title": "プラン進捗",
+      "step": "ステップ",
+      "of": "の",
+      "basicInfo": "基本情報",
+      "preferences": "好み",
+      "interests": "興味",
+      "generate": "生成"
     },
-    "chatWidget": "AIアシスタントとチャット"
+    "navigation": {
+      "previous": "前へ",
+      "next": "次へ",
+      "credits": "クレジット"
+    },
+    "steps": {
+      "step1": {
+        "title": "基本旅行情報",
+        "description": "旅行の基本について教えてください - どこに行きたいか、いつ旅行したいか。",
+        "destination": {
+          "title": "目的地",
+          "description": "タイのどこを訪問したいですか？",
+          "label": "タイの目的地",
+          "placeholder": "例：バンコク、プーケット、チェンマイ..."
+        },
+        "dates": {
+          "title": "旅行日程",
+          "description": "いつタイを訪問する予定ですか？",
+          "startDate": "出発日",
+          "endDate": "帰国日",
+          "selectStartDate": "出発日を選択",
+          "selectEndDate": "帰国日を選択"
+        },
+        "travelers": {
+          "title": "旅行者数",
+          "description": "何人で旅行しますか？",
+          "label": "旅行者",
+          "person": "人",
+          "people": "人"
+        }
+      },
+      "step2": {
+        "title": "予算・好み",
+        "description": "あなたの予算と宿泊の好みを理解させてください。",
+        "budget": {
+          "title": "旅行予算",
+          "description": "この旅行の総予算はいくらですか（一人当たり）？",
+          "label": "一人当たり予算"
+        },
+        "accommodation": {
+          "title": "宿泊タイプ",
+          "description": "どのタイプの宿泊を好みますか？"
+        },
+        "transportation": {
+          "title": "交通",
+          "description": "タイでどのように移動したいですか？"
+        }
+      },
+      "step3": {
+        "title": "旅行興味",
+        "description": "行程を個別化するためにあなたの興味を選択してください。",
+        "preferences": {
+          "title": "旅行好み",
+          "description": "どのタイプの体験を求めていますか？"
+        },
+        "activities": {
+          "title": "特定アクティビティ",
+          "description": "旅行にどのアクティビティを含めたいですか？"
+        }
+      },
+      "step4": {
+        "title": "最終詳細・プラン生成",
+        "description": "特別要求を追加し、AI旅行プランサービスレベルを選択してください。",
+        "specialRequests": {
+          "title": "特別要求",
+          "description": "特別要件、食事制限、特定要求はありますか？",
+          "placeholder": "例：ベジタリアン食事、アクセシビリティニーズ、特別機会、特定ホテル..."
+        },
+        "planTypes": {
+          "title": "AI旅行プランを選択",
+          "description": "旅行プランに希望する詳細レベルと個別化を選択してください。",
+          "credits": "クレジット",
+          "basic": {
+            "title": "基本旅行プラン",
+            "description": "フライト、ホテル、交通の基本AI推奨",
+            "button": "基本プラン取得"
+          },
+          "advanced": {
+            "title": "上級旅行プラン",
+            "description": "代替案と最適化を含む詳細行程",
+            "button": "上級プラン取得"
+          },
+          "premium": {
+            "title": "プレミアム旅行プラン",
+            "description": "リアルタイム更新付き完全旅行管理",
+            "button": "プレミアムプラン取得"
+          },
+          "vip": {
+            "title": "VIPコンシェルジュ",
+            "description": "24/7サポート付き個人AI旅行アシスタント",
+            "button": "VIPサービス取得"
+          }
+        }
+      }
+    },
+    "accommodation": {
+      "hotel": "ホテル",
+      "resort": "リゾート",
+      "hostel": "ホステル",
+      "apartment": "アパート",
+      "villa": "ヴィラ"
+    },
+    "transportation": {
+      "flight": "フライト",
+      "train": "電車",
+      "bus": "バス",
+      "carRental": "レンタカー",
+      "mixed": "混合交通"
+    },
+    "preferences": {
+      "culture": "文化・歴史",
+      "adventure": "アドベンチャー",
+      "relaxation": "リラクゼーション",
+      "nightlife": "ナイトライフ",
+      "food": "食事・料理",
+      "shopping": "ショッピング",
+      "nature": "自然",
+      "photography": "写真撮影"
+    },
+    "activities": {
+      "temples": "寺院・神社",
+      "beaches": "ビーチ",
+      "markets": "市場",
+      "museums": "博物館",
+      "tours": "ガイドツアー",
+      "cookingClasses": "料理教室",
+      "spa": "スパ・ウェルネス",
+      "diving": "ダイビング・シュノーケリング"
+    },
+    "generating": {
+      "title": "AIがあなたの完璧な旅行を作成中",
+      "description": "私たちの先進AIが数千のオプションを分析して、あなたの個別タイ旅行プランを作成しています..."
+    },
+    "result": {
+      "title": "あなたの個別タイアドベンチャー",
+      "subtitle": "これがあなたのAI作成旅行傑作です",
+      "badge": "AI生成旅行プラン",
+      "actions": {
+        "downloadPDF": "PDF ダウンロード",
+        "share": "プラン共有",
+        "print": "プラン印刷"
+      },
+      "itinerary": {
+        "title": "日別行程",
+        "description": "あなたの個別日別アドベンチャーガイド",
+        "day1": {
+          "title": "1日目：到着・バンコク発見",
+          "activity1": {
+            "title": "空港到着・ホテルチェックイン",
+            "description": "プレミアム空港送迎サービスでの快適到着"
+          },
+          "activity2": {
+            "title": "王宮・ワット・プラケオ",
+            "description": "タイ最神聖寺院と王宮複合施設を探索"
+          },
+          "activity3": {
+            "title": "チャオプラヤ川ディナークルーズ",
+            "description": "伝統タイ料理でのロマンチック夜クルーズ"
+          }
+        },
+        "day2": {
+          "title": "2日目：文化没入体験",
+          "description": "本格タイ文化・伝統への深い没入",
+          "activity1": {
+            "title": "ワット・ポー寺院・タイマッサージ",
+            "description": "伝統タイマッサージの発祥地を訪問"
+          },
+          "activity2": {
+            "title": "チャトゥチャック週末市場",
+            "description": "ユニークお土産を購入し、地元屋台料理を味わう"
+          },
+          "activity3": {
+            "title": "タイ料理教室体験",
+            "description": "専門シェフと本格タイ料理を学ぶ"
+          }
+        }
+      },
+      "recommendations": {
+        "title": "AI推奨",
+        "accommodation": "宿泊",
+        "dining": "食事",
+        "transportation": "交通",
+        "price": "価格",
+        "hotel": {
+          "name": "マンダリン オリエンタル バンコク",
+          "description": "チャオプラヤ川の素晴らしい景色と卓越したサービスの高級リバーサイドホテル",
+          "feature1": "パノラマビューのリバーサイド立地",
+          "feature2": "受賞歴のあるスパ・ウェルネスセンター",
+          "feature3": "ミシュラン星レストランを含む複数ダイニングオプション"
+        },
+        "restaurant": {
+          "name": "ガガン・アナンド",
+          "description": "革新的分子ガストロノミー技術による世界的に有名なプログレッシブインド料理",
+          "feature1": "25コーステイスティングメニュー体験",
+          "feature2": "シェフプレゼンテーション付きインタラクティブダイニング",
+          "feature3": "インド風味とモダン技術のユニーク融合"
+        },
+        "transport": {
+          "name": "プレミアム空港送迎・市内ツアー",
+          "description": "英語対応ドライバーと柔軟スケジューリングの快適プライベート交通",
+          "feature1": "プライベートエアコン車両",
+          "feature2": "プロフェッショナル英語対応ドライバー",
+          "feature3": "柔軟送迎時間とカスタムルート"
+        }
+      },
+      "footer": {
+        "poweredBy": "Thailand Visa AI提供",
+        "description": "この個別旅行プランは先進AI技術を使用して作成され、完璧なタイ体験を保証します。"
+      }
+    },
+    "errors": {
+      "insufficientCredits": "このプランタイプには不十分なクレジット。より多くのクレジットを購入してください。",
+      "generationFailed": "旅行プラン生成失敗。再試行してください。"
+    }
+  },
+  "credits": {
+    "credits": "クレジット"
   }
 }

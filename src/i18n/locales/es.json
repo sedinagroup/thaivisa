@@ -1,63 +1,62 @@
 {
   "nav": {
     "home": "Inicio",
-    "apply": "Aplicar",
+    "apply": "Solicitar Visa",
+    "tripPlanner": "Planificador de Viajes",
+    "documentChecker": "Verificador de Documentos",
     "credits": "Créditos",
     "profile": "Perfil",
     "login": "Iniciar Sesión",
-    "logout": "Cerrar Sesión",
-    "aiDocumentChecker": "Verificador de Documentos IA",
-    "aiTripPlanner": "Planificador de Viaje IA",
-    "aiVisaAdvisor": "Asesor de Visa IA",
-    "aiAssistantChat": "Chat Asistente IA"
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión"
   },
   "home": {
     "hero": {
-      "badge": "Plataforma Impulsada por IA",
-      "title": "Plataforma de Visa de Tailandia IA",
-      "subtitle": "Soluciones Inteligentes de Visa",
-      "description": "Proceso avanzado de solicitud de visa de Tailandia impulsado por IA. Obtenga verificación de documentos, planificación de viajes y orientación experta en un solo lugar.",
-      "startApplication": "Iniciar Su Solicitud",
+      "badge": "Plataforma con IA",
+      "title": "Tu Visa Tailandesa con IA",
+      "subtitle": "y Asistente de Viajes",
+      "description": "Experimenta el futuro del procesamiento de visas con nuestra tecnología de IA avanzada que maneja todo, desde verificación de documentos hasta planificación personalizada de viajes.",
+      "startApplication": "Iniciar Solicitud",
       "getStarted": "Comenzar",
       "learnMore": "Saber Más",
       "stats": {
         "aiAccuracy": "Precisión de IA",
         "fasterProcessing": "Procesamiento Más Rápido",
         "successRate": "Tasa de Éxito",
-        "userRating": "Calificación del Usuario"
+        "userRating": "Calificación de Usuarios"
       }
     },
     "aiFeatures": {
-      "title": "Características Impulsadas por IA",
-      "description": "Nuestra IA avanzada maneja todos los aspectos de su viaje de visa de Tailandia con precisión y velocidad sin precedentes.",
+      "title": "Características con IA",
+      "description": "Nuestra IA avanzada maneja cada aspecto de tu viaje de visa tailandesa con precisión y velocidad sin precedentes.",
       "documentChecker": {
         "title": "Verificador de Documentos IA",
-        "description": "Verifique sus documentos al instante con nuestra tecnología IA avanzada"
+        "description": "Verifica y valida instantáneamente todos tus documentos de visa con 95% de precisión usando tecnología de IA avanzada."
       },
       "visaAdvisor": {
         "title": "Asesor de Visa IA",
-        "description": "Obtenga recomendaciones personalizadas de visa basadas en su perfil y planes de viaje."
+        "description": "Obtén recomendaciones personalizadas de visa basadas en tu perfil y planes de viaje."
       },
       "tripPlanner": {
-        "title": "Planificador de Viaje Inteligente",
-        "description": "Obtenga recomendaciones de viaje personalizadas impulsadas por IA"
+        "title": "Planificador de Viajes IA",
+        "description": "Crea itinerarios de viaje personalizados con recomendaciones de IA para la experiencia perfecta en Tailandia."
       },
       "assistantChat": {
         "title": "Chat Asistente IA",
-        "description": "Soporte IA 24/7 para todas las preguntas sobre visa y viaje con respuestas instantáneas y precisas."
+        "description": "Soporte IA 24/7 para todas las preguntas sobre visa y viajes con respuestas instantáneas y precisas."
       }
     },
     "tripPlannerSection": {
-      "title": "Planificador de Viaje IA - Gestión Completa de Viaje",
-      "description": "Obtenga recomendaciones personalizadas de IA para vuelos, alojamientos, transporte y servicios especiales en Tailandia. Ahorre tiempo y dinero con planificación inteligente de viajes.",
+      "title": "Planificador de Viajes IA - Gestión Completa de Viajes",
+      "description": "Obtén recomendaciones personalizadas con IA para vuelos, alojamientos, transporte y servicios especiales en Tailandia. Ahorra tiempo y dinero con planificación inteligente de viajes.",
       "services": {
         "flightRecommendations": {
-          "title": "Recomendaciones de Vuelo",
+          "title": "Recomendaciones de Vuelos",
           "features": {
             "smartFlightSearch": "Búsqueda inteligente de vuelos",
             "pricePredictions": "Predicciones de precios",
-            "bestRouteAnalysis": "Análisis de la mejor ruta",
-            "seatRecommendations": "Recomendaciones de asiento"
+            "bestRouteAnalysis": "Análisis de mejor ruta",
+            "seatRecommendations": "Recomendaciones de asientos"
           }
         },
         "hotelAccommodation": {
@@ -92,47 +91,47 @@
         "title": "Características Interactivas de IA",
         "smartItinerary": {
           "title": "Constructor de Itinerario Inteligente",
-          "description": "La IA crea planes de viaje personalizados día a día basados en sus intereses y preferencias."
+          "description": "La IA crea planes de viaje personalizados día a día basados en tus intereses y preferencias."
         },
         "budgetOptimizer": {
           "title": "Optimizador de Presupuesto",
-          "description": "La IA analiza miles de opciones para encontrar el mejor valor para su presupuesto de viaje."
+          "description": "La IA analiza miles de opciones para encontrar el mejor valor para tu presupuesto de viaje."
         },
         "weatherIntegration": {
-          "title": "Integración del Clima",
-          "description": "La IA ajusta las recomendaciones basadas en pronósticos del tiempo y condiciones estacionales."
+          "title": "Integración Meteorológica",
+          "description": "La IA ajusta recomendaciones basadas en pronósticos del tiempo y condiciones estacionales."
         },
         "realTimeUpdates": {
           "title": "Actualizaciones en Tiempo Real",
-          "description": "La IA proporciona actualizaciones de viaje en vivo, cambios de vuelo y recomendaciones alternativas."
+          "description": "La IA proporciona actualizaciones de viaje en vivo, cambios de vuelos y recomendaciones alternativas."
         }
       },
       "interface": {
-        "title": "Interfaz del Planificador de Viaje IA",
-        "subtitle": "Planificación de viaje personalizada impulsada por IA",
+        "title": "Interfaz del Planificador de Viajes IA",
+        "subtitle": "Planificación de viajes personalizada con IA",
         "travelDates": "Fechas de Viaje",
+        "sampleDates": "15 de Dic - 25 de Dic, 2024",
         "budgetRange": "Rango de Presupuesto",
-        "aiRecommendations": "Recomendaciones de IA",
-        "generatePlan": "Generar Plan de Viaje IA",
-        "sampleDates": "15 Dic - 25 Dic, 2024",
         "sampleBudget": "$2,000 - $3,000 USD",
-        "sampleRecommendations": "15 sugerencias personalizadas listas"
+        "aiRecommendations": "Recomendaciones de IA",
+        "sampleRecommendations": "15 sugerencias personalizadas listas",
+        "generatePlan": "Generar Plan de Viaje IA"
       },
       "creditServices": {
         "basicPlan": {
-          "title": "Plan Básico de Viaje",
+          "title": "Plan de Viaje Básico",
           "credits": "créditos",
           "description": "Recomendaciones básicas de IA para vuelos, hoteles y transporte",
           "button": "Obtener Plan Básico"
         },
         "advancedPlan": {
-          "title": "Plan Avanzado de Viaje",
+          "title": "Plan de Viaje Avanzado",
           "credits": "créditos",
           "description": "Itinerario detallado con alternativas y optimización",
           "button": "Obtener Plan Avanzado"
         },
         "premiumPlan": {
-          "title": "Plan Premium de Viaje",
+          "title": "Plan de Viaje Premium",
           "credits": "créditos",
           "description": "Gestión completa de viaje con actualizaciones en tiempo real",
           "button": "Obtener Plan Premium"
@@ -145,35 +144,35 @@
         }
       },
       "successStories": {
-        "title": "Historias de Éxito de Planificación de Viaje IA",
-        "userBookings": "Los usuarios reservan servicios recomendados por IA",
-        "averageSavings": "Ahorro promedio con optimización IA",
-        "planningRating": "Estrellas para planificación de viaje IA",
+        "title": "Historias de Éxito de Planificación de Viajes IA",
+        "userBookings": "Usuarios reservan servicios recomendados por IA",
+        "averageSavings": "Ahorro promedio con optimización de IA",
+        "planningRating": "Estrellas para planificación de viajes IA",
         "timeSaved": "Horas ahorradas con investigación IA"
       },
       "howItWorks": {
-        "title": "Cómo Funciona la Planificación de Viaje IA",
+        "title": "Cómo Funciona la Planificación de Viajes IA",
         "step1": {
           "title": "Dile a la IA Tus Preferencias",
-          "description": "Comparte tu estilo de viaje, presupuesto, intereses y fechas con nuestro sistema IA."
+          "description": "Comparte tu estilo de viaje, presupuesto, intereses y fechas con nuestro sistema de IA."
         },
         "step2": {
-          "title": "La IA Analiza Opciones",
+          "title": "IA Analiza Opciones",
           "description": "La IA compara miles de vuelos, hoteles y actividades para encontrar las mejores coincidencias."
         },
         "step3": {
-          "title": "Obtén Plan Personalizado",
-          "description": "Recibe recomendaciones a medida con explicaciones y opciones alternativas."
+          "title": "Recibe Plan Personalizado",
+          "description": "Recibe recomendaciones personalizadas con explicaciones y opciones alternativas."
         },
         "step4": {
           "title": "Reserva con Confianza",
-          "description": "La IA monitorea y actualiza tu viaje con información y soporte en tiempo real."
+          "description": "La IA monitorea y actualiza tu viaje con información en tiempo real y soporte."
         }
       }
     },
     "visaHub": {
-      "title": "Centro Completo de Información de Visa",
-      "description": "Orientación impulsada por IA para todos los tipos de visa de Tailandia con recomendaciones personalizadas.",
+      "title": "Centro Completo de Información de Visas",
+      "description": "Orientación con IA para todos los tipos de visa tailandesa con recomendaciones personalizadas.",
       "touristVisa": {
         "title": "Visa de Turista (TR)",
         "badge": "Más Popular",
@@ -187,7 +186,7 @@
       "businessVisa": {
         "title": "Visa de Negocios (B)",
         "badge": "Profesional",
-        "description": "Requisitos y verificación de documentos IA para actividades comerciales.",
+        "description": "Requisitos IA y verificación de documentos para actividades comerciales.",
         "features": {
           "businessDocumentAnalysis": "Análisis de documentos comerciales",
           "invitationLetterVerification": "Verificación de carta de invitación",
@@ -197,7 +196,7 @@
       "educationVisa": {
         "title": "Visa de Educación (ED)",
         "badge": "Estudiantes",
-        "description": "Soporte de visa estudiantil con orientación IA para instituciones educativas.",
+        "description": "Soporte para visa de estudiante con orientación IA para instituciones educativas.",
         "features": {
           "academicDocumentVerification": "Verificación de documentos académicos",
           "institutionValidation": "Validación de institución",
@@ -211,7 +210,7 @@
         "features": {
           "flightItineraryVerification": "Verificación de itinerario de vuelo",
           "transitTimeCalculation": "Cálculo de tiempo de tránsito",
-          "expressProcessing": "Procesamiento express"
+          "expressProcessing": "Procesamiento exprés"
         }
       },
       "specialVisas": {
@@ -232,11 +231,11 @@
       }
     },
     "aiPoweredFeatures": {
-      "title": "Características Impulsadas por IA",
-      "description": "Experimenta el futuro del procesamiento de visas con nuestra tecnología IA de vanguardia.",
+      "title": "Características con IA",
+      "description": "Experimenta el futuro del procesamiento de visas con nuestra tecnología de IA de vanguardia.",
       "smartDocumentAnalysis": {
         "title": "Análisis Inteligente de Documentos",
-        "description": "La IA escanea y verifica todos sus documentos con 95% de precisión en segundos."
+        "description": "La IA escanea y verifica todos tus documentos con 95% de precisión en segundos."
       },
       "intelligentFormFilling": {
         "title": "Llenado Inteligente de Formularios",
@@ -244,39 +243,39 @@
       },
       "riskAssessment": {
         "title": "Evaluación de Riesgo",
-        "description": "La IA predice las posibilidades de aprobación y sugiere mejoras antes de la presentación."
+        "description": "La IA predice posibilidades de aprobación y sugiere mejoras antes del envío."
       },
       "realTimeUpdates": {
         "title": "Actualizaciones en Tiempo Real",
-        "description": "La IA monitorea el estado de su solicitud y proporciona actualizaciones instantáneas."
+        "description": "La IA monitorea el estado de tu solicitud y proporciona actualizaciones instantáneas."
       }
     },
     "howItWorks": {
       "title": "Cómo la IA Lo Hace Simple",
-      "description": "Cuatro pasos simples impulsados por IA avanzada para obtener su visa de Tailandia aprobada.",
+      "description": "Cuatro pasos simples con IA avanzada para aprobar tu visa tailandesa.",
       "step1": {
         "title": "Subir Pasaporte",
-        "description": "La IA extrae datos instantáneamente de la foto de su pasaporte usando tecnología OCR avanzada."
+        "description": "La IA extrae instantáneamente datos de la foto de tu pasaporte usando tecnología OCR avanzada."
       },
       "step2": {
         "title": "Análisis IA",
-        "description": "La IA analiza su perfil y recomienda el mejor tipo de visa para sus necesidades."
+        "description": "La IA analiza tu perfil y recomienda el mejor tipo de visa para tus necesidades."
       },
       "step3": {
         "title": "Verificación de Documentos",
         "description": "La IA verifica todos los documentos y asegura 100% de cumplimiento con los requisitos."
       },
       "step4": {
-        "title": "Presentación Inteligente",
-        "description": "La IA presenta su solicitud y monitorea el progreso con actualizaciones en tiempo real."
+        "title": "Envío Inteligente",
+        "description": "La IA envía tu solicitud y monitorea el progreso con actualizaciones en tiempo real."
       }
     },
     "tripManagement": {
-      "title": "Gestión Completa de Viaje",
-      "description": "La IA gestiona todos los aspectos burocráticos de su viaje a Tailandia para que pueda enfocarse en planificar las partes divertidas.",
+      "title": "Gestión Completa de Viajes",
+      "description": "La IA gestiona todos los aspectos burocráticos de tu viaje a Tailandia para que puedas enfocarte en planificar las partes divertidas.",
       "bureaucraticPlanning": {
         "title": "Planificación Burocrática",
-        "description": "La IA gestiona todo el papeleo y plazos con programación inteligente y recordatorios."
+        "description": "La IA maneja todo el papeleo y plazos con programación inteligente y recordatorios."
       },
       "documentTimeline": {
         "title": "Cronograma de Documentos",
@@ -284,190 +283,261 @@
       },
       "complianceMonitoring": {
         "title": "Monitoreo de Cumplimiento",
-        "description": "La IA asegura que todos los requisitos se cumplan y alerta sobre cualquier problema al instante."
+        "description": "La IA asegura que todos los requisitos se cumplan y te alerta sobre cualquier problema instantáneamente."
       },
       "emergencySupport": {
         "title": "Soporte de Emergencia",
-        "description": "Asistencia urgente impulsada por IA para problemas de visa y viaje sensibles al tiempo."
+        "description": "Asistencia urgente IA para problemas de visa y viaje sensibles al tiempo."
       },
       "aiTravelAssistant": {
         "title": "Asistente de Viaje IA",
-        "subtitle": "Su asistente personal IA para todas las necesidades de visa y viaje de Tailandia",
+        "subtitle": "Tu asistente personal IA para todas las necesidades de visa y viaje en Tailandia",
         "documentStatus": "Estado de Documentos",
+        "allDocumentsVerified": "Todos los documentos verificados y en cumplimiento",
         "applicationProgress": "Progreso de Solicitud",
         "nextStep": "Siguiente Paso",
-        "allDocumentsVerified": "Todos los documentos verificados y conformes",
-        "submitFinalDocuments": "Enviar documentos finales antes del 15 de diciembre"
+        "submitFinalDocuments": "Enviar documentos finales antes del 15 de Dic"
       }
     },
     "cta": {
-      "title": "¿Listo para Comenzar Su Viaje a Tailandia?",
-      "description": "Únase a miles de viajeros que confían en nuestra plataforma impulsada por IA para sus solicitudes de visa de Tailandia.",
-      "startApplication": "Iniciar Su Solicitud",
+      "title": "¿Listo para Comenzar tu Viaje a Tailandia?",
+      "description": "Únete a miles de viajeros que confían en nuestra plataforma con IA para sus necesidades de visa y viaje.",
+      "startApplication": "Iniciar Solicitud",
       "getStarted": "Comenzar",
       "viewPricing": "Ver Precios",
       "happyTravelers": "Viajeros Felices",
       "successRate": "Tasa de Éxito",
       "aiSupport": "Soporte IA"
-    },
-    "chatWidget": "Chatear con Asistente IA"
-  },
-  "login": {
-    "title": "Iniciar Sesión en Su Cuenta",
-    "subtitle": "Acceda a su panel de solicitud de visa de Tailandia",
-    "email": "Email",
-    "password": "Contraseña",
-    "loginButton": "Iniciar Sesión",
-    "forgotPassword": "¿Olvidó su contraseña?",
-    "noAccount": "¿No tiene una cuenta?",
-    "signUp": "Regístrese aquí",
-    "emailPlaceholder": "Ingrese su email",
-    "passwordPlaceholder": "Ingrese su contraseña"
+    }
   },
   "tripPlanner": {
-    "title": "Planificador de Viaje IA",
-    "subtitle": "Cree su aventura perfecta en Tailandia con nuestro sistema inteligente de planificación de viajes",
-    "step": "Paso",
-    "of": "de",
-    "stepDescriptions": {
-      "step1": "Información básica del viaje y preferencias de viaje",
-      "step2": "Preferencias de alojamiento y transporte",
-      "step3": "Intereses, necesidades dietéticas y requisitos de accesibilidad",
-      "step4": "Desglose del presupuesto y solicitudes especiales"
+    "title": "Planificador de Viajes IA",
+    "subtitle": "Deja que nuestra IA avanzada cree la experiencia perfecta de viaje en Tailandia hecha a tu medida. Desde vuelos hasta actividades, nos encargamos de cada detalle.",
+    "progress": {
+      "title": "Progreso de Planificación",
+      "step": "Paso",
+      "of": "de",
+      "basicInfo": "Info Básica",
+      "preferences": "Preferencias",
+      "interests": "Intereses",
+      "generate": "Generar"
     },
-    "form": {
-      "destination": "Destino",
-      "destinationPlaceholder": "ej: Bangkok, Phuket, Chiang Mai",
-      "travelers": "Número de Viajeros",
-      "startDate": "Fecha de Inicio",
-      "endDate": "Fecha de Fin",
-      "budget": "Presupuesto Total",
-      "accommodationType": "Tipo de Alojamiento",
-      "transportPreference": "Preferencia de Transporte",
-      "travelStyle": "Estilo de Viaje",
-      "adventureLevel": "Nivel de Aventura",
-      "interests": "Intereses y Actividades",
-      "dietaryRestrictions": "Restricciones Dietéticas",
-      "accessibility": "Necesidades de Accesibilidad",
-      "travelCompany": "Compañía de Viaje",
-      "previousVisits": "Visitas Anteriores a Tailandia",
-      "languagePreference": "Preferencia de Idioma",
-      "languagePreferencePlaceholder": "Seleccione su preferencia de idioma",
-      "specialRequests": "Solicitudes Especiales",
-      "specialRequestsPlaceholder": "¿Alguna solicitud especial, celebraciones o necesidades específicas?",
-      "budgetBreakdown": "Desglose del Presupuesto",
-      "budgetBreakdownNote": "Ajuste la asignación porcentual para cada categoría",
-      "summary": "Resumen del Viaje",
-      "dates": "Fechas"
+    "navigation": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "credits": "Créditos"
     },
-    "travelCompany": {
-      "solo": "Viaje Solo",
-      "couple": "Pareja",
-      "family": "Familia con Niños",
-      "friends": "Grupo de Amigos",
-      "business": "Viaje de Negocios"
+    "steps": {
+      "step1": {
+        "title": "Información Básica del Viaje",
+        "description": "Cuéntanos sobre lo básico de tu viaje - dónde quieres ir y cuándo quieres viajar.",
+        "destination": {
+          "title": "Destino",
+          "description": "¿Dónde te gustaría visitar en Tailandia?",
+          "label": "Destino en Tailandia",
+          "placeholder": "ej: Bangkok, Phuket, Chiang Mai..."
+        },
+        "dates": {
+          "title": "Fechas de Viaje",
+          "description": "¿Cuándo planeas visitar Tailandia?",
+          "startDate": "Fecha de Salida",
+          "endDate": "Fecha de Regreso",
+          "selectStartDate": "Seleccionar fecha de salida",
+          "selectEndDate": "Seleccionar fecha de regreso"
+        },
+        "travelers": {
+          "title": "Número de Viajeros",
+          "description": "¿Cuántas personas estarán viajando?",
+          "label": "Viajeros",
+          "person": "persona",
+          "people": "personas"
+        }
+      },
+      "step2": {
+        "title": "Presupuesto y Preferencias",
+        "description": "Ayúdanos a entender tu presupuesto y preferencias de alojamiento.",
+        "budget": {
+          "title": "Presupuesto de Viaje",
+          "description": "¿Cuál es tu presupuesto total para este viaje (por persona)?",
+          "label": "Presupuesto por persona"
+        },
+        "accommodation": {
+          "title": "Tipo de Alojamiento",
+          "description": "¿Qué tipo de alojamiento prefieres?"
+        },
+        "transportation": {
+          "title": "Transporte",
+          "description": "¿Cómo te gustaría moverte por Tailandia?"
+        }
+      },
+      "step3": {
+        "title": "Intereses de Viaje",
+        "description": "Selecciona tus intereses para que podamos personalizar tu itinerario.",
+        "preferences": {
+          "title": "Preferencias de Viaje",
+          "description": "¿Qué tipo de experiencias estás buscando?"
+        },
+        "activities": {
+          "title": "Actividades Específicas",
+          "description": "¿Qué actividades te gustaría incluir en tu viaje?"
+        }
+      },
+      "step4": {
+        "title": "Detalles Finales y Generación del Plan",
+        "description": "Agrega cualquier solicitud especial y elige tu nivel de servicio de planificación de viajes IA.",
+        "specialRequests": {
+          "title": "Solicitudes Especiales",
+          "description": "¿Algún requisito especial, restricciones dietéticas o solicitudes específicas?",
+          "placeholder": "ej: comidas vegetarianas, necesidades de accesibilidad, ocasiones especiales, hoteles específicos..."
+        },
+        "planTypes": {
+          "title": "Elige tu Plan de Viaje IA",
+          "description": "Selecciona el nivel de detalle y personalización que deseas para tu plan de viaje.",
+          "credits": "créditos",
+          "basic": {
+            "title": "Plan de Viaje Básico",
+            "description": "Recomendaciones básicas de IA para vuelos, hoteles y transporte",
+            "button": "Obtener Plan Básico"
+          },
+          "advanced": {
+            "title": "Plan de Viaje Avanzado",
+            "description": "Itinerario detallado con alternativas y optimización",
+            "button": "Obtener Plan Avanzado"
+          },
+          "premium": {
+            "title": "Plan de Viaje Premium",
+            "description": "Gestión completa de viaje con actualizaciones en tiempo real",
+            "button": "Obtener Plan Premium"
+          },
+          "vip": {
+            "title": "Conserje VIP",
+            "description": "Asistente personal de viaje IA con soporte 24/7",
+            "button": "Obtener Servicio VIP"
+          }
+        }
+      }
     },
     "accommodation": {
       "hotel": "Hotel",
-      "hostel": "Hostal",
       "resort": "Resort",
-      "apartment": "Apartamento/Condominio",
-      "villa": "Villa",
-      "guesthouse": "Casa de Huéspedes/B&B"
+      "hostel": "Hostal",
+      "apartment": "Apartamento",
+      "villa": "Villa"
     },
-    "transport": {
+    "transportation": {
       "flight": "Vuelo",
       "train": "Tren",
       "bus": "Autobús",
-      "car": "Alquiler de Coche",
+      "carRental": "Alquiler de Coche",
       "mixed": "Transporte Mixto"
     },
-    "travelStyle": {
-      "luxury": "Lujo",
-      "comfort": "Comodidad",
-      "budget": "Presupuesto",
-      "backpacker": "Mochilero"
-    },
-    "adventureLevel": {
-      "relaxed": "Relajado y Tranquilo",
-      "moderate": "Actividad Moderada",
-      "adventurous": "Aventurero",
-      "extreme": "Aventura Extrema"
-    },
-    "interests": {
+    "preferences": {
       "culture": "Cultura e Historia",
-      "nature": "Naturaleza y Vida Silvestre",
-      "adventure": "Deportes de Aventura",
-      "beach": "Playa y Actividades Acuáticas",
-      "food": "Comida y Culinaria",
-      "photography": "Fotografía",
-      "nightlife": "Vida Nocturna y Entretenimiento",
+      "adventure": "Aventura",
+      "relaxation": "Relajación",
+      "nightlife": "Vida Nocturna",
+      "food": "Comida y Gastronomía",
       "shopping": "Compras",
-      "wellness": "Bienestar y Spa"
+      "nature": "Naturaleza",
+      "photography": "Fotografía"
     },
-    "dietary": {
-      "vegetarian": "Vegetariano",
-      "vegan": "Vegano",
-      "halal": "Halal",
-      "kosher": "Kosher",
-      "gluten-free": "Sin Gluten",
-      "dairy-free": "Sin Lácteos",
-      "nut-allergy": "Alergia a Nueces",
-      "seafood-allergy": "Alergia a Mariscos",
-      "none": "Sin Restricciones"
+    "activities": {
+      "temples": "Templos y Santuarios",
+      "beaches": "Playas",
+      "markets": "Mercados",
+      "museums": "Museos",
+      "tours": "Tours Guiados",
+      "cookingClasses": "Clases de Cocina",
+      "spa": "Spa y Bienestar",
+      "diving": "Buceo y Snorkel"
     },
-    "accessibility": {
-      "wheelchair": "Accesible en Silla de Ruedas",
-      "mobility-aid": "Ayuda de Movilidad Requerida",
-      "visual-impairment": "Discapacidad Visual",
-      "hearing-impairment": "Discapacidad Auditiva",
-      "none": "Sin Necesidades Especiales"
+    "generating": {
+      "title": "IA Está Creando tu Viaje Perfecto",
+      "description": "Nuestra IA avanzada está analizando miles de opciones para crear tu plan de viaje personalizado en Tailandia..."
     },
-    "languages": {
-      "english": "Solo Inglés",
-      "local": "Idioma Local",
-      "translator": "App Traductor",
-      "guide": "Guía que Habla Inglés"
+    "result": {
+      "title": "Tu Aventura Personalizada en Tailandia",
+      "subtitle": "Aquí está tu obra maestra de viaje creada por IA",
+      "badge": "Plan de Viaje Generado por IA",
+      "actions": {
+        "downloadPDF": "Descargar PDF",
+        "share": "Compartir Plan",
+        "print": "Imprimir Plan"
+      },
+      "itinerary": {
+        "title": "Itinerario Diario",
+        "description": "Tu guía de aventura personalizada día a día",
+        "day1": {
+          "title": "Día 1: Llegada y Descubrimiento de Bangkok",
+          "activity1": {
+            "title": "Llegada al Aeropuerto y Check-in en Hotel",
+            "description": "Llegada cómoda con servicio premium de recogida en aeropuerto"
+          },
+          "activity2": {
+            "title": "Gran Palacio y Wat Phra Kaew",
+            "description": "Explora el templo más sagrado de Tailandia y el complejo del palacio real"
+          },
+          "activity3": {
+            "title": "Crucero con Cena en el Río Chao Phraya",
+            "description": "Crucero romántico nocturno con cocina tailandesa tradicional"
+          }
+        },
+        "day2": {
+          "title": "Día 2: Experiencia de Inmersión Cultural",
+          "description": "Inmersión profunda en la cultura y tradiciones tailandesas auténticas",
+          "activity1": {
+            "title": "Templo Wat Pho y Masaje Tailandés",
+            "description": "Visita la cuna del masaje tailandés tradicional"
+          },
+          "activity2": {
+            "title": "Mercado de Fin de Semana Chatuchak",
+            "description": "Compra souvenirs únicos y prueba comida callejera local"
+          },
+          "activity3": {
+            "title": "Experiencia de Clase de Cocina Tailandesa",
+            "description": "Aprende a cocinar platos tailandeses auténticos con chefs expertos"
+          }
+        }
+      },
+      "recommendations": {
+        "title": "Recomendaciones IA",
+        "accommodation": "Alojamiento",
+        "dining": "Gastronomía",
+        "transportation": "Transporte",
+        "price": "Precio",
+        "hotel": {
+          "name": "Mandarin Oriental Bangkok",
+          "description": "Hotel de lujo junto al río con servicio excepcional y vistas impresionantes del Río Chao Phraya",
+          "feature1": "Ubicación junto al río con vistas panorámicas",
+          "feature2": "Spa y centro de bienestar galardonados",
+          "feature3": "Múltiples opciones gastronómicas incluyendo restaurantes con estrella Michelin"
+        },
+        "restaurant": {
+          "name": "Gaggan Anand",
+          "description": "Cocina india progresiva de renombre mundial con técnicas innovadoras de gastronomía molecular",
+          "feature1": "Experiencia de menú degustación de 25 platos",
+          "feature2": "Cena interactiva con presentaciones del chef",
+          "feature3": "Fusión única de sabores indios y técnicas modernas"
+        },
+        "transport": {
+          "name": "Traslado Premium del Aeropuerto y Tours por la Ciudad",
+          "description": "Transporte privado cómodo con conductores que hablan inglés y horarios flexibles",
+          "feature1": "Vehículos privados con aire acondicionado",
+          "feature2": "Conductores profesionales que hablan inglés",
+          "feature3": "Horarios de recogida flexibles y rutas personalizadas"
+        }
+      },
+      "footer": {
+        "poweredBy": "Desarrollado por Thailand Visa AI",
+        "description": "Este plan de viaje personalizado fue creado usando tecnología de IA avanzada para asegurar que tengas la experiencia perfecta en Tailandia."
+      }
     },
-    "previousVisits": {
-      "firstTime": "Primera Vez",
-      "returning": "Visitante que Regresa",
-      "frequent": "Visitante Frecuente"
-    },
-    "budgetBreakdown": {
-      "accommodation": "Alojamiento",
-      "food": "Comida y Cena",
-      "activities": "Actividades y Tours",
-      "transport": "Transporte",
-      "shopping": "Compras y Recuerdos"
-    },
-    "buttons": {
-      "previous": "Anterior",
-      "next": "Siguiente",
-      "generatePlan": "Generar Plan de Viaje",
-      "generating": "Generando..."
-    },
-    "generatedPlan": {
-      "title": "Su Plan Personalizado de Viaje a Tailandia",
-      "destination": "Destino",
-      "duration": "Duración",
-      "travelers": "Viajeros",
-      "people": "personas",
-      "budget": "Presupuesto",
-      "dayByDay": "Itinerario Día a Día",
-      "day": "Día",
-      "arrival": "Llegada y Orientación",
-      "arrivalDetails": "Recogida en el aeropuerto y check-in en el hotel",
-      "checkIn": "Check-in en el hotel y descanso",
-      "localExploration": "Exploración del área local",
-      "culturalExperience": "Experiencia Cultural",
-      "culturalDetails": "Visitar templos y sitios culturales",
-      "localCuisine": "Probar cocina local auténtica",
-      "shopping": "Compras en el mercado local",
-      "recommendations": "Recomendaciones",
-      "accommodation": "Alojamiento",
-      "transport": "Transporte",
-      "activities": "Actividades"
+    "errors": {
+      "insufficientCredits": "Créditos insuficientes para este tipo de plan. Por favor, compra más créditos.",
+      "generationFailed": "Error al generar plan de viaje. Por favor, inténtalo de nuevo."
     }
+  },
+  "credits": {
+    "credits": "créditos"
   }
 }

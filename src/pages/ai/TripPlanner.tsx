@@ -1,878 +1,1223 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useAuth } from '@/contexts/AuthContext';
+import { useCredits } from '@/contexts/CreditsContext';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Progress } from '@/components/ui/progress';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { format } from 'date-fns';
+import { cn } from '@/lib/utils';
 import { 
-  CalendarDays, 
   MapPin, 
+  Calendar as CalendarIcon, 
   Users, 
-  Wallet, 
+  DollarSign, 
   Plane, 
   Hotel, 
+  Car, 
   Utensils, 
   Camera, 
   Mountain, 
   Waves, 
   Building, 
   TreePine, 
-  Heart, 
-  Star, 
+  Sun, 
+  Moon, 
   Clock, 
+  Star, 
+  Heart, 
+  Zap, 
+  Sparkles, 
+  Bot, 
+  ArrowRight, 
+  ArrowLeft, 
+  Check, 
+  AlertCircle, 
+  Info,
+  Gift,
+  Compass,
   Globe,
-  Sparkles,
-  History,
+  Shield,
+  Award,
+  Target,
+  TrendingUp,
+  ChevronRight,
+  Plus,
+  Minus,
   Download,
   Share2,
-  AlertCircle,
-  CheckCircle,
-  Loader2
+  Edit,
+  FileText,
+  CheckCircle2,
+  MapIcon,
+  CalendarDays,
+  Wallet
 } from 'lucide-react';
-import { toast } from 'sonner';
-import { useCredits } from '@/contexts/CreditsContext';
-import { useTripPlanRemix, TripPlanVersion } from '@/hooks/useTripPlanRemix';
-import TripPlanRemixModal from '@/components/TripPlanRemixModal';
 
-interface TripPlannerFormData {
+interface TripPlan {
+  id: string;
   destination: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   travelers: number;
-  budget: number[];
-  budgetCurrency: string;
-  accommodationType: string[];
-  transportPreference: string;
-  travelStyle: string;
-  adventureLevel: string;
-  interests: string[];
-  dietaryRestrictions: string[];
-  accessibility: string[];
-  travelCompany: string;
-  previousVisits: string;
-  languagePreference: string;
+  budget: number;
+  preferences: string[];
+  accommodation: string;
+  transportation: string;
+  activities: string[];
   specialRequests: string;
-  budgetBreakdown: {
-    accommodation: number;
-    food: number;
-    activities: number;
-    transport: number;
-    shopping: number;
+  createdAt: Date;
+  plan?: {
+    itinerary: any[];
+    recommendations: any[];
+    estimatedCost: number;
   };
 }
 
-export default function TripPlanner() {
+const TripPlanner: React.FC = () => {
   const { t } = useTranslation();
-  const { credits } = useCredits();
-  const {
-    versions,
-    currentVersion,
-    createInitialPlan,
-    selectVersion,
-    deleteVersion,
-    compareVersions,
-    showRemixOptions,
-    setShowRemixOptions
-  } = useTripPlanRemix();
-
-  const [formData, setFormData] = useState<TripPlannerFormData>({
-    destination: '',
-    startDate: '',
-    endDate: '',
-    travelers: 1,
-    budget: [1000],
-    budgetCurrency: 'USD',
-    accommodationType: [],
-    transportPreference: '',
-    travelStyle: '',
-    adventureLevel: '',
-    interests: [],
-    dietaryRestrictions: [],
-    accessibility: [],
-    travelCompany: '',
-    previousVisits: '',
-    languagePreference: '',
-    specialRequests: '',
-    budgetBreakdown: {
-      accommodation: 40,
-      food: 25,
-      activities: 20,
-      transport: 10,
-      shopping: 5
-    }
-  });
-
+  const { user } = useAuth();
+  const { credits, useCredits: consumeCredits } = useCredits();
+  
   const [currentStep, setCurrentStep] = useState(1);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [showVersionHistory, setShowVersionHistory] = useState(false);
+  const [generatedPlan, setGeneratedPlan] = useState<TripPlan | null>(null);
+  
+  // Form state
+  const [destination, setDestination] = useState('');
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
+  const [travelers, setTravelers] = useState(2);
+  const [budget, setBudget] = useState([2000]);
+  const [accommodation, setAccommodation] = useState('');
+  const [transportation, setTransportation] = useState('');
+  const [preferences, setPreferences] = useState<string[]>([]);
+  const [activities, setActivities] = useState<string[]>([]);
+  const [specialRequests, setSpecialRequests] = useState('');
 
-  const handleInputChange = (field: keyof TripPlannerFormData, value: any) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+  const totalSteps = 4;
+  const progress = (currentStep / totalSteps) * 100;
+
+  const creditCosts = {
+    basic: 25,
+    advanced: 50,
+    premium: 100,
+    vip: 200
   };
 
-  const handleArrayToggle = (field: keyof TripPlannerFormData, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: (prev[field] as string[]).includes(value)
-        ? (prev[field] as string[]).filter(item => item !== value)
-        : [...(prev[field] as string[]), value]
-    }));
+  const accommodationTypes = [
+    { value: 'hotel', label: t('tripPlanner.accommodation.hotel'), icon: Hotel },
+    { value: 'resort', label: t('tripPlanner.accommodation.resort'), icon: Building },
+    { value: 'hostel', label: t('tripPlanner.accommodation.hostel'), icon: Users },
+    { value: 'apartment', label: t('tripPlanner.accommodation.apartment'), icon: Building },
+    { value: 'villa', label: t('tripPlanner.accommodation.villa'), icon: TreePine }
+  ];
+
+  const transportationTypes = [
+    { value: 'flight', label: t('tripPlanner.transportation.flight'), icon: Plane },
+    { value: 'train', label: t('tripPlanner.transportation.train'), icon: Car },
+    { value: 'bus', label: t('tripPlanner.transportation.bus'), icon: Car },
+    { value: 'car-rental', label: t('tripPlanner.transportation.carRental'), icon: Car },
+    { value: 'mixed', label: t('tripPlanner.transportation.mixed'), icon: Compass }
+  ];
+
+  const preferenceOptions = [
+    { value: 'culture', label: t('tripPlanner.preferences.culture'), icon: Building },
+    { value: 'adventure', label: t('tripPlanner.preferences.adventure'), icon: Mountain },
+    { value: 'relaxation', label: t('tripPlanner.preferences.relaxation'), icon: Waves },
+    { value: 'nightlife', label: t('tripPlanner.preferences.nightlife'), icon: Moon },
+    { value: 'food', label: t('tripPlanner.preferences.food'), icon: Utensils },
+    { value: 'shopping', label: t('tripPlanner.preferences.shopping'), icon: Gift },
+    { value: 'nature', label: t('tripPlanner.preferences.nature'), icon: TreePine },
+    { value: 'photography', label: t('tripPlanner.preferences.photography'), icon: Camera }
+  ];
+
+  const activityOptions = [
+    { value: 'temples', label: t('tripPlanner.activities.temples'), icon: Building },
+    { value: 'beaches', label: t('tripPlanner.activities.beaches'), icon: Waves },
+    { value: 'markets', label: t('tripPlanner.activities.markets'), icon: Gift },
+    { value: 'museums', label: t('tripPlanner.activities.museums'), icon: Building },
+    { value: 'tours', label: t('tripPlanner.activities.tours'), icon: Compass },
+    { value: 'cooking-classes', label: t('tripPlanner.activities.cookingClasses'), icon: Utensils },
+    { value: 'spa', label: t('tripPlanner.activities.spa'), icon: Heart },
+    { value: 'diving', label: t('tripPlanner.activities.diving'), icon: Waves }
+  ];
+
+  const handlePreferenceChange = (preference: string, checked: boolean) => {
+    if (checked) {
+      setPreferences([...preferences, preference]);
+    } else {
+      setPreferences(preferences.filter(p => p !== preference));
+    }
   };
 
-  const handleBudgetBreakdownChange = (category: keyof typeof formData.budgetBreakdown, value: number) => {
-    setFormData(prev => ({
-      ...prev,
-      budgetBreakdown: {
-        ...prev.budgetBreakdown,
-        [category]: value
-      }
-    }));
+  const handleActivityChange = (activity: string, checked: boolean) => {
+    if (checked) {
+      setActivities([...activities, activity]);
+    } else {
+      setActivities(activities.filter(a => a !== activity));
+    }
   };
 
-  const generateTripPlan = async () => {
-    if (credits < 25) {
-      toast.error(t('notifications.insufficientCredits', 'Insufficient credits. You need 25 credits to generate a trip plan.'));
+  const nextStep = () => {
+    if (currentStep < totalSteps) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const generateTripPlan = async (planType: string) => {
+    const cost = creditCosts[planType as keyof typeof creditCosts];
+    
+    if (credits < cost) {
+      alert(t('tripPlanner.errors.insufficientCredits'));
+      return;
+    }
+
+    // Validate required fields
+    if (!destination || !startDate || !endDate) {
+      alert('Please fill in all required fields');
       return;
     }
 
     setIsGenerating(true);
-    try {
-      // Simulate AI processing
-      await new Promise(resolve => setTimeout(resolve, 3000));
 
-      // Generate mock trip plan
-      const mockPlan = generateMockPlan();
+    try {
+      // Simulate AI trip planning
+      await new Promise(resolve => setTimeout(resolve, 3000));
       
-      const newPlan = await createInitialPlan(formData, mockPlan);
-      if (newPlan) {
-        toast.success(t('tripPlanner.generatedPlan.success', 'Trip plan generated successfully!'));
-      }
+      const mockPlan: TripPlan = {
+        id: Date.now().toString(),
+        destination,
+        startDate: startDate!,
+        endDate: endDate!,
+        travelers,
+        budget: budget[0],
+        preferences,
+        accommodation,
+        transportation,
+        activities,
+        specialRequests,
+        createdAt: new Date(),
+        plan: {
+          itinerary: [
+            {
+              day: 1,
+              title: t('tripPlanner.result.itinerary.day1.title'),
+              description: t('tripPlanner.result.itinerary.day1.description'),
+              activities: [
+                {
+                  time: '09:00',
+                  title: t('tripPlanner.result.itinerary.day1.activity1.title'),
+                  description: t('tripPlanner.result.itinerary.day1.activity1.description'),
+                  icon: 'plane',
+                  duration: '2h'
+                },
+                {
+                  time: '14:00',
+                  title: t('tripPlanner.result.itinerary.day1.activity2.title'),
+                  description: t('tripPlanner.result.itinerary.day1.activity2.description'),
+                  icon: 'building',
+                  duration: '3h'
+                },
+                {
+                  time: '19:00',
+                  title: t('tripPlanner.result.itinerary.day1.activity3.title'),
+                  description: t('tripPlanner.result.itinerary.day1.activity3.description'),
+                  icon: 'utensils',
+                  duration: '2h'
+                }
+              ]
+            },
+            {
+              day: 2,
+              title: t('tripPlanner.result.itinerary.day2.title'),
+              description: t('tripPlanner.result.itinerary.day2.description'),
+              activities: [
+                {
+                  time: '08:00',
+                  title: t('tripPlanner.result.itinerary.day2.activity1.title'),
+                  description: t('tripPlanner.result.itinerary.day2.activity1.description'),
+                  icon: 'building',
+                  duration: '2h'
+                },
+                {
+                  time: '11:00',
+                  title: t('tripPlanner.result.itinerary.day2.activity2.title'),
+                  description: t('tripPlanner.result.itinerary.day2.activity2.description'),
+                  icon: 'gift',
+                  duration: '3h'
+                },
+                {
+                  time: '16:00',
+                  title: t('tripPlanner.result.itinerary.day2.activity3.title'),
+                  description: t('tripPlanner.result.itinerary.day2.activity3.description'),
+                  icon: 'utensils',
+                  duration: '3h'
+                }
+              ]
+            }
+          ],
+          recommendations: [
+            {
+              type: 'hotel',
+              category: t('tripPlanner.result.recommendations.accommodation.category'),
+              name: t('tripPlanner.result.recommendations.accommodation.name'),
+              description: t('tripPlanner.result.recommendations.accommodation.description'),
+              price: '$120/night',
+              rating: 4.8,
+              features: [
+                t('tripPlanner.result.recommendations.accommodation.features.riverside'),
+                t('tripPlanner.result.recommendations.accommodation.features.spa'),
+                t('tripPlanner.result.recommendations.accommodation.features.restaurant')
+              ]
+            },
+            {
+              type: 'restaurant',
+              category: t('tripPlanner.result.recommendations.restaurant.category'),
+              name: t('tripPlanner.result.recommendations.restaurant.name'),
+              description: t('tripPlanner.result.recommendations.restaurant.description'),
+              price: '$25-40/meal',
+              rating: 4.9,
+              features: [
+                t('tripPlanner.result.recommendations.restaurant.features.michelin'),
+                t('tripPlanner.result.recommendations.restaurant.features.rooftop'),
+                t('tripPlanner.result.recommendations.restaurant.features.authentic')
+              ]
+            },
+            {
+              type: 'transport',
+              category: t('tripPlanner.result.recommendations.transport.category'),
+              name: t('tripPlanner.result.recommendations.transport.name'),
+              description: t('tripPlanner.result.recommendations.transport.description'),
+              price: '$15-25/day',
+              rating: 4.7,
+              features: [
+                t('tripPlanner.result.recommendations.transport.features.convenient'),
+                t('tripPlanner.result.recommendations.transport.features.affordable'),
+                t('tripPlanner.result.recommendations.transport.features.coverage')
+              ]
+            }
+          ],
+          estimatedCost: budget[0] * 0.85
+        }
+      };
+
+      setGeneratedPlan(mockPlan);
+      consumeCredits(cost);
+      setCurrentStep(totalSteps + 1);
     } catch (error) {
-      console.error('Trip planning error:', error);
-      toast.error(t('tripPlanner.generatedPlan.error', 'Error generating trip plan. Please try again.'));
+      console.error('Error generating trip plan:', error);
+      alert(t('tripPlanner.errors.generationFailed'));
     } finally {
       setIsGenerating(false);
     }
   };
 
-  const generateMockPlan = (): string => {
-    const duration = Math.ceil((new Date(formData.endDate).getTime() - new Date(formData.startDate).getTime()) / (1000 * 60 * 60 * 24));
+  const downloadPDF = () => {
+    if (!generatedPlan || !startDate || !endDate) return;
     
-    return `
-🎯 **YOUR PERSONALIZED THAILAND TRIP PLAN**
+    // Calculate trip duration safely
+    const duration = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    
+    // Simulate PDF generation and download
+    const element = document.createElement('a');
+    const file = new Blob([`
+${t('tripPlanner.result.title')} - ${destination}
 
-**Destination**: ${formData.destination}
-**Duration**: ${duration} days
-**Travelers**: ${formData.travelers} ${t('tripPlanner.generatedPlan.people', 'people')}
-**Budget**: ${formData.budget[0]} ${formData.budgetCurrency}
-**Travel Style**: ${formData.travelStyle}
+${t('tripPlanner.result.summary.destination')}: ${destination}
+${t('tripPlanner.result.summary.duration')}: ${duration} ${t('tripPlanner.result.summary.days')}
+${t('tripPlanner.result.summary.travelers')}: ${travelers}
+${t('tripPlanner.result.summary.estimatedCost')}: $${generatedPlan?.plan?.estimatedCost}
 
-**📅 DAY-BY-DAY ITINERARY:**
+${t('tripPlanner.result.itinerary.title')}:
+${generatedPlan?.plan?.itinerary.map((day: any) => `
+Day ${day.day}: ${day.title}
+${day.activities.map((activity: any) => `- ${activity.time}: ${activity.title}`).join('\n')}
+`).join('\n')}
 
-**Day 1: ${t('tripPlanner.generatedPlan.arrival', 'Arrival & Orientation')}**
-- 🛬 ${t('tripPlanner.generatedPlan.arrivalDetails', 'Airport pickup and hotel check-in')}
-- 🏨 ${t('tripPlanner.generatedPlan.checkIn', 'Hotel check-in and rest')}
-- 🌆 ${t('tripPlanner.generatedPlan.localExploration', 'Local area exploration')}
+${t('tripPlanner.result.recommendations.title')}:
+${generatedPlan?.plan?.recommendations.map((rec: any) => `
+${rec.category}: ${rec.name}
+${rec.description}
+Price: ${rec.price}
+`).join('\n')}
 
-**Day 2: ${t('tripPlanner.generatedPlan.culturalExperience', 'Cultural Experience')}**
-- 🏛️ ${t('tripPlanner.generatedPlan.culturalDetails', 'Visit temples and cultural sites')}
-- 🍜 ${t('tripPlanner.generatedPlan.localCuisine', 'Try authentic local cuisine')}
-- 🛍️ ${t('tripPlanner.generatedPlan.shopping', 'Local market shopping')}
-
-**💰 BUDGET BREAKDOWN:**
-- ${t('tripPlanner.budgetBreakdown.accommodation', 'Accommodation')}: ${formData.budgetBreakdown.accommodation}%
-- ${t('tripPlanner.budgetBreakdown.food', 'Food & Dining')}: ${formData.budgetBreakdown.food}%
-- ${t('tripPlanner.budgetBreakdown.activities', 'Activities & Tours')}: ${formData.budgetBreakdown.activities}%
-- ${t('tripPlanner.budgetBreakdown.transport', 'Transportation')}: ${formData.budgetBreakdown.transport}%
-- ${t('tripPlanner.budgetBreakdown.shopping', 'Shopping & Souvenirs')}: ${formData.budgetBreakdown.shopping}%
-
-**🎯 RECOMMENDATIONS:**
-- ${t('tripPlanner.generatedPlan.accommodation', 'Accommodation')}: ${formData.accommodationType.join(', ')}
-- ${t('tripPlanner.generatedPlan.transport', 'Transportation')}: ${formData.transportPreference}
-- ${t('tripPlanner.generatedPlan.activities', 'Activities')}: ${formData.interests.join(', ')}
-
----
-*Generated with 25 credits • ${new Date().toLocaleDateString()}*
-    `;
+Generated by Thailand Visa AI - ${new Date().toLocaleDateString()}
+    `], { type: 'text/plain' });
+    
+    element.href = URL.createObjectURL(file);
+    element.download = `thailand-trip-plan-${destination.toLowerCase().replace(/\s+/g, '-')}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
   };
 
-  const downloadPlan = () => {
-    if (!currentVersion) return;
-    
-    const planText = `Thailand Trip Plan - ${currentVersion.destination}\n\n${currentVersion.generatedPlan}`;
-    const blob = new Blob([planText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `trip-plan-${currentVersion.destination.toLowerCase().replace(/\s+/g, '-')}-v${currentVersion.version}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    toast.success(t('tripPlanner.downloadSuccess', 'Trip plan downloaded successfully!'));
+  const getActivityIcon = (iconName: string) => {
+    const icons: { [key: string]: any } = {
+      plane: Plane,
+      building: Building,
+      utensils: Utensils,
+      gift: Gift,
+      waves: Waves,
+      heart: Heart,
+      moon: Moon,
+      hotel: Hotel,
+      car: Car
+    };
+    const IconComponent = icons[iconName] || Star;
+    return <IconComponent className="w-5 h-5" />;
   };
 
-  const handleRemixComplete = (newPlan: TripPlanVersion) => {
-    // The plan is already added to versions by the hook
-    toast.success(t('tripPlanner.remix.success', 'Remix completed successfully!'));
-  };
-
-  const renderStep1 = () => (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Label htmlFor="destination" className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" />
-            {t('tripPlanner.form.destination')}
-          </Label>
-          <Input
-            id="destination"
-            placeholder={t('tripPlanner.form.destinationPlaceholder')}
-            value={formData.destination}
-            onChange={(e) => handleInputChange('destination', e.target.value)}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="travelers" className="flex items-center gap-2">
-            <Users className="w-4 h-4" />
-            {t('tripPlanner.form.travelers')}
-          </Label>
-          <Input
-            id="travelers"
-            type="number"
-            min="1"
-            max="20"
-            value={formData.travelers}
-            onChange={(e) => handleInputChange('travelers', parseInt(e.target.value))}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="startDate" className="flex items-center gap-2">
-            <CalendarDays className="w-4 h-4" />
-            {t('tripPlanner.form.startDate')}
-          </Label>
-          <Input
-            id="startDate"
-            type="date"
-            value={formData.startDate}
-            onChange={(e) => handleInputChange('startDate', e.target.value)}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="endDate" className="flex items-center gap-2">
-            <CalendarDays className="w-4 h-4" />
-            {t('tripPlanner.form.endDate')}
-          </Label>
-          <Input
-            id="endDate"
-            type="date"
-            value={formData.endDate}
-            onChange={(e) => handleInputChange('endDate', e.target.value)}
-          />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <Label className="flex items-center gap-2">
-          <Wallet className="w-4 h-4" />
-          {t('tripPlanner.form.budget')}: {formData.budget[0]} {formData.budgetCurrency}
-        </Label>
-        <div className="flex gap-4 items-center">
-          <Slider
-            value={formData.budget}
-            onValueChange={(value) => handleInputChange('budget', value)}
-            max={10000}
-            min={100}
-            step={100}
-            className="flex-1"
-          />
-          <Select value={formData.budgetCurrency} onValueChange={(value) => handleInputChange('budgetCurrency', value)}>
-            <SelectTrigger className="w-20">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="USD">USD</SelectItem>
-              <SelectItem value="EUR">EUR</SelectItem>
-              <SelectItem value="THB">THB</SelectItem>
-              <SelectItem value="GBP">GBP</SelectItem>
-              <SelectItem value="JPY">JPY</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.travelCompany')}</Label>
-        <RadioGroup value={formData.travelCompany} onValueChange={(value) => handleInputChange('travelCompany', value)}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="solo" id="solo" />
-            <Label htmlFor="solo">{t('tripPlanner.travelCompany.solo')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="couple" id="couple" />
-            <Label htmlFor="couple">{t('tripPlanner.travelCompany.couple')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="family" id="family" />
-            <Label htmlFor="family">{t('tripPlanner.travelCompany.family')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="friends" id="friends" />
-            <Label htmlFor="friends">{t('tripPlanner.travelCompany.friends')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="business" id="business" />
-            <Label htmlFor="business">{t('tripPlanner.travelCompany.business')}</Label>
-          </div>
-        </RadioGroup>
-      </div>
-    </div>
-  );
-
-  const renderStep2 = () => (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.accommodationType')}</Label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {[
-            { id: 'hotel', label: t('tripPlanner.accommodation.hotel'), icon: Hotel },
-            { id: 'hostel', label: t('tripPlanner.accommodation.hostel'), icon: Building },
-            { id: 'resort', label: t('tripPlanner.accommodation.resort'), icon: TreePine },
-            { id: 'apartment', label: t('tripPlanner.accommodation.apartment'), icon: Building },
-            { id: 'villa', label: t('tripPlanner.accommodation.villa'), icon: Heart },
-            { id: 'guesthouse', label: t('tripPlanner.accommodation.guesthouse'), icon: Star }
-          ].map(({ id, label, icon: Icon }) => (
-            <div key={id} className="flex items-center space-x-2">
-              <Checkbox
-                id={id}
-                checked={formData.accommodationType.includes(id)}
-                onCheckedChange={() => handleArrayToggle('accommodationType', id)}
-              />
-              <Label htmlFor={id} className="flex items-center gap-2 cursor-pointer">
-                <Icon className="w-4 h-4" />
-                {label}
-              </Label>
+  const renderStepContent = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <div className="space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('tripPlanner.steps.step1.title')}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                {t('tripPlanner.steps.step1.description')}
+              </p>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.transportPreference')}</Label>
-        <RadioGroup value={formData.transportPreference} onValueChange={(value) => handleInputChange('transportPreference', value)}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="flight" id="flight" />
-            <Label htmlFor="flight" className="flex items-center gap-2">
-              <Plane className="w-4 h-4" />
-              {t('tripPlanner.transport.flight')}
-            </Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="train" id="train" />
-            <Label htmlFor="train">{t('tripPlanner.transport.train')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="bus" id="bus" />
-            <Label htmlFor="bus">{t('tripPlanner.transport.bus')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="car" id="car" />
-            <Label htmlFor="car">{t('tripPlanner.transport.car')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="mixed" id="mixed" />
-            <Label htmlFor="mixed">{t('tripPlanner.transport.mixed')}</Label>
-          </div>
-        </RadioGroup>
-      </div>
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <MapPin className="w-6 h-6 mr-3 text-blue-600" />
+                  {t('tripPlanner.steps.step1.destination.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step1.destination.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <Label htmlFor="destination" className="text-base font-medium mb-3 block">
+                    {t('tripPlanner.steps.step1.destination.label')}
+                  </Label>
+                  <Input
+                    id="destination"
+                    placeholder={t('tripPlanner.steps.step1.destination.placeholder')}
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    className="h-12 text-base"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.travelStyle')}</Label>
-        <RadioGroup value={formData.travelStyle} onValueChange={(value) => handleInputChange('travelStyle', value)}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="luxury" id="luxury" />
-            <Label htmlFor="luxury">{t('tripPlanner.travelStyle.luxury')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="comfort" id="comfort" />
-            <Label htmlFor="comfort">{t('tripPlanner.travelStyle.comfort')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="budget" id="budget" />
-            <Label htmlFor="budget">{t('tripPlanner.travelStyle.budget')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="backpacker" id="backpacker" />
-            <Label htmlFor="backpacker">{t('tripPlanner.travelStyle.backpacker')}</Label>
-          </div>
-        </RadioGroup>
-      </div>
-
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.adventureLevel')}</Label>
-        <RadioGroup value={formData.adventureLevel} onValueChange={(value) => handleInputChange('adventureLevel', value)}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="relaxed" id="relaxed" />
-            <Label htmlFor="relaxed">{t('tripPlanner.adventureLevel.relaxed')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="moderate" id="moderate" />
-            <Label htmlFor="moderate">{t('tripPlanner.adventureLevel.moderate')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="adventurous" id="adventurous" />
-            <Label htmlFor="adventurous">{t('tripPlanner.adventureLevel.adventurous')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="extreme" id="extreme" />
-            <Label htmlFor="extreme">{t('tripPlanner.adventureLevel.extreme')}</Label>
-          </div>
-        </RadioGroup>
-      </div>
-    </div>
-  );
-
-  const renderStep3 = () => (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.interests')}</Label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {[
-            { id: 'culture', label: t('tripPlanner.interests.culture'), icon: Building },
-            { id: 'nature', label: t('tripPlanner.interests.nature'), icon: TreePine },
-            { id: 'adventure', label: t('tripPlanner.interests.adventure'), icon: Mountain },
-            { id: 'beach', label: t('tripPlanner.interests.beach'), icon: Waves },
-            { id: 'food', label: t('tripPlanner.interests.food'), icon: Utensils },
-            { id: 'photography', label: t('tripPlanner.interests.photography'), icon: Camera },
-            { id: 'nightlife', label: t('tripPlanner.interests.nightlife'), icon: Star },
-            { id: 'shopping', label: t('tripPlanner.interests.shopping'), icon: Building },
-            { id: 'wellness', label: t('tripPlanner.interests.wellness'), icon: Heart }
-          ].map(({ id, label, icon: Icon }) => (
-            <div key={id} className="flex items-center space-x-2">
-              <Checkbox
-                id={id}
-                checked={formData.interests.includes(id)}
-                onCheckedChange={() => handleArrayToggle('interests', id)}
-              />
-              <Label htmlFor={id} className="flex items-center gap-2 cursor-pointer">
-                <Icon className="w-4 h-4" />
-                {label}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.dietaryRestrictions')}</Label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {[
-            'vegetarian', 'vegan', 'halal', 'kosher', 'gluten-free', 'dairy-free', 'nut-allergy', 'seafood-allergy', 'none'
-          ].map((restriction) => (
-            <div key={restriction} className="flex items-center space-x-2">
-              <Checkbox
-                id={restriction}
-                checked={formData.dietaryRestrictions.includes(restriction)}
-                onCheckedChange={() => handleArrayToggle('dietaryRestrictions', restriction)}
-              />
-              <Label htmlFor={restriction} className="cursor-pointer">
-                {t(`tripPlanner.dietary.${restriction}`)}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="languagePreference" className="flex items-center gap-2">
-          <Globe className="w-4 h-4" />
-          {t('tripPlanner.form.languagePreference')}
-        </Label>
-        <Select value={formData.languagePreference} onValueChange={(value) => handleInputChange('languagePreference', value)}>
-          <SelectTrigger>
-            <SelectValue placeholder={t('tripPlanner.form.languagePreferencePlaceholder')} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="english">{t('tripPlanner.languages.english')}</SelectItem>
-            <SelectItem value="local">{t('tripPlanner.languages.local')}</SelectItem>
-            <SelectItem value="translator">{t('tripPlanner.languages.translator')}</SelectItem>
-            <SelectItem value="guide">{t('tripPlanner.languages.guide')}</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="previousVisits">{t('tripPlanner.form.previousVisits')}</Label>
-        <RadioGroup value={formData.previousVisits} onValueChange={(value) => handleInputChange('previousVisits', value)}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="first-time" id="first-time" />
-            <Label htmlFor="first-time">{t('tripPlanner.previousVisits.firstTime')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="returning" id="returning" />
-            <Label htmlFor="returning">{t('tripPlanner.previousVisits.returning')}</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="frequent" id="frequent" />
-            <Label htmlFor="frequent">{t('tripPlanner.previousVisits.frequent')}</Label>
-          </div>
-        </RadioGroup>
-      </div>
-    </div>
-  );
-
-  const renderStep4 = () => (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <Label>{t('tripPlanner.form.budgetBreakdown')}</Label>
-        <div className="space-y-4">
-          {Object.entries(formData.budgetBreakdown).map(([category, percentage]) => (
-            <div key={category} className="space-y-2">
-              <div className="flex justify-between items-center">
-                <Label className="capitalize">{t(`tripPlanner.budgetBreakdown.${category}`)}</Label>
-                <Badge variant="secondary">{percentage}%</Badge>
-              </div>
-              <Slider
-                value={[percentage]}
-                onValueChange={(value) => handleBudgetBreakdownChange(category as keyof typeof formData.budgetBreakdown, value[0])}
-                max={70}
-                min={0}
-                step={5}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="text-sm text-muted-foreground">
-          {t('tripPlanner.form.budgetBreakdownNote')}
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="specialRequests">{t('tripPlanner.form.specialRequests')}</Label>
-        <Textarea
-          id="specialRequests"
-          placeholder={t('tripPlanner.form.specialRequestsPlaceholder')}
-          value={formData.specialRequests}
-          onChange={(e) => handleInputChange('specialRequests', e.target.value)}
-          rows={4}
-        />
-      </div>
-
-      <Separator />
-
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">{t('tripPlanner.form.summary')}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div>
-            <strong>{t('tripPlanner.form.destination')}:</strong> {formData.destination}
-          </div>
-          <div>
-            <strong>{t('tripPlanner.form.travelers')}:</strong> {formData.travelers}
-          </div>
-          <div>
-            <strong>{t('tripPlanner.form.dates')}:</strong> {formData.startDate} - {formData.endDate}
-          </div>
-          <div>
-            <strong>{t('tripPlanner.form.budget')}:</strong> {formData.budget[0]} {formData.budgetCurrency}
-          </div>
-          <div>
-            <strong>{t('tripPlanner.form.travelStyle')}:</strong> {formData.travelStyle}
-          </div>
-          <div>
-            <strong>{t('tripPlanner.form.adventureLevel')}:</strong> {formData.adventureLevel}
-          </div>
-        </div>
-        {formData.interests.length > 0 && (
-          <div>
-            <strong>{t('tripPlanner.form.interests')}:</strong>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {formData.interests.map(interest => (
-                <Badge key={interest} variant="outline">
-                  {t(`tripPlanner.interests.${interest}`)}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {t('tripPlanner.title')}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {t('tripPlanner.subtitle')}
-          </p>
-          <div className="flex justify-center items-center gap-4 mt-4">
-            <Badge variant="secondary" className="flex items-center gap-2">
-              <Wallet className="w-4 h-4" />
-              {credits} {t('credits.credits', 'credits')}
-            </Badge>
-            {versions.length > 0 && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowVersionHistory(!showVersionHistory)}
-                className="flex items-center gap-2"
-              >
-                <History className="w-4 h-4" />
-                {t('tripPlanner.versionHistory', 'Version History')} ({versions.length})
-              </Button>
-            )}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Form Section */}
-          <div className="lg:col-span-1">
-            {!currentVersion ? (
-              <Card>
-                <CardHeader>
-                  <div className="flex justify-between items-center">
-                    <CardTitle className="flex items-center gap-2">
-                      <Clock className="w-5 h-5" />
-                      {t('tripPlanner.step')} {currentStep} {t('tripPlanner.of')} 4
-                    </CardTitle>
-                    <div className="flex space-x-2">
-                      {[1, 2, 3, 4].map((step) => (
-                        <div
-                          key={step}
-                          className={`w-3 h-3 rounded-full ${
-                            step <= currentStep ? 'bg-blue-600' : 'bg-gray-300'
-                          }`}
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <CalendarIcon className="w-6 h-6 mr-3 text-green-600" />
+                  {t('tripPlanner.steps.step1.dates.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step1.dates.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <Label className="text-base font-medium mb-3 block">
+                      {t('tripPlanner.steps.step1.dates.startDate')}
+                    </Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full h-12 justify-start text-left font-normal",
+                            !startDate && "text-muted-foreground"
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {startDate ? format(startDate, "PPP") : t('tripPlanner.steps.step1.dates.selectStartDate')}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0">
+                        <Calendar
+                          mode="single"
+                          selected={startDate}
+                          onSelect={setStartDate}
+                          initialFocus
                         />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  <div>
+                    <Label className="text-base font-medium mb-3 block">
+                      {t('tripPlanner.steps.step1.dates.endDate')}
+                    </Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full h-12 justify-start text-left font-normal",
+                            !endDate && "text-muted-foreground"
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {endDate ? format(endDate, "PPP") : t('tripPlanner.steps.step1.dates.selectEndDate')}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0">
+                        <Calendar
+                          mode="single"
+                          selected={endDate}
+                          onSelect={setEndDate}
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Users className="w-6 h-6 mr-3 text-purple-600" />
+                  {t('tripPlanner.steps.step1.travelers.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step1.travelers.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <Label className="text-base font-medium mb-4 block">
+                    {t('tripPlanner.steps.step1.travelers.label')}: <span className="text-2xl font-bold text-purple-600">{travelers}</span>
+                  </Label>
+                  <div className="flex items-center space-x-4">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => setTravelers(Math.max(1, travelers - 1))}
+                      className="h-10 w-10"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </Button>
+                    <div className="flex-1 px-4 py-2 text-center text-lg font-semibold bg-white dark:bg-gray-800 rounded-lg border">
+                      {travelers} {travelers === 1 ? t('tripPlanner.steps.step1.travelers.person') : t('tripPlanner.steps.step1.travelers.people')}
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => setTravelers(travelers + 1)}
+                      className="h-10 w-10"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
+      case 2:
+        return (
+          <div className="space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('tripPlanner.steps.step2.title')}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                {t('tripPlanner.steps.step2.description')}
+              </p>
+            </div>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <DollarSign className="w-6 h-6 mr-3 text-orange-600" />
+                  {t('tripPlanner.steps.step2.budget.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step2.budget.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <Label className="text-base font-medium mb-4 block">
+                    {t('tripPlanner.steps.step2.budget.label')}: <span className="text-2xl font-bold text-orange-600">${budget[0].toLocaleString()}</span>
+                  </Label>
+                  <Slider
+                    value={budget}
+                    onValueChange={setBudget}
+                    max={10000}
+                    min={500}
+                    step={100}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between text-sm text-gray-500 mt-2">
+                    <span>$500</span>
+                    <span>$10,000+</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Hotel className="w-6 h-6 mr-3 text-blue-600" />
+                  {t('tripPlanner.steps.step2.accommodation.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step2.accommodation.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <RadioGroup value={accommodation} onValueChange={setAccommodation}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {accommodationTypes.map((type) => {
+                      const Icon = type.icon;
+                      return (
+                        <div key={type.value} className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+                          <RadioGroupItem value={type.value} id={type.value} />
+                          <Icon className="w-5 h-5 text-blue-600" />
+                          <Label htmlFor={type.value} className="cursor-pointer flex-1">
+                            {type.label}
+                          </Label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </RadioGroup>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Plane className="w-6 h-6 mr-3 text-green-600" />
+                  {t('tripPlanner.steps.step2.transportation.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step2.transportation.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <RadioGroup value={transportation} onValueChange={setTransportation}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {transportationTypes.map((type) => {
+                      const Icon = type.icon;
+                      return (
+                        <div key={type.value} className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+                          <RadioGroupItem value={type.value} id={type.value} />
+                          <Icon className="w-5 h-5 text-green-600" />
+                          <Label htmlFor={type.value} className="cursor-pointer flex-1">
+                            {type.label}
+                          </Label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </RadioGroup>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
+      case 3:
+        return (
+          <div className="space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('tripPlanner.steps.step3.title')}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                {t('tripPlanner.steps.step3.description')}
+              </p>
+            </div>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Heart className="w-6 h-6 mr-3 text-pink-600" />
+                  {t('tripPlanner.steps.step3.preferences.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step3.preferences.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {preferenceOptions.map((preference) => {
+                    const Icon = preference.icon;
+                    return (
+                      <div key={preference.value} className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                        <Checkbox
+                          id={preference.value}
+                          checked={preferences.includes(preference.value)}
+                          onCheckedChange={(checked) => handlePreferenceChange(preference.value, checked as boolean)}
+                        />
+                        <Icon className="w-5 h-5 text-pink-600" />
+                        <Label htmlFor={preference.value} className="cursor-pointer flex-1 text-sm">
+                          {preference.label}
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Star className="w-6 h-6 mr-3 text-indigo-600" />
+                  {t('tripPlanner.steps.step3.activities.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step3.activities.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {activityOptions.map((activity) => {
+                    const Icon = activity.icon;
+                    return (
+                      <div key={activity.value} className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                        <Checkbox
+                          id={activity.value}
+                          checked={activities.includes(activity.value)}
+                          onCheckedChange={(checked) => handleActivityChange(activity.value, checked as boolean)}
+                        />
+                        <Icon className="w-5 h-5 text-indigo-600" />
+                        <Label htmlFor={activity.value} className="cursor-pointer flex-1 text-sm">
+                          {activity.label}
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
+      case 4:
+        return (
+          <div className="space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('tripPlanner.steps.step4.title')}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                {t('tripPlanner.steps.step4.description')}
+              </p>
+            </div>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Sparkles className="w-6 h-6 mr-3 text-amber-600" />
+                  {t('tripPlanner.steps.step4.specialRequests.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step4.specialRequests.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Textarea
+                  placeholder={t('tripPlanner.steps.step4.specialRequests.placeholder')}
+                  value={specialRequests}
+                  onChange={(e) => setSpecialRequests(e.target.value)}
+                  className="min-h-32 text-base"
+                />
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20">
+              <CardHeader className="pb-6">
+                <CardTitle className="flex items-center text-xl">
+                  <Bot className="w-6 h-6 mr-3 text-emerald-600" />
+                  {t('tripPlanner.steps.step4.planTypes.title')}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {t('tripPlanner.steps.step4.planTypes.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <Card className="hover:shadow-lg transition-shadow border-2 border-blue-200 dark:border-blue-800">
+                    <CardHeader className="text-center pb-4">
+                      <CardTitle className="text-lg">{t('tripPlanner.steps.step4.planTypes.basic.title')}</CardTitle>
+                      <div className="text-3xl font-bold text-blue-600">25</div>
+                      <div className="text-sm text-gray-600">{t('tripPlanner.steps.step4.planTypes.credits')}</div>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        {t('tripPlanner.steps.step4.planTypes.basic.description')}
+                      </p>
+                      <Button 
+                        onClick={() => generateTripPlan('basic')}
+                        disabled={isGenerating || credits < 25}
+                        className="w-full"
+                        variant="outline"
+                      >
+                        {t('tripPlanner.steps.step4.planTypes.basic.button')}
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="hover:shadow-lg transition-shadow border-2 border-purple-200 dark:border-purple-800">
+                    <CardHeader className="text-center pb-4">
+                      <CardTitle className="text-lg">{t('tripPlanner.steps.step4.planTypes.advanced.title')}</CardTitle>
+                      <div className="text-3xl font-bold text-purple-600">50</div>
+                      <div className="text-sm text-gray-600">{t('tripPlanner.steps.step4.planTypes.credits')}</div>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        {t('tripPlanner.steps.step4.planTypes.advanced.description')}
+                      </p>
+                      <Button 
+                        onClick={() => generateTripPlan('advanced')}
+                        disabled={isGenerating || credits < 50}
+                        className="w-full"
+                        variant="outline"
+                      >
+                        {t('tripPlanner.steps.step4.planTypes.advanced.button')}
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="hover:shadow-lg transition-shadow border-2 border-green-200 dark:border-green-800">
+                    <CardHeader className="text-center pb-4">
+                      <CardTitle className="text-lg">{t('tripPlanner.steps.step4.planTypes.premium.title')}</CardTitle>
+                      <div className="text-3xl font-bold text-green-600">100</div>
+                      <div className="text-sm text-gray-600">{t('tripPlanner.steps.step4.planTypes.credits')}</div>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        {t('tripPlanner.steps.step4.planTypes.premium.description')}
+                      </p>
+                      <Button 
+                        onClick={() => generateTripPlan('premium')}
+                        disabled={isGenerating || credits < 100}
+                        className="w-full"
+                        variant="outline"
+                      >
+                        {t('tripPlanner.steps.step4.planTypes.premium.button')}
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="hover:shadow-lg transition-shadow border-2 border-orange-200 dark:border-orange-800 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20">
+                    <CardHeader className="text-center pb-4">
+                      <CardTitle className="text-lg">{t('tripPlanner.steps.step4.planTypes.vip.title')}</CardTitle>
+                      <div className="text-3xl font-bold text-orange-600">200</div>
+                      <div className="text-sm text-gray-600">{t('tripPlanner.steps.step4.planTypes.credits')}</div>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        {t('tripPlanner.steps.step4.planTypes.vip.description')}
+                      </p>
+                      <Button 
+                        onClick={() => generateTripPlan('vip')}
+                        disabled={isGenerating || credits < 200}
+                        className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+                      >
+                        {t('tripPlanner.steps.step4.planTypes.vip.button')}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  if (isGenerating) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 flex items-center justify-center">
+        <Card className="w-full max-w-md mx-4">
+          <CardContent className="p-8 text-center">
+            <Bot className="w-16 h-16 mx-auto mb-4 text-blue-600 animate-pulse" />
+            <h3 className="text-xl font-bold mb-2">{t('tripPlanner.generating.title')}</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">{t('tripPlanner.generating.description')}</p>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (generatedPlan) {
+    // Calculate trip duration safely
+    const duration = generatedPlan.startDate && generatedPlan.endDate 
+      ? Math.ceil((generatedPlan.endDate.getTime() - generatedPlan.startDate.getTime()) / (1000 * 60 * 60 * 24))
+      : 0;
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 mb-8">
+              <div className="flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-12 h-12 mr-4" />
+                <div className="text-left">
+                  <h1 className="text-4xl font-bold mb-2">
+                    {t('tripPlanner.result.title')}
+                  </h1>
+                  <p className="text-xl opacity-90">
+                    {t('tripPlanner.result.subtitle')}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-6 text-sm opacity-90">
+                <div className="flex items-center">
+                  <CalendarDays className="w-4 h-4 mr-2" />
+                  {generatedPlan.createdAt.toLocaleDateString()}
+                </div>
+                <div className="flex items-center">
+                  <Bot className="w-4 h-4 mr-2" />
+                  {t('tripPlanner.result.badge')}
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <Button 
+                onClick={downloadPDF}
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-8 py-3 text-lg"
+              >
+                <Download className="w-5 h-5 mr-2" />
+                {t('tripPlanner.result.actions.downloadPDF')}
+              </Button>
+              <Button 
+                variant="outline"
+                className="px-8 py-3 text-lg border-2"
+              >
+                <Share2 className="w-5 h-5 mr-2" />
+                {t('tripPlanner.result.actions.share')}
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => setCurrentStep(1)}
+                className="px-8 py-3 text-lg border-2"
+              >
+                <Edit className="w-5 h-5 mr-2" />
+                Edit Plan
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Trip Summary */}
+            <div className="lg:col-span-1 space-y-6">
+              <Card className="border-0 shadow-xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20">
+                <CardHeader className="pb-4">
+                  <CardTitle className="flex items-center text-2xl text-indigo-700 dark:text-indigo-300">
+                    <Info className="w-6 h-6 mr-3" />
+                    {t('tripPlanner.result.summary.title')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                      <div className="flex items-center">
+                        <MapPin className="w-5 h-5 text-blue-600 mr-3" />
+                        <span className="font-medium">{t('tripPlanner.result.summary.destination')}</span>
+                      </div>
+                      <Badge variant="secondary" className="text-lg px-3 py-1">
+                        {generatedPlan.destination}
+                      </Badge>
+                    </div>
+                    
+                    <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                      <div className="flex items-center">
+                        <CalendarDays className="w-5 h-5 text-green-600 mr-3" />
+                        <span className="font-medium">{t('tripPlanner.result.summary.duration')}</span>
+                      </div>
+                      <Badge variant="secondary" className="text-lg px-3 py-1">
+                        {duration} {t('tripPlanner.result.summary.days')}
+                      </Badge>
+                    </div>
+                    
+                    <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                      <div className="flex items-center">
+                        <Users className="w-5 h-5 text-purple-600 mr-3" />
+                        <span className="font-medium">{t('tripPlanner.result.summary.travelers')}</span>
+                      </div>
+                      <Badge variant="secondary" className="text-lg px-3 py-1">
+                        {generatedPlan.travelers} {generatedPlan.travelers === 1 ? t('tripPlanner.result.summary.person') : t('tripPlanner.result.summary.people')}
+                      </Badge>
+                    </div>
+                    
+                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg shadow-sm border-2 border-green-200 dark:border-green-800">
+                      <div className="flex items-center">
+                        <DollarSign className="w-5 h-5 text-green-600 mr-3" />
+                        <span className="font-medium">{t('tripPlanner.result.summary.estimatedCost')}</span>
+                      </div>
+                      <div className="text-2xl font-bold text-green-600">
+                        ${generatedPlan.plan?.estimatedCost?.toLocaleString()}
+                      </div>
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Your Preferences</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {generatedPlan.preferences.map((pref, index) => (
+                        <Badge key={index} variant="outline" className="px-3 py-1">
+                          {t(`tripPlanner.preferences.${pref}`)}
+                        </Badge>
                       ))}
                     </div>
                   </div>
-                  <CardDescription>
-                    {currentStep === 1 && t('tripPlanner.stepDescriptions.step1')}
-                    {currentStep === 2 && t('tripPlanner.stepDescriptions.step2')}
-                    {currentStep === 3 && t('tripPlanner.stepDescriptions.step3')}
-                    {currentStep === 4 && t('tripPlanner.stepDescriptions.step4')}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {currentStep === 1 && renderStep1()}
-                  {currentStep === 2 && renderStep2()}
-                  {currentStep === 3 && renderStep3()}
-                  {currentStep === 4 && renderStep4()}
-
-                  <div className="flex justify-between mt-8">
-                    <Button
-                      variant="outline"
-                      onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
-                      disabled={currentStep === 1}
-                    >
-                      {t('tripPlanner.buttons.previous')}
-                    </Button>
-                    
-                    {currentStep < 4 ? (
-                      <Button
-                        onClick={() => setCurrentStep(Math.min(4, currentStep + 1))}
-                        disabled={
-                          (currentStep === 1 && (!formData.destination || !formData.startDate || !formData.endDate)) ||
-                          (currentStep === 2 && (!formData.accommodationType.length || !formData.transportPreference)) ||
-                          (currentStep === 3 && !formData.interests.length)
-                        }
-                      >
-                        {t('tripPlanner.buttons.next')}
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={generateTripPlan}
-                        disabled={isGenerating || credits < 25}
-                        className="bg-blue-600 hover:bg-blue-700"
-                      >
-                        {isGenerating ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            {t('tripPlanner.buttons.generating')}
-                          </>
-                        ) : (
-                          <>
-                            <Sparkles className="mr-2 h-4 w-4" />
-                            {t('tripPlanner.buttons.generatePlan')} (25 credits)
-                          </>
-                        )}
-                      </Button>
-                    )}
-                  </div>
                 </CardContent>
               </Card>
-            ) : (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    {t('tripPlanner.planGenerated', 'Plan Generated')}
+
+              {/* AI Recommendations */}
+              <Card className="border-0 shadow-xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+                <CardHeader className="pb-4">
+                  <CardTitle className="flex items-center text-2xl text-purple-700 dark:text-purple-300">
+                    <Sparkles className="w-6 h-6 mr-3" />
+                    {t('tripPlanner.result.recommendations.title')}
                   </CardTitle>
-                  <CardDescription>
-                    Version {currentVersion.version} • {currentVersion.creditsUsed} credits used
-                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex gap-2">
-                    <Button
-                      onClick={() => setShowRemixOptions(true)}
-                      className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 flex-1"
-                    >
-                      <Sparkles className="w-4 h-4 mr-2" />
-                      {t('tripPlanner.remix.button', 'REMIX Plan')}
-                    </Button>
-                  </div>
-                  
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" onClick={downloadPlan} className="flex-1">
-                      <Download className="w-4 h-4 mr-2" />
-                      {t('tripPlanner.download', 'Download')}
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1">
-                      <Share2 className="w-4 h-4 mr-2" />
-                      {t('tripPlanner.share', 'Share')}
-                    </Button>
-                  </div>
-
-                  <Alert>
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>
-                      {t('tripPlanner.remix.info', 'Use REMIX to refine your plan with additional preferences. Each remix costs 15-30 credits depending on the enhancement level.')}
-                    </AlertDescription>
-                  </Alert>
+                  {generatedPlan.plan?.recommendations.map((rec, index) => (
+                    <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border-l-4 border-purple-500">
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <h5 className="font-bold text-lg text-gray-900 dark:text-white">{rec.name}</h5>
+                          <Badge variant="secondary" className="text-xs mb-2">{rec.category}</Badge>
+                        </div>
+                        <div className="text-right">
+                          <div className="flex items-center text-yellow-500 mb-1">
+                            <Star className="w-4 h-4 mr-1 fill-current" />
+                            <span className="font-semibold">{rec.rating}</span>
+                          </div>
+                          <div className="text-lg font-bold text-green-600">{rec.price}</div>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400 mb-3">{rec.description}</p>
+                      <div className="space-y-1">
+                        {rec.features.map((feature: string, featureIndex: number) => (
+                          <div key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                            <CheckCircle2 className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </CardContent>
               </Card>
-            )}
-          </div>
+            </div>
 
-          {/* Results Section */}
-          <div className="lg:col-span-2">
-            {currentVersion ? (
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      {currentVersion.destination} - Version {currentVersion.version}
-                      {currentVersion.isRemix && (
-                        <Badge variant="secondary" className="ml-2">
-                          <Sparkles className="w-3 h-3 mr-1" />
-                          REMIX
-                        </Badge>
-                      )}
-                    </CardTitle>
-                  </div>
-                  <CardDescription>
-                    {currentVersion.duration} days • {currentVersion.travelers} travelers • {currentVersion.budget} {formData.budgetCurrency}
+            {/* Daily Itinerary */}
+            <div className="lg:col-span-2">
+              <Card className="border-0 shadow-xl bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20">
+                <CardHeader className="pb-6">
+                  <CardTitle className="flex items-center text-3xl text-orange-700 dark:text-orange-300">
+                    <CalendarDays className="w-8 h-8 mr-4" />
+                    {t('tripPlanner.result.itinerary.title')}
+                  </CardTitle>
+                  <CardDescription className="text-lg">
+                    {t('tripPlanner.result.itinerary.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <pre className="whitespace-pre-wrap text-sm bg-gray-50 p-4 rounded-lg max-h-96 overflow-y-auto">
-                    {currentVersion.generatedPlan}
-                  </pre>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="h-96 flex items-center justify-center">
-                <CardContent className="text-center">
-                  <Sparkles className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    {t('tripPlanner.readyToPlan', 'Ready to plan your trip?')}
-                  </h3>
-                  <p className="text-gray-600">
-                    {t('tripPlanner.readyToPlanDesc', 'Fill in the details and our AI will create a personalized plan for you.')}
-                  </p>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Version History */}
-            {showVersionHistory && versions.length > 1 && (
-              <Card className="mt-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <History className="w-5 h-5" />
-                    {t('tripPlanner.versionHistory', 'Version History')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {versions.map((version) => (
-                      <div
-                        key={version.id}
-                        className={`p-3 rounded-lg border cursor-pointer transition-colors ${
-                          currentVersion?.id === version.id 
-                            ? 'bg-blue-50 border-blue-200' 
-                            : 'hover:bg-gray-50'
-                        }`}
-                        onClick={() => selectVersion(version)}
-                      >
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-medium">Version {version.version}</span>
-                              {version.isRemix && (
-                                <Badge variant="secondary" size="sm">
-                                  <Sparkles className="w-3 h-3 mr-1" />
-                                  REMIX
-                                </Badge>
-                              )}
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                              {version.destination} • {version.duration} days • {version.creditsUsed} credits
-                            </p>
-                            <p className="text-xs text-muted-foreground">
-                              {version.createdAt.toLocaleDateString()}
-                            </p>
+                  <div className="space-y-8">
+                    {generatedPlan.plan?.itinerary.map((day, index) => (
+                      <div key={index} className="relative">
+                        {/* Day Header */}
+                        <div className="flex items-center mb-6">
+                          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">
+                            {day.day}
                           </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              deleteVersion(version.id);
-                            }}
-                          >
-                            ×
-                          </Button>
+                          <div>
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{day.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-400">{day.description}</p>
+                          </div>
                         </div>
+
+                        {/* Activities */}
+                        <div className="ml-8 space-y-4">
+                          {day.activities.map((activity: any, actIndex: number) => (
+                            <div key={actIndex} className="flex items-start space-x-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                              <div className="flex-shrink-0">
+                                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white">
+                                  {getActivityIcon(activity.icon)}
+                                </div>
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center justify-between mb-2">
+                                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{activity.title}</h4>
+                                  <div className="flex items-center space-x-2">
+                                    <Badge variant="outline" className="text-xs">
+                                      <Clock className="w-3 h-3 mr-1" />
+                                      {activity.time}
+                                    </Badge>
+                                    <Badge variant="secondary" className="text-xs">
+                                      {activity.duration}
+                                    </Badge>
+                                  </div>
+                                </div>
+                                <p className="text-gray-600 dark:text-gray-400">{activity.description}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Connector line */}
+                        {index < generatedPlan.plan!.itinerary.length - 1 && (
+                          <div className="flex justify-center my-6">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-orange-300 to-orange-500"></div>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
-            )}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="mt-12 text-center">
+            <Card className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900 border-0">
+              <CardContent className="py-8">
+                <div className="flex items-center justify-center mb-4">
+                  <Bot className="w-8 h-8 text-blue-600 mr-3" />
+                  <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    {t('tripPlanner.result.footer.generatedBy')}
+                  </span>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  This personalized travel plan was created using advanced AI technology to ensure you have the perfect Thailand experience.
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Button 
+                    onClick={downloadPDF}
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    {t('tripPlanner.result.actions.downloadPDF')}
+                  </Button>
+                  <Button variant="outline">
+                    <Share2 className="w-4 h-4 mr-2" />
+                    {t('tripPlanner.result.actions.share')}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
+      </div>
+    );
+  }
 
-        {/* Remix Modal */}
-        {currentVersion && (
-          <TripPlanRemixModal
-            isOpen={showRemixOptions}
-            onClose={() => setShowRemixOptions(false)}
-            currentPlan={currentVersion}
-            onRemixComplete={handleRemixComplete}
-          />
-        )}
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('tripPlanner.title')}
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            {t('tripPlanner.subtitle')}
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <Card className="mb-8 border-0 shadow-lg">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold">{t('tripPlanner.progress.title')}</h3>
+              <Badge variant="secondary" className="px-3 py-1">
+                {t('tripPlanner.progress.step')} {currentStep} {t('tripPlanner.progress.of')} {totalSteps}
+              </Badge>
+            </div>
+            <Progress value={progress} className="h-3" />
+            <div className="flex justify-between mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span>{t('tripPlanner.progress.basicInfo')}</span>
+              <span>{t('tripPlanner.progress.preferences')}</span>
+              <span>{t('tripPlanner.progress.interests')}</span>
+              <span>{t('tripPlanner.progress.generate')}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Step Content */}
+        <div className="mb-8">
+          {renderStepContent()}
+        </div>
+
+        {/* Navigation */}
+        <Card className="border-0 shadow-lg">
+          <CardContent className="p-6">
+            <div className="flex justify-between items-center">
+              <Button
+                variant="outline"
+                onClick={prevStep}
+                disabled={currentStep === 1}
+                className="px-6 py-3"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                {t('tripPlanner.navigation.previous')}
+              </Button>
+
+              <div className="flex items-center space-x-4">
+                <Badge variant="outline" className="px-3 py-1">
+                  {t('tripPlanner.navigation.credits')}: {credits}
+                </Badge>
+              </div>
+
+              <Button
+                onClick={nextStep}
+                disabled={currentStep === totalSteps}
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              >
+                {t('tripPlanner.navigation.next')}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
-}
+};
+
+export default TripPlanner;

@@ -1,23 +1,141 @@
 {
   "nav": {
     "home": "Home",
-    "apply": "Apply",
+    "apply": "Apply for Visa",
+    "tripPlanner": "Trip Planner",
+    "documentChecker": "Document Checker",
     "credits": "Credits",
     "profile": "Profile",
     "login": "Login",
-    "logout": "Logout",
-    "aiDocumentChecker": "AI Document Checker",
-    "aiTripPlanner": "AI Trip Planner",
-    "aiVisaAdvisor": "AI Visa Advisor",
-    "aiAssistantChat": "AI Assistant Chat"
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "apply": {
+    "title": "Thailand Visa Application",
+    "subtitle": "Complete your visa application with AI-powered assistance",
+    "progress": {
+      "step": "Step",
+      "of": "of"
+    },
+    "navigation": {
+      "continue": "Continue",
+      "back": "Back"
+    },
+    "steps": {
+      "visaType": "Visa Type",
+      "personalInfo": "Personal Info",
+      "documents": "Documents",
+      "processing": "AI Processing",
+      "results": "Results"
+    },
+    "step1": {
+      "title": "Choose Your Visa Type",
+      "description": "Select the type of visa that best matches your travel purpose to Thailand."
+    },
+    "step2": {
+      "title": "Personal Information",
+      "description": "Provide your personal details for the visa application.",
+      "personalInfo": "Personal Information",
+      "personalInfoDescription": "Please provide accurate information as it appears on your passport.",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name as on passport",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "nationality": "Nationality",
+      "selectNationality": "Select your nationality",
+      "dateOfBirth": "Date of Birth",
+      "selectDate": "Select date",
+      "passportInfo": "Passport Information",
+      "passportNumber": "Passport Number",
+      "passportNumberPlaceholder": "Enter passport number",
+      "passportExpiry": "Passport Expiry Date",
+      "passportUpload": "Upload Passport",
+      "passportUploadDesc": "Upload a clear photo of your passport for automatic data extraction",
+      "uploadPassport": "Upload Passport Photo",
+      "dragDropPassport": "Drag and drop your passport photo here, or click to select",
+      "passportProcessing": "Processing passport...",
+      "passportProcessed": "Passport data extracted successfully!",
+      "passportError": "Failed to extract passport data. Please enter manually."
+    },
+    "step3": {
+      "title": "Document Upload",
+      "description": "Upload the required documents for your visa application.",
+      "requiredDocuments": "Required Documents",
+      "requiredDocumentsDesc": "Please upload all required documents in clear, high-quality images or PDFs.",
+      "passportCopy": "Passport Copy",
+      "passportCopyDesc": "Clear copy of passport main page",
+      "photo": "Passport Photo",
+      "photoDesc": "Recent passport-size photograph",
+      "flightItinerary": "Flight Itinerary",
+      "flightItineraryDesc": "Round-trip flight booking confirmation",
+      "hotelBooking": "Hotel Booking",
+      "hotelBookingDesc": "Accommodation confirmation",
+      "bankStatement": "Bank Statement",
+      "bankStatementDesc": "Recent bank statement (last 3 months)",
+      "required": "Required",
+      "uploadDocuments": "Upload Documents",
+      "dragDrop": "Drag and drop files here, or click to select",
+      "selectFiles": "Select Files",
+      "fileTypes": "Supported: JPG, PNG, PDF (max 10MB each)",
+      "dropFiles": "Drop files here to upload",
+      "uploadedFiles": "Uploaded Files",
+      "minimumFiles": "Please upload at least 3 required documents to continue."
+    },
+    "step4": {
+      "title": "THINKNEO AI is Analyzing Your Application",
+      "description": "Our advanced AI is processing your information and documents to provide personalized recommendations.",
+      "analyzing": "Analyzing your documents",
+      "analyzingDesc": "AI is scanning and verifying all uploaded documents with advanced OCR technology",
+      "verifying": "Verifying requirements",
+      "verifyingDesc": "Checking compliance with Thailand visa requirements and regulations",
+      "calculating": "Calculating approval probability",
+      "calculatingDesc": "AI is analyzing your profile against successful visa applications database",
+      "preparing": "Preparing recommendations",
+      "preparingDesc": "Generating personalized suggestions to optimize your application",
+      "progress": "Analysis Progress",
+      "completed": "Completed"
+    },
+    "step5": {
+      "title": "AI Analysis Results",
+      "description": "Here are your personalized visa application insights and recommendations.",
+      "approvalProbability": "Approval Probability",
+      "probabilityDesc": "Based on AI analysis of your application",
+      "excellent": "Excellent",
+      "good": "Good",
+      "needsImprovement": "Needs Improvement",
+      "processingTime": "Expected Processing Time",
+      "processingTimeDesc": "Estimated time for visa processing",
+      "applicationSummary": "Application Summary",
+      "visaType": "Visa Type",
+      "nationality": "Nationality",
+      "documents": "Documents Uploaded",
+      "aiRecommendations": "AI Recommendations",
+      "aiRecommendationsDesc": "Personalized suggestions to improve your application",
+      "strongProfile": "Strong Application Profile",
+      "strongProfileDesc": "Your application shows excellent compliance with visa requirements",
+      "bankStatement": "Bank Statement Recommendation",
+      "bankStatementDesc": "Consider including additional financial documents for stronger application",
+      "travelInsurance": "Travel Insurance Suggested",
+      "travelInsuranceDesc": "Adding travel insurance can improve your application strength",
+      "nextSteps": "Next Steps",
+      "submitApplication": "Submit Application",
+      "payFees": "Pay Application Fees",
+      "trackStatus": "Track Application Status",
+      "receiveVisa": "Receive Your Visa",
+      "downloadReport": "Download Report",
+      "shareResults": "Share Results",
+      "startNew": "Start New Application"
+    }
   },
   "home": {
     "hero": {
       "badge": "AI-Powered Platform",
-      "title": "Thailand Visa AI Platform",
-      "subtitle": "Smart Visa Solutions",
-      "description": "Advanced AI-powered Thailand visa application process. Get document verification, travel planning, and expert guidance in one place.",
-      "startApplication": "Start Your Application",
+      "title": "Your AI-Powered Thailand Visa",
+      "subtitle": "& Travel Assistant",
+      "description": "Experience the future of visa processing with our advanced AI technology that handles everything from document verification to personalized travel planning.",
+      "startApplication": "Start Application",
       "getStarted": "Get Started",
       "learnMore": "Learn More",
       "stats": {
@@ -32,24 +150,24 @@
       "description": "Our advanced AI handles every aspect of your Thailand visa journey with unprecedented accuracy and speed.",
       "documentChecker": {
         "title": "AI Document Checker",
-        "description": "Verify your documents instantly with our advanced AI technology"
+        "description": "Instantly verify and validate all your visa documents with 95% accuracy using advanced AI technology."
       },
       "visaAdvisor": {
         "title": "AI Visa Advisor",
         "description": "Get personalized visa recommendations based on your profile and travel plans."
       },
       "tripPlanner": {
-        "title": "Smart Trip Planner",
-        "description": "Get personalized travel recommendations powered by AI"
+        "title": "AI Trip Planner",
+        "description": "Create personalized travel itineraries with AI-powered recommendations for the perfect Thailand experience."
       },
       "assistantChat": {
         "title": "AI Assistant Chat",
-        "description": "24/7 AI support for all visa and travel questions with instant, accurate responses."
+        "description": "24/7 AI support for all visa and travel questions with instant, accurate answers."
       }
     },
     "tripPlannerSection": {
       "title": "AI Trip Planner - Complete Travel Management",
-      "description": "Get personalized AI recommendations for flights, accommodations, transportation, and special services in Thailand. Save time and money with intelligent travel planning.",
+      "description": "Get AI-powered personalized recommendations for flights, accommodations, transportation, and special services in Thailand. Save time and money with intelligent travel planning.",
       "services": {
         "flightRecommendations": {
           "title": "Flight Recommendations",
@@ -89,7 +207,7 @@
         }
       },
       "interactiveFeatures": {
-        "title": "Interactive AI Features",
+        "title": "AI Interactive Features",
         "smartItinerary": {
           "title": "Smart Itinerary Builder",
           "description": "AI creates personalized day-by-day travel plans based on your interests and preferences."
@@ -103,20 +221,20 @@
           "description": "AI adjusts recommendations based on weather forecasts and seasonal conditions."
         },
         "realTimeUpdates": {
-          "title": "Real-time Updates",
+          "title": "Real-Time Updates",
           "description": "AI provides live travel updates, flight changes, and alternative recommendations."
         }
       },
       "interface": {
         "title": "AI Trip Planner Interface",
-        "subtitle": "Personalized travel planning powered by AI",
+        "subtitle": "AI-powered personalized travel planning",
         "travelDates": "Travel Dates",
-        "budgetRange": "Budget Range",
-        "aiRecommendations": "AI Recommendations",
-        "generatePlan": "Generate AI Trip Plan",
         "sampleDates": "Dec 15 - Dec 25, 2024",
+        "budgetRange": "Budget Range",
         "sampleBudget": "$2,000 - $3,000 USD",
-        "sampleRecommendations": "15 personalized suggestions ready"
+        "aiRecommendations": "AI Recommendations",
+        "sampleRecommendations": "15 personalized suggestions ready",
+        "generatePlan": "Generate AI Travel Plan"
       },
       "creditServices": {
         "basicPlan": {
@@ -145,14 +263,14 @@
         }
       },
       "successStories": {
-        "title": "AI Trip Planning Success Stories",
+        "title": "AI Travel Planning Success Stories",
         "userBookings": "Users book AI-recommended services",
         "averageSavings": "Average savings with AI optimization",
         "planningRating": "Stars for AI travel planning",
         "timeSaved": "Hours saved with AI research"
       },
       "howItWorks": {
-        "title": "How AI Trip Planning Works",
+        "title": "How AI Travel Planning Works",
         "step1": {
           "title": "Tell AI Your Preferences",
           "description": "Share your travel style, budget, interests, and dates with our AI system."
@@ -163,7 +281,7 @@
         },
         "step3": {
           "title": "Get Personalized Plan",
-          "description": "Receive tailored recommendations with explanations and alternative options."
+          "description": "Receive customized recommendations with explanations and alternative options."
         },
         "step4": {
           "title": "Book with Confidence",
@@ -173,7 +291,7 @@
     },
     "visaHub": {
       "title": "Complete Visa Information Hub",
-      "description": "AI-powered guidance for every type of Thailand visa with personalized recommendations.",
+      "description": "AI-powered guidance for all Thailand visa types with personalized recommendations.",
       "touristVisa": {
         "title": "Tourist Visa (TR)",
         "badge": "Most Popular",
@@ -187,7 +305,7 @@
       "businessVisa": {
         "title": "Business Visa (B)",
         "badge": "Professional",
-        "description": "Requirements and AI document verification for business activities.",
+        "description": "AI requirements and document verification for business activities.",
         "features": {
           "businessDocumentAnalysis": "Business document analysis",
           "invitationLetterVerification": "Invitation letter verification",
@@ -206,7 +324,7 @@
       },
       "transitVisa": {
         "title": "Transit Visa (TS)",
-        "badge": "Quick",
+        "badge": "Fast",
         "description": "Quick processing with AI assistance for transit passengers.",
         "features": {
           "flightItineraryVerification": "Flight itinerary verification",
@@ -240,23 +358,23 @@
       },
       "intelligentFormFilling": {
         "title": "Intelligent Form Filling",
-        "description": "OCR + AI automatically fills all forms with extracted passport data."
+        "description": "OCR + AI automatically fills all forms with passport-extracted data."
       },
       "riskAssessment": {
         "title": "Risk Assessment",
         "description": "AI predicts approval chances and suggests improvements before submission."
       },
       "realTimeUpdates": {
-        "title": "Real-time Updates",
+        "title": "Real-Time Updates",
         "description": "AI monitors your application status and provides instant updates."
       }
     },
     "howItWorks": {
       "title": "How AI Makes It Simple",
-      "description": "Four simple steps powered by advanced AI to get your Thailand visa approved.",
+      "description": "Four simple steps with advanced AI to get your Thailand visa approved.",
       "step1": {
         "title": "Upload Passport",
-        "description": "AI extracts data instantly from your passport photo using advanced OCR technology."
+        "description": "AI instantly extracts data from your passport photo using advanced OCR technology."
       },
       "step2": {
         "title": "AI Analysis",
@@ -276,7 +394,7 @@
       "description": "AI manages all bureaucratic aspects of your Thailand trip so you can focus on planning the fun parts.",
       "bureaucraticPlanning": {
         "title": "Bureaucratic Planning",
-        "description": "AI manages all paperwork and deadlines with intelligent scheduling and reminders."
+        "description": "AI handles all paperwork and deadlines with smart scheduling and reminders."
       },
       "documentTimeline": {
         "title": "Document Timeline",
@@ -288,186 +406,282 @@
       },
       "emergencySupport": {
         "title": "Emergency Support",
-        "description": "AI-powered urgent assistance for time-sensitive visa and travel issues."
+        "description": "Urgent AI assistance for time-sensitive visa and travel issues."
       },
       "aiTravelAssistant": {
         "title": "AI Travel Assistant",
         "subtitle": "Your personal AI assistant for all Thailand visa and travel needs",
         "documentStatus": "Document Status",
+        "allDocumentsVerified": "All documents verified and compliant",
         "applicationProgress": "Application Progress",
         "nextStep": "Next Step",
-        "allDocumentsVerified": "All documents verified and compliant",
         "submitFinalDocuments": "Submit final documents by Dec 15"
       }
     },
     "cta": {
       "title": "Ready to Start Your Thailand Journey?",
-      "description": "Join thousands of travelers who trust our AI-powered platform for their Thailand visa applications.",
-      "startApplication": "Start Your Application",
+      "description": "Join thousands of travelers who trust our AI-powered platform for their visa and travel needs.",
+      "startApplication": "Start Application",
       "getStarted": "Get Started",
       "viewPricing": "View Pricing",
       "happyTravelers": "Happy Travelers",
       "successRate": "Success Rate",
       "aiSupport": "AI Support"
-    },
-    "chatWidget": "Chat with AI Assistant"
-  },
-  "login": {
-    "title": "Login to Your Account",
-    "subtitle": "Access your Thailand visa application dashboard",
-    "email": "Email",
-    "password": "Password",
-    "loginButton": "Login",
-    "forgotPassword": "Forgot your password?",
-    "noAccount": "Don't have an account?",
-    "signUp": "Sign up here",
-    "emailPlaceholder": "Enter your email",
-    "passwordPlaceholder": "Enter your password"
+    }
   },
   "tripPlanner": {
     "title": "AI Trip Planner",
-    "subtitle": "Create your perfect Thailand adventure with our intelligent trip planning system",
-    "step": "Step",
-    "of": "of",
-    "stepDescriptions": {
-      "step1": "Basic trip information and travel preferences",
-      "step2": "Accommodation and transportation preferences",
-      "step3": "Interests, dietary needs, and accessibility requirements",
-      "step4": "Budget breakdown and special requests"
+    "subtitle": "Let our advanced AI create the perfect Thailand travel experience tailored just for you. From flights to activities, we'll handle every detail.",
+    "progress": {
+      "title": "Planning Progress",
+      "step": "Step",
+      "of": "of",
+      "basicInfo": "Basic Info",
+      "preferences": "Preferences",
+      "interests": "Interests",
+      "generate": "Generate"
     },
-    "form": {
-      "destination": "Destination",
-      "destinationPlaceholder": "e.g., Bangkok, Phuket, Chiang Mai",
-      "travelers": "Number of Travelers",
-      "startDate": "Start Date",
-      "endDate": "End Date",
-      "budget": "Total Budget",
-      "accommodationType": "Accommodation Type",
-      "transportPreference": "Transport Preference",
-      "travelStyle": "Travel Style",
-      "adventureLevel": "Adventure Level",
-      "interests": "Interests & Activities",
-      "dietaryRestrictions": "Dietary Restrictions",
-      "accessibility": "Accessibility Needs",
-      "travelCompany": "Travel Company",
-      "previousVisits": "Previous Visits to Thailand",
-      "languagePreference": "Language Preference",
-      "languagePreferencePlaceholder": "Select your language preference",
-      "specialRequests": "Special Requests",
-      "specialRequestsPlaceholder": "Any special requests, celebrations, or specific needs?",
-      "budgetBreakdown": "Budget Breakdown",
-      "budgetBreakdownNote": "Adjust the percentage allocation for each category",
-      "summary": "Trip Summary",
-      "dates": "Dates"
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "credits": "Credits"
     },
-    "travelCompany": {
-      "solo": "Solo Travel",
-      "couple": "Couple",
-      "family": "Family with Children",
-      "friends": "Group of Friends",
-      "business": "Business Travel"
+    "steps": {
+      "step1": {
+        "title": "Basic Travel Information",
+        "description": "Tell us about your trip basics - where you want to go and when you want to travel.",
+        "destination": {
+          "title": "Destination",
+          "description": "Where would you like to visit in Thailand?",
+          "label": "Destination in Thailand",
+          "placeholder": "e.g., Bangkok, Phuket, Chiang Mai..."
+        },
+        "dates": {
+          "title": "Travel Dates",
+          "description": "When are you planning to visit Thailand?",
+          "startDate": "Departure Date",
+          "endDate": "Return Date",
+          "selectStartDate": "Select departure date",
+          "selectEndDate": "Select return date"
+        },
+        "travelers": {
+          "title": "Number of Travelers",
+          "description": "How many people will be traveling?",
+          "label": "Travelers",
+          "person": "person",
+          "people": "people"
+        }
+      },
+      "step2": {
+        "title": "Budget & Preferences",
+        "description": "Help us understand your budget and accommodation preferences.",
+        "budget": {
+          "title": "Travel Budget",
+          "description": "What's your total budget for this trip (per person)?",
+          "label": "Budget per person"
+        },
+        "accommodation": {
+          "title": "Accommodation Type",
+          "description": "What type of accommodation do you prefer?"
+        },
+        "transportation": {
+          "title": "Transportation",
+          "description": "How would you like to get around Thailand?"
+        }
+      },
+      "step3": {
+        "title": "Travel Interests",
+        "description": "Select your interests so we can personalize your itinerary.",
+        "preferences": {
+          "title": "Travel Preferences",
+          "description": "What type of experiences are you looking for?"
+        },
+        "activities": {
+          "title": "Specific Activities",
+          "description": "Which activities would you like to include in your trip?"
+        }
+      },
+      "step4": {
+        "title": "Final Details & Plan Generation",
+        "description": "Add any special requests and choose your AI trip planning service level.",
+        "specialRequests": {
+          "title": "Special Requests",
+          "description": "Any special requirements, dietary restrictions, or specific requests?",
+          "placeholder": "e.g., vegetarian meals, accessibility needs, special occasions, specific hotels..."
+        },
+        "planTypes": {
+          "title": "Choose Your AI Trip Plan",
+          "description": "Select the level of detail and personalization you want for your trip plan.",
+          "credits": "credits",
+          "basic": {
+            "title": "Basic Trip Plan",
+            "description": "Basic AI recommendations for flights, hotels, and transport",
+            "button": "Get Basic Plan"
+          },
+          "advanced": {
+            "title": "Advanced Trip Plan",
+            "description": "Detailed itinerary with alternatives and optimization",
+            "button": "Get Advanced Plan"
+          },
+          "premium": {
+            "title": "Premium Trip Plan",
+            "description": "Complete travel management with real-time updates",
+            "button": "Get Premium Plan"
+          },
+          "vip": {
+            "title": "VIP Concierge",
+            "description": "Personal AI travel assistant with 24/7 support",
+            "button": "Get VIP Service"
+          }
+        }
+      }
     },
     "accommodation": {
       "hotel": "Hotel",
-      "hostel": "Hostel",
       "resort": "Resort",
-      "apartment": "Apartment/Condo",
-      "villa": "Villa",
-      "guesthouse": "Guesthouse/B&B"
+      "hostel": "Hostel",
+      "apartment": "Apartment",
+      "villa": "Villa"
     },
-    "transport": {
+    "transportation": {
       "flight": "Flight",
       "train": "Train",
       "bus": "Bus",
-      "car": "Car Rental",
-      "mixed": "Mixed Transport"
+      "carRental": "Car Rental",
+      "mixed": "Mixed Transportation"
     },
-    "travelStyle": {
-      "luxury": "Luxury",
-      "comfort": "Comfort",
-      "budget": "Budget",
-      "backpacker": "Backpacker"
-    },
-    "adventureLevel": {
-      "relaxed": "Relaxed & Leisurely",
-      "moderate": "Moderate Activity",
-      "adventurous": "Adventurous",
-      "extreme": "Extreme Adventure"
-    },
-    "interests": {
+    "preferences": {
       "culture": "Culture & History",
-      "nature": "Nature & Wildlife",
-      "adventure": "Adventure Sports",
-      "beach": "Beach & Water Activities",
-      "food": "Food & Culinary",
-      "photography": "Photography",
-      "nightlife": "Nightlife & Entertainment",
+      "adventure": "Adventure",
+      "relaxation": "Relaxation",
+      "nightlife": "Nightlife",
+      "food": "Food & Cuisine",
       "shopping": "Shopping",
-      "wellness": "Wellness & Spa"
+      "nature": "Nature",
+      "photography": "Photography"
     },
-    "dietary": {
-      "vegetarian": "Vegetarian",
-      "vegan": "Vegan",
-      "halal": "Halal",
-      "kosher": "Kosher",
-      "gluten-free": "Gluten-Free",
-      "dairy-free": "Dairy-Free",
-      "nut-allergy": "Nut Allergy",
-      "seafood-allergy": "Seafood Allergy",
-      "none": "No Restrictions"
+    "activities": {
+      "temples": "Temples & Shrines",
+      "beaches": "Beaches",
+      "markets": "Markets",
+      "museums": "Museums",
+      "tours": "Guided Tours",
+      "cookingClasses": "Cooking Classes",
+      "spa": "Spa & Wellness",
+      "diving": "Diving & Snorkeling"
     },
-    "accessibility": {
-      "wheelchair": "Wheelchair Accessible",
-      "mobility-aid": "Mobility Aid Required",
-      "visual-impairment": "Visual Impairment",
-      "hearing-impairment": "Hearing Impairment",
-      "none": "No Special Needs"
+    "generating": {
+      "title": "AI is Creating Your Perfect Trip",
+      "description": "Our advanced AI is analyzing thousands of options to create your personalized Thailand travel plan..."
     },
-    "languages": {
-      "english": "English Only",
-      "local": "Local Language",
-      "translator": "Translator App",
-      "guide": "English-Speaking Guide"
+    "result": {
+      "title": "Your Personalized Thailand Adventure",
+      "subtitle": "Here's your AI-crafted travel masterpiece",
+      "generatedBy": "AI-Generated Travel Plan",
+      "downloadPDF": "Download PDF",
+      "share": "Share Plan",
+      "editPlan": "Edit Plan",
+      "summary": {
+        "title": "Trip Summary",
+        "destination": "Destination",
+        "duration": "Duration",
+        "days": "days",
+        "travelers": "Travelers",
+        "estimatedCost": "Estimated Cost",
+        "preferences": "Your Preferences"
+      },
+      "itinerary": {
+        "title": "Daily Itinerary",
+        "description": "Your personalized day-by-day adventure guide",
+        "day": "Day",
+        "day1": {
+          "title": "Arrival & Bangkok Discovery",
+          "description": "Welcome to Thailand! Start your journey with iconic landmarks",
+          "activity1": {
+            "title": "Airport Transfer & Hotel Check-in",
+            "description": "Comfortable arrival with premium airport pickup service"
+          },
+          "activity2": {
+            "title": "Grand Palace & Wat Phra Kaew",
+            "description": "Explore Thailand's most sacred temple and royal palace complex"
+          },
+          "activity3": {
+            "title": "Chao Phraya River Dinner Cruise",
+            "description": "Romantic evening cruise with traditional Thai cuisine"
+          }
+        },
+        "day2": {
+          "title": "Cultural Immersion Experience",
+          "description": "Deep dive into authentic Thai culture and traditions",
+          "activity1": {
+            "title": "Wat Pho Temple & Thai Massage",
+            "description": "Visit the birthplace of traditional Thai massage"
+          },
+          "activity2": {
+            "title": "Chatuchak Weekend Market",
+            "description": "Shop for unique souvenirs and taste local street food"
+          },
+          "activity3": {
+            "title": "Thai Cooking Class Experience",
+            "description": "Learn to cook authentic Thai dishes with expert chefs"
+          }
+        },
+        "day3": {
+          "title": "Beach & Wellness Day",
+          "description": "Relax and rejuvenate with Thailand's natural beauty",
+          "activity1": {
+            "title": "Beach Excursion & Water Sports",
+            "description": "Enjoy pristine beaches with optional water activities"
+          },
+          "activity2": {
+            "title": "Traditional Thai Spa Treatment",
+            "description": "Indulge in authentic Thai wellness therapies"
+          },
+          "activity3": {
+            "title": "Rooftop Bar & Night Market",
+            "description": "Experience Bangkok's vibrant nightlife scene"
+          }
+        }
+      },
+      "recommendations": {
+        "title": "AI Recommendations",
+        "accommodation": "Accommodation",
+        "dining": "Dining",
+        "transportation": "Transportation",
+        "price": "Price",
+        "hotel": {
+          "name": "Mandarin Oriental Bangkok",
+          "description": "Luxury riverside hotel with exceptional service and stunning views of the Chao Phraya River",
+          "feature1": "Riverside location with panoramic views",
+          "feature2": "Award-winning spa and wellness center",
+          "feature3": "Multiple dining options including Michelin-starred restaurants"
+        },
+        "restaurant": {
+          "name": "Gaggan Anand",
+          "description": "World-renowned progressive Indian cuisine with innovative molecular gastronomy techniques",
+          "feature1": "25-course tasting menu experience",
+          "feature2": "Interactive dining with chef presentations",
+          "feature3": "Unique fusion of Indian flavors and modern techniques"
+        },
+        "transport": {
+          "name": "Premium Airport Transfer & City Tours",
+          "description": "Comfortable private transportation with English-speaking drivers and flexible scheduling",
+          "feature1": "Private air-conditioned vehicles",
+          "feature2": "Professional English-speaking drivers",
+          "feature3": "Flexible pickup times and custom routes"
+        }
+      },
+      "footer": {
+        "poweredBy": "Powered by Thailand Visa AI",
+        "description": "This personalized travel plan was created using advanced AI technology to ensure you have the perfect Thailand experience."
+      }
     },
-    "previousVisits": {
-      "firstTime": "First Time",
-      "returning": "Returning Visitor",
-      "frequent": "Frequent Visitor"
-    },
-    "budgetBreakdown": {
-      "accommodation": "Accommodation",
-      "food": "Food & Dining",
-      "activities": "Activities & Tours",
-      "transport": "Transportation",
-      "shopping": "Shopping & Souvenirs"
-    },
-    "buttons": {
-      "previous": "Previous",
-      "next": "Next",
-      "generatePlan": "Generate Trip Plan",
-      "generating": "Generating..."
-    },
-    "generatedPlan": {
-      "title": "Your Personalized Thailand Trip Plan",
-      "destination": "Destination",
-      "duration": "Duration",
-      "travelers": "Travelers",
-      "people": "people",
-      "budget": "Budget",
-      "dayByDay": "Day-by-Day Itinerary",
-      "day": "Day",
-      "arrival": "Arrival & Orientation",
-      "arrivalDetails": "Airport pickup and hotel check-in",
-      "checkIn": "Hotel check-in and rest",
-      "localExploration": "Local area exploration",
-      "culturalExperience": "Cultural Experience",
-      "culturalDetails": "Visit temples and cultural sites",
-      "localCuisine": "Try authentic local cuisine",
-      "shopping": "Local market shopping",
-      "recommendations": "Recommendations",
-      "accommodation": "Accommodation",
-      "transport": "Transportation",
-      "activities": "Activities"
+    "errors": {
+      "insufficientCredits": "Insufficient credits for this plan type. Please purchase more credits.",
+      "generationFailed": "Failed to generate trip plan. Please try again."
     }
+  },
+  "credits": {
+    "credits": "credits"
   }
 }

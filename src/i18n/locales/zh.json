@@ -1,24 +1,23 @@
 {
   "nav": {
     "home": "首页",
-    "apply": "申请",
+    "apply": "申请签证",
+    "tripPlanner": "行程规划",
+    "documentChecker": "文档检查",
     "credits": "积分",
     "profile": "个人资料",
     "login": "登录",
-    "logout": "退出",
-    "aiDocumentChecker": "AI文档检查器",
-    "aiTripPlanner": "AI旅行规划师",
-    "aiVisaAdvisor": "AI签证顾问",
-    "aiAssistantChat": "AI助手聊天"
+    "register": "注册",
+    "logout": "退出"
   },
   "home": {
     "hero": {
       "badge": "AI驱动平台",
-      "title": "泰国签证AI平台",
-      "subtitle": "智能签证解决方案",
-      "description": "AI驱动的高级泰国签证申请流程。在一个地方获得文档验证、旅行规划和专家指导。",
+      "title": "您的AI泰国签证",
+      "subtitle": "和旅行助手",
+      "description": "体验签证处理的未来，我们先进的AI技术处理从文档验证到个性化旅行规划的一切。",
       "startApplication": "开始申请",
-      "getStarted": "开始",
+      "getStarted": "开始使用",
       "learnMore": "了解更多",
       "stats": {
         "aiAccuracy": "AI准确率",
@@ -29,34 +28,516 @@
     },
     "aiFeatures": {
       "title": "AI驱动功能",
-      "description": "我们的高级AI以前所未有的准确性和速度处理您泰国签证旅程的每个方面。",
+      "description": "我们先进的AI以前所未有的准确性和速度处理您泰国签证旅程的每个方面。",
       "documentChecker": {
         "title": "AI文档检查器",
-        "description": "使用我们的高级AI技术即时验证您的文档"
+        "description": "使用先进的AI技术以95%的准确率即时验证和确认您的所有签证文档。"
       },
       "visaAdvisor": {
         "title": "AI签证顾问",
         "description": "根据您的个人资料和旅行计划获得个性化的签证建议。"
       },
       "tripPlanner": {
-        "title": "智能旅行规划师",
-        "description": "获得AI驱动的个性化旅行建议"
+        "title": "AI行程规划师",
+        "description": "使用AI推荐创建个性化旅行行程，获得完美的泰国体验。"
       },
       "assistantChat": {
         "title": "AI助手聊天",
-        "description": "24/7 AI支持所有签证和旅行问题，提供即时、准确的回答。"
+        "description": "24/7 AI支持，为所有签证和旅行问题提供即时、准确的答案。"
+      }
+    },
+    "tripPlannerSection": {
+      "title": "AI行程规划师 - 完整旅行管理",
+      "description": "获得AI个性化推荐的航班、住宿、交通和泰国特殊服务。通过智能旅行规划节省时间和金钱。",
+      "services": {
+        "flightRecommendations": {
+          "title": "航班推荐",
+          "features": {
+            "smartFlightSearch": "智能航班搜索",
+            "pricePredictions": "价格预测",
+            "bestRouteAnalysis": "最佳路线分析",
+            "seatRecommendations": "座位推荐"
+          }
+        },
+        "hotelAccommodation": {
+          "title": "酒店和住宿",
+          "features": {
+            "personalizedMatching": "个性化匹配",
+            "locationOptimizer": "位置优化器",
+            "priceComparison": "价格比较",
+            "amenityMatching": "设施匹配"
+          }
+        },
+        "transportationServices": {
+          "title": "交通服务",
+          "features": {
+            "airportTransfers": "机场接送",
+            "localTransport": "本地交通",
+            "carRentalOptimizer": "租车优化器",
+            "routePlanning": "路线规划"
+          }
+        },
+        "specialServices": {
+          "title": "特殊服务",
+          "features": {
+            "tourPackages": "旅游套餐",
+            "restaurantRecommendations": "餐厅推荐",
+            "culturalExperiences": "文化体验",
+            "emergencySupport": "紧急支持"
+          }
+        }
+      },
+      "interactiveFeatures": {
+        "title": "AI互动功能",
+        "smartItinerary": {
+          "title": "智能行程构建器",
+          "description": "AI根据您的兴趣和偏好创建个性化的每日旅行计划。"
+        },
+        "budgetOptimizer": {
+          "title": "预算优化器",
+          "description": "AI分析数千个选项，为您的旅行预算找到最佳价值。"
+        },
+        "weatherIntegration": {
+          "title": "天气集成",
+          "description": "AI根据天气预报和季节条件调整推荐。"
+        },
+        "realTimeUpdates": {
+          "title": "实时更新",
+          "description": "AI提供实时旅行更新、航班变更和替代推荐。"
+        }
+      },
+      "interface": {
+        "title": "AI行程规划师界面",
+        "subtitle": "AI个性化旅行规划",
+        "travelDates": "旅行日期",
+        "sampleDates": "2024年12月15日 - 12月25日",
+        "budgetRange": "预算范围",
+        "sampleBudget": "$2,000 - $3,000 美元",
+        "aiRecommendations": "AI推荐",
+        "sampleRecommendations": "15个个性化建议已准备",
+        "generatePlan": "生成AI旅行计划"
+      },
+      "creditServices": {
+        "basicPlan": {
+          "title": "基础旅行计划",
+          "credits": "积分",
+          "description": "航班、酒店和交通的基础AI推荐",
+          "button": "获取基础计划"
+        },
+        "advancedPlan": {
+          "title": "高级旅行计划",
+          "credits": "积分",
+          "description": "详细行程，包含替代方案和优化",
+          "button": "获取高级计划"
+        },
+        "premiumPlan": {
+          "title": "高端旅行计划",
+          "credits": "积分",
+          "description": "完整旅行管理，包含实时更新",
+          "button": "获取高端计划"
+        },
+        "vipConcierge": {
+          "title": "VIP礼宾服务",
+          "credits": "积分",
+          "description": "个人AI旅行助手，24/7支持",
+          "button": "获取VIP服务"
+        }
+      },
+      "successStories": {
+        "title": "AI旅行规划成功案例",
+        "userBookings": "用户预订AI推荐服务",
+        "averageSavings": "AI优化平均节省",
+        "planningRating": "AI旅行规划星级",
+        "timeSaved": "AI研究节省时间"
+      },
+      "howItWorks": {
+        "title": "AI旅行规划如何工作",
+        "step1": {
+          "title": "告诉AI您的偏好",
+          "description": "与我们的AI系统分享您的旅行风格、预算、兴趣和日期。"
+        },
+        "step2": {
+          "title": "AI分析选项",
+          "description": "AI比较数千个航班、酒店和活动，找到最佳匹配。"
+        },
+        "step3": {
+          "title": "获得个性化计划",
+          "description": "接收定制推荐，包含解释和替代选项。"
+        },
+        "step4": {
+          "title": "放心预订",
+          "description": "AI监控并更新您的旅行，提供实时信息和支持。"
+        }
+      }
+    },
+    "visaHub": {
+      "title": "完整签证信息中心",
+      "description": "AI指导所有泰国签证类型，提供个性化推荐。",
+      "touristVisa": {
+        "title": "旅游签证 (TR)",
+        "badge": "最受欢迎",
+        "description": "旅游和休闲访问的完整指南和AI辅助申请。",
+        "features": {
+          "aiDocumentVerification": "AI文档验证",
+          "instantEligibilityCheck": "即时资格检查",
+          "smartFormFilling": "智能表单填写"
+        }
+      },
+      "businessVisa": {
+        "title": "商务签证 (B)",
+        "badge": "专业",
+        "description": "商业活动的AI要求和文档验证。",
+        "features": {
+          "businessDocumentAnalysis": "商业文档分析",
+          "invitationLetterVerification": "邀请函验证",
+          "companyRegistrationCheck": "公司注册检查"
+        }
+      },
+      "educationVisa": {
+        "title": "教育签证 (ED)",
+        "badge": "学生",
+        "description": "学生签证支持，为教育机构提供AI指导。",
+        "features": {
+          "academicDocumentVerification": "学术文档验证",
+          "institutionValidation": "机构验证",
+          "financialProofAnalysis": "财务证明分析"
+        }
+      },
+      "transitVisa": {
+        "title": "过境签证 (TS)",
+        "badge": "快速",
+        "description": "为过境乘客提供AI辅助的快速处理。",
+        "features": {
+          "flightItineraryVerification": "航班行程验证",
+          "transitTimeCalculation": "过境时间计算",
+          "expressProcessing": "快速处理"
+        }
+      },
+      "specialVisas": {
+        "title": "特殊签证",
+        "badge": "高端",
+        "description": "退休、投资和其他特殊签证类别，提供AI推荐。",
+        "features": {
+          "eligibilityAssessment": "资格评估",
+          "investmentVerification": "投资验证",
+          "personalizedGuidance": "个性化指导"
+        }
+      },
+      "aiRecommendations": {
+        "title": "AI推荐",
+        "badge": "智能",
+        "description": "让AI分析您的个人资料，推荐最适合您需求的签证类型。",
+        "button": "获取AI推荐"
+      }
+    },
+    "aiPoweredFeatures": {
+      "title": "AI驱动功能",
+      "description": "体验我们尖端AI技术的签证处理未来。",
+      "smartDocumentAnalysis": {
+        "title": "智能文档分析",
+        "description": "AI在几秒钟内以95%的准确率扫描和验证您的所有文档。"
+      },
+      "intelligentFormFilling": {
+        "title": "智能表单填写",
+        "description": "OCR + AI自动填写所有表单，使用从护照提取的数据。"
+      },
+      "riskAssessment": {
+        "title": "风险评估",
+        "description": "AI预测批准机会，并在提交前建议改进。"
+      },
+      "realTimeUpdates": {
+        "title": "实时更新",
+        "description": "AI监控您的申请状态并提供即时更新。"
+      }
+    },
+    "howItWorks": {
+      "title": "AI如何简化流程",
+      "description": "通过先进AI的四个简单步骤获得泰国签证批准。",
+      "step1": {
+        "title": "上传护照",
+        "description": "AI使用先进的OCR技术从您的护照照片中即时提取数据。"
+      },
+      "step2": {
+        "title": "AI分析",
+        "description": "AI分析您的个人资料，推荐最适合您需求的签证类型。"
+      },
+      "step3": {
+        "title": "文档验证",
+        "description": "AI验证所有文档，确保100%符合要求。"
+      },
+      "step4": {
+        "title": "智能提交",
+        "description": "AI提交您的申请并通过实时更新监控进度。"
+      }
+    },
+    "tripManagement": {
+      "title": "完整旅行管理",
+      "description": "AI管理您泰国旅行的所有官僚方面，让您专注于规划有趣的部分。",
+      "bureaucraticPlanning": {
+        "title": "官僚规划",
+        "description": "AI通过智能调度和提醒处理所有文书工作和截止日期。"
+      },
+      "documentTimeline": {
+        "title": "文档时间线",
+        "description": "文档准备的智能调度，自动进度跟踪。"
+      },
+      "complianceMonitoring": {
+        "title": "合规监控",
+        "description": "AI确保满足所有要求，并立即提醒您任何问题。"
+      },
+      "emergencySupport": {
+        "title": "紧急支持",
+        "description": "针对时间敏感的签证和旅行问题的紧急AI协助。"
+      },
+      "aiTravelAssistant": {
+        "title": "AI旅行助手",
+        "subtitle": "您的个人AI助手，满足所有泰国签证和旅行需求",
+        "documentStatus": "文档状态",
+        "allDocumentsVerified": "所有文档已验证并符合要求",
+        "applicationProgress": "申请进度",
+        "nextStep": "下一步",
+        "submitFinalDocuments": "12月15日前提交最终文档"
       }
     },
     "cta": {
-      "title": "准备开始您的泰国之旅了吗？",
-      "description": "加入数千名信任我们AI驱动平台进行泰国签证申请的旅行者。",
+      "title": "准备开始您的泰国之旅？",
+      "description": "加入数千名信任我们AI平台满足签证和旅行需求的旅行者。",
       "startApplication": "开始申请",
-      "getStarted": "开始",
-      "viewPricing": "查看价格",
+      "getStarted": "开始使用",
+      "viewPricing": "查看定价",
       "happyTravelers": "满意的旅行者",
       "successRate": "成功率",
       "aiSupport": "AI支持"
+    }
+  },
+  "tripPlanner": {
+    "title": "AI行程规划师",
+    "subtitle": "让我们先进的AI为您量身定制完美的泰国旅行体验。从航班到活动，我们处理每个细节。",
+    "progress": {
+      "title": "规划进度",
+      "step": "步骤",
+      "of": "共",
+      "basicInfo": "基本信息",
+      "preferences": "偏好",
+      "interests": "兴趣",
+      "generate": "生成"
     },
-    "chatWidget": "与AI助手聊天"
+    "navigation": {
+      "previous": "上一步",
+      "next": "下一步",
+      "credits": "积分"
+    },
+    "steps": {
+      "step1": {
+        "title": "基本旅行信息",
+        "description": "告诉我们您旅行的基本信息 - 您想去哪里以及何时旅行。",
+        "destination": {
+          "title": "目的地",
+          "description": "您想在泰国的哪里游览？",
+          "label": "泰国目的地",
+          "placeholder": "例如：曼谷、普吉岛、清迈..."
+        },
+        "dates": {
+          "title": "旅行日期",
+          "description": "您计划何时访问泰国？",
+          "startDate": "出发日期",
+          "endDate": "返回日期",
+          "selectStartDate": "选择出发日期",
+          "selectEndDate": "选择返回日期"
+        },
+        "travelers": {
+          "title": "旅行者人数",
+          "description": "有多少人将要旅行？",
+          "label": "旅行者",
+          "person": "人",
+          "people": "人"
+        }
+      },
+      "step2": {
+        "title": "预算和偏好",
+        "description": "帮助我们了解您的预算和住宿偏好。",
+        "budget": {
+          "title": "旅行预算",
+          "description": "这次旅行的总预算是多少（每人）？",
+          "label": "每人预算"
+        },
+        "accommodation": {
+          "title": "住宿类型",
+          "description": "您偏好什么类型的住宿？"
+        },
+        "transportation": {
+          "title": "交通",
+          "description": "您希望如何在泰国出行？"
+        }
+      },
+      "step3": {
+        "title": "旅行兴趣",
+        "description": "选择您的兴趣，以便我们个性化您的行程。",
+        "preferences": {
+          "title": "旅行偏好",
+          "description": "您在寻找什么类型的体验？"
+        },
+        "activities": {
+          "title": "具体活动",
+          "description": "您希望在旅行中包含哪些活动？"
+        }
+      },
+      "step4": {
+        "title": "最终详情和计划生成",
+        "description": "添加任何特殊要求并选择您的AI旅行规划服务级别。",
+        "specialRequests": {
+          "title": "特殊要求",
+          "description": "任何特殊需求、饮食限制或具体要求？",
+          "placeholder": "例如：素食、无障碍需求、特殊场合、特定酒店..."
+        },
+        "planTypes": {
+          "title": "选择您的AI旅行计划",
+          "description": "选择您旅行计划所需的详细程度和个性化水平。",
+          "credits": "积分",
+          "basic": {
+            "title": "基础旅行计划",
+            "description": "航班、酒店和交通的基础AI推荐",
+            "button": "获取基础计划"
+          },
+          "advanced": {
+            "title": "高级旅行计划",
+            "description": "详细行程，包含替代方案和优化",
+            "button": "获取高级计划"
+          },
+          "premium": {
+            "title": "高端旅行计划",
+            "description": "完整旅行管理，包含实时更新",
+            "button": "获取高端计划"
+          },
+          "vip": {
+            "title": "VIP礼宾服务",
+            "description": "个人AI旅行助手，24/7支持",
+            "button": "获取VIP服务"
+          }
+        }
+      }
+    },
+    "accommodation": {
+      "hotel": "酒店",
+      "resort": "度假村",
+      "hostel": "青年旅社",
+      "apartment": "公寓",
+      "villa": "别墅"
+    },
+    "transportation": {
+      "flight": "航班",
+      "train": "火车",
+      "bus": "巴士",
+      "carRental": "租车",
+      "mixed": "混合交通"
+    },
+    "preferences": {
+      "culture": "文化与历史",
+      "adventure": "冒险",
+      "relaxation": "放松",
+      "nightlife": "夜生活",
+      "food": "美食与料理",
+      "shopping": "购物",
+      "nature": "自然",
+      "photography": "摄影"
+    },
+    "activities": {
+      "temples": "寺庙与神社",
+      "beaches": "海滩",
+      "markets": "市场",
+      "museums": "博物馆",
+      "tours": "导游游览",
+      "cookingClasses": "烹饪课程",
+      "spa": "水疗与健康",
+      "diving": "潜水与浮潜"
+    },
+    "generating": {
+      "title": "AI正在创建您的完美旅行",
+      "description": "我们先进的AI正在分析数千个选项，为您创建个性化的泰国旅行计划..."
+    },
+    "result": {
+      "title": "您的个性化泰国冒险",
+      "subtitle": "这是您的AI制作的旅行杰作",
+      "badge": "AI生成的旅行计划",
+      "actions": {
+        "downloadPDF": "下载PDF",
+        "share": "分享计划",
+        "print": "打印计划"
+      },
+      "itinerary": {
+        "title": "每日行程",
+        "description": "您的个性化逐日冒险指南",
+        "day1": {
+          "title": "第1天：抵达与曼谷探索",
+          "activity1": {
+            "title": "机场抵达与酒店入住",
+            "description": "舒适抵达，享受高端机场接送服务"
+          },
+          "activity2": {
+            "title": "大皇宫与玉佛寺",
+            "description": "探索泰国最神圣的寺庙和皇家宫殿建筑群"
+          },
+          "activity3": {
+            "title": "湄南河晚餐游船",
+            "description": "浪漫的夜晚游船，享用传统泰式料理"
+          }
+        },
+        "day2": {
+          "title": "第2天：文化沉浸体验",
+          "description": "深入体验正宗的泰国文化和传统",
+          "activity1": {
+            "title": "卧佛寺与泰式按摩",
+            "description": "参观传统泰式按摩的发源地"
+          },
+          "activity2": {
+            "title": "恰图恰周末市场",
+            "description": "购买独特纪念品，品尝当地街头美食"
+          },
+          "activity3": {
+            "title": "泰式烹饪课程体验",
+            "description": "与专业厨师学习烹制正宗泰式菜肴"
+          }
+        }
+      },
+      "recommendations": {
+        "title": "AI推荐",
+        "accommodation": "住宿",
+        "dining": "餐饮",
+        "transportation": "交通",
+        "price": "价格",
+        "hotel": {
+          "name": "曼谷东方文华酒店",
+          "description": "豪华河畔酒店，提供卓越服务和湄南河的壮丽景色",
+          "feature1": "河畔位置，享有全景视野",
+          "feature2": "屡获殊荣的水疗和健康中心",
+          "feature3": "多种餐饮选择，包括米其林星级餐厅"
+        },
+        "restaurant": {
+          "name": "Gaggan Anand",
+          "description": "世界知名的渐进式印度料理，采用创新分子美食技术",
+          "feature1": "25道菜品尝菜单体验",
+          "feature2": "与厨师互动的用餐体验",
+          "feature3": "印度风味与现代技术的独特融合"
+        },
+        "transport": {
+          "name": "高端机场接送与城市游览",
+          "description": "舒适的私人交通，配备英语司机和灵活时间安排",
+          "feature1": "私人空调车辆",
+          "feature2": "专业英语司机",
+          "feature3": "灵活接送时间和定制路线"
+        }
+      },
+      "footer": {
+        "poweredBy": "由Thailand Visa AI提供技术支持",
+        "description": "这个个性化旅行计划使用先进的AI技术创建，确保您拥有完美的泰国体验。"
+      }
+    },
+    "errors": {
+      "insufficientCredits": "此计划类型积分不足。请购买更多积分。",
+      "generationFailed": "生成旅行计划失败。请重试。"
+    }
+  },
+  "credits": {
+    "credits": "积分"
   }
 }

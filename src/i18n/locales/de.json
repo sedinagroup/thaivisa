@@ -1,23 +1,22 @@
 {
   "nav": {
     "home": "Startseite",
-    "apply": "Bewerben",
+    "apply": "Visa Beantragen",
+    "tripPlanner": "Reiseplaner",
+    "documentChecker": "Dokumentenprüfer",
     "credits": "Credits",
     "profile": "Profil",
     "login": "Anmelden",
-    "logout": "Abmelden",
-    "aiDocumentChecker": "KI-Dokumentenprüfer",
-    "aiTripPlanner": "KI-Reiseplaner",
-    "aiVisaAdvisor": "KI-Visa-Berater",
-    "aiAssistantChat": "KI-Assistent Chat"
+    "register": "Registrieren",
+    "logout": "Abmelden"
   },
   "home": {
     "hero": {
-      "badge": "KI-betriebene Plattform",
-      "title": "Thailand Visa KI-Plattform",
-      "subtitle": "Intelligente Visa-Lösungen",
-      "description": "Fortschrittlicher KI-betriebener Thailand-Visa-Antragsprozess. Erhalten Sie Dokumentenverifizierung, Reiseplanung und Expertenberatung an einem Ort.",
-      "startApplication": "Ihren Antrag Starten",
+      "badge": "KI-Plattform",
+      "title": "Ihr KI-Thailand-Visa",
+      "subtitle": "& Reiseassistent",
+      "description": "Erleben Sie die Zukunft der Visa-Bearbeitung mit unserer fortschrittlichen KI-Technologie, die alles von der Dokumentenverifizierung bis zur personalisierten Reiseplanung übernimmt.",
+      "startApplication": "Antrag Starten",
       "getStarted": "Loslegen",
       "learnMore": "Mehr Erfahren",
       "stats": {
@@ -28,35 +27,517 @@
       }
     },
     "aiFeatures": {
-      "title": "KI-betriebene Funktionen",
-      "description": "Unsere fortschrittliche KI bewältigt jeden Aspekt Ihrer Thailand-Visa-Reise mit beispielloser Genauigkeit und Geschwindigkeit.",
+      "title": "KI-Funktionen",
+      "description": "Unsere fortschrittliche KI übernimmt jeden Aspekt Ihrer Thailand-Visa-Reise mit beispielloser Genauigkeit und Geschwindigkeit.",
       "documentChecker": {
         "title": "KI-Dokumentenprüfer",
-        "description": "Verifizieren Sie Ihre Dokumente sofort mit unserer fortschrittlichen KI-Technologie"
+        "description": "Verifizieren und validieren Sie sofort alle Ihre Visa-Dokumente mit 95% Genauigkeit durch fortschrittliche KI-Technologie."
       },
       "visaAdvisor": {
         "title": "KI-Visa-Berater",
-        "description": "Erhalten Sie personalisierte Visa-Empfehlungen basierend auf Ihrem Profil und Ihren Reiseplänen."
+        "description": "Erhalten Sie personalisierte Visa-Empfehlungen basierend auf Ihrem Profil und Reiseplänen."
       },
       "tripPlanner": {
-        "title": "Intelligenter Reiseplaner",
-        "description": "Erhalten Sie personalisierte Reiseempfehlungen powered by KI"
+        "title": "KI-Reiseplaner",
+        "description": "Erstellen Sie personalisierte Reiserouten mit KI-Empfehlungen für das perfekte Thailand-Erlebnis."
       },
       "assistantChat": {
-        "title": "KI-Assistent Chat",
+        "title": "KI-Assistent-Chat",
         "description": "24/7 KI-Support für alle Visa- und Reisefragen mit sofortigen, genauen Antworten."
+      }
+    },
+    "tripPlannerSection": {
+      "title": "KI-Reiseplaner - Komplettes Reisemanagement",
+      "description": "Erhalten Sie KI-personalisierte Empfehlungen für Flüge, Unterkünfte, Transport und Sonderservices in Thailand. Sparen Sie Zeit und Geld mit intelligenter Reiseplanung.",
+      "services": {
+        "flightRecommendations": {
+          "title": "Flugempfehlungen",
+          "features": {
+            "smartFlightSearch": "Intelligente Flugsuche",
+            "pricePredictions": "Preisvorhersagen",
+            "bestRouteAnalysis": "Beste Routenanalyse",
+            "seatRecommendations": "Sitzplatzempfehlungen"
+          }
+        },
+        "hotelAccommodation": {
+          "title": "Hotel & Unterkunft",
+          "features": {
+            "personalizedMatching": "Personalisierte Zuordnung",
+            "locationOptimizer": "Standortoptimierer",
+            "priceComparison": "Preisvergleich",
+            "amenityMatching": "Ausstattungsabgleich"
+          }
+        },
+        "transportationServices": {
+          "title": "Transportservices",
+          "features": {
+            "airportTransfers": "Flughafentransfers",
+            "localTransport": "Lokaler Transport",
+            "carRentalOptimizer": "Mietwagen-Optimierer",
+            "routePlanning": "Routenplanung"
+          }
+        },
+        "specialServices": {
+          "title": "Sonderservices",
+          "features": {
+            "tourPackages": "Tourpakete",
+            "restaurantRecommendations": "Restaurant-Empfehlungen",
+            "culturalExperiences": "Kulturelle Erfahrungen",
+            "emergencySupport": "Notfall-Support"
+          }
+        }
+      },
+      "interactiveFeatures": {
+        "title": "KI-Interaktive Funktionen",
+        "smartItinerary": {
+          "title": "Intelligenter Reiseplan-Builder",
+          "description": "KI erstellt personalisierte tägliche Reisepläne basierend auf Ihren Interessen und Vorlieben."
+        },
+        "budgetOptimizer": {
+          "title": "Budget-Optimierer",
+          "description": "KI analysiert Tausende von Optionen, um das beste Preis-Leistungs-Verhältnis für Ihr Reisebudget zu finden."
+        },
+        "weatherIntegration": {
+          "title": "Wetter-Integration",
+          "description": "KI passt Empfehlungen basierend auf Wettervorhersagen und saisonalen Bedingungen an."
+        },
+        "realTimeUpdates": {
+          "title": "Echtzeit-Updates",
+          "description": "KI bietet Live-Reise-Updates, Flugänderungen und alternative Empfehlungen."
+        }
+      },
+      "interface": {
+        "title": "KI-Reiseplaner-Interface",
+        "subtitle": "KI-personalisierte Reiseplanung",
+        "travelDates": "Reisedaten",
+        "sampleDates": "15. Dez - 25. Dez, 2024",
+        "budgetRange": "Budget-Bereich",
+        "sampleBudget": "$2.000 - $3.000 USD",
+        "aiRecommendations": "KI-Empfehlungen",
+        "sampleRecommendations": "15 personalisierte Vorschläge bereit",
+        "generatePlan": "KI-Reiseplan Generieren"
+      },
+      "creditServices": {
+        "basicPlan": {
+          "title": "Basis-Reiseplan",
+          "credits": "Credits",
+          "description": "Basis-KI-Empfehlungen für Flüge, Hotels und Transport",
+          "button": "Basis-Plan Erhalten"
+        },
+        "advancedPlan": {
+          "title": "Erweiteter Reiseplan",
+          "credits": "Credits",
+          "description": "Detaillierte Reiseroute mit Alternativen und Optimierung",
+          "button": "Erweiterten Plan Erhalten"
+        },
+        "premiumPlan": {
+          "title": "Premium-Reiseplan",
+          "credits": "Credits",
+          "description": "Komplettes Reisemanagement mit Echtzeit-Updates",
+          "button": "Premium-Plan Erhalten"
+        },
+        "vipConcierge": {
+          "title": "VIP-Concierge",
+          "credits": "Credits",
+          "description": "Persönlicher KI-Reiseassistent mit 24/7-Support",
+          "button": "VIP-Service Erhalten"
+        }
+      },
+      "successStories": {
+        "title": "KI-Reiseplanung Erfolgsgeschichten",
+        "userBookings": "Nutzer buchen KI-empfohlene Services",
+        "averageSavings": "Durchschnittliche Einsparungen mit KI-Optimierung",
+        "planningRating": "Sterne für KI-Reiseplanung",
+        "timeSaved": "Gesparte Stunden mit KI-Recherche"
+      },
+      "howItWorks": {
+        "title": "Wie KI-Reiseplanung Funktioniert",
+        "step1": {
+          "title": "Teilen Sie der KI Ihre Vorlieben Mit",
+          "description": "Teilen Sie Ihren Reisestil, Budget, Interessen und Daten mit unserem KI-System."
+        },
+        "step2": {
+          "title": "KI Analysiert Optionen",
+          "description": "KI vergleicht Tausende von Flügen, Hotels und Aktivitäten, um die besten Übereinstimmungen zu finden."
+        },
+        "step3": {
+          "title": "Erhalten Sie Personalisierten Plan",
+          "description": "Erhalten Sie maßgeschneiderte Empfehlungen mit Erklärungen und alternativen Optionen."
+        },
+        "step4": {
+          "title": "Buchen Sie Mit Vertrauen",
+          "description": "KI überwacht und aktualisiert Ihre Reise mit Echtzeit-Informationen und Support."
+        }
+      }
+    },
+    "visaHub": {
+      "title": "Komplettes Visa-Informationszentrum",
+      "description": "KI-Anleitung für alle Thailand-Visa-Typen mit personalisierten Empfehlungen.",
+      "touristVisa": {
+        "title": "Touristenvisa (TR)",
+        "badge": "Beliebteste",
+        "description": "Kompletter Leitfaden und KI-unterstützte Beantragung für Tourismus- und Freizeitbesuche.",
+        "features": {
+          "aiDocumentVerification": "KI-Dokumentenverifizierung",
+          "instantEligibilityCheck": "Sofortige Berechtigungsprüfung",
+          "smartFormFilling": "Intelligentes Formular-Ausfüllen"
+        }
+      },
+      "businessVisa": {
+        "title": "Geschäftsvisa (B)",
+        "badge": "Professionell",
+        "description": "KI-Anforderungen und Dokumentenverifizierung für Geschäftsaktivitäten.",
+        "features": {
+          "businessDocumentAnalysis": "Geschäftsdokument-Analyse",
+          "invitationLetterVerification": "Einladungsbrief-Verifizierung",
+          "companyRegistrationCheck": "Firmenregistrierungs-Prüfung"
+        }
+      },
+      "educationVisa": {
+        "title": "Bildungsvisa (ED)",
+        "badge": "Studenten",
+        "description": "Studentenvisa-Support mit KI-Anleitung für Bildungseinrichtungen.",
+        "features": {
+          "academicDocumentVerification": "Akademische Dokumentenverifizierung",
+          "institutionValidation": "Institutionsvalidierung",
+          "financialProofAnalysis": "Finanznachweis-Analyse"
+        }
+      },
+      "transitVisa": {
+        "title": "Transitvisa (TS)",
+        "badge": "Schnell",
+        "description": "Schnelle Bearbeitung mit KI-Unterstützung für Transitpassagiere.",
+        "features": {
+          "flightItineraryVerification": "Flugreise-Verifizierung",
+          "transitTimeCalculation": "Transitzeit-Berechnung",
+          "expressProcessing": "Express-Bearbeitung"
+        }
+      },
+      "specialVisas": {
+        "title": "Spezialvisa",
+        "badge": "Premium",
+        "description": "Renten-, Investitions- und andere spezielle Visa-Kategorien mit KI-Empfehlungen.",
+        "features": {
+          "eligibilityAssessment": "Berechtigungsbewertung",
+          "investmentVerification": "Investitions-Verifizierung",
+          "personalizedGuidance": "Personalisierte Anleitung"
+        }
+      },
+      "aiRecommendations": {
+        "title": "KI-Empfehlungen",
+        "badge": "Intelligent",
+        "description": "Lassen Sie KI Ihr Profil analysieren und den besten Visa-Typ für Ihre Bedürfnisse empfehlen.",
+        "button": "KI-Empfehlung Erhalten"
+      }
+    },
+    "aiPoweredFeatures": {
+      "title": "KI-Funktionen",
+      "description": "Erleben Sie die Zukunft der Visa-Bearbeitung mit unserer hochmodernen KI-Technologie.",
+      "smartDocumentAnalysis": {
+        "title": "Intelligente Dokumentenanalyse",
+        "description": "KI scannt und verifiziert alle Ihre Dokumente mit 95% Genauigkeit in Sekunden."
+      },
+      "intelligentFormFilling": {
+        "title": "Intelligentes Formular-Ausfüllen",
+        "description": "OCR + KI füllt automatisch alle Formulare mit aus dem Pass extrahierten Daten aus."
+      },
+      "riskAssessment": {
+        "title": "Risikobewertung",
+        "description": "KI sagt Genehmigungschancen voraus und schlägt Verbesserungen vor der Einreichung vor."
+      },
+      "realTimeUpdates": {
+        "title": "Echtzeit-Updates",
+        "description": "KI überwacht Ihren Antragsstatus und bietet sofortige Updates."
+      }
+    },
+    "howItWorks": {
+      "title": "Wie KI Es Einfach Macht",
+      "description": "Vier einfache Schritte mit fortschrittlicher KI zur Genehmigung Ihres Thailand-Visas.",
+      "step1": {
+        "title": "Pass Hochladen",
+        "description": "KI extrahiert sofort Daten aus Ihrem Passfoto mit fortschrittlicher OCR-Technologie."
+      },
+      "step2": {
+        "title": "KI-Analyse",
+        "description": "KI analysiert Ihr Profil und empfiehlt den besten Visa-Typ für Ihre Bedürfnisse."
+      },
+      "step3": {
+        "title": "Dokumentenverifizierung",
+        "description": "KI verifiziert alle Dokumente und gewährleistet 100% Compliance mit Anforderungen."
+      },
+      "step4": {
+        "title": "Intelligente Einreichung",
+        "description": "KI reicht Ihren Antrag ein und überwacht den Fortschritt mit Echtzeit-Updates."
+      }
+    },
+    "tripManagement": {
+      "title": "Komplettes Reisemanagement",
+      "description": "KI verwaltet alle bürokratischen Aspekte Ihrer Thailand-Reise, damit Sie sich auf die Planung der spaßigen Teile konzentrieren können.",
+      "bureaucraticPlanning": {
+        "title": "Bürokratische Planung",
+        "description": "KI übernimmt alle Papierkram und Fristen mit intelligenter Terminplanung und Erinnerungen."
+      },
+      "documentTimeline": {
+        "title": "Dokumenten-Zeitplan",
+        "description": "Intelligente Terminplanung für Dokumentenvorbereitung mit automatisierter Fortschrittsverfolgung."
+      },
+      "complianceMonitoring": {
+        "title": "Compliance-Überwachung",
+        "description": "KI stellt sicher, dass alle Anforderungen erfüllt werden und warnt Sie sofort vor Problemen."
+      },
+      "emergencySupport": {
+        "title": "Notfall-Support",
+        "description": "Dringende KI-Unterstützung für zeitkritische Visa- und Reiseprobleme."
+      },
+      "aiTravelAssistant": {
+        "title": "KI-Reiseassistent",
+        "subtitle": "Ihr persönlicher KI-Assistent für alle Thailand-Visa- und Reisebedürfnisse",
+        "documentStatus": "Dokumentenstatus",
+        "allDocumentsVerified": "Alle Dokumente verifiziert und konform",
+        "applicationProgress": "Antragsfortschritt",
+        "nextStep": "Nächster Schritt",
+        "submitFinalDocuments": "Finale Dokumente bis 15. Dez einreichen"
       }
     },
     "cta": {
       "title": "Bereit, Ihre Thailand-Reise zu Beginnen?",
-      "description": "Schließen Sie sich Tausenden von Reisenden an, die unserer KI-betriebenen Plattform für ihre Thailand-Visa-Anträge vertrauen.",
-      "startApplication": "Ihren Antrag Starten",
+      "description": "Schließen Sie sich Tausenden von Reisenden an, die unserer KI-Plattform für ihre Visa- und Reisebedürfnisse vertrauen.",
+      "startApplication": "Antrag Starten",
       "getStarted": "Loslegen",
       "viewPricing": "Preise Ansehen",
       "happyTravelers": "Glückliche Reisende",
       "successRate": "Erfolgsrate",
       "aiSupport": "KI-Support"
+    }
+  },
+  "tripPlanner": {
+    "title": "KI-Reiseplaner",
+    "subtitle": "Lassen Sie unsere fortschrittliche KI das perfekte Thailand-Reiseerlebnis speziell für Sie erstellen. Von Flügen bis Aktivitäten kümmern wir uns um jedes Detail.",
+    "progress": {
+      "title": "Planungsfortschritt",
+      "step": "Schritt",
+      "of": "von",
+      "basicInfo": "Grundinfo",
+      "preferences": "Vorlieben",
+      "interests": "Interessen",
+      "generate": "Generieren"
     },
-    "chatWidget": "Mit KI-Assistent Chatten"
+    "navigation": {
+      "previous": "Zurück",
+      "next": "Weiter",
+      "credits": "Credits"
+    },
+    "steps": {
+      "step1": {
+        "title": "Grundlegende Reiseinformationen",
+        "description": "Erzählen Sie uns die Grundlagen Ihrer Reise - wohin Sie gehen möchten und wann Sie reisen möchten.",
+        "destination": {
+          "title": "Reiseziel",
+          "description": "Wo möchten Sie in Thailand besuchen?",
+          "label": "Reiseziel in Thailand",
+          "placeholder": "z.B. Bangkok, Phuket, Chiang Mai..."
+        },
+        "dates": {
+          "title": "Reisedaten",
+          "description": "Wann planen Sie Thailand zu besuchen?",
+          "startDate": "Abreisedatum",
+          "endDate": "Rückkehrdatum",
+          "selectStartDate": "Abreisedatum wählen",
+          "selectEndDate": "Rückkehrdatum wählen"
+        },
+        "travelers": {
+          "title": "Anzahl Reisende",
+          "description": "Wie viele Personen werden reisen?",
+          "label": "Reisende",
+          "person": "Person",
+          "people": "Personen"
+        }
+      },
+      "step2": {
+        "title": "Budget & Vorlieben",
+        "description": "Helfen Sie uns, Ihr Budget und Unterkunftsvorlieben zu verstehen.",
+        "budget": {
+          "title": "Reisebudget",
+          "description": "Was ist Ihr Gesamtbudget für diese Reise (pro Person)?",
+          "label": "Budget pro Person"
+        },
+        "accommodation": {
+          "title": "Unterkunftsart",
+          "description": "Welche Art von Unterkunft bevorzugen Sie?"
+        },
+        "transportation": {
+          "title": "Transport",
+          "description": "Wie möchten Sie sich in Thailand fortbewegen?"
+        }
+      },
+      "step3": {
+        "title": "Reiseinteressen",
+        "description": "Wählen Sie Ihre Interessen aus, damit wir Ihre Reiseroute personalisieren können.",
+        "preferences": {
+          "title": "Reisevorlieben",
+          "description": "Welche Art von Erfahrungen suchen Sie?"
+        },
+        "activities": {
+          "title": "Spezifische Aktivitäten",
+          "description": "Welche Aktivitäten möchten Sie in Ihre Reise einbeziehen?"
+        }
+      },
+      "step4": {
+        "title": "Finale Details & Plan-Generierung",
+        "description": "Fügen Sie spezielle Wünsche hinzu und wählen Sie Ihr KI-Reiseplanungs-Service-Level.",
+        "specialRequests": {
+          "title": "Spezielle Wünsche",
+          "description": "Besondere Anforderungen, Ernährungseinschränkungen oder spezifische Wünsche?",
+          "placeholder": "z.B. vegetarische Mahlzeiten, Barrierefreiheit, besondere Anlässe, spezifische Hotels..."
+        },
+        "planTypes": {
+          "title": "Wählen Sie Ihren KI-Reiseplan",
+          "description": "Wählen Sie das Niveau an Detail und Personalisierung für Ihren Reiseplan.",
+          "credits": "Credits",
+          "basic": {
+            "title": "Basis-Reiseplan",
+            "description": "Basis-KI-Empfehlungen für Flüge, Hotels und Transport",
+            "button": "Basis-Plan Erhalten"
+          },
+          "advanced": {
+            "title": "Erweiteter Reiseplan",
+            "description": "Detaillierte Reiseroute mit Alternativen und Optimierung",
+            "button": "Erweiterten Plan Erhalten"
+          },
+          "premium": {
+            "title": "Premium-Reiseplan",
+            "description": "Komplettes Reisemanagement mit Echtzeit-Updates",
+            "button": "Premium-Plan Erhalten"
+          },
+          "vip": {
+            "title": "VIP-Concierge",
+            "description": "Persönlicher KI-Reiseassistent mit 24/7-Support",
+            "button": "VIP-Service Erhalten"
+          }
+        }
+      }
+    },
+    "accommodation": {
+      "hotel": "Hotel",
+      "resort": "Resort",
+      "hostel": "Hostel",
+      "apartment": "Apartment",
+      "villa": "Villa"
+    },
+    "transportation": {
+      "flight": "Flug",
+      "train": "Zug",
+      "bus": "Bus",
+      "carRental": "Mietwagen",
+      "mixed": "Gemischter Transport"
+    },
+    "preferences": {
+      "culture": "Kultur & Geschichte",
+      "adventure": "Abenteuer",
+      "relaxation": "Entspannung",
+      "nightlife": "Nachtleben",
+      "food": "Essen & Küche",
+      "shopping": "Shopping",
+      "nature": "Natur",
+      "photography": "Fotografie"
+    },
+    "activities": {
+      "temples": "Tempel & Schreine",
+      "beaches": "Strände",
+      "markets": "Märkte",
+      "museums": "Museen",
+      "tours": "Geführte Touren",
+      "cookingClasses": "Kochkurse",
+      "spa": "Spa & Wellness",
+      "diving": "Tauchen & Schnorcheln"
+    },
+    "generating": {
+      "title": "KI Erstellt Ihre Perfekte Reise",
+      "description": "Unsere fortschrittliche KI analysiert Tausende von Optionen, um Ihren personalisierten Thailand-Reiseplan zu erstellen..."
+    },
+    "result": {
+      "title": "Ihr Personalisiertes Thailand-Abenteuer",
+      "subtitle": "Hier ist Ihr KI-erstelltes Reise-Meisterwerk",
+      "badge": "KI-Generierter Reiseplan",
+      "actions": {
+        "downloadPDF": "PDF Herunterladen",
+        "share": "Plan Teilen",
+        "print": "Plan Drucken"
+      },
+      "itinerary": {
+        "title": "Tägliche Reiseroute",
+        "description": "Ihr personalisierter Tag-für-Tag-Abenteuerführer",
+        "day1": {
+          "title": "Tag 1: Ankunft & Bangkok-Entdeckung",
+          "activity1": {
+            "title": "Flughafen-Ankunft & Hotel-Check-in",
+            "description": "Komfortable Ankunft mit Premium-Flughafen-Abholservice"
+          },
+          "activity2": {
+            "title": "Großer Palast & Wat Phra Kaew",
+            "description": "Erkunden Sie Thailands heiligsten Tempel und den königlichen Palastkomplex"
+          },
+          "activity3": {
+            "title": "Chao Phraya Fluss Dinner-Kreuzfahrt",
+            "description": "Romantische Abendkreuzfahrt mit traditioneller thailändischer Küche"
+          }
+        },
+        "day2": {
+          "title": "Tag 2: Kulturelle Immersionserfahrung",
+          "description": "Tiefer Einblick in authentische thailändische Kultur und Traditionen",
+          "activity1": {
+            "title": "Wat Pho Tempel & Thai-Massage",
+            "description": "Besuchen Sie die Wiege der traditionellen Thai-Massage"
+          },
+          "activity2": {
+            "title": "Chatuchak Wochenendmarkt",
+            "description": "Kaufen Sie einzigartige Souvenirs und probieren Sie lokales Straßenessen"
+          },
+          "activity3": {
+            "title": "Thai-Kochkurs-Erfahrung",
+            "description": "Lernen Sie authentische thailändische Gerichte mit Expertenköchen zu kochen"
+          }
+        }
+      },
+      "recommendations": {
+        "title": "KI-Empfehlungen",
+        "accommodation": "Unterkunft",
+        "dining": "Gastronomie",
+        "transportation": "Transport",
+        "price": "Preis",
+        "hotel": {
+          "name": "Mandarin Oriental Bangkok",
+          "description": "Luxus-Flusshotel mit außergewöhnlichem Service und atemberaubenden Blicken auf den Chao Phraya Fluss",
+          "feature1": "Flusslage mit Panoramablick",
+          "feature2": "Preisgekröntes Spa und Wellnesszentrum",
+          "feature3": "Mehrere Dining-Optionen inklusive Michelin-Stern-Restaurants"
+        },
+        "restaurant": {
+          "name": "Gaggan Anand",
+          "description": "Weltberühmte progressive indische Küche mit innovativen Molekulargastronomie-Techniken",
+          "feature1": "25-Gänge-Degustationsmenü-Erfahrung",
+          "feature2": "Interaktives Dining mit Chef-Präsentationen",
+          "feature3": "Einzigartige Fusion indischer Aromen und moderner Techniken"
+        },
+        "transport": {
+          "name": "Premium Flughafen-Transfer & Stadttouren",
+          "description": "Komfortabler privater Transport mit englischsprachigen Fahrern und flexiblen Zeiten",
+          "feature1": "Private klimatisierte Fahrzeuge",
+          "feature2": "Professionelle englischsprachige Fahrer",
+          "feature3": "Flexible Abholzeiten und individuelle Routen"
+        }
+      },
+      "footer": {
+        "poweredBy": "Powered by Thailand Visa AI",
+        "description": "Dieser personalisierte Reiseplan wurde mit fortschrittlicher KI-Technologie erstellt, um Ihnen das perfekte Thailand-Erlebnis zu gewährleisten."
+      }
+    },
+    "errors": {
+      "insufficientCredits": "Unzureichende Credits für diesen Plantyp. Bitte kaufen Sie mehr Credits.",
+      "generationFailed": "Reiseplan-Generierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    }
+  },
+  "credits": {
+    "credits": "Credits"
   }
 }
