@@ -6,7 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from 'react-i18next';
 import { useCredits } from '../hooks/useCredits';
 
-export const Navbar: React.FC = () => {
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -290,5 +290,4 @@ export const Navbar: React.FC = () => {
   );
 };
 
-// Add default export
 export default Navbar;
