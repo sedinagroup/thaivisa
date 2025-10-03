@@ -2,542 +2,91 @@
   "nav": {
     "home": "Home",
     "apply": "Richiedi Visto",
-    "tripPlanner": "Pianificatore Viaggio",
-    "documentChecker": "Verificatore Documenti",
-    "credits": "Crediti",
-    "profile": "Profilo",
+    "tripPlanner": "Pianificatore Viaggio IA",
+    "documentChecker": "Verificatore Documenti IA",
+    "travelServices": "Servizi di Viaggio",
+    "arGuide": "Guida AR",
+    "support": "Supporto",
     "login": "Accedi",
     "register": "Registrati",
-    "logout": "Esci"
+    "logout": "Esci",
+    "profile": "Profilo",
+    "dashboard": "Dashboard",
+    "credits": "Crediti",
+    "language": "Lingua",
+    "aiTripPlanner": "Pianificatore Viaggio IA",
+    "aiDocumentChecker": "Verificatore Documenti IA",
+    "marketplace": "Mercato"
+  },
+  "auth": {
+    "logoutSuccess": "Disconnessione avvenuta con successo",
+    "logoutError": "Errore durante la disconnessione"
   },
   "home": {
     "hero": {
-      "badge": "Piattaforma AI",
-      "title": "Il Tuo Visto Thailandese AI",
-      "subtitle": "e Assistente di Viaggio",
-      "description": "Sperimenta il futuro dell'elaborazione visti con la nostra tecnologia AI avanzata che gestisce tutto, dalla verifica dei documenti alla pianificazione personalizzata dei viaggi.",
-      "startApplication": "Inizia Richiesta",
-      "getStarted": "Inizia",
-      "learnMore": "Scopri di Più",
-      "stats": {
-        "aiAccuracy": "Precisione AI",
-        "fasterProcessing": "Elaborazione Più Veloce",
-        "successRate": "Tasso di Successo",
-        "userRating": "Valutazione Utenti"
+      "title": "La Tua Porta d'Ingresso alla Thailandia",
+      "subtitle": "Semplifica la tua richiesta di visto thailandese con assistenza IA",
+      "cta": "Inizia Richiesta"
+    },
+    "features": {
+      "title": "Perché Scegliere ThaiVisa.ai?",
+      "aiPowered": {
+        "title": "Assistenza IA",
+        "description": "Ottieni aiuto intelligente con verifica documenti e guida all'applicazione"
+      },
+      "fastProcessing": {
+        "title": "Elaborazione Veloce",
+        "description": "Processo di applicazione semplificato che risparmia tempo e sforzo"
+      },
+      "expertSupport": {
+        "title": "Supporto Esperto",
+        "description": "Supporto 24/7 da esperti di visti per guidarti attraverso il processo"
       }
     },
-    "aiFeatures": {
-      "title": "Funzionalità AI",
-      "description": "La nostra AI avanzata gestisce ogni aspetto del tuo viaggio per il visto thailandese con precisione e velocità senza precedenti.",
-      "documentChecker": {
-        "title": "Verificatore Documenti AI",
-        "description": "Verifica e convalida istantaneamente tutti i tuoi documenti per il visto con il 95% di precisione utilizzando tecnologia AI avanzata."
+    "services": {
+      "title": "I Nostri Servizi",
+      "visaApplication": {
+        "title": "Richiesta Visto",
+        "description": "Completa la tua richiesta di visto thailandese con guida passo dopo passo"
       },
-      "visaAdvisor": {
-        "title": "Consulente Visto AI",
-        "description": "Ottieni raccomandazioni personalizzate per il visto basate sul tuo profilo e piani di viaggio."
+      "documentChecker": {
+        "title": "Verificatore Documenti",
+        "description": "Verifica documenti con IA per assicurarti che i tuoi documenti siano corretti"
       },
       "tripPlanner": {
-        "title": "Pianificatore Viaggio AI",
-        "description": "Crea itinerari di viaggio personalizzati con raccomandazioni AI per l'esperienza perfetta in Thailandia."
+        "title": "Pianificatore Viaggio",
+        "description": "Pianifica il tuo viaggio perfetto in Thailandia con raccomandazioni personalizzate"
       },
-      "assistantChat": {
-        "title": "Chat Assistente AI",
-        "description": "Supporto AI 24/7 per tutte le domande su visto e viaggio con risposte istantanee e precise."
+      "arGuide": {
+        "title": "Guida AR",
+        "description": "Esplora la Thailandia con esperienze turistiche in realtà aumentata"
       }
     },
-    "tripPlannerSection": {
-      "title": "Pianificatore Viaggio AI - Gestione Completa Viaggio",
-      "description": "Ottieni raccomandazioni personalizzate AI per voli, alloggi, trasporti e servizi speciali in Thailandia. Risparmia tempo e denaro con la pianificazione intelligente dei viaggi.",
-      "services": {
-        "flightRecommendations": {
-          "title": "Raccomandazioni Voli",
-          "features": {
-            "smartFlightSearch": "Ricerca intelligente voli",
-            "pricePredictions": "Previsioni prezzi",
-            "bestRouteAnalysis": "Analisi migliore rotta",
-            "seatRecommendations": "Raccomandazioni posti"
-          }
-        },
-        "hotelAccommodation": {
-          "title": "Hotel e Alloggio",
-          "features": {
-            "personalizedMatching": "Abbinamento personalizzato",
-            "locationOptimizer": "Ottimizzatore posizione",
-            "priceComparison": "Confronto prezzi",
-            "amenityMatching": "Abbinamento servizi"
-          }
-        },
-        "transportationServices": {
-          "title": "Servizi Trasporto",
-          "features": {
-            "airportTransfers": "Transfer aeroporto",
-            "localTransport": "Trasporto locale",
-            "carRentalOptimizer": "Ottimizzatore noleggio auto",
-            "routePlanning": "Pianificazione percorsi"
-          }
-        },
-        "specialServices": {
-          "title": "Servizi Speciali",
-          "features": {
-            "tourPackages": "Pacchetti turistici",
-            "restaurantRecommendations": "Raccomandazioni ristoranti",
-            "culturalExperiences": "Esperienze culturali",
-            "emergencySupport": "Supporto emergenza"
-          }
-        }
+    "testimonials": {
+      "title": "Cosa Dicono i Nostri Utenti",
+      "testimonial1": {
+        "text": "ThaiVisa.ai ha reso la mia richiesta di visto molto più facile. L'assistenza IA è stata incredibilmente utile!",
+        "author": "Sarah Johnson"
       },
-      "interactiveFeatures": {
-        "title": "Funzionalità Interattive AI",
-        "smartItinerary": {
-          "title": "Costruttore Itinerario Intelligente",
-          "description": "L'AI crea piani di viaggio personalizzati giorno per giorno basati sui tuoi interessi e preferenze."
-        },
-        "budgetOptimizer": {
-          "title": "Ottimizzatore Budget",
-          "description": "L'AI analizza migliaia di opzioni per trovare il miglior valore per il tuo budget di viaggio."
-        },
-        "weatherIntegration": {
-          "title": "Integrazione Meteo",
-          "description": "L'AI adatta le raccomandazioni basate su previsioni meteo e condizioni stagionali."
-        },
-        "realTimeUpdates": {
-          "title": "Aggiornamenti Tempo Reale",
-          "description": "L'AI fornisce aggiornamenti di viaggio dal vivo, cambi voli e raccomandazioni alternative."
-        }
+      "testimonial2": {
+        "text": "Veloce, affidabile e facile da usare. Ho ottenuto l'approvazione del visto senza problemi.",
+        "author": "Mike Chen"
       },
-      "interface": {
-        "title": "Interfaccia Pianificatore Viaggio AI",
-        "subtitle": "Pianificazione viaggio personalizzata AI",
-        "travelDates": "Date Viaggio",
-        "sampleDates": "15 Dic - 25 Dic, 2024",
-        "budgetRange": "Range Budget",
-        "sampleBudget": "$2.000 - $3.000 USD",
-        "aiRecommendations": "Raccomandazioni AI",
-        "sampleRecommendations": "15 suggerimenti personalizzati pronti",
-        "generatePlan": "Genera Piano Viaggio AI"
-      },
-      "creditServices": {
-        "basicPlan": {
-          "title": "Piano Viaggio Base",
-          "credits": "crediti",
-          "description": "Raccomandazioni AI base per voli, hotel e trasporto",
-          "button": "Ottieni Piano Base"
-        },
-        "advancedPlan": {
-          "title": "Piano Viaggio Avanzato",
-          "credits": "crediti",
-          "description": "Itinerario dettagliato con alternative e ottimizzazione",
-          "button": "Ottieni Piano Avanzato"
-        },
-        "premiumPlan": {
-          "title": "Piano Viaggio Premium",
-          "credits": "crediti",
-          "description": "Gestione completa viaggio con aggiornamenti tempo reale",
-          "button": "Ottieni Piano Premium"
-        },
-        "vipConcierge": {
-          "title": "Concierge VIP",
-          "credits": "crediti",
-          "description": "Assistente personale viaggio AI con supporto 24/7",
-          "button": "Ottieni Servizio VIP"
-        }
-      },
-      "successStories": {
-        "title": "Storie Successo Pianificazione Viaggio AI",
-        "userBookings": "Utenti prenotano servizi raccomandati AI",
-        "averageSavings": "Risparmio medio con ottimizzazione AI",
-        "planningRating": "Stelle per pianificazione viaggio AI",
-        "timeSaved": "Ore risparmiate con ricerca AI"
-      },
-      "howItWorks": {
-        "title": "Come Funziona Pianificazione Viaggio AI",
-        "step1": {
-          "title": "Dì all'AI le Tue Preferenze",
-          "description": "Condividi il tuo stile di viaggio, budget, interessi e date con il nostro sistema AI."
-        },
-        "step2": {
-          "title": "AI Analizza Opzioni",
-          "description": "L'AI confronta migliaia di voli, hotel e attività per trovare le migliori corrispondenze."
-        },
-        "step3": {
-          "title": "Ricevi Piano Personalizzato",
-          "description": "Ricevi raccomandazioni personalizzate con spiegazioni e opzioni alternative."
-        },
-        "step4": {
-          "title": "Prenota con Fiducia",
-          "description": "L'AI monitora e aggiorna il tuo viaggio con informazioni tempo reale e supporto."
-        }
-      }
-    },
-    "visaHub": {
-      "title": "Centro Completo Informazioni Visto",
-      "description": "Guida AI per tutti i tipi di visto thailandese con raccomandazioni personalizzate.",
-      "touristVisa": {
-        "title": "Visto Turistico (TR)",
-        "badge": "Più Popolare",
-        "description": "Guida completa e richiesta assistita AI per visite turistiche e di piacere.",
-        "features": {
-          "aiDocumentVerification": "Verifica documenti AI",
-          "instantEligibilityCheck": "Controllo idoneità istantaneo",
-          "smartFormFilling": "Compilazione intelligente moduli"
-        }
-      },
-      "businessVisa": {
-        "title": "Visto Affari (B)",
-        "badge": "Professionale",
-        "description": "Requisiti AI e verifica documenti per attività commerciali.",
-        "features": {
-          "businessDocumentAnalysis": "Analisi documenti commerciali",
-          "invitationLetterVerification": "Verifica lettera invito",
-          "companyRegistrationCheck": "Controllo registrazione azienda"
-        }
-      },
-      "educationVisa": {
-        "title": "Visto Educazione (ED)",
-        "badge": "Studenti",
-        "description": "Supporto visto studente con guida AI per istituzioni educative.",
-        "features": {
-          "academicDocumentVerification": "Verifica documenti accademici",
-          "institutionValidation": "Validazione istituzione",
-          "financialProofAnalysis": "Analisi prova finanziaria"
-        }
-      },
-      "transitVisa": {
-        "title": "Visto Transito (TS)",
-        "badge": "Veloce",
-        "description": "Elaborazione rapida con assistenza AI per passeggeri in transito.",
-        "features": {
-          "flightItineraryVerification": "Verifica itinerario volo",
-          "transitTimeCalculation": "Calcolo tempo transito",
-          "expressProcessing": "Elaborazione express"
-        }
-      },
-      "specialVisas": {
-        "title": "Visti Speciali",
-        "badge": "Premium",
-        "description": "Pensione, Investimento e altre categorie speciali visto con raccomandazioni AI.",
-        "features": {
-          "eligibilityAssessment": "Valutazione idoneità",
-          "investmentVerification": "Verifica investimento",
-          "personalizedGuidance": "Guida personalizzata"
-        }
-      },
-      "aiRecommendations": {
-        "title": "Raccomandazioni AI",
-        "badge": "Intelligente",
-        "description": "Lascia che l'AI analizzi il tuo profilo e raccomandi il miglior tipo di visto per le tue esigenze.",
-        "button": "Ottieni Raccomandazione AI"
-      }
-    },
-    "aiPoweredFeatures": {
-      "title": "Funzionalità AI",
-      "description": "Sperimenta il futuro dell'elaborazione visti con la nostra tecnologia AI all'avanguardia.",
-      "smartDocumentAnalysis": {
-        "title": "Analisi Intelligente Documenti",
-        "description": "L'AI scansiona e verifica tutti i tuoi documenti con il 95% di precisione in secondi."
-      },
-      "intelligentFormFilling": {
-        "title": "Compilazione Intelligente Moduli",
-        "description": "OCR + AI compila automaticamente tutti i moduli con dati estratti dal passaporto."
-      },
-      "riskAssessment": {
-        "title": "Valutazione Rischio",
-        "description": "L'AI prevede le possibilità di approvazione e suggerisce miglioramenti prima della presentazione."
-      },
-      "realTimeUpdates": {
-        "title": "Aggiornamenti Tempo Reale",
-        "description": "L'AI monitora lo stato della tua richiesta e fornisce aggiornamenti istantanei."
-      }
-    },
-    "howItWorks": {
-      "title": "Come l'AI Rende Semplice",
-      "description": "Quattro passi semplici con AI avanzata per ottenere l'approvazione del visto thailandese.",
-      "step1": {
-        "title": "Carica Passaporto",
-        "description": "L'AI estrae istantaneamente dati dalla foto del passaporto usando tecnologia OCR avanzata."
-      },
-      "step2": {
-        "title": "Analisi AI",
-        "description": "L'AI analizza il tuo profilo e raccomanda il miglior tipo di visto per le tue esigenze."
-      },
-      "step3": {
-        "title": "Verifica Documenti",
-        "description": "L'AI verifica tutti i documenti e assicura il 100% di conformità ai requisiti."
-      },
-      "step4": {
-        "title": "Presentazione Intelligente",
-        "description": "L'AI presenta la tua richiesta e monitora i progressi con aggiornamenti tempo reale."
-      }
-    },
-    "tripManagement": {
-      "title": "Gestione Completa Viaggio",
-      "description": "L'AI gestisce tutti gli aspetti burocratici del tuo viaggio in Thailandia così puoi concentrarti sulla pianificazione delle parti divertenti.",
-      "bureaucraticPlanning": {
-        "title": "Pianificazione Burocratica",
-        "description": "L'AI gestisce tutta la documentazione e scadenze con programmazione intelligente e promemoria."
-      },
-      "documentTimeline": {
-        "title": "Timeline Documenti",
-        "description": "Programmazione intelligente per preparazione documenti con tracciamento automatico progresso."
-      },
-      "complianceMonitoring": {
-        "title": "Monitoraggio Conformità",
-        "description": "L'AI assicura che tutti i requisiti siano soddisfatti e ti avvisa di eventuali problemi istantaneamente."
-      },
-      "emergencySupport": {
-        "title": "Supporto Emergenza",
-        "description": "Assistenza urgente AI per problemi visto e viaggio sensibili al tempo."
-      },
-      "aiTravelAssistant": {
-        "title": "Assistente Viaggio AI",
-        "subtitle": "Il tuo assistente personale AI per tutte le esigenze visto e viaggio Thailandia",
-        "documentStatus": "Stato Documenti",
-        "allDocumentsVerified": "Tutti i documenti verificati e conformi",
-        "applicationProgress": "Progresso Richiesta",
-        "nextStep": "Prossimo Passo",
-        "submitFinalDocuments": "Presenta documenti finali entro 15 Dic"
+      "testimonial3": {
+        "text": "Il verificatore di documenti mi ha salvato da errori costosi. Altamente raccomandato!",
+        "author": "Anna Rodriguez"
       }
     },
     "cta": {
-      "title": "Pronto a Iniziare il Tuo Viaggio in Thailandia?",
-      "description": "Unisciti a migliaia di viaggiatori che si fidano della nostra piattaforma AI per le loro esigenze visto e viaggio.",
-      "startApplication": "Inizia Richiesta",
-      "getStarted": "Inizia",
-      "viewPricing": "Vedi Prezzi",
-      "happyTravelers": "Viaggiatori Felici",
-      "successRate": "Tasso Successo",
-      "aiSupport": "Supporto AI"
-    }
-  },
-  "tripPlanner": {
-    "title": "Pianificatore Viaggio AI",
-    "subtitle": "Lascia che la nostra AI avanzata crei l'esperienza di viaggio perfetta in Thailandia su misura per te. Dai voli alle attività, gestiamo ogni dettaglio.",
-    "progress": {
-      "title": "Progresso Pianificazione",
-      "step": "Passo",
-      "of": "di",
-      "basicInfo": "Info Base",
-      "preferences": "Preferenze",
-      "interests": "Interessi",
-      "generate": "Genera"
-    },
-    "navigation": {
-      "previous": "Precedente",
-      "next": "Successivo",
-      "credits": "Crediti"
-    },
-    "steps": {
-      "step1": {
-        "title": "Informazioni Base Viaggio",
-        "description": "Raccontaci le basi del tuo viaggio - dove vuoi andare e quando vuoi viaggiare.",
-        "destination": {
-          "title": "Destinazione",
-          "description": "Dove vorresti visitare in Thailandia?",
-          "label": "Destinazione in Thailandia",
-          "placeholder": "es. Bangkok, Phuket, Chiang Mai..."
-        },
-        "dates": {
-          "title": "Date Viaggio",
-          "description": "Quando prevedi di visitare la Thailandia?",
-          "startDate": "Data Partenza",
-          "endDate": "Data Ritorno",
-          "selectStartDate": "Seleziona data partenza",
-          "selectEndDate": "Seleziona data ritorno"
-        },
-        "travelers": {
-          "title": "Numero Viaggiatori",
-          "description": "Quante persone viaggeranno?",
-          "label": "Viaggiatori",
-          "person": "persona",
-          "people": "persone"
-        }
-      },
-      "step2": {
-        "title": "Budget e Preferenze",
-        "description": "Aiutaci a capire il tuo budget e preferenze alloggio.",
-        "budget": {
-          "title": "Budget Viaggio",
-          "description": "Qual è il tuo budget totale per questo viaggio (per persona)?",
-          "label": "Budget per persona"
-        },
-        "accommodation": {
-          "title": "Tipo Alloggio",
-          "description": "Che tipo di alloggio preferisci?"
-        },
-        "transportation": {
-          "title": "Trasporto",
-          "description": "Come vorresti muoverti in Thailandia?"
-        }
-      },
-      "step3": {
-        "title": "Interessi Viaggio",
-        "description": "Seleziona i tuoi interessi così possiamo personalizzare il tuo itinerario.",
-        "preferences": {
-          "title": "Preferenze Viaggio",
-          "description": "Che tipo di esperienze stai cercando?"
-        },
-        "activities": {
-          "title": "Attività Specifiche",
-          "description": "Quali attività vorresti includere nel tuo viaggio?"
-        }
-      },
-      "step4": {
-        "title": "Dettagli Finali e Generazione Piano",
-        "description": "Aggiungi richieste speciali e scegli il tuo livello servizio pianificazione viaggio AI.",
-        "specialRequests": {
-          "title": "Richieste Speciali",
-          "description": "Requisiti speciali, restrizioni dietetiche o richieste specifiche?",
-          "placeholder": "es. pasti vegetariani, esigenze accessibilità, occasioni speciali, hotel specifici..."
-        },
-        "planTypes": {
-          "title": "Scegli il Tuo Piano Viaggio AI",
-          "description": "Seleziona il livello di dettaglio e personalizzazione che desideri per il tuo piano viaggio.",
-          "credits": "crediti",
-          "basic": {
-            "title": "Piano Viaggio Base",
-            "description": "Raccomandazioni AI base per voli, hotel e trasporto",
-            "button": "Ottieni Piano Base"
-          },
-          "advanced": {
-            "title": "Piano Viaggio Avanzato",
-            "description": "Itinerario dettagliato con alternative e ottimizzazione",
-            "button": "Ottieni Piano Avanzato"
-          },
-          "premium": {
-            "title": "Piano Viaggio Premium",
-            "description": "Gestione completa viaggio con aggiornamenti tempo reale",
-            "button": "Ottieni Piano Premium"
-          },
-          "vip": {
-            "title": "Concierge VIP",
-            "description": "Assistente personale viaggio AI con supporto 24/7",
-            "button": "Ottieni Servizio VIP"
-          }
-        }
-      }
-    },
-    "accommodation": {
-      "hotel": "Hotel",
-      "resort": "Resort",
-      "hostel": "Ostello",
-      "apartment": "Appartamento",
-      "villa": "Villa"
-    },
-    "transportation": {
-      "flight": "Volo",
-      "train": "Treno",
-      "bus": "Autobus",
-      "carRental": "Noleggio Auto",
-      "mixed": "Trasporto Misto"
-    },
-    "preferences": {
-      "culture": "Cultura e Storia",
-      "adventure": "Avventura",
-      "relaxation": "Relax",
-      "nightlife": "Vita Notturna",
-      "food": "Cibo e Cucina",
-      "shopping": "Shopping",
-      "nature": "Natura",
-      "photography": "Fotografia"
-    },
-    "activities": {
-      "temples": "Templi e Santuari",
-      "beaches": "Spiagge",
-      "markets": "Mercati",
-      "museums": "Musei",
-      "tours": "Tour Guidati",
-      "cookingClasses": "Corsi Cucina",
-      "spa": "Spa e Benessere",
-      "diving": "Immersioni e Snorkeling"
-    },
-    "generating": {
-      "title": "AI Sta Creando il Tuo Viaggio Perfetto",
-      "description": "La nostra AI avanzata sta analizzando migliaia di opzioni per creare il tuo piano viaggio personalizzato Thailandia..."
-    },
-    "result": {
-      "title": "La Tua Avventura Personalizzata Thailandia",
-      "subtitle": "Ecco il tuo capolavoro viaggio creato AI",
-      "badge": "Piano Viaggio Generato AI",
-      "actions": {
-        "downloadPDF": "Scarica PDF",
-        "share": "Condividi Piano",
-        "print": "Stampa Piano"
-      },
-      "itinerary": {
-        "title": "Itinerario Giornaliero",
-        "description": "La tua guida avventura personalizzata giorno per giorno",
-        "day1": {
-          "title": "Giorno 1: Arrivo e Scoperta Bangkok",
-          "activity1": {
-            "title": "Arrivo Aeroporto e Check-in Hotel",
-            "description": "Arrivo confortevole con servizio premium ritiro aeroporto"
-          },
-          "activity2": {
-            "title": "Grand Palace e Wat Phra Kaew",
-            "description": "Esplora il tempio più sacro della Thailandia e il complesso palazzo reale"
-          },
-          "activity3": {
-            "title": "Crociera Cena Fiume Chao Phraya",
-            "description": "Crociera romantica serale con cucina thailandese tradizionale"
-          }
-        },
-        "day2": {
-          "title": "Giorno 2: Esperienza Immersione Culturale",
-          "description": "Immersione profonda nella cultura e tradizioni thailandesi autentiche",
-          "activity1": {
-            "title": "Tempio Wat Pho e Massaggio Thailandese",
-            "description": "Visita la culla del massaggio thailandese tradizionale"
-          },
-          "activity2": {
-            "title": "Mercato Weekend Chatuchak",
-            "description": "Compra souvenir unici e assaggia cibo strada locale"
-          },
-          "activity3": {
-            "title": "Esperienza Corso Cucina Thailandese",
-            "description": "Impara a cucinare piatti thailandesi autentici con chef esperti"
-          }
-        }
-      },
-      "recommendations": {
-        "title": "Raccomandazioni AI",
-        "accommodation": "Alloggio",
-        "dining": "Ristorazione",
-        "transportation": "Trasporto",
-        "price": "Prezzo",
-        "hotel": {
-          "name": "Mandarin Oriental Bangkok",
-          "description": "Hotel lusso lungo fiume con servizio eccezionale e viste mozzafiato Fiume Chao Phraya",
-          "feature1": "Posizione lungo fiume con viste panoramiche",
-          "feature2": "Spa e centro benessere premiati",
-          "feature3": "Multiple opzioni ristorazione inclusi ristoranti stella Michelin"
-        },
-        "restaurant": {
-          "name": "Gaggan Anand",
-          "description": "Cucina indiana progressiva rinomata mondiale con tecniche innovative gastronomia molecolare",
-          "feature1": "Esperienza menu degustazione 25 portate",
-          "feature2": "Cena interattiva con presentazioni chef",
-          "feature3": "Fusione unica sapori indiani e tecniche moderne"
-        },
-        "transport": {
-          "name": "Transfer Premium Aeroporto e Tour Città",
-          "description": "Trasporto privato confortevole con autisti parlanti inglese e orari flessibili",
-          "feature1": "Veicoli privati climatizzati",
-          "feature2": "Autisti professionali parlanti inglese",
-          "feature3": "Orari ritiro flessibili e percorsi personalizzati"
-        }
-      },
-      "footer": {
-        "poweredBy": "Powered by Thailand Visa AI",
-        "description": "Questo piano viaggio personalizzato è stato creato usando tecnologia AI avanzata per assicurarti l'esperienza perfetta Thailandia."
-      }
-    },
-    "errors": {
-      "insufficientCredits": "Crediti insufficienti per questo tipo piano. Acquista più crediti.",
-      "generationFailed": "Generazione piano viaggio fallita. Riprova."
+      "title": "Pronto a Iniziare il Tuo Viaggio?",
+      "subtitle": "Unisciti a migliaia di viaggiatori che si fidano di ThaiVisa.ai per le loro esigenze di visto",
+      "button": "Inizia Ora"
     }
   },
   "credits": {
-    "credits": "crediti"
+    "title": "Crediti",
+    "balance": "Saldo",
+    "purchase": "Acquista Crediti",
+    "history": "Cronologia Transazioni"
   }
 }

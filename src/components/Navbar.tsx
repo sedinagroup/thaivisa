@@ -1,55 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Globe, User, LogOut, CreditCard } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '@/contexts/AuthContext';
-import { useCredits } from '@/contexts/CreditsContext';
-import { Button } from '@/components/ui/button';
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger,
-  DropdownMenuSeparator 
-} from '@/components/ui/dropdown-menu';
-import { Badge } from '@/components/ui/badge';
-import { 
-  User, 
-  LogOut, 
-  Settings, 
-  CreditCard, 
-  FileText, 
-  MapPin, 
-  Plane,
-  Eye,
-  Menu,
-  X,
-  Globe,
-  ChevronDown
-} from 'lucide-react';
-import { toast } from 'sonner';
+import { useCredits } from '../hooks/useCredits';
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user, logout } = useAuth();
-  const { credits } = useCredits();
-  const { t, i18n } = useTranslation();
+  const { language, changeLanguage } = useLanguage();
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      toast.success(t('auth.logoutSuccess'));
-      navigate('/');
-    } catch (error) {
-      toast.error(t('auth.logoutError'));
-    }
-  };
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem('language', lng);
-  };
+  const { credits } = useCredits();
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -58,201 +24,271 @@ const Navbar: React.FC = () => {
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
     { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
     { code: 'ja', name: '日本語', flag: '🇯🇵' },
     { code: 'ko', name: '한국어', flag: '🇰🇷' },
     { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
     { code: 'th', name: 'ไทย', flag: '🇹🇭' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
     { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' }
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
-
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
-
-  // Removed protected restrictions - all menus now visible to everyone
-  const navLinks = [
-    { path: '/', label: t('nav.home'), icon: null },
-    { path: '/ar-guide', label: 'AR Guide', icon: Eye },
-    { path: '/apply', label: t('nav.apply'), icon: FileText },
-    { path: '/ai-trip-planner', label: t('nav.tripPlanner'), icon: MapPin },
-    { path: '/ai-document-checker', label: t('nav.documentChecker'), icon: Plane },
-    { path: '/travel-services', label: t('nav.travelServices'), icon: null },
-    { path: '/support', label: t('nav.support'), icon: null }
+  const menuItems = [
+    { path: '/', label: t('nav.home'), protected: false },
+    { path: '/apply', label: t('nav.apply'), protected: false },
+    { path: '/ai-trip-planner', label: t('nav.aiTripPlanner'), protected: false },
+    { path: '/ai-document-checker', label: t('nav.aiDocumentChecker'), protected: false },
+    { path: '/ar-guide', label: t('nav.arGuide'), protected: false },
+    { path: '/marketplace', label: t('nav.marketplace'), protected: false },
+    { path: '/support', label: t('nav.support'), protected: false }
   ];
 
-  const handleNavClick = (path: string) => {
-    // If user is not logged in and tries to access protected functionality, redirect to login
+  const handleLogout = () => {
+    logout();
+    setIsUserMenuOpen(false);
+    navigate('/');
+  };
+
+  const handleMenuClick = (path: string, isProtected: boolean) => {
+    // If user is not logged in and tries to access certain functionality, redirect to login
     if (!user && (path === '/apply' || path === '/ai-trip-planner' || path === '/ai-document-checker')) {
       navigate('/login');
       return;
     }
+    
     navigate(path);
+    setIsOpen(false);
   };
 
-  return (
-    <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">T</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
-              ThaiVisa.ai
-            </span>
-          </Link>
+  const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <button
-                  key={link.path}
-                  onClick={() => handleNavClick(link.path)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(link.path)
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  {Icon && <Icon className="w-4 h-4" />}
-                  <span>{link.label}</span>
-                </button>
-              );
-            })}
+  return (
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="flex-shrink-0 flex items-center">
+              <span className="text-2xl font-bold text-blue-600">ThaiVisa.ai</span>
+            </Link>
           </div>
 
-          {/* Right Side */}
-          <div className="flex items-center space-x-4">
-            {/* Language Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="flex items-center space-x-2">
-                  <Globe className="w-4 h-4" />
-                  <span className="hidden sm:inline">{currentLanguage.flag}</span>
-                  <ChevronDown className="w-3 h-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
-                    className={`flex items-center space-x-2 ${
-                      i18n.language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''
-                    }`}
-                  >
-                    <span>{lang.flag}</span>
-                    <span>{lang.name}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {/* Desktop Menu - Reduced font size for better fit */}
+          <div className="hidden md:flex items-center space-x-6">
+            {menuItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => handleMenuClick(item.path, item.protected)}
+                className={`px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap ${
+                  location.pathname === item.path
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
 
-            {user ? (
-              <>
-                {/* Credits Display */}
-                <Link to="/credits">
-                  <Badge variant="outline" className="flex items-center space-x-1 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
-                    <CreditCard className="w-3 h-3" />
-                    <span>{credits} {t('nav.credits')}</span>
-                  </Badge>
-                </Link>
-
-                {/* User Menu */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="flex items-center space-x-2">
-                      <User className="w-4 h-4" />
-                      <span className="hidden sm:inline">{user.firstName || user.name}</span>
-                      <ChevronDown className="w-3 h-3" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-48">
-                    <DropdownMenuItem asChild>
-                      <Link to="/dashboard" className="flex items-center space-x-2">
-                        <Settings className="w-4 h-4" />
-                        <span>{t('nav.dashboard')}</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/profile" className="flex items-center space-x-2">
-                        <Settings className="w-4 h-4" />
-                        <span>{t('nav.profile')}</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/credits" className="flex items-center space-x-2">
-                        <CreditCard className="w-4 h-4" />
-                        <span>{t('nav.credits')}</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} className="flex items-center space-x-2 text-red-600">
-                      <LogOut className="w-4 h-4" />
-                      <span>{t('nav.logout')}</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </>
-            ) : (
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" asChild>
-                  <Link to="/login">{t('nav.login')}</Link>
-                </Button>
-                <Button asChild>
-                  <Link to="/register">{t('nav.register')}</Link>
-                </Button>
+          {/* Right side items */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Credits display for logged users */}
+            {user && (
+              <div className="flex items-center space-x-2 px-3 py-1 bg-blue-50 rounded-full">
+                <CreditCard className="w-4 h-4 text-blue-600" />
+                <span className="text-xs font-medium text-blue-600">{credits} {t('credits.title')}</span>
               </div>
             )}
 
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            {/* Language Selector - Reduced font size */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="flex items-center space-x-2 px-2 py-2 rounded-md text-xs font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+              >
+                <Globe className="w-4 h-4" />
+                <span>{currentLanguage.flag}</span>
+                <span className="hidden lg:inline">{currentLanguage.name}</span>
+              </button>
+
+              {isLanguageOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        changeLanguage(lang.code);
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 ${
+                        language === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* User Menu */}
+            {user ? (
+              <div className="relative">
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center space-x-2 px-2 py-2 rounded-md text-xs font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                >
+                  <User className="w-4 h-4" />
+                  <span className="hidden lg:inline">{user.name || user.email}</span>
+                </button>
+
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      {t('nav.dashboard')}
+                    </Link>
+                    <Link
+                      to="/profile"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      {t('nav.profile')}
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>{t('nav.logout')}</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link
+                  to="/login"
+                  className="text-gray-700 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium"
+                >
+                  {t('nav.login')}
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-xs font-medium"
+                >
+                  {t('nav.register')}
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
-            <div className="flex flex-col space-y-2">
-              {navLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <button
-                    key={link.path}
-                    onClick={() => {
-                      handleNavClick(link.path);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors text-left ${
-                      isActive(link.path)
-                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    {Icon && <Icon className="w-4 h-4" />}
-                    <span>{link.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+            {menuItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => handleMenuClick(item.path, item.protected)}
+                className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
+                  location.pathname === item.path
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+
+            {/* Mobile Language Selector */}
+            <div className="px-3 py-2">
+              <div className="text-sm font-medium text-gray-700 mb-2">{t('nav.language')}</div>
+              <select
+                value={language}
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.flag} {lang.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Mobile User Menu */}
+            {user ? (
+              <div className="px-3 py-2 border-t border-gray-200">
+                <div className="text-sm font-medium text-gray-700 mb-2">
+                  {user.name || user.email}
+                </div>
+                {credits > 0 && (
+                  <div className="flex items-center space-x-2 mb-2">
+                    <CreditCard className="w-4 h-4 text-blue-600" />
+                    <span className="text-sm text-blue-600">{credits} {t('credits.title')}</span>
+                  </div>
+                )}
+                <Link
+                  to="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  {t('nav.dashboard')}
+                </Link>
+                <Link
+                  to="/profile"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  {t('nav.profile')}
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  {t('nav.logout')}
+                </button>
+              </div>
+            ) : (
+              <div className="px-3 py-2 border-t border-gray-200 space-y-2">
+                <Link
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  {t('nav.login')}
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  {t('nav.register')}
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
 
+// Add default export
 export default Navbar;
