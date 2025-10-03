@@ -12,11 +12,9 @@ import {
   Clock, 
   HelpCircle, 
   FileText, 
-  Zap,
+  Send,
   CheckCircle,
-  AlertCircle,
-  Users,
-  Globe
+  AlertCircle
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -52,55 +50,28 @@ const Support: React.FC = () => {
 
   const faqItems = [
     {
-      question: 'How do credits work?',
-      answer: 'Credits are consumed for each action on our platform. Different services have different credit costs. You can purchase credit packages from our pricing page.'
+      question: 'How do I apply for a Thai visa?',
+      answer: 'Use our AI-powered visa application system. Simply go to "Apply for Visa", select your visa type, and follow the step-by-step process. Our AI will guide you through document requirements and eligibility checks.'
     },
     {
-      question: 'What visa types do you support?',
-      answer: 'We support all major Thai visa types including Tourist (TR), Business (B), Education (ED), Retirement (O-A), Marriage (O), and Work (Non-B) visas.'
+      question: 'How does the credit system work?',
+      answer: 'Credits are consumed for each AI service you use. Different actions have different credit costs. You can purchase credit packages from our pricing page. Credits never expire and can be used across all services.'
     },
     {
-      question: 'How accurate is the AI analysis?',
-      answer: 'Our AI has a 98% accuracy rate for document analysis and visa eligibility assessment, trained on thousands of successful applications.'
+      question: 'What documents do I need for visa application?',
+      answer: 'Required documents vary by visa type, but typically include passport, photos, bank statements, flight bookings, and accommodation proof. Our AI will provide a personalized checklist based on your application.'
+    },
+    {
+      question: 'How accurate is the AI document analysis?',
+      answer: 'Our AI has a 98% accuracy rate in document verification and analysis. It can detect common issues, verify authenticity, and provide recommendations for improving your application success rate.'
     },
     {
       question: 'Can I get a refund for unused credits?',
-      answer: 'Credits are non-refundable once purchased, but they never expire. You can use them anytime for any of our services.'
+      answer: 'Credits are non-refundable once purchased, but they never expire. You can use them for any of our AI services including visa applications, document checking, and trip planning.'
     },
     {
       question: 'How long does visa processing take?',
-      answer: 'AI analysis is instant. Actual visa processing times depend on the Thai embassy/consulate and typically take 3-15 business days.'
-    },
-    {
-      question: 'Is my personal data secure?',
-      answer: 'Yes, we use enterprise-grade encryption and follow strict data protection protocols. Your documents are processed securely and deleted after analysis.'
-    }
-  ];
-
-  const supportChannels = [
-    {
-      icon: MessageCircle,
-      title: 'Live Chat',
-      description: 'Get instant help from our support team',
-      availability: '24/7 Available',
-      action: 'Start Chat',
-      color: 'text-blue-600'
-    },
-    {
-      icon: Mail,
-      title: 'Email Support',
-      description: 'Send us a detailed message',
-      availability: 'Response within 24h',
-      action: 'Send Email',
-      color: 'text-green-600'
-    },
-    {
-      icon: Phone,
-      title: 'Phone Support',
-      description: 'Speak directly with our experts',
-      availability: 'Mon-Fri 9AM-6PM UTC',
-      action: 'Call Now',
-      color: 'text-purple-600'
+      answer: 'Processing times vary by visa type and embassy. Our AI provides estimated processing times and can help you track your application status. Typical processing is 3-15 business days.'
     }
   ];
 
@@ -109,97 +80,84 @@ const Support: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
-              <HelpCircle className="h-8 w-8 text-white" />
-            </div>
-            <div className="text-left">
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-                Support Center
-              </h1>
-              <p className="text-lg text-blue-600 dark:text-blue-400 font-medium">
-                We're here to help you succeed
-              </p>
-            </div>
-          </div>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Support Center
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400">
+            Get help with your Thai visa application and AI services
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Support Channels */}
-          <div className="lg:col-span-1">
-            <Card className="mb-6">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Users className="w-5 h-5 mr-2" />
-                  Contact Us
-                </CardTitle>
-                <CardDescription>
-                  Choose your preferred support channel
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {supportChannels.map((channel, index) => (
-                  <div key={index} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                    <div className="flex items-start space-x-3">
-                      <channel.icon className={`w-6 h-6 ${channel.color} mt-1`} />
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 dark:text-white">{channel.title}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{channel.description}</p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-gray-500">{channel.availability}</span>
-                          <Button size="sm" variant="outline">
-                            {channel.action}
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Quick Stats */}
+          {/* Contact Information */}
+          <div className="lg:col-span-1 space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Support Stats
+                  <MessageCircle className="w-5 h-5 mr-2 text-blue-600" />
+                  Contact Information
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Avg Response Time</span>
-                    <span className="font-semibold text-green-600">< 2 hours</span>
+              <CardContent className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-gray-500" />
+                  <div>
+                    <p className="font-medium">Email Support</p>
+                    <p className="text-sm text-gray-600">support@thaivisa.ai</p>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Resolution Rate</span>
-                    <span className="font-semibold text-blue-600">98.5%</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-gray-500" />
+                  <div>
+                    <p className="font-medium">Phone Support</p>
+                    <p className="text-sm text-gray-600">+66 2 123 4567</p>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Customer Satisfaction</span>
-                    <span className="font-semibold text-purple-600">4.9/5</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Clock className="w-5 h-5 text-gray-500" />
+                  <div>
+                    <p className="font-medium">Business Hours</p>
+                    <p className="text-sm text-gray-600">Mon-Fri: 9AM-6PM (GMT+7)</p>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Languages Supported</span>
-                    <span className="font-semibold text-orange-600">12+</span>
-                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <AlertCircle className="w-5 h-5 mr-2 text-orange-600" />
+                  Response Times
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-sm">General Inquiries</span>
+                  <span className="text-sm font-medium">24 hours</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Technical Issues</span>
+                  <span className="text-sm font-medium">12 hours</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Urgent Issues</span>
+                  <span className="text-sm font-medium">4 hours</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Phone Support</span>
+                  <span className="text-sm font-medium">Immediate</span>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Contact Form */}
+          {/* Support Form */}
+          <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Submit a Support Ticket
-                </CardTitle>
+                <CardTitle>Submit a Support Ticket</CardTitle>
                 <CardDescription>
-                  Fill out the form below and we'll get back to you as soon as possible
+                  Describe your issue and we'll get back to you as soon as possible
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -231,14 +189,15 @@ const Support: React.FC = () => {
                       <Label htmlFor="category">Category</Label>
                       <Select value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a category" />
+                          <SelectValue placeholder="Select category" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="technical">Technical Issue</SelectItem>
-                          <SelectItem value="billing">Billing & Credits</SelectItem>
-                          <SelectItem value="visa">Visa Questions</SelectItem>
-                          <SelectItem value="account">Account Management</SelectItem>
-                          <SelectItem value="feature">Feature Request</SelectItem>
+                          <SelectItem value="visa-application">Visa Application</SelectItem>
+                          <SelectItem value="credits-billing">Credits & Billing</SelectItem>
+                          <SelectItem value="technical-issue">Technical Issue</SelectItem>
+                          <SelectItem value="document-analysis">Document Analysis</SelectItem>
+                          <SelectItem value="trip-planning">Trip Planning</SelectItem>
+                          <SelectItem value="account-access">Account Access</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
@@ -247,7 +206,7 @@ const Support: React.FC = () => {
                       <Label htmlFor="priority">Priority</Label>
                       <Select value={formData.priority} onValueChange={(value) => setFormData({ ...formData, priority: value })}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select priority" />
+                          <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="low">Low</SelectItem>
@@ -276,7 +235,7 @@ const Support: React.FC = () => {
                       id="message"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Please provide as much detail as possible about your issue or question..."
+                      placeholder="Please provide detailed information about your issue..."
                       rows={6}
                       required
                     />
@@ -290,7 +249,7 @@ const Support: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        <Mail className="w-4 h-4 mr-2" />
+                        <Send className="w-4 h-4 mr-2" />
                         Submit Ticket
                       </>
                     )}
@@ -298,59 +257,70 @@ const Support: React.FC = () => {
                 </form>
               </CardContent>
             </Card>
-
-            {/* FAQ Section */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <FileText className="w-5 h-5 mr-2" />
-                  Frequently Asked Questions
-                </CardTitle>
-                <CardDescription>
-                  Find quick answers to common questions
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {faqItems.map((item, index) => (
-                    <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4 last:border-b-0">
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
-                        <HelpCircle className="w-4 h-4 mr-2 text-blue-500" />
-                        {item.question}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Emergency Contact */}
-            <Card className="bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <AlertCircle className="w-6 h-6 text-red-600 mr-2" />
-                  <h3 className="font-semibold text-red-800 dark:text-red-300">Emergency Support</h3>
-                </div>
-                <p className="text-red-700 dark:text-red-400 text-sm mb-4">
-                  For urgent visa-related issues or technical problems affecting your travel plans, 
-                  contact our emergency support line available 24/7.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-100">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Emergency Hotline
-                  </Button>
-                  <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-100">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Priority Chat
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-16">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <HelpCircle className="w-6 h-6 mr-2 text-blue-600" />
+                Frequently Asked Questions
+              </CardTitle>
+              <CardDescription>
+                Find quick answers to common questions
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {faqItems.map((item, index) => (
+                  <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4 last:border-b-0">
+                    <h3 className="font-semibold text-lg mb-2 flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                      {item.question}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 ml-7">
+                      {item.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Quick Links */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer">
+            <CardContent className="p-6">
+              <FileText className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">Documentation</h3>
+              <p className="text-sm text-gray-600">
+                Comprehensive guides and tutorials
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer">
+            <CardContent className="p-6">
+              <MessageCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">Live Chat</h3>
+              <p className="text-sm text-gray-600">
+                Chat with our support team
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer">
+            <CardContent className="p-6">
+              <Phone className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">Phone Support</h3>
+              <p className="text-sm text-gray-600">
+                Speak directly with our experts
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
