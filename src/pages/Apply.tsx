@@ -207,7 +207,7 @@ const Apply: React.FC = () => {
         await deductCredits('visa_generate_report', {
           actionDescription: 'Generate application report'
         });
-        navigate('/dashboard');
+        navigate('/profile');
       }, 2000);
     }
   };
@@ -452,7 +452,7 @@ const Apply: React.FC = () => {
               <Button 
                 variant="outline" 
                 size="sm"
-                onClick={() => navigate('/purchase-credits')}
+                onClick={() => navigate('/pricing')}
               >
                 <CreditCard className="w-4 h-4 mr-1" />
                 Buy More
