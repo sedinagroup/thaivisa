@@ -1,0 +1,399 @@
+{
+  "nav": {
+    "home": "Início",
+    "apply": "Solicitar Visto",
+    "aiTripPlanner": "Planejador de Viagem IA",
+    "aiDocumentChecker": "Verificador de Documentos IA",
+    "pricing": "Preços",
+    "support": "Suporte",
+    "about": "Sobre",
+    "profile": "Perfil",
+    "login": "Entrar",
+    "register": "Registrar",
+    "logout": "Sair"
+  },
+  "auth": {
+    "loginSuccess": "Login realizado com sucesso!",
+    "logoutSuccess": "Logout realizado com sucesso!",
+    "logoutError": "Erro durante o logout"
+  },
+  "credits": {
+    "title": "Créditos",
+    "balance": "Saldo de Créditos",
+    "purchase": "Comprar Créditos",
+    "history": "Histórico de Créditos",
+    "insufficient": "Créditos insuficientes",
+    "deducted": "créditos deduzidos",
+    "remaining": "créditos restantes"
+  },
+  "apply": {
+    "title": "Solicitação de Visto",
+    "step": "Etapa",
+    "of": "de",
+    "complete": "Completo",
+    "selectVisaType": "Selecionar Tipo de Visto",
+    "basicInformation": "Informações Básicas",
+    "passportUpload": "Upload do Passaporte",
+    "supportingDocuments": "Documentos de Apoio",
+    "reviewSubmit": "Revisar e Enviar",
+    "chooseVisaType": "Escolha o tipo de visto que deseja solicitar",
+    "provideBasicInfo": "Forneça suas informações básicas e detalhes da viagem",
+    "uploadPassport": "Envie uma foto clara da página de informações do seu passaporte",
+    "uploadDocuments": "Envie todos os documentos de apoio necessários",
+    "reviewApplication": "Revise sua solicitação e envie para processamento",
+    "selectYourVisaType": "Selecione Seu Tipo de Visto",
+    "nationality": "Nacionalidade",
+    "selectNationality": "Selecione sua nacionalidade",
+    "purposeOfVisit": "Propósito da Visita",
+    "selectPurpose": "Selecione o propósito",
+    "intendedDuration": "Duração Pretendida da Estadia",
+    "selectDuration": "Selecione a duração",
+    "uploadPassportPhoto": "Enviar Foto do Passaporte",
+    "uploadPassportPage": "Envie a foto da página do seu passaporte",
+    "aiExtractInfo": "Nossa IA extrairá informações usando tecnologia OCR",
+    "costs": "Custos",
+    "passportProcessed": "Passaporte enviado e processado",
+    "uploadSupportingDocs": "Enviar Documentos de Apoio",
+    "uploadRequiredDocs": "Envie os documentos necessários",
+    "bankStatements": "Extratos bancários, reservas de hotel, passagens aéreas, etc.",
+    "readyToSubmit": "Pronto para Enviar",
+    "reviewApplicationSubmit": "Revise sua solicitação e envie para análise final da IA",
+    "finalAnalysisCost": "Custo da Análise Final",
+    "comprehensiveAnalysis": "Isso inclui análise abrangente de IA, avaliação de elegibilidade e geração de relatório detalhado",
+    "applicationSummary": "Resumo da Solicitação:",
+    "visaType": "Tipo de Visto",
+    "purpose": "Propósito",
+    "duration": "Duração",
+    "passport": "Passaporte",
+    "documents": "Documentos",
+    "uploaded": "Enviado ✓",
+    "notUploaded": "Não enviado",
+    "filesUploaded": "arquivos enviados",
+    "previous": "Anterior",
+    "continue": "Continuar",
+    "submitApplication": "Enviar Solicitação",
+    "loginRequired": "Login Necessário",
+    "pleaseLogin": "Por favor, faça login para acessar a solicitação de visto.",
+    "login": "Entrar",
+    "buyMore": "Comprar Mais",
+    "lowCreditsWarning": "Aviso de Poucos Créditos",
+    "lowCreditsMessage": "Você pode não ter créditos suficientes para completar esta solicitação. Considere comprar mais créditos para evitar interrupção.",
+    "selectVisaTypeFirst": "Por favor, selecione um tipo de visto primeiro",
+    "fillRequiredFields": "Por favor, preencha todos os campos obrigatórios",
+    "uploadPassportFirst": "Por favor, envie a foto do seu passaporte",
+    "uploadDocumentFirst": "Por favor, envie pelo menos um documento de apoio",
+    "needMoreCredits": "Você precisa de mais créditos para continuar com sua solicitação de visto!",
+    "processingPassport": "Processando passaporte com OCR...",
+    "passportProcessedSuccess": "Passaporte processado com sucesso! Dados OCR extraídos.",
+    "needMoreCreditsUpload": "Você precisa de mais créditos para enviar documentos!",
+    "documentsAnalyzed": "Documentos analisados com sucesso!",
+    "visaSubmittedSuccess": "Solicitação de visto enviada com sucesso!",
+    "visaTypes": {
+      "tourist": {
+        "label": "Visto de Turista (TR)",
+        "description": "Para turismo e lazer"
+      },
+      "business": {
+        "label": "Visto de Negócios (B)",
+        "description": "Para atividades comerciais"
+      },
+      "education": {
+        "label": "Visto de Educação (ED)",
+        "description": "Para estudar na Tailândia"
+      },
+      "retirement": {
+        "label": "Visto de Aposentadoria (O-A)",
+        "description": "Para aposentados acima de 50 anos"
+      },
+      "marriage": {
+        "label": "Visto de Casamento (O)",
+        "description": "Para casados com nacional tailandês"
+      },
+      "work": {
+        "label": "Visto de Trabalho (Non-B)",
+        "description": "Para emprego na Tailândia"
+      }
+    },
+    "nationalities": {
+      "us": "Estados Unidos",
+      "uk": "Reino Unido",
+      "ca": "Canadá",
+      "au": "Austrália",
+      "de": "Alemanha",
+      "fr": "França",
+      "jp": "Japão",
+      "other": "Outro"
+    },
+    "purposes": {
+      "tourism": "Turismo",
+      "business": "Negócios",
+      "education": "Educação",
+      "medical": "Tratamento Médico",
+      "family": "Visita Familiar",
+      "other": "Outro"
+    },
+    "durations": {
+      "1-7": "1-7 dias",
+      "8-15": "8-15 dias",
+      "16-30": "16-30 dias",
+      "31-60": "31-60 dias",
+      "61-90": "61-90 dias",
+      "90+": "Mais de 90 dias"
+    }
+  },
+  "support": {
+    "title": "Central de Suporte",
+    "subtitle": "Obtenha ajuda com sua solicitação de visto tailandês e serviços de IA",
+    "contactInformation": "Informações de Contato",
+    "emailSupport": "Suporte por Email",
+    "phoneSupport": "Suporte por Telefone",
+    "businessHours": "Horário Comercial",
+    "businessHoursTime": "Seg-Sex: 9h-18h (GMT+7)",
+    "responseTimes": "Tempos de Resposta",
+    "generalInquiries": "Consultas Gerais",
+    "technicalIssues": "Problemas Técnicos",
+    "urgentIssues": "Problemas Urgentes",
+    "phoneSupport": "Suporte por Telefone",
+    "immediate": "Imediato",
+    "submitTicket": "Enviar Ticket de Suporte",
+    "submitTicketDesc": "Descreva seu problema e entraremos em contato o mais breve possível",
+    "fullName": "Nome Completo",
+    "emailAddress": "Endereço de Email",
+    "category": "Categoria",
+    "selectCategory": "Selecionar categoria",
+    "priority": "Prioridade",
+    "subject": "Assunto",
+    "subjectPlaceholder": "Breve descrição do seu problema",
+    "message": "Mensagem",
+    "messagePlaceholder": "Por favor, forneça informações detalhadas sobre seu problema...",
+    "submitting": "Enviando...",
+    "submitTicket": "Enviar Ticket",
+    "faq": "Perguntas Frequentes",
+    "faqDesc": "Encontre respostas rápidas para perguntas comuns",
+    "documentation": "Documentação",
+    "documentationDesc": "Guias e tutoriais abrangentes",
+    "liveChat": "Chat ao Vivo",
+    "liveChatDesc": "Converse com nossa equipe de suporte",
+    "phoneSupportDesc": "Fale diretamente com nossos especialistas",
+    "ticketSubmitted": "Ticket de suporte enviado com sucesso! Entraremos em contato em até 24 horas.",
+    "categories": {
+      "visa-application": "Solicitação de Visto",
+      "credits-billing": "Créditos e Cobrança",
+      "technical-issue": "Problema Técnico",
+      "document-analysis": "Análise de Documentos",
+      "trip-planning": "Planejamento de Viagem",
+      "account-access": "Acesso à Conta",
+      "other": "Outro"
+    },
+    "priorities": {
+      "low": "Baixa",
+      "normal": "Normal",
+      "high": "Alta",
+      "urgent": "Urgente"
+    },
+    "faqItems": {
+      "q1": "Como solicito um visto tailandês?",
+      "a1": "Use nosso sistema de solicitação de visto com IA. Simplesmente vá para \"Solicitar Visto\", selecione seu tipo de visto e siga o processo passo a passo. Nossa IA o guiará através dos requisitos de documentos e verificações de elegibilidade.",
+      "q2": "Como funciona o sistema de créditos?",
+      "a2": "Créditos são consumidos para cada serviço de IA que você usa. Diferentes ações têm custos de crédito diferentes. Você pode comprar pacotes de crédito em nossa página de preços. Os créditos nunca expiram e podem ser usados em todos os serviços.",
+      "q3": "Quais documentos preciso para a solicitação de visto?",
+      "a3": "Os documentos necessários variam por tipo de visto, mas geralmente incluem passaporte, fotos, extratos bancários, reservas de hotel e comprovante de acomodação. Nossa IA fornecerá uma lista personalizada baseada em sua solicitação.",
+      "q4": "Quão precisa é a análise de documentos da IA?",
+      "a4": "Nossa IA tem uma taxa de precisão de 98% na verificação e análise de documentos. Ela pode detectar problemas comuns, verificar autenticidade e fornecer recomendações para melhorar sua taxa de sucesso na solicitação.",
+      "q5": "Posso obter reembolso por créditos não utilizados?",
+      "a5": "Créditos não são reembolsáveis uma vez comprados, mas nunca expiram. Você pode usá-los para qualquer um de nossos serviços de IA incluindo solicitações de visto, verificação de documentos e planejamento de viagem.",
+      "q6": "Quanto tempo leva o processamento do visto?",
+      "a6": "Os tempos de processamento variam por tipo de visto e embaixada. Nossa IA fornece tempos estimados de processamento e pode ajudá-lo a acompanhar o status de sua solicitação. O processamento típico é de 3-15 dias úteis."
+    }
+  },
+  "about": {
+    "title": "Sobre ThaiVisa.ai",
+    "subtitle": "Desenvolvido por THINKNEO.AI",
+    "description": "Estamos revolucionando o processo de solicitação de visto através da inteligência artificial, tornando as viagens para a Tailândia acessíveis e livres de estresse para todos.",
+    "partOfSHK": "Parte do SHK Hong Kong Group",
+    "companyDescription": "ThaiVisa.ai é um produto principal da THINKNEO.AI, uma empresa de IA inovadora sob o prestigioso SHK Hong Kong Group. Combinamos décadas de excelência empresarial com inteligência artificial de ponta para transformar como as pessoas viajam.",
+    "stats": {
+      "usersServed": "Usuários Atendidos",
+      "visaApplications": "Solicitações de Visto",
+      "successRate": "Taxa de Sucesso",
+      "countriesSupported": "Países Suportados"
+    },
+    "mission": {
+      "title": "Nossa Missão",
+      "description": "Democratizar viagens internacionais tornando as solicitações de visto simples, rápidas e acessíveis através da automação com IA. Acreditamos que todos devem ter a oportunidade de explorar o mundo sem barreiras burocráticas."
+    },
+    "vision": {
+      "title": "Nossa Visão",
+      "description": "Tornar-se o líder global em serviços de viagem com IA, expandindo além das solicitações de visto para criar um ecossistema abrangente que lida com todos os aspectos do planejamento e documentação de viagens internacionais."
+    },
+    "values": {
+      "title": "Nossos Valores",
+      "subtitle": "Os princípios que guiam tudo o que fazemos",
+      "innovation": {
+        "title": "Inovação",
+        "description": "Aproveitando tecnologia de IA de ponta para revolucionar solicitações de visto e planejamento de viagens."
+      },
+      "security": {
+        "title": "Segurança",
+        "description": "Garantindo os mais altos níveis de proteção de dados e privacidade para todos os nossos usuários."
+      },
+      "userCentric": {
+        "title": "Centrado no Usuário",
+        "description": "Colocando nossos usuários em primeiro lugar com design intuitivo e suporte ao cliente excepcional."
+      },
+      "excellence": {
+        "title": "Excelência",
+        "description": "Melhorando continuamente nossos serviços para entregar a melhor experiência possível."
+      }
+    },
+    "thinkneo": {
+      "title": "Sobre THINKNEO.AI",
+      "subtitle": "Nossa empresa-mãe impulsionando a inovação em IA",
+      "description": "THINKNEO.AI é uma empresa de inteligência artificial de ponta especializada em processamento de documentos, compreensão de linguagem natural e sistemas automatizados de tomada de decisão. Como parte do SHK Hong Kong Group, aproveitamos décadas de expertise empresarial combinada com as mais recentes tecnologias de IA para criar soluções que transformam indústrias.",
+      "enterpriseSolutions": {
+        "title": "Soluções Empresariais",
+        "description": "Automação com IA para empresas em múltiplas indústrias"
+      },
+      "globalReach": {
+        "title": "Alcance Global",
+        "description": "Atendendo clientes mundialmente com soluções de IA localizadas"
+      },
+      "industryRecognition": {
+        "title": "Reconhecimento da Indústria",
+        "description": "Tecnologia de IA premiada e liderança em inovação"
+      }
+    },
+    "leadership": {
+      "title": "Equipe de Liderança",
+      "subtitle": "Conheça os especialistas por trás do ThaiVisa.ai"
+    },
+    "contact": {
+      "title": "Entre em Contato",
+      "headquarters": "Sede",
+      "email": "Email",
+      "phone": "Telefone"
+    }
+  },
+  "pricing": {
+    "title": "Escolha Seu Pacote de Créditos",
+    "subtitle": "Preços flexíveis para todas as suas necessidades de solicitação de visto",
+    "mostPopular": "Mais Popular",
+    "bestValue": "Melhor Valor",
+    "getStarted": "Começar",
+    "choosePackage": "Escolher Pacote",
+    "features": {
+      "visaApplications": "Solicitações de Visto",
+      "documentAnalysis": "Análise de Documentos",
+      "tripPlanning": "Planejamento de Viagem",
+      "prioritySupport": "Suporte Prioritário",
+      "advancedFeatures": "Recursos Avançados",
+      "unlimitedSupport": "Suporte Ilimitado"
+    },
+    "packages": {
+      "starter": {
+        "name": "Iniciante",
+        "description": "Perfeito para solicitações de visto únicas"
+      },
+      "professional": {
+        "name": "Profissional",
+        "description": "Ótimo para viajantes frequentes"
+      },
+      "enterprise": {
+        "name": "Empresarial",
+        "description": "Para agências e empresas"
+      }
+    }
+  },
+  "profile": {
+    "title": "Configurações do Perfil",
+    "personalInformation": "Informações Pessoais",
+    "accountSettings": "Configurações da Conta",
+    "securitySettings": "Configurações de Segurança",
+    "preferences": "Preferências",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "email": "Email",
+    "phone": "Telefone",
+    "country": "País",
+    "language": "Idioma",
+    "timezone": "Fuso Horário",
+    "notifications": "Notificações",
+    "emailNotifications": "Notificações por Email",
+    "smsNotifications": "Notificações por SMS",
+    "changePassword": "Alterar Senha",
+    "currentPassword": "Senha Atual",
+    "newPassword": "Nova Senha",
+    "confirmPassword": "Confirmar Senha",
+    "saveChanges": "Salvar Alterações",
+    "profileUpdated": "Perfil atualizado com sucesso!"
+  },
+  "documentChecker": {
+    "title": "Verificador de Documentos IA",
+    "subtitle": "Verifique seus documentos com análise com IA",
+    "uploadDocument": "Enviar Documento",
+    "dragDropFiles": "Arraste e solte arquivos aqui, ou clique para selecionar",
+    "supportedFormats": "Formatos suportados: PDF, JPG, PNG",
+    "analyzing": "Analisando documento...",
+    "analysisComplete": "Análise Completa",
+    "documentValid": "Documento é válido",
+    "documentInvalid": "Documento tem problemas",
+    "recommendations": "Recomendações",
+    "uploadAnother": "Enviar Outro Documento"
+  },
+  "tripPlanner": {
+    "title": "Planejador de Viagem IA",
+    "subtitle": "Planeje sua viagem perfeita para a Tailândia com assistência de IA",
+    "destination": "Destino",
+    "startDate": "Data de Início",
+    "endDate": "Data de Fim",
+    "budget": "Orçamento",
+    "interests": "Interesses",
+    "generatePlan": "Gerar Plano de Viagem",
+    "planning": "Planejando sua viagem...",
+    "planGenerated": "Plano de viagem gerado com sucesso!",
+    "itinerary": "Itinerário",
+    "recommendations": "Recomendações",
+    "exportPlan": "Exportar Plano"
+  },
+  "payment": {
+    "title": "Pagamento",
+    "paymentMethod": "Método de Pagamento",
+    "cardNumber": "Número do Cartão",
+    "expiryDate": "Data de Validade",
+    "cvv": "CVV",
+    "billingAddress": "Endereço de Cobrança",
+    "payNow": "Pagar Agora",
+    "processing": "Processando pagamento...",
+    "paymentSuccess": "Pagamento bem-sucedido!",
+    "paymentFailed": "Pagamento falhou. Tente novamente."
+  },
+  "arGuide": {
+    "title": "Guia de Viagem AR",
+    "subtitle": "Explore a Tailândia com Realidade Aumentada",
+    "startAR": "Iniciar Experiência AR",
+    "pointCamera": "Aponte sua câmera para pontos turísticos",
+    "discoverMore": "Descubra mais sobre a cultura e história da Tailândia"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "view": "Visualizar",
+    "download": "Baixar",
+    "upload": "Enviar",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "close": "Fechar",
+    "open": "Abrir",
+    "yes": "Sim",
+    "no": "Não"
+  }
+}

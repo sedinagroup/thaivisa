@@ -1,0 +1,399 @@
+{
+  "nav": {
+    "home": "Home",
+    "apply": "Apply for Visa",
+    "aiTripPlanner": "AI Trip Planner",
+    "aiDocumentChecker": "AI Document Checker",
+    "pricing": "Pricing",
+    "support": "Support",
+    "about": "About",
+    "profile": "Profile",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "auth": {
+    "loginSuccess": "Login successful!",
+    "logoutSuccess": "Logout successful!",
+    "logoutError": "Error during logout"
+  },
+  "credits": {
+    "title": "Credits",
+    "balance": "Credit Balance",
+    "purchase": "Purchase Credits",
+    "history": "Credit History",
+    "insufficient": "Insufficient credits",
+    "deducted": "credits deducted",
+    "remaining": "credits remaining"
+  },
+  "apply": {
+    "title": "Visa Application",
+    "step": "Step",
+    "of": "of",
+    "complete": "Complete",
+    "selectVisaType": "Select Visa Type",
+    "basicInformation": "Basic Information",
+    "passportUpload": "Passport Upload",
+    "supportingDocuments": "Supporting Documents",
+    "reviewSubmit": "Review & Submit",
+    "chooseVisaType": "Choose the type of visa you want to apply for",
+    "provideBasicInfo": "Provide your basic information and travel details",
+    "uploadPassport": "Upload a clear photo of your passport information page",
+    "uploadDocuments": "Upload all required supporting documents",
+    "reviewApplication": "Review your application and submit for processing",
+    "selectYourVisaType": "Select Your Visa Type",
+    "nationality": "Nationality",
+    "selectNationality": "Select your nationality",
+    "purposeOfVisit": "Purpose of Visit",
+    "selectPurpose": "Select purpose",
+    "intendedDuration": "Intended Duration of Stay",
+    "selectDuration": "Select duration",
+    "uploadPassportPhoto": "Upload Passport Photo",
+    "uploadPassportPage": "Upload your passport photo page",
+    "aiExtractInfo": "Our AI will extract information using OCR technology",
+    "costs": "Costs",
+    "passportProcessed": "Passport uploaded and processed",
+    "uploadSupportingDocs": "Upload Supporting Documents",
+    "uploadRequiredDocs": "Upload required documents",
+    "bankStatements": "Bank statements, hotel bookings, flight tickets, etc.",
+    "readyToSubmit": "Ready to Submit",
+    "reviewApplicationSubmit": "Review your application and submit for final AI analysis",
+    "finalAnalysisCost": "Final Analysis Cost",
+    "comprehensiveAnalysis": "This includes comprehensive AI analysis, eligibility assessment, and detailed report generation",
+    "applicationSummary": "Application Summary:",
+    "visaType": "Visa Type",
+    "purpose": "Purpose",
+    "duration": "Duration",
+    "passport": "Passport",
+    "documents": "Documents",
+    "uploaded": "Uploaded ✓",
+    "notUploaded": "Not uploaded",
+    "filesUploaded": "files uploaded",
+    "previous": "Previous",
+    "continue": "Continue",
+    "submitApplication": "Submit Application",
+    "loginRequired": "Login Required",
+    "pleaseLogin": "Please log in to access the visa application.",
+    "login": "Login",
+    "buyMore": "Buy More",
+    "lowCreditsWarning": "Low Credits Warning",
+    "lowCreditsMessage": "You may not have enough credits to complete this application. Consider purchasing more credits to avoid interruption.",
+    "selectVisaTypeFirst": "Please select a visa type first",
+    "fillRequiredFields": "Please fill in all required fields",
+    "uploadPassportFirst": "Please upload your passport photo",
+    "uploadDocumentFirst": "Please upload at least one supporting document",
+    "needMoreCredits": "You need more credits to continue with your visa application!",
+    "processingPassport": "Processing passport with OCR...",
+    "passportProcessedSuccess": "Passport processed successfully! OCR data extracted.",
+    "needMoreCreditsUpload": "You need more credits to upload documents!",
+    "documentsAnalyzed": "Documents analyzed successfully!",
+    "visaSubmittedSuccess": "Visa application submitted successfully!",
+    "visaTypes": {
+      "tourist": {
+        "label": "Tourist Visa (TR)",
+        "description": "For tourism and leisure"
+      },
+      "business": {
+        "label": "Business Visa (B)",
+        "description": "For business activities"
+      },
+      "education": {
+        "label": "Education Visa (ED)",
+        "description": "For studying in Thailand"
+      },
+      "retirement": {
+        "label": "Retirement Visa (O-A)",
+        "description": "For retirees over 50"
+      },
+      "marriage": {
+        "label": "Marriage Visa (O)",
+        "description": "For married to Thai national"
+      },
+      "work": {
+        "label": "Work Visa (Non-B)",
+        "description": "For employment in Thailand"
+      }
+    },
+    "nationalities": {
+      "us": "United States",
+      "uk": "United Kingdom",
+      "ca": "Canada",
+      "au": "Australia",
+      "de": "Germany",
+      "fr": "France",
+      "jp": "Japan",
+      "other": "Other"
+    },
+    "purposes": {
+      "tourism": "Tourism",
+      "business": "Business",
+      "education": "Education",
+      "medical": "Medical Treatment",
+      "family": "Family Visit",
+      "other": "Other"
+    },
+    "durations": {
+      "1-7": "1-7 days",
+      "8-15": "8-15 days",
+      "16-30": "16-30 days",
+      "31-60": "31-60 days",
+      "61-90": "61-90 days",
+      "90+": "More than 90 days"
+    }
+  },
+  "support": {
+    "title": "Support Center",
+    "subtitle": "Get help with your Thai visa application and AI services",
+    "contactInformation": "Contact Information",
+    "emailSupport": "Email Support",
+    "phoneSupport": "Phone Support",
+    "businessHours": "Business Hours",
+    "businessHoursTime": "Mon-Fri: 9AM-6PM (GMT+7)",
+    "responseTimes": "Response Times",
+    "generalInquiries": "General Inquiries",
+    "technicalIssues": "Technical Issues",
+    "urgentIssues": "Urgent Issues",
+    "phoneSupport": "Phone Support",
+    "immediate": "Immediate",
+    "submitTicket": "Submit a Support Ticket",
+    "submitTicketDesc": "Describe your issue and we'll get back to you as soon as possible",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "category": "Category",
+    "selectCategory": "Select category",
+    "priority": "Priority",
+    "subject": "Subject",
+    "subjectPlaceholder": "Brief description of your issue",
+    "message": "Message",
+    "messagePlaceholder": "Please provide detailed information about your issue...",
+    "submitting": "Submitting...",
+    "submitTicket": "Submit Ticket",
+    "faq": "Frequently Asked Questions",
+    "faqDesc": "Find quick answers to common questions",
+    "documentation": "Documentation",
+    "documentationDesc": "Comprehensive guides and tutorials",
+    "liveChat": "Live Chat",
+    "liveChatDesc": "Chat with our support team",
+    "phoneSupportDesc": "Speak directly with our experts",
+    "ticketSubmitted": "Support ticket submitted successfully! We'll get back to you within 24 hours.",
+    "categories": {
+      "visa-application": "Visa Application",
+      "credits-billing": "Credits & Billing",
+      "technical-issue": "Technical Issue",
+      "document-analysis": "Document Analysis",
+      "trip-planning": "Trip Planning",
+      "account-access": "Account Access",
+      "other": "Other"
+    },
+    "priorities": {
+      "low": "Low",
+      "normal": "Normal",
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "faqItems": {
+      "q1": "How do I apply for a Thai visa?",
+      "a1": "Use our AI-powered visa application system. Simply go to \"Apply for Visa\", select your visa type, and follow the step-by-step process. Our AI will guide you through document requirements and eligibility checks.",
+      "q2": "How does the credit system work?",
+      "a2": "Credits are consumed for each AI service you use. Different actions have different credit costs. You can purchase credit packages from our pricing page. Credits never expire and can be used across all services.",
+      "q3": "What documents do I need for visa application?",
+      "a3": "Required documents vary by visa type, but typically include passport, photos, bank statements, flight bookings, and accommodation proof. Our AI will provide a personalized checklist based on your application.",
+      "q4": "How accurate is the AI document analysis?",
+      "a4": "Our AI has a 98% accuracy rate in document verification and analysis. It can detect common issues, verify authenticity, and provide recommendations for improving your application success rate.",
+      "q5": "Can I get a refund for unused credits?",
+      "a5": "Credits are non-refundable once purchased, but they never expire. You can use them for any of our AI services including visa applications, document checking, and trip planning.",
+      "q6": "How long does visa processing take?",
+      "a6": "Processing times vary by visa type and embassy. Our AI provides estimated processing times and can help you track your application status. Typical processing is 3-15 business days."
+    }
+  },
+  "about": {
+    "title": "About ThaiVisa.ai",
+    "subtitle": "Powered by THINKNEO.AI",
+    "description": "We are revolutionizing the visa application process through artificial intelligence, making travel to Thailand accessible and stress-free for everyone.",
+    "partOfSHK": "Part of SHK Hong Kong Group",
+    "companyDescription": "ThaiVisa.ai is a flagship product of THINKNEO.AI, an innovative AI company under the prestigious SHK Hong Kong Group. We combine decades of business excellence with cutting-edge artificial intelligence to transform how people travel.",
+    "stats": {
+      "usersServed": "Users Served",
+      "visaApplications": "Visa Applications",
+      "successRate": "Success Rate",
+      "countriesSupported": "Countries Supported"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize international travel by making visa applications simple, fast, and accessible through AI-powered automation. We believe everyone should have the opportunity to explore the world without bureaucratic barriers."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the global leader in AI-powered travel services, expanding beyond visa applications to create a comprehensive ecosystem that handles every aspect of international travel planning and documentation."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide everything we do",
+      "innovation": {
+        "title": "Innovation",
+        "description": "Leveraging cutting-edge AI technology to revolutionize visa applications and travel planning."
+      },
+      "security": {
+        "title": "Security",
+        "description": "Ensuring the highest levels of data protection and privacy for all our users."
+      },
+      "userCentric": {
+        "title": "User-Centric",
+        "description": "Putting our users first with intuitive design and exceptional customer support."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Continuously improving our services to deliver the best possible experience."
+      }
+    },
+    "thinkneo": {
+      "title": "About THINKNEO.AI",
+      "subtitle": "Our parent company driving AI innovation",
+      "description": "THINKNEO.AI is a cutting-edge artificial intelligence company specializing in document processing, natural language understanding, and automated decision-making systems. As part of the SHK Hong Kong Group, we leverage decades of business expertise combined with the latest AI technologies to create solutions that transform industries.",
+      "enterpriseSolutions": {
+        "title": "Enterprise Solutions",
+        "description": "AI-powered automation for businesses across multiple industries"
+      },
+      "globalReach": {
+        "title": "Global Reach",
+        "description": "Serving clients worldwide with localized AI solutions"
+      },
+      "industryRecognition": {
+        "title": "Industry Recognition",
+        "description": "Award-winning AI technology and innovation leadership"
+      }
+    },
+    "leadership": {
+      "title": "Leadership Team",
+      "subtitle": "Meet the experts behind ThaiVisa.ai"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "headquarters": "Headquarters",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  },
+  "pricing": {
+    "title": "Choose Your Credit Package",
+    "subtitle": "Flexible pricing for all your visa application needs",
+    "mostPopular": "Most Popular",
+    "bestValue": "Best Value",
+    "getStarted": "Get Started",
+    "choosePackage": "Choose Package",
+    "features": {
+      "visaApplications": "Visa Applications",
+      "documentAnalysis": "Document Analysis",
+      "tripPlanning": "Trip Planning",
+      "prioritySupport": "Priority Support",
+      "advancedFeatures": "Advanced Features",
+      "unlimitedSupport": "Unlimited Support"
+    },
+    "packages": {
+      "starter": {
+        "name": "Starter",
+        "description": "Perfect for single visa applications"
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Great for frequent travelers"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "For agencies and businesses"
+      }
+    }
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "personalInformation": "Personal Information",
+    "accountSettings": "Account Settings",
+    "securitySettings": "Security Settings",
+    "preferences": "Preferences",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "country": "Country",
+    "language": "Language",
+    "timezone": "Timezone",
+    "notifications": "Notifications",
+    "emailNotifications": "Email Notifications",
+    "smsNotifications": "SMS Notifications",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "saveChanges": "Save Changes",
+    "profileUpdated": "Profile updated successfully!"
+  },
+  "documentChecker": {
+    "title": "AI Document Checker",
+    "subtitle": "Verify your documents with AI-powered analysis",
+    "uploadDocument": "Upload Document",
+    "dragDropFiles": "Drag and drop files here, or click to select",
+    "supportedFormats": "Supported formats: PDF, JPG, PNG",
+    "analyzing": "Analyzing document...",
+    "analysisComplete": "Analysis Complete",
+    "documentValid": "Document is valid",
+    "documentInvalid": "Document has issues",
+    "recommendations": "Recommendations",
+    "uploadAnother": "Upload Another Document"
+  },
+  "tripPlanner": {
+    "title": "AI Trip Planner",
+    "subtitle": "Plan your perfect trip to Thailand with AI assistance",
+    "destination": "Destination",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "budget": "Budget",
+    "interests": "Interests",
+    "generatePlan": "Generate Trip Plan",
+    "planning": "Planning your trip...",
+    "planGenerated": "Trip plan generated successfully!",
+    "itinerary": "Itinerary",
+    "recommendations": "Recommendations",
+    "exportPlan": "Export Plan"
+  },
+  "payment": {
+    "title": "Payment",
+    "paymentMethod": "Payment Method",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "cvv": "CVV",
+    "billingAddress": "Billing Address",
+    "payNow": "Pay Now",
+    "processing": "Processing payment...",
+    "paymentSuccess": "Payment successful!",
+    "paymentFailed": "Payment failed. Please try again."
+  },
+  "arGuide": {
+    "title": "AR Travel Guide",
+    "subtitle": "Explore Thailand with Augmented Reality",
+    "startAR": "Start AR Experience",
+    "pointCamera": "Point your camera at landmarks",
+    "discoverMore": "Discover more about Thailand's culture and history"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No"
+  }
+}
