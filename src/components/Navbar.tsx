@@ -38,8 +38,8 @@ const Navbar: React.FC = () => {
     { path: '/apply', label: t('nav.apply'), protected: false },
     { path: '/ai-trip-planner', label: t('nav.aiTripPlanner'), protected: false },
     { path: '/ai-document-checker', label: t('nav.aiDocumentChecker'), protected: false },
+    { path: '/pricing', label: 'Pricing', protected: false },
     { path: '/ar-guide', label: t('nav.arGuide'), protected: false },
-    { path: '/marketplace', label: t('nav.marketplace'), protected: false },
     { path: '/support', label: t('nav.support'), protected: false }
   ];
 
@@ -158,6 +158,13 @@ const Navbar: React.FC = () => {
                     >
                       {t('nav.profile')}
                     </Link>
+                    <Link
+                      to="/pricing"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Buy Credits
+                    </Link>
                     <button
                       onClick={handleLogout}
                       className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
@@ -257,6 +264,13 @@ const Navbar: React.FC = () => {
                   className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
                 >
                   {t('nav.profile')}
+                </Link>
+                <Link
+                  to="/pricing"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  Buy Credits
                 </Link>
                 <button
                   onClick={handleLogout}

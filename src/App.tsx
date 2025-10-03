@@ -12,9 +12,8 @@ import Index from '@/pages/Index';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Apply from '@/pages/Apply';
-import Credits from '@/pages/Credits';
+import Pricing from '@/pages/Pricing';
 import Profile from '@/pages/Profile';
-import PurchaseCredits from '@/pages/PurchaseCredits';
 import PayPalPayment from '@/pages/PayPalPayment';
 import ARGuide from '@/pages/ARGuide';
 import NotFound from '@/pages/NotFound';
@@ -41,7 +40,6 @@ function App() {
                   </>
                 } />
                 
-                {/* FIXED ROUTES */}
                 <Route path="/apply" element={
                   <>
                     <Navbar />
@@ -60,18 +58,18 @@ function App() {
                   </>
                 } />
                 
-                <Route path="/ar-guide" element={
+                <Route path="/pricing" element={
                   <>
                     <Navbar />
-                    <ARGuide />
+                    <Pricing />
                   </>
                 } />
-                
+
                 <Route path="/credits" element={
                   <>
                     <Navbar />
                     <ProtectedRoute>
-                      <Credits />
+                      <Pricing />
                     </ProtectedRoute>
                   </>
                 } />
@@ -80,8 +78,15 @@ function App() {
                   <>
                     <Navbar />
                     <ProtectedRoute>
-                      <PurchaseCredits />
+                      <Pricing />
                     </ProtectedRoute>
+                  </>
+                } />
+                
+                <Route path="/ar-guide" element={
+                  <>
+                    <Navbar />
+                    <ARGuide />
                   </>
                 } />
                 
