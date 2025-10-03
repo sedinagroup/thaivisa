@@ -1,264 +1,305 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger,
-  DropdownMenuSeparator 
-} from '@/components/ui/dropdown-menu';
-import { Badge } from '@/components/ui/badge';
-import { 
-  User, 
-  LogOut, 
-  Settings, 
-  CreditCard, 
-  Menu, 
-  X, 
-  Coins,
-  RefreshCw
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Globe, User, LogOut, CreditCard } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import { useCredits } from '@/hooks/useCredits';
-import { toast } from 'sonner';
 
 const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user, logout } = useAuth();
-  const { credits, loading, refreshBalance } = useCredits();
-  const navigate = useNavigate();
+  const { language, changeLanguage } = useLanguage();
+  const { t } = useTranslation();
   const location = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
+  const navigate = useNavigate();
+  const { credits } = useCredits();
 
-  // Manual refresh credits
-  const handleRefreshCredits = async () => {
-    setRefreshing(true);
-    try {
-      await refreshBalance();
-      toast.success('Credits refreshed!');
-    } catch (error) {
-      toast.error('Failed to refresh credits');
-    } finally {
-      setRefreshing(false);
-    }
-  };
-
-  // Listen for credit balance updates
-  useEffect(() => {
-    const handleBalanceUpdate = (event: CustomEvent) => {
-      console.log('📊 Navbar received balance update:', event.detail);
-    };
-
-    window.addEventListener('creditBalanceUpdate', handleBalanceUpdate as EventListener);
-    
-    return () => {
-      window.removeEventListener('creditBalanceUpdate', handleBalanceUpdate as EventListener);
-    };
-  }, []);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      toast.success('Logged out successfully');
-      navigate('/');
-    } catch (error) {
-      toast.error('Error during logout');
-    }
-  };
-
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/apply', label: 'Apply for Visa' },
-    { path: '/ai/trip-planner', label: 'AI Trip Planner' },
-    { path: '/ai/document-checker', label: 'AI Document Checker' },
-    { path: '/purchase-credits', label: 'Pricing' },
-    { path: '/support', label: 'Support' },
-    { path: '/about', label: 'About' }
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'pt', name: 'Português', flag: '🇧🇷' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' },
+    { code: 'ko', name: '한국어', flag: '🇰🇷' },
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+    { code: 'th', name: 'ไทย', flag: '🇹🇭' },
+    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' }
   ];
 
-  const isActivePath = (path: string) => {
-    if (path === '/') {
-      return location.pathname === '/';
+  const menuItems = [
+    { path: '/', label: 'Home', protected: false },
+    { path: '/apply', label: 'Apply for Visa', protected: false },
+    { path: '/ai-trip-planner', label: 'AI Trip Planner', protected: false },
+    { path: '/ai-document-checker', label: 'AI Document Checker', protected: false },
+    { path: '/pricing', label: 'Pricing', protected: false },
+    { path: '/support', label: 'Support', protected: false },
+    { path: '/about', label: 'About Us', protected: false }
+  ];
+
+  const handleLogout = () => {
+    logout();
+    setIsUserMenuOpen(false);
+    navigate('/');
+  };
+
+  const handleMenuClick = (path: string, isProtected: boolean) => {
+    // If user is not logged in and tries to access certain functionality, redirect to login
+    if (!user && (path === '/apply' || path === '/ai-trip-planner' || path === '/ai-document-checker')) {
+      navigate('/login');
+      return;
     }
-    return location.pathname.startsWith(path);
+    
+    navigate(path);
+    setIsOpen(false);
   };
 
-  const getCreditColor = () => {
-    if (loading) return 'bg-gray-500';
-    if (credits <= 10) return 'bg-red-500 animate-pulse';
-    if (credits <= 30) return 'bg-yellow-500';
-    return 'bg-green-500';
-  };
-
-  const getCreditText = () => {
-    if (loading) return 'Loading...';
-    return `${credits}`;
-  };
+  const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">TV</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
-              ThaiVisa.ai
-            </span>
-          </Link>
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="flex-shrink-0 flex items-center">
+              <span className="text-2xl font-bold text-blue-600">ThaiVisa.ai</span>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-4">
+            {menuItems.map((item) => (
+              <button
                 key={item.path}
-                to={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActivePath(item.path)
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                    : 'text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                onClick={() => handleMenuClick(item.path, item.protected)}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                  location.pathname === item.path
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                 }`}
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
           </div>
 
-          {/* User Section */}
-          <div className="flex items-center space-x-4">
-            {/* Credit Display */}
+          {/* Right side items */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Credits display for logged users */}
             {user && (
-              <div className="flex items-center space-x-2">
-                <Badge 
-                  variant="secondary" 
-                  className={`${getCreditColor()} text-white font-semibold px-3 py-1 cursor-pointer hover:opacity-80 transition-opacity`}
-                  onClick={handleRefreshCredits}
-                  title="Click to refresh credits"
-                >
-                  <Coins className="w-3 h-3 mr-1" />
-                  {getCreditText()}
-                  {refreshing && <RefreshCw className="w-3 h-3 ml-1 animate-spin" />}
-                </Badge>
-                
-                {/* Low credits warning */}
-                {!loading && credits <= 20 && (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="text-xs border-red-300 text-red-600 hover:bg-red-50"
-                    onClick={() => navigate('/purchase-credits')}
-                  >
-                    Buy Credits
-                  </Button>
-                )}
+              <div className="flex items-center space-x-2 px-3 py-1 bg-blue-50 rounded-full">
+                <CreditCard className="w-4 h-4 text-blue-600" />
+                <span className="text-sm font-medium text-blue-600">{credits} Credits</span>
               </div>
             )}
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            {/* Language Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
               >
-                {mobileMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </Button>
+                <Globe className="w-4 h-4" />
+                <span>{currentLanguage.flag}</span>
+                <span className="hidden lg:inline">{currentLanguage.name}</span>
+              </button>
+
+              {isLanguageOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        changeLanguage(lang.code);
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 ${
+                        language === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* User Menu */}
             {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
-                    <User className="h-4 w-4" />
-                    <span className="hidden sm:inline-block">{user.email}</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem onClick={() => navigate('/profile')}>
-                    <Settings className="mr-2 h-4 w-4" />
-                    Profile Settings
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate('/purchase-credits')}>
-                    <CreditCard className="mr-2 h-4 w-4" />
-                    Purchase Credits
-                    <Badge variant="secondary" className="ml-auto">
-                      {credits}
-                    </Badge>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="relative">
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                >
+                  <User className="w-4 h-4" />
+                  <span className="hidden lg:inline">{user.name || user.email}</span>
+                </button>
+
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border">
+                    <Link
+                      to="/profile"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile
+                    </Link>
+                    <Link
+                      to="/credits"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Credits
+                    </Link>
+                    <Link
+                      to="/pricing"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Buy Credits
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             ) : (
-              <div className="hidden md:flex items-center space-x-2">
-                <Button variant="ghost" onClick={() => navigate('/login')}>
+              <div className="flex items-center space-x-4">
+                <Link
+                  to="/login"
+                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
                   Login
-                </Button>
-                <Button onClick={() => navigate('/register')}>
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+                >
                   Register
-                </Button>
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+            {menuItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => handleMenuClick(item.path, item.protected)}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
+                  location.pathname === item.path
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+
+            {/* Mobile Language Selector */}
+            <div className="px-3 py-2">
+              <div className="text-sm font-medium text-gray-700 mb-2">Language</div>
+              <select
+                value={language}
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.flag} {lang.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Mobile User Menu */}
+            {user ? (
+              <div className="px-3 py-2 border-t border-gray-200">
+                <div className="text-sm font-medium text-gray-700 mb-2">
+                  {user.name || user.email}
+                </div>
+                {credits > 0 && (
+                  <div className="flex items-center space-x-2 mb-2">
+                    <CreditCard className="w-4 h-4 text-blue-600" />
+                    <span className="text-sm text-blue-600">{credits} Credits</span>
+                  </div>
+                )}
+                <Link
+                  to="/profile"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  Profile
+                </Link>
+                <Link
+                  to="/credits"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  Credits
+                </Link>
+                <Link
+                  to="/pricing"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  Buy Credits
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="px-3 py-2 border-t border-gray-200 space-y-2">
+                <Link
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Register
+                </Link>
               </div>
             )}
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
-            <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActivePath(item.path)
-                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                      : 'text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              
-              {!user && (
-                <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <Button 
-                    variant="ghost" 
-                    onClick={() => {
-                      navigate('/login');
-                      setMobileMenuOpen(false);
-                    }}
-                    className="justify-start"
-                  >
-                    Login
-                  </Button>
-                  <Button 
-                    onClick={() => {
-                      navigate('/register');
-                      setMobileMenuOpen(false);
-                    }}
-                    className="justify-start"
-                  >
-                    Register
-                  </Button>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+      )}
     </nav>
   );
 };
