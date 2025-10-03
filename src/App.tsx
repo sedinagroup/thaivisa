@@ -12,6 +12,7 @@ import Register from '@/pages/Register';
 import Apply from '@/pages/Apply';
 import Credits from '@/pages/Credits';
 import Profile from '@/pages/Profile';
+import PurchaseCredits from '@/pages/PurchaseCredits';
 import AIDocumentChecker from '@/pages/ai/DocumentChecker';
 import AITripPlanner from '@/pages/ai/TripPlanner';
 import PayPalPayment from '@/pages/PayPalPayment';
@@ -80,6 +81,15 @@ function App() {
                     </ProtectedRoute>
                   </>
                 } />
+
+                <Route path="/purchase-credits" element={
+                  <>
+                    <Navbar />
+                    <ProtectedRoute>
+                      <PurchaseCredits />
+                    </ProtectedRoute>
+                  </>
+                } />
                 
                 <Route path="/profile" element={
                   <>
@@ -90,7 +100,7 @@ function App() {
                   </>
                 } />
                 
-                <Route path="/ai-document-checker" element={
+                <Route path="/document-checker" element={
                   <>
                     <Navbar />
                     <ProtectedRoute>
@@ -99,7 +109,7 @@ function App() {
                   </>
                 } />
                 
-                <Route path="/ai-trip-planner" element={
+                <Route path="/trip-planner" element={
                   <>
                     <Navbar />
                     <ProtectedRoute>
