@@ -39,8 +39,8 @@ const Navbar: React.FC = () => {
     { path: '/ai-trip-planner', label: t('nav.aiTripPlanner'), protected: false },
     { path: '/ai-document-checker', label: t('nav.aiDocumentChecker'), protected: false },
     { path: '/pricing', label: 'Pricing', protected: false },
-    { path: '/ar-guide', label: t('nav.arGuide'), protected: false },
-    { path: '/support', label: t('nav.support'), protected: false }
+    { path: '/support', label: 'Support', protected: false },
+    { path: '/about', label: 'About Us', protected: false }
   ];
 
   const handleLogout = () => {
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Menu - Reduced font size for better fit */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
             {menuItems.map((item) => (
               <button
                 key={item.path}

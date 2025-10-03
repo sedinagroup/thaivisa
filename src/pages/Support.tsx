@@ -1,293 +1,380 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { 
   MessageCircle, 
-  Send, 
-  Bot, 
-  User, 
-  HelpCircle,
-  Mail,
-  Phone,
-  Clock,
-  Loader2
+  Mail, 
+  Phone, 
+  Clock, 
+  HelpCircle, 
+  FileText, 
+  Users, 
+  Zap,
+  CheckCircle,
+  AlertCircle,
+  Send,
+  Globe,
+  Shield,
+  HeadphonesIcon
 } from 'lucide-react';
-
-interface ChatMessage {
-  id: string;
-  content: string;
-  sender: 'user' | 'bot';
-  timestamp: Date;
-}
+import { toast } from 'sonner';
 
 const Support: React.FC = () => {
-  const { t } = useTranslation();
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: '1',
-      content: t('support.chatbot.welcome'),
-      sender: 'bot',
-      timestamp: new Date(),
-    }
-  ]);
-  const [inputMessage, setInputMessage] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    category: '',
+    message: '',
+    priority: 'medium'
+  });
 
-  const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const userMessage: ChatMessage = {
-      id: Date.now().toString(),
-      content: inputMessage,
-      sender: 'user',
-      timestamp: new Date(),
-    };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    setMessages(prev => [...prev, userMessage]);
-    setInputMessage('');
-    setIsTyping(true);
-
-    // Simulate AI response
+    // Simulate form submission
     setTimeout(() => {
-      const botResponse: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        content: getBotResponse(inputMessage),
-        sender: 'bot',
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, botResponse]);
-      setIsTyping(false);
+      toast.success('Support ticket submitted successfully! We\'ll get back to you within 24 hours.');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        category: '',
+        message: '',
+        priority: 'medium'
+      });
+      setIsSubmitting(false);
     }, 2000);
   };
 
-  const getBotResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase();
-    
-    if (input.includes('status') || input.includes('track')) {
-      return 'To track your application status, please visit the Status Tracking page in your dashboard. You can also provide your application ID for specific updates.';
-    }
-    
-    if (input.includes('document') || input.includes('upload')) {
-      return 'For document requirements, please ensure all documents are clear, in color, and show all four corners. Accepted formats are JPG, PNG, and PDF up to 10MB.';
-    }
-    
-    if (input.includes('processing time') || input.includes('how long')) {
-      return 'Processing times vary by visa type: Tourist visas typically take 3-5 business days, Business visas take 5-7 business days, and Work visas take 10-15 business days.';
-    }
-    
-    if (input.includes('fee') || input.includes('cost') || input.includes('price')) {
-      return 'Visa fees depend on the type: Tourist visa: 1,000 THB, Business visa: 2,000 THB, Work visa: 3,000 THB. Additional service fees may apply.';
-    }
-    
-    if (input.includes('eligibility') || input.includes('eligible')) {
-      return 'Use our AI-powered eligibility checker in the application form to determine if you qualify for a Thailand visa based on your nationality and travel purpose.';
-    }
-    
-    return 'Thank you for your question. For specific assistance, please contact our support team or check our FAQ section. Is there anything else I can help you with?';
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const faqs = [
+  const supportCategories = [
+    { value: 'visa-application', label: 'Visa Application Issues' },
+    { value: 'payment-billing', label: 'Payment & Billing' },
+    { value: 'technical-issues', label: 'Technical Issues' },
+    { value: 'account-management', label: 'Account Management' },
+    { value: 'document-verification', label: 'Document Verification' },
+    { value: 'ai-services', label: 'AI Services' },
+    { value: 'general-inquiry', label: 'General Inquiry' }
+  ];
+
+  const faqItems = [
     {
-      question: t('support.faq.processingTime'),
-      answer: 'Processing times vary by visa type and nationality. Tourist visas typically take 3-5 business days, while business and work visas may take longer.',
+      question: 'How do I apply for a Thailand visa?',
+      answer: 'Use our AI-powered visa application system. Simply go to the "Apply" page, select your visa type, and follow the step-by-step process. Our AI will guide you through document requirements and help ensure your application is complete.'
     },
     {
-      question: t('support.faq.requiredDocuments'),
-      answer: 'Required documents include a valid passport, passport photos, proof of accommodation, return flight tickets, and financial statements. Specific requirements vary by visa type.',
+      question: 'How does the credit system work?',
+      answer: 'Credits are consumed when you use our AI services. Different actions cost different amounts: visa applications (80+ credits), trip planning (50-150 credits), document analysis (15-35 credits). You can purchase credit packages starting from $9.99.'
     },
     {
-      question: t('support.faq.applicationFee'),
-      answer: 'Visa fees depend on the type and duration. Tourist visas start from 1,000 THB, business visas from 2,000 THB. Check our fee calculator for exact amounts.',
+      question: 'What documents do I need for my visa application?',
+      answer: 'Required documents vary by visa type and nationality. Our AI system will provide a personalized checklist based on your specific situation. Common documents include passport, photos, bank statements, and travel itinerary.'
     },
     {
-      question: t('support.faq.trackApplication'),
-      answer: 'You can track your application status in real-time through your dashboard. You\'ll also receive email and SMS notifications for important updates.',
+      question: 'How accurate is your AI document verification?',
+      answer: 'Our AI has a 98% accuracy rate in document verification. It uses advanced OCR and machine learning to analyze documents for completeness, authenticity markers, and compliance with Thai immigration requirements.'
     },
+    {
+      question: 'Can I get a refund for unused credits?',
+      answer: 'Credits are non-refundable once purchased, but they never expire. If you\'re unsatisfied with our service within 30 days of purchase, contact our support team for assistance.'
+    },
+    {
+      question: 'Is my personal information secure?',
+      answer: 'Yes, we use enterprise-grade encryption and security measures. All data is stored securely and we comply with international privacy regulations. We never share your personal information with third parties.'
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            {t('support.title')}
+        <div className="text-center mb-16">
+          <div className="flex justify-center mb-6">
+            <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full">
+              <HeadphonesIcon className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            How Can We <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Help You?</span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Get help with your visa application from our AI assistant or support team
+          
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            Get expert support for your Thailand visa application and AI services. 
+            Our team is here to help you succeed.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* AI Chatbot */}
-          <div className="lg:col-span-2">
-            <Card className="h-[600px] flex flex-col">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Bot className="h-5 w-5 mr-2" />
-                  {t('support.chatbot.title')}
-                </CardTitle>
-                <CardDescription>
-                  Ask questions about your visa application process
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-1 flex flex-col">
-                {/* Messages */}
-                <div className="flex-1 overflow-y-auto space-y-4 mb-4">
-                  {messages.map((message) => (
-                    <div
-                      key={message.id}
-                      className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                    >
-                      <div
-                        className={`max-w-[80%] rounded-lg p-3 ${
-                          message.sender === 'user'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
-                        }`}
-                      >
-                        <div className="flex items-start space-x-2">
-                          {message.sender === 'bot' && (
-                            <Bot className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                          )}
-                          {message.sender === 'user' && (
-                            <User className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                          )}
-                          <div>
-                            <p className="text-sm">{message.content}</p>
-                            <p className="text-xs opacity-70 mt-1">
-                              {message.timestamp.toLocaleTimeString()}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  
-                  {isTyping && (
-                    <div className="flex justify-start">
-                      <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
-                        <div className="flex items-center space-x-2">
-                          <Bot className="h-4 w-4" />
-                          <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                          </div>
-                          <span className="text-sm text-gray-600 dark:text-gray-400">
-                            {t('support.chatbot.typing')}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+        {/* Contact Methods */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <Card className="text-center hover:shadow-lg transition-shadow">
+            <CardContent className="p-8">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Live Chat</h3>
+              <p className="text-gray-600 mb-4">Get instant help from our AI chatbot or connect with a human agent</p>
+              <Badge className="bg-green-100 text-green-800">Available 24/7</Badge>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center hover:shadow-lg transition-shadow">
+            <CardContent className="p-8">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Email Support</h3>
+              <p className="text-gray-600 mb-4">Send us detailed questions and get comprehensive answers</p>
+              <Badge className="bg-blue-100 text-blue-800">Response within 24h</Badge>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center hover:shadow-lg transition-shadow">
+            <CardContent className="p-8">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Phone Support</h3>
+              <p className="text-gray-600 mb-4">Speak directly with our visa experts for urgent matters</p>
+              <Badge className="bg-orange-100 text-orange-800">Business Hours</Badge>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          {/* Support Form */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-2xl">
+                <Send className="w-6 h-6 mr-2 text-blue-600" />
+                Submit a Support Ticket
+              </CardTitle>
+              <CardDescription>
+                Describe your issue in detail and we'll get back to you as soon as possible.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </div>
                 </div>
 
-                {/* Input */}
-                <div className="flex space-x-2">
+                <div>
+                  <Label htmlFor="category">Category</Label>
+                  <Select value={formData.category} onValueChange={(value) => handleInputChange('category', value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {supportCategories.map((category) => (
+                        <SelectItem key={category.value} value={category.value}>
+                          {category.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label htmlFor="subject">Subject</Label>
                   <Input
-                    value={inputMessage}
-                    onChange={(e) => setInputMessage(e.target.value)}
-                    placeholder={t('support.chatbot.placeholder')}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    disabled={isTyping}
+                    id="subject"
+                    value={formData.subject}
+                    onChange={(e) => handleInputChange('subject', e.target.value)}
+                    placeholder="Brief description of your issue"
+                    required
                   />
-                  <Button onClick={handleSendMessage} disabled={isTyping || !inputMessage.trim()}>
-                    {isTyping ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Send className="h-4 w-4" />
-                    )}
-                  </Button>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
 
-          {/* Contact Information */}
-          <div className="space-y-6">
+                <div>
+                  <Label htmlFor="priority">Priority Level</Label>
+                  <Select value={formData.priority} onValueChange={(value) => handleInputChange('priority', value)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="low">Low - General question</SelectItem>
+                      <SelectItem value="medium">Medium - Standard issue</SelectItem>
+                      <SelectItem value="high">High - Urgent matter</SelectItem>
+                      <SelectItem value="critical">Critical - Service blocking</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => handleInputChange('message', e.target.value)}
+                    placeholder="Please describe your issue in detail. Include any error messages, steps you've taken, and what you expected to happen."
+                    rows={6}
+                    required
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Clock className="w-4 h-4 mr-2 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Submit Ticket
+                    </>
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* FAQ Section */}
+          <div className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>{t('support.contact.title')}</CardTitle>
+                <CardTitle className="flex items-center text-2xl">
+                  <HelpCircle className="w-6 h-6 mr-2 text-green-600" />
+                  Frequently Asked Questions
+                </CardTitle>
+                <CardDescription>
+                  Quick answers to common questions about our services.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {faqItems.map((item, index) => (
+                  <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                      {item.question}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {item.answer}
+                    </p>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Contact Information */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center text-xl">
+                  <Globe className="w-5 h-5 mr-2 text-blue-600" />
+                  Contact Information
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-blue-600" />
+                  <Mail className="w-5 h-5 text-gray-400" />
                   <div>
-                    <p className="font-medium">{t('support.contact.email')}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">support@thaivisa.ai</p>
+                    <p className="font-medium">Email Support</p>
+                    <p className="text-sm text-gray-600">support@thaivisa.ai</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-green-600" />
+                  <Phone className="w-5 h-5 text-gray-400" />
                   <div>
-                    <p className="font-medium">{t('support.contact.phone')}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">+66 2 123 4567</p>
+                    <p className="font-medium">Phone Support</p>
+                    <p className="text-sm text-gray-600">+66 2-123-4567</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-orange-600" />
+                  <Clock className="w-5 h-5 text-gray-400" />
                   <div>
-                    <p className="font-medium">{t('support.contact.hours')}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Mon-Fri: 9:00 AM - 6:00 PM (GMT+7)
-                    </p>
+                    <p className="font-medium">Business Hours</p>
+                    <p className="text-sm text-gray-600">Mon-Fri: 9:00 AM - 6:00 PM (GMT+7)</p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
 
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button variant="outline" className="w-full justify-start">
-                  <MessageCircle className="h-4 w-4 mr-2" />
-                  Live Chat Support
-                </Button>
-                <Button variant="outline" className="w-full justify-start">
-                  <Mail className="h-4 w-4 mr-2" />
-                  Email Support
-                </Button>
-                <Button variant="outline" className="w-full justify-start">
-                  <HelpCircle className="h-4 w-4 mr-2" />
-                  Help Center
-                </Button>
+                <div className="flex items-center space-x-3">
+                  <Shield className="w-5 h-5 text-gray-400" />
+                  <div>
+                    <p className="font-medium">Emergency Support</p>
+                    <p className="text-sm text-gray-600">24/7 for critical issues</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <Card className="mt-8">
+        {/* Service Status */}
+        <Card className="mt-12">
           <CardHeader>
-            <CardTitle>{t('support.faq.title')}</CardTitle>
+            <CardTitle className="flex items-center text-xl">
+              <Zap className="w-5 h-5 mr-2 text-green-600" />
+              Service Status
+            </CardTitle>
             <CardDescription>
-              Find answers to commonly asked questions about visa applications
+              Current status of our AI services and platform
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
-              {faqs.map((faq, index) => (
-                <div key={index}>
-                  <h3 className="font-medium text-gray-900 dark:text-white mb-2">
-                    {faq.question}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {faq.answer}
-                  </p>
-                  {index < faqs.length - 1 && <Separator className="mt-4" />}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                <div>
+                  <p className="font-medium">Visa Application System</p>
+                  <p className="text-sm text-green-600">Operational</p>
                 </div>
-              ))}
+              </div>
+              
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                <div>
+                  <p className="font-medium">AI Document Analysis</p>
+                  <p className="text-sm text-green-600">Operational</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                <div>
+                  <p className="font-medium">Trip Planning AI</p>
+                  <p className="text-sm text-green-600">Operational</p>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>

@@ -16,6 +16,8 @@ import Pricing from '@/pages/Pricing';
 import Profile from '@/pages/Profile';
 import PayPalPayment from '@/pages/PayPalPayment';
 import ARGuide from '@/pages/ARGuide';
+import Support from '@/pages/Support';
+import AboutUs from '@/pages/AboutUs';
 import NotFound from '@/pages/NotFound';
 import AIDocumentChecker from '@/pages/ai/DocumentChecker';
 import AITripPlanner from '@/pages/ai/TripPlanner';
@@ -80,6 +82,27 @@ function App() {
                     <ProtectedRoute>
                       <Pricing />
                     </ProtectedRoute>
+                  </>
+                } />
+
+                <Route path="/support" element={
+                  <>
+                    <Navbar />
+                    <Support />
+                  </>
+                } />
+
+                <Route path="/about" element={
+                  <>
+                    <Navbar />
+                    <AboutUs />
+                  </>
+                } />
+
+                <Route path="/about-us" element={
+                  <>
+                    <Navbar />
+                    <AboutUs />
                   </>
                 } />
                 
