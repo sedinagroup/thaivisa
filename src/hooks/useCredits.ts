@@ -1,210 +1,141 @@
 import { useState, useEffect, useCallback } from 'react';
-import { creditService, CreditTransaction } from '@/services/creditService';
 import { useAuth } from '@/contexts/AuthContext';
+import { creditService, ConsumeCreditsResult } from '@/services/creditService';
 import { toast } from 'sonner';
 
-interface UseCreditReturn {
+export interface UseCreditsReturn {
   credits: number;
   loading: boolean;
-  transactions: CreditTransaction[];
-  consumeCredits: (service: string, action: string, complexity?: string, metadata?: Record<string, any>) => Promise<boolean>;
-  purchaseCredits: (packageId: string, paymentMethod: 'stripe' | 'paypal') => Promise<boolean>;
+  error: string | null;
   refreshBalance: () => Promise<void>;
-  analytics: {
-    totalConsumed: number;
-    totalPurchased: number;
-    averageDaily: number;
-    topServices: Array<{ service: string; credits: number }>;
-    monthlyTrend: Array<{ month: string; consumed: number; purchased: number }>;
-  };
+  deductCredits: (amount: number, service: string, description: string) => Promise<boolean>;
+  hassufficientCredits: (amount: number) => boolean;
+  getBalance: () => Promise<number>;
 }
 
-export const useCredits = (): UseCreditReturn => {
+export const useCredits = (): UseCreditsReturn => {
   const { user } = useAuth();
-  const [credits, setCredits] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [transactions, setTransactions] = useState<CreditTransaction[]>([]);
-  const [analytics, setAnalytics] = useState({
-    totalConsumed: 0,
-    totalPurchased: 0,
-    averageDaily: 0,
-    topServices: [],
-    monthlyTrend: []
-  });
+  const [credits, setCredits] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Refresh credit balance - FIXED error handling
-  const refreshBalance = useCallback(async () => {
+  // Get current balance
+  const getBalance = useCallback(async (): Promise<number> => {
+    if (!user?.id) return 0;
+    
+    try {
+      const balance = await creditService.getCreditBalance(user.id);
+      return balance;
+    } catch (err) {
+      console.error('Error getting balance:', err);
+      return 0;
+    }
+  }, [user?.id]);
+
+  // Refresh balance from service
+  const refreshBalance = useCallback(async (): Promise<void> => {
     if (!user?.id) {
       setCredits(0);
       setLoading(false);
       return;
     }
-    
+
     try {
       setLoading(true);
-      // FIXED: Use correct method name
+      setError(null);
       const balance = await creditService.getCreditBalance(user.id);
       setCredits(balance);
-    } catch (error) {
-      console.error('Error refreshing credit balance:', error);
-      // FIXED: Don't show toast error on initial load, just log
-      // Set default credits for new users
-      setCredits(50);
+      console.log(`💰 Balance refreshed for user ${user.id}: ${balance} credits`);
+    } catch (err) {
+      console.error('Error refreshing balance:', err);
+      setError('Failed to load credit balance');
+      setCredits(50); // Default fallback
     } finally {
       setLoading(false);
     }
   }, [user?.id]);
 
-  // Load transaction history - FIXED error handling
-  const loadTransactions = useCallback(async () => {
-    if (!user?.id) {
-      setTransactions([]);
-      return;
-    }
-    
-    try {
-      const history = await creditService.getTransactionHistory(user.id);
-      setTransactions(history);
-    } catch (error) {
-      console.error('Error loading transactions:', error);
-      setTransactions([]);
-    }
-  }, [user?.id]);
-
-  // Load analytics - FIXED error handling
-  const loadAnalytics = useCallback(async () => {
-    if (!user?.id) {
-      setAnalytics({
-        totalConsumed: 0,
-        totalPurchased: 0,
-        averageDaily: 0,
-        topServices: [],
-        monthlyTrend: []
-      });
-      return;
-    }
-    
-    try {
-      const analyticsData = await creditService.getCreditAnalytics(user.id);
-      setAnalytics(analyticsData);
-    } catch (error) {
-      console.error('Error loading analytics:', error);
-      setAnalytics({
-        totalConsumed: 0,
-        totalPurchased: 0,
-        averageDaily: 0,
-        topServices: [],
-        monthlyTrend: []
-      });
-    }
-  }, [user?.id]);
-
-  // Consume credits - FIXED to use correct service method
-  const consumeCredits = useCallback(async (
-    service: string, 
-    action: string, 
-    complexity: string = 'standard',
-    metadata?: Record<string, any>
+  // Deduct credits for a service
+  const deductCredits = useCallback(async (
+    amount: number,
+    service: string,
+    description: string
   ): Promise<boolean> => {
     if (!user?.id) {
       toast.error('Please log in to use this service');
       return false;
     }
 
+    console.log(`💳 Attempting to deduct ${amount} credits for ${service}: ${description}`);
+
     try {
-      // FIXED: Use correct method from service
-      const result = await creditService.consumeCredits(
-        user.id, 
-        service, 
-        action, 
-        complexity, 
-        metadata
+      const result: ConsumeCreditsResult = await creditService.consumeCredits(
+        user.id,
+        service,
+        description,
+        'standard',
+        { originalAmount: amount }
       );
 
       if (result.success && result.remainingCredits !== undefined) {
-        setCredits(result.remainingCredits);
-        // Refresh transactions to show the new consumption
-        await loadTransactions();
+        const newBalance = result.remainingCredits;
+        setCredits(newBalance);
+        
+        console.log(`✅ Credits deducted successfully. New balance: ${newBalance}`);
+        toast.success(`${amount} credits deducted. Remaining: ${newBalance}`, {
+          duration: 3000
+        });
+
+        // Emit global event for other components
+        window.dispatchEvent(new CustomEvent('creditBalanceUpdate', {
+          detail: { newBalance, deductedAmount: amount }
+        }));
+
         return true;
       } else {
-        if (result.error) {
-          toast.error(result.error);
+        console.error('❌ Credit deduction failed:', result.error);
+        if (result.error?.includes('Insufficient')) {
+          toast.error(`Insufficient credits! You need ${amount} but only have ${credits}`, {
+            duration: 5000,
+            action: {
+              label: 'Buy Credits',
+              onClick: () => window.location.href = '/purchase-credits'
+            }
+          });
+        } else {
+          toast.error(result.error || 'Failed to deduct credits');
         }
         return false;
       }
-    } catch (error) {
-      console.error('Error consuming credits:', error);
-      toast.error('Failed to consume credits');
+    } catch (err) {
+      console.error('❌ Error deducting credits:', err);
+      toast.error('Error processing credit deduction');
       return false;
     }
-  }, [user?.id, loadTransactions]);
+  }, [user?.id, credits]);
 
-  // Purchase credits - FIXED to use correct service method
-  const purchaseCredits = useCallback(async (
-    packageId: string, 
-    paymentMethod: 'stripe' | 'paypal'
-  ): Promise<boolean> => {
-    if (!user?.id) {
-      toast.error('Please log in to purchase credits');
-      return false;
-    }
+  // Check if user has sufficient credits
+  const hassufficientCredits = useCallback((amount: number): boolean => {
+    return credits >= amount;
+  }, [credits]);
 
-    try {
-      // FIXED: Use correct method from service
-      const result = await creditService.purchaseCredits(user.id, packageId, paymentMethod);
-      
-      if (result.success && result.paymentUrl) {
-        // Redirect to payment URL
-        window.location.href = result.paymentUrl;
-        return true;
-      } else {
-        toast.error(result.error || 'Failed to initiate purchase');
-        return false;
-      }
-    } catch (error) {
-      console.error('Error purchasing credits:', error);
-      toast.error('Failed to purchase credits');
-      return false;
-    }
-  }, [user?.id]);
-
-  // Load initial data when user changes - FIXED initialization
+  // Load balance when user changes
   useEffect(() => {
     if (user?.id) {
       refreshBalance();
-      loadTransactions();
-      loadAnalytics();
     } else {
       setCredits(0);
-      setTransactions([]);
-      setAnalytics({
-        totalConsumed: 0,
-        totalPurchased: 0,
-        averageDaily: 0,
-        topServices: [],
-        monthlyTrend: []
-      });
       setLoading(false);
+      setError(null);
     }
-  }, [user?.id, refreshBalance, loadTransactions, loadAnalytics]);
-
-  // Set up periodic balance refresh - REDUCED frequency to avoid spam
-  useEffect(() => {
-    if (!user?.id) return;
-
-    const interval = setInterval(() => {
-      refreshBalance();
-    }, 300000); // FIXED: Refresh every 5 minutes instead of 1 minute
-
-    return () => clearInterval(interval);
   }, [user?.id, refreshBalance]);
 
-  // Listen for credit-related events
+  // Listen for credit update events from other components
   useEffect(() => {
     const handleCreditUpdate = (event: CustomEvent) => {
-      if (event.detail.userId === user?.id) {
+      if (event.detail?.userId === user?.id && event.detail?.newBalance !== undefined) {
+        console.log(`🔄 Credit update event received: ${event.detail.newBalance}`);
         setCredits(event.detail.newBalance);
-        loadTransactions();
       }
     };
 
@@ -213,15 +144,28 @@ export const useCredits = (): UseCreditReturn => {
     return () => {
       window.removeEventListener('creditUpdate', handleCreditUpdate as EventListener);
     };
-  }, [user?.id, loadTransactions]);
+  }, [user?.id]);
+
+  // Periodic balance refresh (every 2 minutes)
+  useEffect(() => {
+    if (!user?.id) return;
+
+    const interval = setInterval(() => {
+      refreshBalance();
+    }, 120000); // 2 minutes
+
+    return () => clearInterval(interval);
+  }, [user?.id, refreshBalance]);
 
   return {
     credits,
     loading,
-    transactions,
-    consumeCredits,
-    purchaseCredits,
+    error,
     refreshBalance,
-    analytics
+    deductCredits,
+    hassufficientCredits,
+    getBalance
   };
 };
+
+export default useCredits;
