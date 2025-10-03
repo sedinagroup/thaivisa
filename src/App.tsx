@@ -41,7 +41,17 @@ function App() {
                   </>
                 } />
                 
+                {/* FIXED ROUTES */}
                 <Route path="/apply" element={
+                  <>
+                    <Navbar />
+                    <ProtectedRoute>
+                      <Apply />
+                    </ProtectedRoute>
+                  </>
+                } />
+
+                <Route path="/apply-visa" element={
                   <>
                     <Navbar />
                     <ProtectedRoute>
@@ -92,8 +102,26 @@ function App() {
                     </ProtectedRoute>
                   </>
                 } />
+
+                <Route path="/ai-document-checker" element={
+                  <>
+                    <Navbar />
+                    <ProtectedRoute>
+                      <AIDocumentChecker />
+                    </ProtectedRoute>
+                  </>
+                } />
                 
                 <Route path="/trip-planner" element={
+                  <>
+                    <Navbar />
+                    <ProtectedRoute>
+                      <AITripPlanner />
+                    </ProtectedRoute>
+                  </>
+                } />
+
+                <Route path="/ai-trip-planner" element={
                   <>
                     <Navbar />
                     <ProtectedRoute>
