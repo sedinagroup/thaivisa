@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCredits } from '@/contexts/CreditsContext';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -66,18 +67,19 @@ interface UploadedFile {
 const AIDocumentChecker: React.FC = () => {
   const { user } = useAuth();
   const { credits, consumeCredits } = useCredits();
+  const { t } = useTranslation();
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const supportedFormats = [
-    'Passaporte',
-    'Carteira de Identidade',
-    'Carteira de Motorista',
-    'Certidão de Nascimento',
-    'Comprovante de Renda',
-    'Extrato Bancário',
-    'Certificado de Vacinação'
+    t('documentChecker.formats.passport'),
+    t('documentChecker.formats.id'),
+    t('documentChecker.formats.driverLicense'),
+    t('documentChecker.formats.birthCertificate'),
+    t('documentChecker.formats.incomeProof'),
+    t('documentChecker.formats.bankStatement'),
+    t('documentChecker.formats.vaccinationCertificate')
   ];
 
   const handleDrag = (e: React.DragEvent) => {
@@ -113,12 +115,12 @@ const AIDocumentChecker: React.FC = () => {
       const isValidSize = file.size <= 10 * 1024 * 1024; // 10MB
       
       if (!isValidType) {
-        toast.error(`${file.name}: Formato não suportado. Use imagens ou PDF.`);
+        toast.error(t('documentChecker.errors.unsupportedFormat', { fileName: file.name }));
         return false;
       }
       
       if (!isValidSize) {
-        toast.error(`${file.name}: Arquivo muito grande. Máximo 10MB.`);
+        toast.error(t('documentChecker.errors.fileTooLarge', { fileName: file.name }));
         return false;
       }
       
@@ -148,14 +150,14 @@ const AIDocumentChecker: React.FC = () => {
 
   const processFile = async (uploadedFile: UploadedFile) => {
     if (credits < 15) {
-      toast.error('Créditos insuficientes. Você precisa de 15 créditos para analisar um documento.');
+      toast.error(t('documentChecker.errors.insufficientCredits'));
       setFiles(prev => prev.filter(f => f.id !== uploadedFile.id));
       return;
     }
 
     try {
       // Consume credits first
-      await consumeCredits(15, 'AI Document Checker', `Análise de ${uploadedFile.file.name}`);
+      await consumeCredits(15, t('documentChecker.title'), t('documentChecker.actions.analyzing', { fileName: uploadedFile.file.name }));
 
       // Update status to analyzing
       setFiles(prev => prev.map(f => 
@@ -191,14 +193,14 @@ const AIDocumentChecker: React.FC = () => {
           : f
       ));
 
-      toast.success(`Análise de ${uploadedFile.file.name} concluída!`);
+      toast.success(t('documentChecker.success.analysisComplete', { fileName: uploadedFile.file.name }));
     } catch (error) {
       setFiles(prev => prev.map(f => 
         f.id === uploadedFile.id 
           ? { ...f, status: 'error', progress: 0 }
           : f
       ));
-      toast.error('Erro ao processar documento. Tente novamente.');
+      toast.error(t('documentChecker.errors.processingError'));
     }
   };
 
@@ -206,45 +208,46 @@ const AIDocumentChecker: React.FC = () => {
     const isPassport = fileName.toLowerCase().includes('passport') || fileName.toLowerCase().includes('passaporte');
     const isID = fileName.toLowerCase().includes('id') || fileName.toLowerCase().includes('identidade');
     
-    let documentType = 'Documento Geral';
+    let documentType = t('documentChecker.types.general');
     let extractedData: ExtractedData = {};
     const issues: Issue[] = [];
     let validity: 'valid' | 'invalid' | 'expired' | 'warning' = 'valid';
 
     if (isPassport) {
-      documentType = 'Passaporte';
+      documentType = t('documentChecker.types.passport');
       extractedData = {
-        documentNumber: 'BR123456789',
-        fullName: 'JOÃO SILVA SANTOS',
-        dateOfBirth: '15/03/1985',
-        nationality: 'BRASILEIRA',
-        issueDate: '10/01/2020',
-        expiryDate: '10/01/2030',
-        issuingAuthority: 'POLÍCIA FEDERAL',
-        placeOfBirth: 'SÃO PAULO, SP',
-        gender: 'M'
+        [t('documentChecker.fields.documentNumber')]: 'BR123456789',
+        [t('documentChecker.fields.fullName')]: 'JOÃO SILVA SANTOS',
+        [t('documentChecker.fields.dateOfBirth')]: '15/03/1985',
+        [t('documentChecker.fields.nationality')]: t('documentChecker.nationalities.brazilian'),
+        [t('documentChecker.fields.issueDate')]: '10/01/2020',
+        [t('documentChecker.fields.expiryDate')]: '10/01/2030',
+        [t('documentChecker.fields.issuingAuthority')]: t('documentChecker.authorities.federalPolice'),
+        [t('documentChecker.fields.placeOfBirth')]: 'SÃO PAULO, SP',
+        [t('documentChecker.fields.gender')]: 'M'
       };
     } else if (isID) {
-      documentType = 'Carteira de Identidade';
+      documentType = t('documentChecker.types.id');
       extractedData = {
-        documentNumber: '12.345.678-9',
-        fullName: 'JOÃO SILVA SANTOS',
-        dateOfBirth: '15/03/1985',
-        issueDate: '20/05/2018',
-        issuingAuthority: 'SSP/SP',
-        placeOfBirth: 'SÃO PAULO, SP'
+        [t('documentChecker.fields.documentNumber')]: '12.345.678-9',
+        [t('documentChecker.fields.fullName')]: 'JOÃO SILVA SANTOS',
+        [t('documentChecker.fields.dateOfBirth')]: '15/03/1985',
+        [t('documentChecker.fields.issueDate')]: '20/05/2018',
+        [t('documentChecker.fields.issuingAuthority')]: 'SSP/SP',
+        [t('documentChecker.fields.placeOfBirth')]: 'SÃO PAULO, SP'
       };
     }
 
     // Add some realistic issues
     const currentDate = new Date();
-    const expiryDate = extractedData.expiryDate ? new Date(extractedData.expiryDate.split('/').reverse().join('-')) : null;
+    const expiryDateStr = extractedData[t('documentChecker.fields.expiryDate')] as string;
+    const expiryDate = expiryDateStr ? new Date(expiryDateStr.split('/').reverse().join('-')) : null;
     
     if (expiryDate && expiryDate < currentDate) {
       validity = 'expired';
       issues.push({
         type: 'error',
-        message: 'Documento expirado',
+        message: t('documentChecker.issues.expired'),
         field: 'expiryDate',
         severity: 'high'
       });
@@ -252,7 +255,7 @@ const AIDocumentChecker: React.FC = () => {
       validity = 'warning';
       issues.push({
         type: 'warning',
-        message: 'Documento expira em menos de 6 meses',
+        message: t('documentChecker.issues.expiringSoon'),
         field: 'expiryDate',
         severity: 'medium'
       });
@@ -262,7 +265,7 @@ const AIDocumentChecker: React.FC = () => {
     if (Math.random() > 0.7) {
       issues.push({
         type: 'warning',
-        message: 'Qualidade da imagem pode ser melhorada',
+        message: t('documentChecker.issues.imageQuality'),
         severity: 'low'
       });
     }
@@ -270,7 +273,7 @@ const AIDocumentChecker: React.FC = () => {
     if (Math.random() > 0.8) {
       issues.push({
         type: 'info',
-        message: 'Documento em conformidade com padrões internacionais',
+        message: t('documentChecker.issues.compliant'),
         severity: 'low'
       });
     }
@@ -282,10 +285,10 @@ const AIDocumentChecker: React.FC = () => {
       extractedData,
       issues,
       recommendations: [
-        'Mantenha o documento original em local seguro',
-        'Faça cópias digitais para backup',
-        validity === 'warning' ? 'Considere renovar o documento antes da viagem' : 'Documento válido para viagem internacional',
-        'Verifique requisitos específicos do país de destino'
+        t('documentChecker.recommendations.keepOriginal'),
+        t('documentChecker.recommendations.makeBackups'),
+        validity === 'warning' ? t('documentChecker.recommendations.renewBeforeTravel') : t('documentChecker.recommendations.validForTravel'),
+        t('documentChecker.recommendations.checkRequirements')
       ],
       processingTime: Math.floor(Math.random() * 3000) + 2000 // 2-5 seconds
     };
@@ -299,49 +302,48 @@ const AIDocumentChecker: React.FC = () => {
     if (!file.analysis) return;
 
     const report = `
-RELATÓRIO DE ANÁLISE DE DOCUMENTO
-Gerado por Thailand Visa AI
+${t('documentChecker.report.title')}
+${t('documentChecker.report.generatedBy')}
 
-INFORMAÇÕES DO ARQUIVO:
-- Nome: ${file.file.name}
-- Tamanho: ${(file.file.size / 1024 / 1024).toFixed(2)} MB
-- Tipo: ${file.file.type}
-- Analisado em: ${new Date().toLocaleString('pt-BR')}
+${t('documentChecker.report.fileInfo')}:
+- ${t('documentChecker.report.fileName')}: ${file.file.name}
+- ${t('documentChecker.report.fileSize')}: ${(file.file.size / 1024 / 1024).toFixed(2)} MB
+- ${t('documentChecker.report.fileType')}: ${file.file.type}
+- ${t('documentChecker.report.analyzedAt')}: ${new Date().toLocaleString()}
 
-RESULTADO DA ANÁLISE:
-- Tipo de Documento: ${file.analysis.documentType}
-- Status: ${file.analysis.validity.toUpperCase()}
-- Confiança: ${file.analysis.confidence}%
-- Tempo de Processamento: ${file.analysis.processingTime}ms
+${t('documentChecker.report.analysisResult')}:
+- ${t('documentChecker.report.documentType')}: ${file.analysis.documentType}
+- ${t('documentChecker.report.status')}: ${file.analysis.validity.toUpperCase()}
+- ${t('documentChecker.report.confidence')}: ${file.analysis.confidence}%
+- ${t('documentChecker.report.processingTime')}: ${file.analysis.processingTime}ms
 
-DADOS EXTRAÍDOS:
+${t('documentChecker.report.extractedData')}:
 ${Object.entries(file.analysis.extractedData).map(([key, value]) => `- ${key}: ${value}`).join('\n')}
 
-PROBLEMAS IDENTIFICADOS:
+${t('documentChecker.report.identifiedIssues')}:
 ${file.analysis.issues.length > 0 
   ? file.analysis.issues.map(issue => `- [${issue.severity.toUpperCase()}] ${issue.message}`).join('\n')
-  : '- Nenhum problema identificado'
+  : `- ${t('documentChecker.report.noIssues')}`
 }
 
-RECOMENDAÇÕES:
+${t('documentChecker.report.recommendations')}:
 ${file.analysis.recommendations.map(rec => `- ${rec}`).join('\n')}
 
 ---
-Este relatório foi gerado automaticamente por IA e deve ser usado apenas como referência.
-Para questões oficiais, consulte as autoridades competentes.
+${t('documentChecker.report.disclaimer')}
     `;
 
     const blob = new Blob([report], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `relatorio-${file.file.name.split('.')[0]}.txt`;
+    a.download = `${t('documentChecker.report.reportPrefix')}-${file.file.name.split('.')[0]}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     
-    toast.success('Relatório baixado com sucesso!');
+    toast.success(t('documentChecker.success.reportDownloaded'));
   };
 
   const getStatusIcon = (status: string, validity?: string) => {
@@ -371,26 +373,26 @@ Para questões oficiais, consulte as autoridades competentes.
   const getStatusText = (status: string, validity?: string) => {
     switch (status) {
       case 'uploading':
-        return 'Enviando...';
+        return t('documentChecker.status.uploading');
       case 'analyzing':
-        return 'Analisando...';
+        return t('documentChecker.status.analyzing');
       case 'completed':
         switch (validity) {
           case 'valid':
-            return 'Válido';
+            return t('documentChecker.status.valid');
           case 'warning':
-            return 'Atenção';
+            return t('documentChecker.status.warning');
           case 'expired':
-            return 'Expirado';
+            return t('documentChecker.status.expired');
           case 'invalid':
-            return 'Inválido';
+            return t('documentChecker.status.invalid');
           default:
-            return 'Concluído';
+            return t('documentChecker.status.completed');
         }
       case 'error':
-        return 'Erro';
+        return t('documentChecker.status.error');
       default:
-        return 'Aguardando';
+        return t('documentChecker.status.waiting');
     }
   };
 
@@ -403,19 +405,19 @@ Para questões oficiais, consulte as autoridades competentes.
             <Scan className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            AI Document Checker
+            {t('documentChecker.title')}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Verifique e valide seus documentos com inteligência artificial avançada
+            {t('documentChecker.subtitle')}
           </p>
           <div className="flex items-center justify-center gap-4 mt-4">
             <Badge variant="secondary" className="flex items-center gap-2">
               <DollarSign className="w-4 h-4" />
-              {credits} créditos disponíveis
+              {t('documentChecker.creditsAvailable', { credits })}
             </Badge>
             <Badge variant="outline" className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              15 créditos por documento
+              {t('documentChecker.creditsPerDocument')}
             </Badge>
           </div>
         </div>
@@ -427,10 +429,10 @@ Para questões oficiais, consulte as autoridades competentes.
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Upload className="w-5 h-5" />
-                  Upload de Documentos
+                  {t('documentChecker.upload.title')}
                 </CardTitle>
                 <CardDescription>
-                  Envie imagens ou PDFs dos seus documentos para análise
+                  {t('documentChecker.upload.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -447,7 +449,7 @@ Para questões oficiais, consulte as autoridades competentes.
                 >
                   <Camera className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    Arraste e solte seus documentos aqui ou
+                    {t('documentChecker.upload.dragDrop')}
                   </p>
                   <Button
                     onClick={() => fileInputRef.current?.click()}
@@ -455,7 +457,7 @@ Para questões oficiais, consulte as autoridades competentes.
                     className="mb-4"
                   >
                     <Upload className="w-4 h-4 mr-2" />
-                    Selecionar Arquivos
+                    {t('documentChecker.upload.selectFiles')}
                   </Button>
                   <input
                     ref={fileInputRef}
@@ -466,14 +468,14 @@ Para questões oficiais, consulte as autoridades competentes.
                     className="hidden"
                   />
                   <div className="text-xs text-gray-500">
-                    Formatos: JPG, PNG, PDF • Máximo: 10MB por arquivo
+                    {t('documentChecker.upload.formats')}
                   </div>
                 </div>
 
                 <div className="mt-6">
                   <h4 className="font-medium mb-3 flex items-center gap-2">
                     <Shield className="w-4 h-4" />
-                    Documentos Suportados
+                    {t('documentChecker.supportedDocuments')}
                   </h4>
                   <div className="grid grid-cols-1 gap-2">
                     {supportedFormats.map((format, index) => (
@@ -533,7 +535,7 @@ Para questões oficiais, consulte as autoridades competentes.
                         <div className="space-y-3">
                           <Progress value={file.progress} className="w-full" />
                           <p className="text-sm text-gray-600 dark:text-gray-400">
-                            {file.status === 'uploading' ? 'Enviando arquivo...' : 'Analisando documento com IA...'}
+                            {file.status === 'uploading' ? t('documentChecker.progress.uploading') : t('documentChecker.progress.analyzing')}
                           </p>
                         </div>
                       ) : file.analysis ? (
@@ -542,15 +544,15 @@ Para questões oficiais, consulte as autoridades competentes.
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                               <div className="text-2xl font-bold text-blue-600">{file.analysis.confidence}%</div>
-                              <div className="text-sm text-gray-600">Confiança</div>
+                              <div className="text-sm text-gray-600">{t('documentChecker.analysis.confidence')}</div>
                             </div>
                             <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                               <div className="text-2xl font-bold text-green-600">{file.analysis.documentType}</div>
-                              <div className="text-sm text-gray-600">Tipo</div>
+                              <div className="text-sm text-gray-600">{t('documentChecker.analysis.type')}</div>
                             </div>
                             <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                               <div className="text-2xl font-bold text-purple-600">{file.analysis.processingTime}ms</div>
-                              <div className="text-sm text-gray-600">Processamento</div>
+                              <div className="text-sm text-gray-600">{t('documentChecker.analysis.processing')}</div>
                             </div>
                           </div>
 
@@ -559,7 +561,7 @@ Para questões oficiais, consulte as autoridades competentes.
                             <div>
                               <h4 className="font-medium mb-3 flex items-center gap-2">
                                 <Eye className="w-4 h-4" />
-                                Dados Extraídos
+                                {t('documentChecker.analysis.extractedData')}
                               </h4>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {Object.entries(file.analysis.extractedData).map(([key, value]) => (
@@ -577,7 +579,7 @@ Para questões oficiais, consulte as autoridades competentes.
                             <div>
                               <h4 className="font-medium mb-3 flex items-center gap-2">
                                 <AlertTriangle className="w-4 h-4" />
-                                Problemas Identificados
+                                {t('documentChecker.analysis.issues')}
                               </h4>
                               <div className="space-y-2">
                                 {file.analysis.issues.map((issue, index) => (
@@ -605,7 +607,7 @@ Para questões oficiais, consulte as autoridades competentes.
                           <div>
                             <h4 className="font-medium mb-3 flex items-center gap-2">
                               <CheckCircle className="w-4 h-4" />
-                              Recomendações
+                              {t('documentChecker.analysis.recommendations')}
                             </h4>
                             <ul className="space-y-2">
                               {file.analysis.recommendations.map((rec, index) => (
@@ -621,7 +623,7 @@ Para questões oficiais, consulte as autoridades competentes.
                         <Alert variant="destructive">
                           <XCircle className="h-4 w-4" />
                           <AlertDescription>
-                            Erro ao processar o documento. Tente novamente ou verifique se o arquivo está correto.
+                            {t('documentChecker.errors.processingFailed')}
                           </AlertDescription>
                         </Alert>
                       ) : null}
@@ -634,10 +636,10 @@ Para questões oficiais, consulte as autoridades competentes.
                 <CardContent className="text-center">
                   <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    Nenhum documento enviado
+                    {t('documentChecker.empty.title')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Faça upload dos seus documentos para começar a análise com IA.
+                    {t('documentChecker.empty.description')}
                   </p>
                 </CardContent>
               </Card>

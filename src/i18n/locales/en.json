@@ -58,259 +58,6 @@
         "description": "24/7 AI support for all visa and travel questions with instant and accurate responses."
       }
     },
-    "tripPlannerSection": {
-      "title": "AI Trip Planner - Complete Travel Management",
-      "description": "Get AI-personalized recommendations for flights, accommodations, transportation, and special services in Thailand. Save time and money with intelligent travel planning.",
-      "services": {
-        "flightRecommendations": {
-          "title": "Flight Recommendations",
-          "features": {
-            "smartFlightSearch": "Smart flight search",
-            "pricePredictions": "Price predictions",
-            "bestRouteAnalysis": "Best route analysis",
-            "seatRecommendations": "Seat recommendations"
-          }
-        },
-        "hotelAccommodation": {
-          "title": "Hotel & Accommodation",
-          "features": {
-            "personalizedMatching": "Personalized matching",
-            "locationOptimizer": "Location optimizer",
-            "priceComparison": "Price comparison",
-            "amenityMatching": "Amenity matching"
-          }
-        },
-        "transportationServices": {
-          "title": "Transportation Services",
-          "features": {
-            "airportTransfers": "Airport transfers",
-            "localTransport": "Local transport",
-            "carRentalOptimizer": "Car rental optimizer",
-            "routePlanning": "Route planning"
-          }
-        },
-        "specialServices": {
-          "title": "Special Services",
-          "features": {
-            "tourPackages": "Tour packages",
-            "restaurantRecommendations": "Restaurant recommendations",
-            "culturalExperiences": "Cultural experiences",
-            "emergencySupport": "Emergency support"
-          }
-        }
-      },
-      "interactiveFeatures": {
-        "title": "Interactive AI Features",
-        "smartItinerary": {
-          "title": "Smart Itinerary Builder",
-          "description": "AI creates personalized day-by-day travel plans based on your interests and preferences."
-        },
-        "budgetOptimizer": {
-          "title": "Budget Optimizer",
-          "description": "AI analyzes thousands of options to find the best value for your travel budget."
-        },
-        "weatherIntegration": {
-          "title": "Weather Integration",
-          "description": "AI adjusts recommendations based on weather forecasts and seasonal conditions."
-        },
-        "realTimeUpdates": {
-          "title": "Real-Time Updates",
-          "description": "AI provides live travel updates, flight changes, and alternative recommendations."
-        }
-      },
-      "interface": {
-        "title": "AI Trip Planner Interface",
-        "subtitle": "AI-powered personalized travel planning",
-        "travelDates": "Travel Dates",
-        "sampleDates": "Dec 15 - Dec 25, 2024",
-        "budgetRange": "Budget Range",
-        "sampleBudget": "$2,000 - $3,000 USD",
-        "aiRecommendations": "AI Recommendations",
-        "sampleRecommendations": "15 personalized suggestions ready",
-        "generatePlan": "Generate AI Travel Plan"
-      },
-      "creditServices": {
-        "basicPlan": {
-          "title": "Basic Travel Plan",
-          "credits": "credits",
-          "description": "Basic AI recommendations for flights, hotels, and transport",
-          "button": "Get Basic Plan"
-        },
-        "advancedPlan": {
-          "title": "Advanced Travel Plan",
-          "credits": "credits",
-          "description": "Detailed itinerary with alternatives and optimization",
-          "button": "Get Advanced Plan"
-        },
-        "premiumPlan": {
-          "title": "Premium Travel Plan",
-          "credits": "credits",
-          "description": "Complete travel management with real-time updates",
-          "button": "Get Premium Plan"
-        },
-        "vipConcierge": {
-          "title": "VIP Concierge",
-          "credits": "credits",
-          "description": "Personal AI travel assistant with 24/7 support",
-          "button": "Get VIP Service"
-        }
-      },
-      "successStories": {
-        "title": "AI Travel Planning Success Stories",
-        "userBookings": "Users book AI-recommended services",
-        "averageSavings": "Average savings with AI optimization",
-        "planningRating": "Stars for AI travel planning",
-        "timeSaved": "Hours saved with AI research"
-      },
-      "howItWorks": {
-        "title": "How AI Travel Planning Works",
-        "step1": {
-          "title": "Tell AI Your Preferences",
-          "description": "Share your travel style, budget, interests, and dates with our AI system."
-        },
-        "step2": {
-          "title": "AI Analyzes Options",
-          "description": "AI compares thousands of flights, hotels, and activities to find the best matches."
-        },
-        "step3": {
-          "title": "Receive Personalized Plan",
-          "description": "Get customized recommendations with explanations and alternative options."
-        },
-        "step4": {
-          "title": "Book with Confidence",
-          "description": "AI monitors and updates your trip with real-time information and support."
-        }
-      }
-    },
-    "visaHub": {
-      "title": "Comprehensive Visa Information Hub",
-      "description": "AI guidance for all Thailand visa types with personalized recommendations.",
-      "touristVisa": {
-        "title": "Tourist Visa (TR)",
-        "badge": "Most Popular",
-        "description": "Comprehensive guide and AI-assisted application for tourism and leisure visits.",
-        "features": {
-          "aiDocumentVerification": "AI document verification",
-          "instantEligibilityCheck": "Instant eligibility check",
-          "smartFormFilling": "Smart form filling"
-        }
-      },
-      "businessVisa": {
-        "title": "Business Visa (B)",
-        "badge": "Professional",
-        "description": "AI requirements and document verification for business activities.",
-        "features": {
-          "businessDocumentAnalysis": "Business document analysis",
-          "invitationLetterVerification": "Invitation letter verification",
-          "companyRegistrationCheck": "Company registration check"
-        }
-      },
-      "educationVisa": {
-        "title": "Education Visa (ED)",
-        "badge": "Students",
-        "description": "Student visa support with AI guidance for educational institutions.",
-        "features": {
-          "academicDocumentVerification": "Academic document verification",
-          "institutionValidation": "Institution validation",
-          "financialProofAnalysis": "Financial proof analysis"
-        }
-      },
-      "transitVisa": {
-        "title": "Transit Visa (TS)",
-        "badge": "Fast",
-        "description": "Quick processing with AI assistance for transit passengers.",
-        "features": {
-          "flightItineraryVerification": "Flight itinerary verification",
-          "transitTimeCalculation": "Transit time calculation",
-          "expressProcessing": "Express processing"
-        }
-      },
-      "specialVisas": {
-        "title": "Special Visas",
-        "badge": "Premium",
-        "description": "Retirement, Investment, and other special visa categories with AI recommendations.",
-        "features": {
-          "eligibilityAssessment": "Eligibility assessment",
-          "investmentVerification": "Investment verification",
-          "personalizedGuidance": "Personalized guidance"
-        }
-      },
-      "aiRecommendations": {
-        "title": "AI Recommendations",
-        "badge": "Smart",
-        "description": "Let AI analyze your profile and recommend the best visa type for your needs.",
-        "button": "Get AI Recommendation"
-      }
-    },
-    "aiPoweredFeatures": {
-      "title": "AI-Powered Features",
-      "description": "Experience the future of visa processing with our cutting-edge AI technology.",
-      "smartDocumentAnalysis": {
-        "title": "Smart Document Analysis",
-        "description": "AI scans and verifies all your documents with 95% accuracy in seconds."
-      },
-      "intelligentFormFilling": {
-        "title": "Intelligent Form Filling",
-        "description": "OCR + AI automatically fills all forms with passport-extracted data."
-      },
-      "riskAssessment": {
-        "title": "Risk Assessment",
-        "description": "AI predicts approval chances and suggests improvements before submission."
-      },
-      "realTimeUpdates": {
-        "title": "Real-Time Updates",
-        "description": "AI monitors your application status and provides instant updates."
-      }
-    },
-    "howItWorks": {
-      "title": "How AI Makes It Simple",
-      "description": "Four simple steps with advanced AI to get your Thailand visa approved.",
-      "step1": {
-        "title": "Upload Passport",
-        "description": "AI instantly extracts data from your passport photo using advanced OCR technology."
-      },
-      "step2": {
-        "title": "AI Analysis",
-        "description": "AI analyzes your profile and recommends the best visa type for your needs."
-      },
-      "step3": {
-        "title": "Document Verification",
-        "description": "AI verifies all documents and ensures 100% compliance with requirements."
-      },
-      "step4": {
-        "title": "Smart Submission",
-        "description": "AI submits your application and monitors progress with real-time updates."
-      }
-    },
-    "tripManagement": {
-      "title": "Complete Travel Management",
-      "description": "AI manages all bureaucratic aspects of your Thailand trip so you can focus on planning the fun parts.",
-      "bureaucraticPlanning": {
-        "title": "Bureaucratic Planning",
-        "description": "AI handles all paperwork and deadlines with smart scheduling and reminders."
-      },
-      "documentTimeline": {
-        "title": "Document Timeline",
-        "description": "Smart scheduling for document preparation with automated progress tracking."
-      },
-      "complianceMonitoring": {
-        "title": "Compliance Monitoring",
-        "description": "AI ensures all requirements are met and alerts you to any issues instantly."
-      },
-      "emergencySupport": {
-        "title": "Emergency Support",
-        "description": "Urgent AI assistance for time-sensitive visa and travel issues."
-      },
-      "aiTravelAssistant": {
-        "title": "AI Travel Assistant",
-        "subtitle": "Your personal AI assistant for all Thailand visa and travel needs",
-        "documentStatus": "Document Status",
-        "allDocumentsVerified": "All documents verified and compliant",
-        "applicationProgress": "Application Progress",
-        "nextStep": "Next Step",
-        "submitFinalDocuments": "Submit final documents by Dec 15"
-      }
-    },
     "cta": {
       "title": "Ready to Start Your Thailand Journey?",
       "description": "Join thousands of travelers who trust our AI-powered platform for their visa and travel needs.",
@@ -320,6 +67,502 @@
       "happyTravelers": "Happy Travelers",
       "successRate": "Success Rate",
       "aiSupport": "AI Support"
+    }
+  },
+  "apply": {
+    "title": "Visa Application",
+    "loadingPage": "Loading visa application page",
+    "steps": {
+      "selectVisa": "Select Visa Type",
+      "selectVisaType": "Select Your Visa Type",
+      "basicInfo": "Basic Information",
+      "passport": "Passport Upload",
+      "uploadPassport": "Upload Passport Photo",
+      "documents": "Supporting Documents",
+      "uploadDocuments": "Upload Supporting Documents",
+      "review": "Review & Submit"
+    },
+    "stepDescriptions": {
+      "step1": "Choose the type of visa you want to apply for",
+      "step2": "Provide your basic information and travel details",
+      "step3": "Upload a clear photo of your passport information page",
+      "step4": "Upload all required supporting documents",
+      "step5": "Review your application and submit for processing"
+    },
+    "visaTypes": {
+      "tourist": "Tourist Visa (TR)",
+      "touristDesc": "For tourism and leisure",
+      "business": "Business Visa (B)",
+      "businessDesc": "For business activities",
+      "education": "Education Visa (ED)",
+      "educationDesc": "For studying in Thailand",
+      "retirement": "Retirement Visa (O-A)",
+      "retirementDesc": "For retirees over 50",
+      "marriage": "Marriage Visa (O)",
+      "marriageDesc": "For married to Thai national",
+      "work": "Work Visa (Non-B)",
+      "workDesc": "For employment in Thailand"
+    },
+    "form": {
+      "nationality": "Nationality",
+      "selectNationality": "Select your nationality",
+      "purpose": "Purpose of Visit",
+      "selectPurpose": "Select purpose",
+      "duration": "Intended Duration of Stay",
+      "selectDuration": "Select duration",
+      "visaType": "Visa Type",
+      "passport": "Passport",
+      "documents": "Documents"
+    },
+    "countries": {
+      "us": "United States",
+      "uk": "United Kingdom",
+      "ca": "Canada",
+      "au": "Australia",
+      "de": "Germany",
+      "fr": "France",
+      "jp": "Japan",
+      "other": "Other"
+    },
+    "purposes": {
+      "tourism": "Tourism",
+      "business": "Business",
+      "education": "Education",
+      "medical": "Medical Treatment",
+      "family": "Family Visit",
+      "other": "Other"
+    },
+    "durations": {
+      "1-7": "1-7 days",
+      "8-15": "8-15 days",
+      "16-30": "16-30 days",
+      "31-60": "31-60 days",
+      "61-90": "61-90 days",
+      "90+": "More than 90 days"
+    },
+    "upload": {
+      "passportTitle": "Upload your passport photo page",
+      "passportDesc": "Our AI will extract information using OCR technology",
+      "documentsTitle": "Upload required documents",
+      "documentsDesc": "Bank statements, hotel bookings, flight tickets, etc."
+    },
+    "costs": {
+      "passportUpload": "Costs {{cost}} credits",
+      "documentsUpload": "Costs {{cost}} credits"
+    },
+    "status": {
+      "passportUploaded": "Passport uploaded and processed",
+      "uploaded": "Uploaded ✓",
+      "notUploaded": "Not uploaded",
+      "filesUploaded": "{{count}} files uploaded"
+    },
+    "review": {
+      "title": "Ready to Submit",
+      "description": "Review your application and submit for final AI analysis",
+      "finalCost": "Final Analysis Cost",
+      "finalCostDesc": "This includes comprehensive AI analysis, eligibility assessment, and detailed report generation",
+      "summary": "Application Summary"
+    },
+    "progress": {
+      "step": "Step {{current}} of {{total}}",
+      "complete": "{{percent}}% Complete"
+    },
+    "warnings": {
+      "lowCredits": "Low Credits Warning",
+      "lowCreditsDesc": "You may not have enough credits to complete this application. Consider purchasing more credits to avoid interruption."
+    },
+    "auth": {
+      "loginRequired": "Login Required",
+      "loginMessage": "Please log in to access the visa application."
+    },
+    "actions": {
+      "selectedVisa": "Selected {{type}} visa type",
+      "continueStep": "Continue to step {{step}}",
+      "uploadPassport": "Upload passport photo",
+      "ocrAnalysis": "OCR passport analysis",
+      "uploadDocuments": "Upload {{count}} documents",
+      "documentAnalysis": "AI document analysis",
+      "finalAnalysis": "Complete visa application analysis",
+      "generateReport": "Generate application report",
+      "submitApplication": "Submit Application"
+    },
+    "processing": {
+      "ocrPassport": "Processing passport with OCR..."
+    },
+    "success": {
+      "passportProcessed": "Passport processed successfully! OCR data extracted.",
+      "documentsAnalyzed": "Documents analyzed successfully!",
+      "applicationSubmitted": "Visa application submitted successfully!"
+    },
+    "errors": {
+      "needMoreCredits": "You need more credits to continue with your visa application!",
+      "selectVisaType": "Please select a visa type first",
+      "fillRequiredFields": "Please fill in all required fields",
+      "uploadPassport": "Please upload your passport photo",
+      "uploadDocuments": "Please upload at least one supporting document",
+      "passportUploadCost": "Passport upload and OCR processing requires {{totalCost}} credits. You only have {{credits}}.",
+      "needCreditsDocuments": "You need more credits to upload documents!"
+    }
+  },
+  "documentChecker": {
+    "title": "AI Document Checker",
+    "subtitle": "Verify and validate your documents with advanced artificial intelligence",
+    "creditsAvailable": "{{credits}} credits available",
+    "creditsPerDocument": "15 credits per document",
+    "supportedDocuments": "Supported Documents",
+    "upload": {
+      "title": "Document Upload",
+      "description": "Send images or PDFs of your documents for analysis",
+      "dragDrop": "Drag and drop your documents here or",
+      "selectFiles": "Select Files",
+      "formats": "Formats: JPG, PNG, PDF • Maximum: 10MB per file"
+    },
+    "formats": {
+      "passport": "Passport",
+      "id": "Identity Card",
+      "driverLicense": "Driver's License",
+      "birthCertificate": "Birth Certificate",
+      "incomeProof": "Income Proof",
+      "bankStatement": "Bank Statement",
+      "vaccinationCertificate": "Vaccination Certificate"
+    },
+    "types": {
+      "general": "General Document",
+      "passport": "Passport",
+      "id": "Identity Card"
+    },
+    "fields": {
+      "documentNumber": "Document Number",
+      "fullName": "Full Name",
+      "dateOfBirth": "Date of Birth",
+      "nationality": "Nationality",
+      "issueDate": "Issue Date",
+      "expiryDate": "Expiry Date",
+      "issuingAuthority": "Issuing Authority",
+      "placeOfBirth": "Place of Birth",
+      "gender": "Gender"
+    },
+    "nationalities": {
+      "brazilian": "Brazilian"
+    },
+    "authorities": {
+      "federalPolice": "Federal Police"
+    },
+    "issues": {
+      "expired": "Document expired",
+      "expiringSoon": "Document expires in less than 6 months",
+      "imageQuality": "Image quality could be improved",
+      "compliant": "Document complies with international standards"
+    },
+    "recommendations": {
+      "keepOriginal": "Keep the original document in a safe place",
+      "makeBackups": "Make digital copies for backup",
+      "renewBeforeTravel": "Consider renewing the document before travel",
+      "validForTravel": "Document valid for international travel",
+      "checkRequirements": "Check specific requirements of destination country"
+    },
+    "status": {
+      "uploading": "Uploading...",
+      "analyzing": "Analyzing...",
+      "valid": "Valid",
+      "warning": "Warning",
+      "expired": "Expired",
+      "invalid": "Invalid",
+      "completed": "Completed",
+      "error": "Error",
+      "waiting": "Waiting"
+    },
+    "progress": {
+      "uploading": "Uploading file...",
+      "analyzing": "Analyzing document with AI..."
+    },
+    "analysis": {
+      "confidence": "Confidence",
+      "type": "Type",
+      "processing": "Processing",
+      "extractedData": "Extracted Data",
+      "issues": "Identified Issues",
+      "recommendations": "Recommendations"
+    },
+    "actions": {
+      "analyzing": "Analysis of {{fileName}}"
+    },
+    "success": {
+      "analysisComplete": "Analysis of {{fileName}} completed!",
+      "reportDownloaded": "Report downloaded successfully!"
+    },
+    "errors": {
+      "unsupportedFormat": "{{fileName}}: Unsupported format. Use images or PDF.",
+      "fileTooLarge": "{{fileName}}: File too large. Maximum 10MB.",
+      "insufficientCredits": "Insufficient credits. You need 15 credits to analyze a document.",
+      "processingError": "Error processing document. Please try again.",
+      "processingFailed": "Error processing document. Try again or check if the file is correct."
+    },
+    "empty": {
+      "title": "No documents uploaded",
+      "description": "Upload your documents to start AI analysis."
+    },
+    "report": {
+      "title": "DOCUMENT ANALYSIS REPORT",
+      "generatedBy": "Generated by Thailand Visa AI",
+      "fileInfo": "FILE INFORMATION",
+      "fileName": "Name",
+      "fileSize": "Size",
+      "fileType": "Type",
+      "analyzedAt": "Analyzed at",
+      "analysisResult": "ANALYSIS RESULT",
+      "documentType": "Document Type",
+      "status": "Status",
+      "confidence": "Confidence",
+      "processingTime": "Processing Time",
+      "extractedData": "EXTRACTED DATA",
+      "identifiedIssues": "IDENTIFIED ISSUES",
+      "noIssues": "No issues identified",
+      "recommendations": "RECOMMENDATIONS",
+      "reportPrefix": "report",
+      "disclaimer": "This report was automatically generated by AI and should be used for reference only. For official matters, consult the competent authorities."
+    }
+  },
+  "support": {
+    "title": "Support Center",
+    "subtitle": "Get help with your Thai visa application and AI services",
+    "contact": {
+      "title": "Contact Information",
+      "email": {
+        "title": "Email Support",
+        "address": "support@thaivisa.ai"
+      },
+      "phone": {
+        "title": "Phone Support",
+        "number": "+66 2 123 4567"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "schedule": "Mon-Fri: 9AM-6PM (GMT+7)"
+      }
+    },
+    "response": {
+      "title": "Response Times",
+      "general": "General Inquiries",
+      "generalTime": "24 hours",
+      "technical": "Technical Issues",
+      "technicalTime": "12 hours",
+      "urgent": "Urgent Issues",
+      "urgentTime": "4 hours",
+      "phone": "Phone Support",
+      "phoneTime": "Immediate"
+    },
+    "form": {
+      "title": "Submit a Support Ticket",
+      "description": "Describe your issue and we'll get back to you as soon as possible",
+      "fields": {
+        "name": "Full Name",
+        "email": "Email Address",
+        "category": "Category",
+        "priority": "Priority",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "placeholders": {
+        "category": "Select category",
+        "subject": "Brief description of your issue",
+        "message": "Please provide detailed information about your issue..."
+      },
+      "categories": {
+        "visaApplication": "Visa Application",
+        "creditsBilling": "Credits & Billing",
+        "technicalIssue": "Technical Issue",
+        "documentAnalysis": "Document Analysis",
+        "tripPlanning": "Trip Planning",
+        "accountAccess": "Account Access",
+        "other": "Other"
+      },
+      "priorities": {
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High",
+        "urgent": "Urgent"
+      },
+      "submitting": "Submitting...",
+      "submit": "Submit Ticket",
+      "successMessage": "Support ticket submitted successfully! We'll get back to you within 24 hours."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find quick answers to common questions",
+      "items": {
+        "visaApplication": {
+          "question": "How do I apply for a Thai visa?",
+          "answer": "Use our AI-powered visa application system. Simply go to \"Apply for Visa\", select your visa type, and follow the step-by-step process. Our AI will guide you through document requirements and eligibility checks."
+        },
+        "creditSystem": {
+          "question": "How does the credit system work?",
+          "answer": "Credits are consumed for each AI service you use. Different actions have different credit costs. You can purchase credit packages from our pricing page. Credits never expire and can be used across all services."
+        },
+        "documents": {
+          "question": "What documents do I need for visa application?",
+          "answer": "Required documents vary by visa type, but typically include passport, photos, bank statements, flight bookings, and accommodation proof. Our AI will provide a personalized checklist based on your application."
+        },
+        "aiAccuracy": {
+          "question": "How accurate is the AI document analysis?",
+          "answer": "Our AI has a 98% accuracy rate in document verification and analysis. It can detect common issues, verify authenticity, and provide recommendations for improving your application success rate."
+        },
+        "refunds": {
+          "question": "Can I get a refund for unused credits?",
+          "answer": "Credits are non-refundable once purchased, but they never expire. You can use them for any of our AI services including visa applications, document checking, and trip planning."
+        },
+        "processing": {
+          "question": "How long does visa processing take?",
+          "answer": "Processing times vary by visa type and embassy. Our AI provides estimated processing times and can help you track your application status. Typical processing is 3-15 business days."
+        }
+      }
+    },
+    "quickLinks": {
+      "documentation": {
+        "title": "Documentation",
+        "description": "Comprehensive guides and tutorials"
+      },
+      "liveChat": {
+        "title": "Live Chat",
+        "description": "Chat with our support team"
+      },
+      "phoneSupport": {
+        "title": "Phone Support",
+        "description": "Speak directly with our experts"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "companyName": "THINKNEO.AI",
+      "parentCompany": "Part of SHK Hong Kong Group",
+      "description": "Revolutionizing travel and immigration through artificial intelligence. We're making visa applications faster, smarter, and more accessible for everyone.",
+      "badges": {
+        "shkGroup": "SHK Hong Kong Group",
+        "globalPresence": "Global Presence",
+        "industryLeader": "Industry Leader"
+      }
+    },
+    "stats": {
+      "countriesServed": "Countries Served",
+      "visasProcessed": "Visas Processed",
+      "successRate": "Success Rate",
+      "customerSatisfaction": "Customer Satisfaction"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize global travel by leveraging artificial intelligence to make visa applications and travel planning accessible, accurate, and stress-free for everyone. We believe that technology should remove barriers, not create them."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the world's most trusted AI-powered travel and immigration platform, enabling seamless global mobility for millions of travelers while maintaining the highest standards of accuracy, security, and customer satisfaction."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "The principles that guide everything we do",
+      "innovation": {
+        "title": "Innovation",
+        "description": "Leveraging cutting-edge AI technology to revolutionize visa processing and travel planning."
+      },
+      "security": {
+        "title": "Security",
+        "description": "Enterprise-grade security ensuring your personal data and documents are always protected."
+      },
+      "customerFirst": {
+        "title": "Customer First",
+        "description": "Every decision we make is driven by our commitment to providing exceptional customer experience."
+      },
+      "accuracy": {
+        "title": "Accuracy",
+        "description": "Precision-driven AI analysis with 98% accuracy rate for visa eligibility and document verification."
+      }
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "From startup to industry leader",
+      "foundation": {
+        "title": "Foundation",
+        "description": "THINKNEO.AI was founded as part of SHK Hong Kong Group with a vision to democratize travel through AI."
+      },
+      "aiDevelopment": {
+        "title": "AI Development",
+        "description": "Launched our first AI-powered document analysis system, processing over 10,000 documents in beta."
+      },
+      "globalExpansion": {
+        "title": "Global Expansion",
+        "description": "Expanded to serve 25+ countries with multi-language support and regional partnerships."
+      },
+      "thaiVisaLaunch": {
+        "title": "ThaiVisa.ai Launch",
+        "description": "Launched ThaiVisa.ai, becoming the leading AI-powered Thai visa application platform."
+      },
+      "marketLeadership": {
+        "title": "Market Leadership",
+        "description": "Achieved 100K+ processed applications with 98% success rate and industry recognition."
+      }
+    },
+    "team": {
+      "title": "Leadership Team",
+      "subtitle": "Meet the experts driving our innovation",
+      "sarahChen": {
+        "name": "Dr. Sarah Chen",
+        "role": "Chief Technology Officer",
+        "description": "Former Google AI researcher with 15+ years in machine learning and NLP."
+      },
+      "michaelRodriguez": {
+        "name": "Michael Rodriguez",
+        "role": "Head of Product",
+        "description": "Ex-Uber product leader specializing in user experience and growth."
+      },
+      "priyaSharma": {
+        "name": "Priya Sharma",
+        "role": "VP of Operations",
+        "description": "Immigration law expert with deep knowledge of visa processes worldwide."
+      },
+      "jamesLiu": {
+        "name": "James Liu",
+        "role": "Chief Security Officer",
+        "description": "Cybersecurity veteran ensuring enterprise-grade data protection."
+      }
+    },
+    "shkGroup": {
+      "title": "Part of SHK Hong Kong Group",
+      "subtitle": "Backed by decades of business excellence",
+      "description": "THINKNEO.AI is proudly part of SHK Hong Kong Group, a diversified conglomerate with over 30 years of experience in technology, finance, and international business. This partnership provides us with the resources, expertise, and global network needed to deliver world-class AI solutions.",
+      "highlights": {
+        "experience": {
+          "value": "30+ Years",
+          "label": "Business Excellence"
+        },
+        "network": {
+          "value": "Global Network",
+          "label": "Worldwide Presence"
+        },
+        "security": {
+          "value": "Enterprise Grade",
+          "label": "Security & Compliance"
+        }
+      }
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "subtitle": "Ready to transform your travel experience?",
+      "headquarters": {
+        "title": "Headquarters",
+        "location": "Hong Kong SAR",
+        "company": "SHK Hong Kong Group"
+      },
+      "email": {
+        "title": "Email",
+        "general": "info@thinkneo.ai",
+        "support": "support@thaivisa.ai"
+      },
+      "support": {
+        "title": "Support",
+        "availability": "24/7 Customer Support",
+        "languages": "Multiple Languages"
+      },
+      "button": "Contact Us Today"
     }
   },
   "tripPlanner": {
@@ -364,69 +607,6 @@
           "person": "person",
           "people": "people"
         }
-      },
-      "step2": {
-        "title": "Budget and Preferences",
-        "description": "Help us understand your budget and accommodation preferences.",
-        "budget": {
-          "title": "Travel Budget",
-          "description": "What's your total budget for this trip (per person)?",
-          "label": "Budget per person"
-        },
-        "accommodation": {
-          "title": "Accommodation Type",
-          "description": "What type of accommodation do you prefer?"
-        },
-        "transportation": {
-          "title": "Transportation",
-          "description": "How would you like to get around Thailand?"
-        }
-      },
-      "step3": {
-        "title": "Travel Interests",
-        "description": "Select your interests so we can personalize your itinerary.",
-        "preferences": {
-          "title": "Travel Preferences",
-          "description": "What kind of experiences are you looking for?"
-        },
-        "activities": {
-          "title": "Specific Activities",
-          "description": "What activities would you like to include in your trip?"
-        }
-      },
-      "step4": {
-        "title": "Final Details and Plan Generation",
-        "description": "Add any special requests and choose your AI travel planning service level.",
-        "specialRequests": {
-          "title": "Special Requests",
-          "description": "Any special requirements, dietary restrictions, or specific requests?",
-          "placeholder": "e.g., vegetarian meals, accessibility needs, special occasions, specific hotels..."
-        },
-        "planTypes": {
-          "title": "Choose Your AI Travel Plan",
-          "description": "Select the level of detail and customization you want for your travel plan.",
-          "credits": "credits",
-          "basic": {
-            "title": "Basic Travel Plan",
-            "description": "Basic AI recommendations for flights, hotels, and transport",
-            "button": "Get Basic Plan"
-          },
-          "advanced": {
-            "title": "Advanced Travel Plan",
-            "description": "Detailed itinerary with alternatives and optimization",
-            "button": "Get Advanced Plan"
-          },
-          "premium": {
-            "title": "Premium Travel Plan",
-            "description": "Complete travel management with real-time updates",
-            "button": "Get Premium Plan"
-          },
-          "vip": {
-            "title": "VIP Concierge",
-            "description": "Personal AI travel assistant with 24/7 support",
-            "button": "Get VIP Service"
-          }
-        }
       }
     },
     "accommodation": {
@@ -463,112 +643,6 @@
       "spa": "Spa & Wellness",
       "diving": "Diving & Snorkeling"
     },
-    "generating": {
-      "title": "AI is Creating Your Perfect Trip",
-      "description": "Our advanced AI is analyzing thousands of options to create your personalized Thailand travel plan..."
-    },
-    "result": {
-      "title": "Your Personalized Thailand Adventure",
-      "subtitle": "Here's your AI-crafted travel masterpiece",
-      "generatedBy": "AI-Generated Travel Plan",
-      "downloadPDF": "Download PDF",
-      "share": "Share Plan",
-      "editPlan": "Edit Plan",
-      "summary": {
-        "title": "Trip Summary",
-        "destination": "Destination",
-        "duration": "Duration",
-        "days": "days",
-        "travelers": "Travelers",
-        "estimatedCost": "Estimated Cost",
-        "preferences": "Your Preferences"
-      },
-      "itinerary": {
-        "title": "Daily Itinerary",
-        "description": "Your personalized day-by-day adventure guide",
-        "day": "Day",
-        "day1": {
-          "title": "Arrival & Bangkok Discovery",
-          "description": "Welcome to Thailand! Start your journey with iconic landmarks",
-          "activity1": {
-            "title": "Airport Transfer & Hotel Check-in",
-            "description": "Comfortable arrival with premium airport pickup service"
-          },
-          "activity2": {
-            "title": "Grand Palace & Wat Phra Kaew",
-            "description": "Explore Thailand's most sacred temple and royal palace complex"
-          },
-          "activity3": {
-            "title": "Chao Phraya River Dinner Cruise",
-            "description": "Romantic evening cruise with traditional Thai cuisine"
-          }
-        },
-        "day2": {
-          "title": "Cultural Immersion Experience",
-          "description": "Deep dive into authentic Thai culture and traditions",
-          "activity1": {
-            "title": "Wat Pho Temple & Thai Massage",
-            "description": "Visit the birthplace of traditional Thai massage"
-          },
-          "activity2": {
-            "title": "Chatuchak Weekend Market",
-            "description": "Shop for unique souvenirs and taste local street food"
-          },
-          "activity3": {
-            "title": "Thai Cooking Class Experience",
-            "description": "Learn to cook authentic Thai dishes with expert chefs"
-          }
-        },
-        "day3": {
-          "title": "Beach & Wellness Day",
-          "description": "Relax and rejuvenate with Thailand's natural beauty",
-          "activity1": {
-            "title": "Beach Excursion & Water Sports",
-            "description": "Enjoy pristine beaches with optional water activities"
-          },
-          "activity2": {
-            "title": "Traditional Thai Spa Treatment",
-            "description": "Indulge in authentic Thai wellness therapies"
-          },
-          "activity3": {
-            "title": "Rooftop Bar & Night Market",
-            "description": "Experience Bangkok's vibrant nightlife"
-          }
-        }
-      },
-      "recommendations": {
-        "title": "AI Recommendations",
-        "accommodation": "Accommodation",
-        "dining": "Dining",
-        "transportation": "Transportation",
-        "price": "Price",
-        "hotel": {
-          "name": "Mandarin Oriental Bangkok",
-          "description": "Luxury riverside hotel with exceptional service and stunning Chao Phraya River views",
-          "feature1": "Riverside location with panoramic views",
-          "feature2": "Award-winning spa and wellness center",
-          "feature3": "Multiple dining options including Michelin-starred restaurants"
-        },
-        "restaurant": {
-          "name": "Gaggan Anand",
-          "description": "World-renowned progressive Indian cuisine with innovative molecular gastronomy techniques",
-          "feature1": "25-course tasting menu experience",
-          "feature2": "Interactive dining with chef presentations",
-          "feature3": "Unique fusion of Indian flavors and modern techniques"
-        },
-        "transport": {
-          "name": "Premium Airport Transfer & City Tours",
-          "description": "Comfortable private transport with English-speaking drivers and flexible schedules",
-          "feature1": "Private air-conditioned vehicles",
-          "feature2": "Professional English-speaking drivers",
-          "feature3": "Flexible pickup times and customized routes"
-        }
-      },
-      "footer": {
-        "poweredBy": "Powered by Thailand Visa AI",
-        "description": "This personalized travel plan was created using advanced AI technology to ensure you have the perfect Thailand experience."
-      }
-    },
     "errors": {
       "insufficientCredits": "Insufficient credits for this plan type. Please purchase more credits.",
       "generationFailed": "Failed to generate travel plan. Please try again."
@@ -580,5 +654,11 @@
     "purchase": "Purchase Credits",
     "history": "Transaction History",
     "credits": "credits"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose the plan that fits your needs",
+    "monthly": "Monthly",
+    "yearly": "Yearly"
   }
 }

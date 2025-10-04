@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCreditDeduction } from '@/hooks/useCreditDeduction';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -27,6 +28,7 @@ const Apply: React.FC = () => {
   const { user } = useAuth();
   const { deductCredits, canAfford, getCost, credits, forcePurchaseRedirect } = useCreditDeduction();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -58,24 +60,24 @@ const Apply: React.FC = () => {
     if (credits > 0) {
       deductCredits('page_load_premium', { 
         showCost: false,
-        actionDescription: 'Loading visa application page'
+        actionDescription: t('apply.loadingPage')
       });
     }
-  }, [user, navigate, deductCredits, credits]);
+  }, [user, navigate, deductCredits, credits, t]);
 
   const visaTypes = [
-    { value: 'tourist', label: 'Tourist Visa (TR)', description: 'For tourism and leisure' },
-    { value: 'business', label: 'Business Visa (B)', description: 'For business activities' },
-    { value: 'education', label: 'Education Visa (ED)', description: 'For studying in Thailand' },
-    { value: 'retirement', label: 'Retirement Visa (O-A)', description: 'For retirees over 50' },
-    { value: 'marriage', label: 'Marriage Visa (O)', description: 'For married to Thai national' },
-    { value: 'work', label: 'Work Visa (Non-B)', description: 'For employment in Thailand' }
+    { value: 'tourist', label: t('apply.visaTypes.tourist'), description: t('apply.visaTypes.touristDesc') },
+    { value: 'business', label: t('apply.visaTypes.business'), description: t('apply.visaTypes.businessDesc') },
+    { value: 'education', label: t('apply.visaTypes.education'), description: t('apply.visaTypes.educationDesc') },
+    { value: 'retirement', label: t('apply.visaTypes.retirement'), description: t('apply.visaTypes.retirementDesc') },
+    { value: 'marriage', label: t('apply.visaTypes.marriage'), description: t('apply.visaTypes.marriageDesc') },
+    { value: 'work', label: t('apply.visaTypes.work'), description: t('apply.visaTypes.workDesc') }
   ];
 
   const handleVisaTypeSelect = async (value: string) => {
     // Charge credits for selecting visa type
     const success = await deductCredits('visa_select_type', {
-      actionDescription: `Selected ${value} visa type`
+      actionDescription: t('apply.actions.selectedVisa', { type: value })
     });
     
     if (success) {
@@ -86,34 +88,34 @@ const Apply: React.FC = () => {
   const handleContinue = async () => {
     // Check if user can afford to continue
     if (!canAfford('visa_continue_step')) {
-      forcePurchaseRedirect('You need more credits to continue with your visa application!');
+      forcePurchaseRedirect(t('apply.errors.needMoreCredits'));
       return;
     }
 
     // Validate current step
     if (currentStep === 1 && !formData.visaType) {
-      toast.error('Please select a visa type first');
+      toast.error(t('apply.errors.selectVisaType'));
       return;
     }
 
     if (currentStep === 2 && (!formData.nationality || !formData.purpose)) {
-      toast.error('Please fill in all required fields');
+      toast.error(t('apply.errors.fillRequiredFields'));
       return;
     }
 
     if (currentStep === 3 && !formData.passportFile) {
-      toast.error('Please upload your passport photo');
+      toast.error(t('apply.errors.uploadPassport'));
       return;
     }
 
     if (currentStep === 4 && formData.documents.length === 0) {
-      toast.error('Please upload at least one supporting document');
+      toast.error(t('apply.errors.uploadDocuments'));
       return;
     }
 
     // Deduct credits for continuing to next step
     const success = await deductCredits('visa_continue_step', {
-      actionDescription: `Continue to step ${currentStep + 1}`
+      actionDescription: t('apply.actions.continueStep', { step: currentStep + 1 })
     });
 
     if (success) {
@@ -135,28 +137,28 @@ const Apply: React.FC = () => {
     const totalCost = uploadCost + ocrCost;
 
     if (credits < totalCost) {
-      forcePurchaseRedirect(`Passport upload and OCR processing requires ${totalCost} credits. You only have ${credits}.`);
+      forcePurchaseRedirect(t('apply.errors.passportUploadCost', { totalCost, credits }));
       return;
     }
 
     // Deduct credits for passport upload
     const uploadSuccess = await deductCredits('visa_upload_passport', {
-      actionDescription: 'Upload passport photo'
+      actionDescription: t('apply.actions.uploadPassport')
     });
 
     if (uploadSuccess) {
       setFormData({ ...formData, passportFile: file });
       
       // Simulate OCR processing and deduct credits
-      toast.info('Processing passport with OCR...', { duration: 2000 });
+      toast.info(t('apply.processing.ocrPassport'), { duration: 2000 });
       
       setTimeout(async () => {
         const ocrSuccess = await deductCredits('visa_ocr_processing', {
-          actionDescription: 'OCR passport analysis'
+          actionDescription: t('apply.actions.ocrAnalysis')
         });
         
         if (ocrSuccess) {
-          toast.success('Passport processed successfully! OCR data extracted.');
+          toast.success(t('apply.success.passportProcessed'));
         }
       }, 2000);
     }
@@ -168,12 +170,12 @@ const Apply: React.FC = () => {
 
     // Check if user can afford document upload
     if (!canAfford('visa_upload_documents')) {
-      forcePurchaseRedirect('You need more credits to upload documents!');
+      forcePurchaseRedirect(t('apply.errors.needCreditsDocuments'));
       return;
     }
 
     const success = await deductCredits('visa_upload_documents', {
-      actionDescription: `Upload ${files.length} documents`
+      actionDescription: t('apply.actions.uploadDocuments', { count: files.length })
     });
 
     if (success) {
@@ -182,11 +184,11 @@ const Apply: React.FC = () => {
       // Charge for document analysis
       setTimeout(async () => {
         const analysisSuccess = await deductCredits('visa_document_analysis', {
-          actionDescription: 'AI document analysis'
+          actionDescription: t('apply.actions.documentAnalysis')
         });
         
         if (analysisSuccess) {
-          toast.success('Documents analyzed successfully!');
+          toast.success(t('apply.success.documentsAnalyzed'));
         }
       }, 1500);
     }
@@ -196,16 +198,16 @@ const Apply: React.FC = () => {
     // Final analysis is the most expensive operation
     const success = await deductCredits('visa_final_analysis', {
       confirmBeforeAction: true,
-      actionDescription: 'Complete visa application analysis'
+      actionDescription: t('apply.actions.finalAnalysis')
     });
 
     if (success) {
-      toast.success('Visa application submitted successfully!');
+      toast.success(t('apply.success.applicationSubmitted'));
       
       // Charge for generating final report
       setTimeout(async () => {
         await deductCredits('visa_generate_report', {
-          actionDescription: 'Generate application report'
+          actionDescription: t('apply.actions.generateReport')
         });
         navigate('/profile');
       }, 2000);
@@ -218,7 +220,7 @@ const Apply: React.FC = () => {
         return (
           <div className="space-y-6">
             <div>
-              <Label className="text-lg font-semibold mb-4 block">Select Your Visa Type</Label>
+              <Label className="text-lg font-semibold mb-4 block">{t('apply.steps.selectVisaType')}</Label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {visaTypes.map((visa) => (
                   <Card 
@@ -233,7 +235,7 @@ const Apply: React.FC = () => {
                         <h3 className="font-semibold">{visa.label}</h3>
                         <Badge variant="outline" className="text-xs">
                           <Coins className="w-3 h-3 mr-1" />
-                          {getCost('visa_select_type')} credits
+                          {getCost('visa_select_type')} {t('credits.credits')}
                         </Badge>
                       </div>
                       <p className="text-sm text-gray-600">{visa.description}</p>
@@ -250,53 +252,53 @@ const Apply: React.FC = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <Label htmlFor="nationality">Nationality</Label>
+                <Label htmlFor="nationality">{t('apply.form.nationality')}</Label>
                 <Select value={formData.nationality} onValueChange={(value) => setFormData({ ...formData, nationality: value })}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select your nationality" />
+                    <SelectValue placeholder={t('apply.form.selectNationality')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="us">United States</SelectItem>
-                    <SelectItem value="uk">United Kingdom</SelectItem>
-                    <SelectItem value="ca">Canada</SelectItem>
-                    <SelectItem value="au">Australia</SelectItem>
-                    <SelectItem value="de">Germany</SelectItem>
-                    <SelectItem value="fr">France</SelectItem>
-                    <SelectItem value="jp">Japan</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="us">{t('apply.countries.us')}</SelectItem>
+                    <SelectItem value="uk">{t('apply.countries.uk')}</SelectItem>
+                    <SelectItem value="ca">{t('apply.countries.ca')}</SelectItem>
+                    <SelectItem value="au">{t('apply.countries.au')}</SelectItem>
+                    <SelectItem value="de">{t('apply.countries.de')}</SelectItem>
+                    <SelectItem value="fr">{t('apply.countries.fr')}</SelectItem>
+                    <SelectItem value="jp">{t('apply.countries.jp')}</SelectItem>
+                    <SelectItem value="other">{t('apply.countries.other')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div>
-                <Label htmlFor="purpose">Purpose of Visit</Label>
+                <Label htmlFor="purpose">{t('apply.form.purpose')}</Label>
                 <Select value={formData.purpose} onValueChange={(value) => setFormData({ ...formData, purpose: value })}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select purpose" />
+                    <SelectValue placeholder={t('apply.form.selectPurpose')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="tourism">Tourism</SelectItem>
-                    <SelectItem value="business">Business</SelectItem>
-                    <SelectItem value="education">Education</SelectItem>
-                    <SelectItem value="medical">Medical Treatment</SelectItem>
-                    <SelectItem value="family">Family Visit</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="tourism">{t('apply.purposes.tourism')}</SelectItem>
+                    <SelectItem value="business">{t('apply.purposes.business')}</SelectItem>
+                    <SelectItem value="education">{t('apply.purposes.education')}</SelectItem>
+                    <SelectItem value="medical">{t('apply.purposes.medical')}</SelectItem>
+                    <SelectItem value="family">{t('apply.purposes.family')}</SelectItem>
+                    <SelectItem value="other">{t('apply.purposes.other')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
             <div>
-              <Label htmlFor="duration">Intended Duration of Stay</Label>
+              <Label htmlFor="duration">{t('apply.form.duration')}</Label>
               <Select value={formData.duration} onValueChange={(value) => setFormData({ ...formData, duration: value })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select duration" />
+                  <SelectValue placeholder={t('apply.form.selectDuration')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1-7">1-7 days</SelectItem>
-                  <SelectItem value="8-15">8-15 days</SelectItem>
-                  <SelectItem value="16-30">16-30 days</SelectItem>
-                  <SelectItem value="31-60">31-60 days</SelectItem>
-                  <SelectItem value="61-90">61-90 days</SelectItem>
-                  <SelectItem value="90+">More than 90 days</SelectItem>
+                  <SelectItem value="1-7">{t('apply.durations.1-7')}</SelectItem>
+                  <SelectItem value="8-15">{t('apply.durations.8-15')}</SelectItem>
+                  <SelectItem value="16-30">{t('apply.durations.16-30')}</SelectItem>
+                  <SelectItem value="31-60">{t('apply.durations.31-60')}</SelectItem>
+                  <SelectItem value="61-90">{t('apply.durations.61-90')}</SelectItem>
+                  <SelectItem value="90+">{t('apply.durations.90+')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -307,17 +309,17 @@ const Apply: React.FC = () => {
         return (
           <div className="space-y-6">
             <div>
-              <Label className="text-lg font-semibold mb-4 block">Upload Passport Photo</Label>
+              <Label className="text-lg font-semibold mb-4 block">{t('apply.steps.uploadPassport')}</Label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <div className="mb-4">
-                  <p className="text-lg font-medium">Upload your passport photo page</p>
+                  <p className="text-lg font-medium">{t('apply.upload.passportTitle')}</p>
                   <p className="text-sm text-gray-600 mt-2">
-                    Our AI will extract information using OCR technology
+                    {t('apply.upload.passportDesc')}
                   </p>
                   <Badge variant="destructive" className="mt-2">
                     <Zap className="w-3 h-3 mr-1" />
-                    Costs {getCost('visa_upload_passport') + getCost('visa_ocr_processing')} credits
+                    {t('apply.costs.passportUpload', { cost: getCost('visa_upload_passport') + getCost('visa_ocr_processing') })}
                   </Badge>
                 </div>
                 <Input
@@ -329,7 +331,7 @@ const Apply: React.FC = () => {
                 {formData.passportFile && (
                   <div className="mt-4 p-3 bg-green-50 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-600 inline mr-2" />
-                    <span className="text-green-700">Passport uploaded and processed</span>
+                    <span className="text-green-700">{t('apply.status.passportUploaded')}</span>
                   </div>
                 )}
               </div>
@@ -341,17 +343,17 @@ const Apply: React.FC = () => {
         return (
           <div className="space-y-6">
             <div>
-              <Label className="text-lg font-semibold mb-4 block">Upload Supporting Documents</Label>
+              <Label className="text-lg font-semibold mb-4 block">{t('apply.steps.uploadDocuments')}</Label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
                 <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <div className="mb-4">
-                  <p className="text-lg font-medium">Upload required documents</p>
+                  <p className="text-lg font-medium">{t('apply.upload.documentsTitle')}</p>
                   <p className="text-sm text-gray-600 mt-2">
-                    Bank statements, hotel bookings, flight tickets, etc.
+                    {t('apply.upload.documentsDesc')}
                   </p>
                   <Badge variant="destructive" className="mt-2">
                     <Zap className="w-3 h-3 mr-1" />
-                    Costs {getCost('visa_upload_documents') + getCost('visa_document_analysis')} credits
+                    {t('apply.costs.documentsUpload', { cost: getCost('visa_upload_documents') + getCost('visa_document_analysis') })}
                   </Badge>
                 </div>
                 <Input
@@ -381,35 +383,35 @@ const Apply: React.FC = () => {
           <div className="space-y-6">
             <div className="text-center">
               <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold mb-4">Ready to Submit</h2>
+              <h2 className="text-2xl font-bold mb-4">{t('apply.review.title')}</h2>
               <p className="text-gray-600 mb-6">
-                Review your application and submit for final AI analysis
+                {t('apply.review.description')}
               </p>
               
               <Card className="bg-red-50 border-red-200 mb-6">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-center mb-2">
                     <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                    <span className="font-bold text-red-700">Final Analysis Cost</span>
+                    <span className="font-bold text-red-700">{t('apply.review.finalCost')}</span>
                   </div>
                   <div className="text-2xl font-bold text-red-600 mb-2">
-                    {getCost('visa_final_analysis')} Credits
+                    {getCost('visa_final_analysis')} {t('credits.credits')}
                   </div>
                   <p className="text-sm text-red-600">
-                    This includes comprehensive AI analysis, eligibility assessment, and detailed report generation
+                    {t('apply.review.finalCostDesc')}
                   </p>
                 </CardContent>
               </Card>
 
               <div className="bg-gray-50 rounded-lg p-4 mb-6">
-                <h3 className="font-semibold mb-3">Application Summary:</h3>
+                <h3 className="font-semibold mb-3">{t('apply.review.summary')}:</h3>
                 <div className="text-left space-y-2 text-sm">
-                  <div><strong>Visa Type:</strong> {formData.visaType}</div>
-                  <div><strong>Nationality:</strong> {formData.nationality}</div>
-                  <div><strong>Purpose:</strong> {formData.purpose}</div>
-                  <div><strong>Duration:</strong> {formData.duration}</div>
-                  <div><strong>Passport:</strong> {formData.passportFile ? 'Uploaded ✓' : 'Not uploaded'}</div>
-                  <div><strong>Documents:</strong> {formData.documents.length} files uploaded</div>
+                  <div><strong>{t('apply.form.visaType')}:</strong> {formData.visaType}</div>
+                  <div><strong>{t('apply.form.nationality')}:</strong> {formData.nationality}</div>
+                  <div><strong>{t('apply.form.purpose')}:</strong> {formData.purpose}</div>
+                  <div><strong>{t('apply.form.duration')}:</strong> {formData.duration}</div>
+                  <div><strong>{t('apply.form.passport')}:</strong> {formData.passportFile ? t('apply.status.uploaded') : t('apply.status.notUploaded')}</div>
+                  <div><strong>{t('apply.form.documents')}:</strong> {t('apply.status.filesUploaded', { count: formData.documents.length })}</div>
                 </div>
               </div>
             </div>
@@ -426,9 +428,9 @@ const Apply: React.FC = () => {
       <div className="min-h-screen flex items-center justify-center">
         <Card>
           <CardContent className="p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Login Required</h2>
-            <p className="mb-4">Please log in to access the visa application.</p>
-            <Button onClick={() => navigate('/login')}>Login</Button>
+            <h2 className="text-2xl font-bold mb-4">{t('apply.auth.loginRequired')}</h2>
+            <p className="mb-4">{t('apply.auth.loginMessage')}</p>
+            <Button onClick={() => navigate('/login')}>{t('nav.login')}</Button>
           </CardContent>
         </Card>
       </div>
@@ -442,12 +444,12 @@ const Apply: React.FC = () => {
         <div className="mb-8">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Visa Application
+              {t('apply.title')}
             </h1>
             <div className="flex items-center space-x-4">
               <Badge variant="outline" className="text-lg px-3 py-1">
                 <Coins className="w-4 h-4 mr-1" />
-                {credits} Credits
+                {credits} {t('credits.credits')}
               </Badge>
               <Button 
                 variant="outline" 
@@ -455,7 +457,7 @@ const Apply: React.FC = () => {
                 onClick={() => navigate('/pricing')}
               >
                 <CreditCard className="w-4 h-4 mr-1" />
-                Buy More
+                {t('credits.purchase')}
               </Button>
             </div>
           </div>
@@ -463,8 +465,8 @@ const Apply: React.FC = () => {
           {/* Progress Bar */}
           <div className="mb-4">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>Step {currentStep} of {totalSteps}</span>
-              <span>{Math.round(progress)}% Complete</span>
+              <span>{t('apply.progress.step', { current: currentStep, total: totalSteps })}</span>
+              <span>{t('apply.progress.complete', { percent: Math.round(progress) })}</span>
             </div>
             <Progress value={progress} className="h-2" />
           </div>
@@ -476,10 +478,9 @@ const Apply: React.FC = () => {
                 <div className="flex items-center">
                   <AlertCircle className="w-5 h-5 text-yellow-600 mr-2" />
                   <div>
-                    <p className="text-yellow-800 font-medium">Low Credits Warning</p>
+                    <p className="text-yellow-800 font-medium">{t('apply.warnings.lowCredits')}</p>
                     <p className="text-yellow-700 text-sm">
-                      You may not have enough credits to complete this application. 
-                      Consider purchasing more credits to avoid interruption.
+                      {t('apply.warnings.lowCreditsDesc')}
                     </p>
                   </div>
                 </div>
@@ -491,19 +492,19 @@ const Apply: React.FC = () => {
         {/* Main Content */}
         <Card>
           <CardHeader>
-            <CardTitle>Step {currentStep}: {
-              currentStep === 1 ? 'Select Visa Type' :
-              currentStep === 2 ? 'Basic Information' :
-              currentStep === 3 ? 'Passport Upload' :
-              currentStep === 4 ? 'Supporting Documents' :
-              'Review & Submit'
+            <CardTitle>{t('apply.progress.step', { current: currentStep, total: '' })}: {
+              currentStep === 1 ? t('apply.steps.selectVisa') :
+              currentStep === 2 ? t('apply.steps.basicInfo') :
+              currentStep === 3 ? t('apply.steps.passport') :
+              currentStep === 4 ? t('apply.steps.documents') :
+              t('apply.steps.review')
             }</CardTitle>
             <CardDescription>
-              {currentStep === 1 && 'Choose the type of visa you want to apply for'}
-              {currentStep === 2 && 'Provide your basic information and travel details'}
-              {currentStep === 3 && 'Upload a clear photo of your passport information page'}
-              {currentStep === 4 && 'Upload all required supporting documents'}
-              {currentStep === 5 && 'Review your application and submit for processing'}
+              {currentStep === 1 && t('apply.stepDescriptions.step1')}
+              {currentStep === 2 && t('apply.stepDescriptions.step2')}
+              {currentStep === 3 && t('apply.stepDescriptions.step3')}
+              {currentStep === 4 && t('apply.stepDescriptions.step4')}
+              {currentStep === 5 && t('apply.stepDescriptions.step5')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -519,7 +520,7 @@ const Apply: React.FC = () => {
             disabled={currentStep === 1}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Previous
+            {t('tripPlanner.navigation.previous')}
           </Button>
           
           <Button
@@ -529,15 +530,15 @@ const Apply: React.FC = () => {
           >
             {currentStep === totalSteps ? (
               <>
-                Submit Application
+                {t('apply.actions.submitApplication')}
                 <Zap className="w-4 h-4 ml-2" />
-                ({getCost('visa_final_analysis')} credits)
+                ({getCost('visa_final_analysis')} {t('credits.credits')})
               </>
             ) : (
               <>
-                Continue
+                {t('tripPlanner.navigation.next')}
                 <ArrowRight className="w-4 h-4 ml-2" />
-                ({getCost('visa_continue_step')} credits)
+                ({getCost('visa_continue_step')} {t('credits.credits')})
               </>
             )}
           </Button>

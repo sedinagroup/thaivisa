@@ -2,23 +2,35 @@
   "nav": {
     "home": "ホーム",
     "apply": "ビザ申請",
-    "tripPlanner": "旅行プランナー",
-    "documentChecker": "書類チェッカー",
-    "credits": "クレジット",
-    "profile": "プロフィール",
+    "tripPlanner": "AI旅行プランナー",
+    "documentChecker": "AI書類チェッカー",
+    "travelServices": "旅行サービス",
+    "arGuide": "ARガイド",
+    "support": "サポート",
     "login": "ログイン",
     "register": "登録",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "profile": "プロフィール",
+    "dashboard": "ダッシュボード",
+    "credits": "クレジット",
+    "language": "言語",
+    "aiTripPlanner": "AI旅行プランナー",
+    "aiDocumentChecker": "AI書類チェッカー",
+    "marketplace": "マーケットプレイス"
+  },
+  "auth": {
+    "logoutSuccess": "ログアウトしました",
+    "logoutError": "ログアウトエラー"
   },
   "home": {
     "hero": {
       "badge": "AI搭載プラットフォーム",
-      "title": "あなたのAIタイビザ",
-      "subtitle": "＆旅行アシスタント",
-      "description": "書類確認から個別旅行プランまで、すべてを処理する先進AI技術でビザ処理の未来を体験してください。",
+      "title": "AIでタイビザを",
+      "subtitle": "旅行アシスタント付き",
+      "description": "書類確認から個人向け旅行計画まで、すべてを処理する先進的なAI技術でビザ処理の未来を体験してください。",
       "startApplication": "申請開始",
       "getStarted": "始める",
-      "learnMore": "詳細を見る",
+      "learnMore": "詳しく見る",
       "stats": {
         "aiAccuracy": "AI精度",
         "fasterProcessing": "高速処理",
@@ -28,297 +40,540 @@
     },
     "aiFeatures": {
       "title": "AI搭載機能",
-      "description": "私たちの先進AIは、前例のない精度とスピードでタイビザの旅のあらゆる側面を処理します。",
+      "description": "私たちの先進的なAIは、前例のない精度とスピードでタイビザの旅のあらゆる側面を処理します。",
       "documentChecker": {
         "title": "AI書類チェッカー",
-        "description": "先進AI技術を使用して、95%の精度ですべてのビザ書類を即座に確認・検証します。"
+        "description": "先進的なAI技術を使用して、すべてのビザ書類を95%の精度で即座に確認・検証します。"
       },
       "visaAdvisor": {
         "title": "AIビザアドバイザー",
-        "description": "あなたのプロフィールと旅行計画に基づいて、個別のビザ推奨を取得します。"
+        "description": "あなたのプロフィールと旅行計画に基づいて、個人向けビザ推奨を取得します。"
       },
       "tripPlanner": {
         "title": "AI旅行プランナー",
-        "description": "完璧なタイ体験のためのAI推奨で個別旅行行程を作成します。"
+        "description": "完璧なタイ体験のためのAI推奨で個人向け旅行行程を作成します。"
       },
       "assistantChat": {
         "title": "AIアシスタントチャット",
-        "description": "すべてのビザ・旅行質問に対する24/7 AIサポートで、即座で正確な回答を提供します。"
-      }
-    },
-    "tripPlannerSection": {
-      "title": "AI旅行プランナー - 完全旅行管理",
-      "description": "タイでのフライト、宿泊、交通、特別サービスのAI個別推奨を取得。インテリジェント旅行プランで時間とお金を節約。",
-      "services": {
-        "flightRecommendations": {
-          "title": "フライト推奨",
-          "features": {
-            "smartFlightSearch": "スマートフライト検索",
-            "pricePredictions": "価格予測",
-            "bestRouteAnalysis": "最適ルート分析",
-            "seatRecommendations": "座席推奨"
-          }
-        },
-        "hotelAccommodation": {
-          "title": "ホテル・宿泊",
-          "features": {
-            "personalizedMatching": "個別マッチング",
-            "locationOptimizer": "場所最適化",
-            "priceComparison": "価格比較",
-            "amenityMatching": "設備マッチング"
-          }
-        },
-        "transportationServices": {
-          "title": "交通サービス",
-          "features": {
-            "airportTransfers": "空港送迎",
-            "localTransport": "現地交通",
-            "carRentalOptimizer": "レンタカー最適化",
-            "routePlanning": "ルート計画"
-          }
-        },
-        "specialServices": {
-          "title": "特別サービス",
-          "features": {
-            "tourPackages": "ツアーパッケージ",
-            "restaurantRecommendations": "レストラン推奨",
-            "culturalExperiences": "文化体験",
-            "emergencySupport": "緊急サポート"
-          }
-        }
-      },
-      "interactiveFeatures": {
-        "title": "AIインタラクティブ機能",
-        "smartItinerary": {
-          "title": "スマート行程ビルダー",
-          "description": "AIがあなたの興味と好みに基づいて個別の日別旅行プランを作成します。"
-        },
-        "budgetOptimizer": {
-          "title": "予算最適化",
-          "description": "AIが数千のオプションを分析して、あなたの旅行予算に最適な価値を見つけます。"
-        },
-        "weatherIntegration": {
-          "title": "天気統合",
-          "description": "AIが天気予報と季節条件に基づいて推奨を調整します。"
-        },
-        "realTimeUpdates": {
-          "title": "リアルタイム更新",
-          "description": "AIがライブ旅行更新、フライト変更、代替推奨を提供します。"
-        }
-      },
-      "interface": {
-        "title": "AI旅行プランナーインターフェース",
-        "subtitle": "AI個別旅行プラン",
-        "travelDates": "旅行日程",
-        "sampleDates": "12月15日 - 12月25日, 2024",
-        "budgetRange": "予算範囲",
-        "sampleBudget": "$2,000 - $3,000 USD",
-        "aiRecommendations": "AI推奨",
-        "sampleRecommendations": "15個の個別提案準備完了",
-        "generatePlan": "AI旅行プラン生成"
-      },
-      "creditServices": {
-        "basicPlan": {
-          "title": "基本旅行プラン",
-          "credits": "クレジット",
-          "description": "フライト、ホテル、交通の基本AI推奨",
-          "button": "基本プラン取得"
-        },
-        "advancedPlan": {
-          "title": "上級旅行プラン",
-          "credits": "クレジット",
-          "description": "代替案と最適化を含む詳細行程",
-          "button": "上級プラン取得"
-        },
-        "premiumPlan": {
-          "title": "プレミアム旅行プラン",
-          "credits": "クレジット",
-          "description": "リアルタイム更新付き完全旅行管理",
-          "button": "プレミアムプラン取得"
-        },
-        "vipConcierge": {
-          "title": "VIPコンシェルジュ",
-          "credits": "クレジット",
-          "description": "24/7サポート付き個人AI旅行アシスタント",
-          "button": "VIPサービス取得"
-        }
-      },
-      "successStories": {
-        "title": "AI旅行プラン成功事例",
-        "userBookings": "ユーザーがAI推奨サービスを予約",
-        "averageSavings": "AI最適化による平均節約",
-        "planningRating": "AI旅行プランの星評価",
-        "timeSaved": "AI調査で節約した時間"
-      },
-      "howItWorks": {
-        "title": "AI旅行プランの仕組み",
-        "step1": {
-          "title": "AIにあなたの好みを伝える",
-          "description": "旅行スタイル、予算、興味、日程をAIシステムと共有します。"
-        },
-        "step2": {
-          "title": "AIがオプションを分析",
-          "description": "AIが数千のフライト、ホテル、アクティビティを比較して最適なマッチを見つけます。"
-        },
-        "step3": {
-          "title": "個別プランを受け取る",
-          "description": "説明と代替オプション付きのカスタマイズ推奨を受け取ります。"
-        },
-        "step4": {
-          "title": "安心して予約",
-          "description": "AIがリアルタイム情報とサポートであなたの旅行を監視・更新します。"
-        }
-      }
-    },
-    "visaHub": {
-      "title": "完全ビザ情報ハブ",
-      "description": "個別推奨付きすべてのタイビザタイプのAIガイダンス。",
-      "touristVisa": {
-        "title": "観光ビザ (TR)",
-        "badge": "最人気",
-        "description": "観光・レジャー訪問の完全ガイドとAI支援申請。",
-        "features": {
-          "aiDocumentVerification": "AI書類確認",
-          "instantEligibilityCheck": "即座資格チェック",
-          "smartFormFilling": "スマートフォーム記入"
-        }
-      },
-      "businessVisa": {
-        "title": "ビジネスビザ (B)",
-        "badge": "プロフェッショナル",
-        "description": "ビジネス活動のAI要件と書類確認。",
-        "features": {
-          "businessDocumentAnalysis": "ビジネス書類分析",
-          "invitationLetterVerification": "招待状確認",
-          "companyRegistrationCheck": "会社登録チェック"
-        }
-      },
-      "educationVisa": {
-        "title": "教育ビザ (ED)",
-        "badge": "学生",
-        "description": "教育機関のAIガイダンス付き学生ビザサポート。",
-        "features": {
-          "academicDocumentVerification": "学術書類確認",
-          "institutionValidation": "機関検証",
-          "financialProofAnalysis": "財政証明分析"
-        }
-      },
-      "transitVisa": {
-        "title": "トランジットビザ (TS)",
-        "badge": "高速",
-        "description": "トランジット乗客のAI支援による迅速処理。",
-        "features": {
-          "flightItineraryVerification": "フライト行程確認",
-          "transitTimeCalculation": "トランジット時間計算",
-          "expressProcessing": "エクスプレス処理"
-        }
-      },
-      "specialVisas": {
-        "title": "特別ビザ",
-        "badge": "プレミアム",
-        "description": "AI推奨付き退職、投資、その他特別ビザカテゴリー。",
-        "features": {
-          "eligibilityAssessment": "資格評価",
-          "investmentVerification": "投資確認",
-          "personalizedGuidance": "個別ガイダンス"
-        }
-      },
-      "aiRecommendations": {
-        "title": "AI推奨",
-        "badge": "スマート",
-        "description": "AIにあなたのプロフィールを分析させ、ニーズに最適なビザタイプを推奨させます。",
-        "button": "AI推奨取得"
-      }
-    },
-    "aiPoweredFeatures": {
-      "title": "AI搭載機能",
-      "description": "最先端AI技術でビザ処理の未来を体験してください。",
-      "smartDocumentAnalysis": {
-        "title": "スマート書類分析",
-        "description": "AIが数秒で95%の精度ですべての書類をスキャン・確認します。"
-      },
-      "intelligentFormFilling": {
-        "title": "インテリジェントフォーム記入",
-        "description": "OCR + AIがパスポート抽出データですべてのフォームを自動記入します。"
-      },
-      "riskAssessment": {
-        "title": "リスク評価",
-        "description": "AIが承認確率を予測し、提出前の改善を提案します。"
-      },
-      "realTimeUpdates": {
-        "title": "リアルタイム更新",
-        "description": "AIがあなたの申請状況を監視し、即座に更新を提供します。"
-      }
-    },
-    "howItWorks": {
-      "title": "AIが簡単にする方法",
-      "description": "先進AIによる4つの簡単ステップでタイビザ承認を取得。",
-      "step1": {
-        "title": "パスポートアップロード",
-        "description": "AIが先進OCR技術を使用してパスポート写真からデータを即座に抽出します。"
-      },
-      "step2": {
-        "title": "AI分析",
-        "description": "AIがあなたのプロフィールを分析し、ニーズに最適なビザタイプを推奨します。"
-      },
-      "step3": {
-        "title": "書類確認",
-        "description": "AIがすべての書類を確認し、要件との100%適合を保証します。"
-      },
-      "step4": {
-        "title": "スマート提出",
-        "description": "AIがあなたの申請を提出し、リアルタイム更新で進捗を監視します。"
-      }
-    },
-    "tripManagement": {
-      "title": "完全旅行管理",
-      "description": "AIがあなたのタイ旅行のすべての官僚的側面を管理するので、楽しい部分の計画に集中できます。",
-      "bureaucraticPlanning": {
-        "title": "官僚的計画",
-        "description": "AIがスマートスケジューリングとリマインダーですべての書類作業と締切を処理します。"
-      },
-      "documentTimeline": {
-        "title": "書類タイムライン",
-        "description": "自動進捗追跡付き書類準備のスマートスケジューリング。"
-      },
-      "complianceMonitoring": {
-        "title": "コンプライアンス監視",
-        "description": "AIがすべての要件が満たされることを保証し、問題を即座に警告します。"
-      },
-      "emergencySupport": {
-        "title": "緊急サポート",
-        "description": "時間に敏感なビザ・旅行問題の緊急AI支援。"
-      },
-      "aiTravelAssistant": {
-        "title": "AI旅行アシスタント",
-        "subtitle": "すべてのタイビザ・旅行ニーズのための個人AIアシスタント",
-        "documentStatus": "書類状況",
-        "allDocumentsVerified": "すべての書類確認済み・適合",
-        "applicationProgress": "申請進捗",
-        "nextStep": "次のステップ",
-        "submitFinalDocuments": "12月15日までに最終書類提出"
+        "description": "すべてのビザと旅行の質問に対する24時間365日のAIサポート、即座で正確な回答。"
       }
     },
     "cta": {
-      "title": "タイの旅を始める準備はできましたか？",
-      "description": "ビザ・旅行ニーズでAI搭載プラットフォームを信頼する数千の旅行者に参加してください。",
+      "title": "タイ旅行を始める準備はできましたか？",
+      "description": "ビザと旅行のニーズでAI搭載プラットフォームを信頼する何千人もの旅行者に参加してください。",
       "startApplication": "申請開始",
       "getStarted": "始める",
-      "viewPricing": "価格を見る",
+      "viewPricing": "料金を見る",
       "happyTravelers": "満足した旅行者",
       "successRate": "成功率",
       "aiSupport": "AIサポート"
     }
   },
+  "apply": {
+    "title": "ビザ申請",
+    "loadingPage": "ビザ申請ページを読み込み中",
+    "steps": {
+      "selectVisa": "ビザタイプ選択",
+      "selectVisaType": "ビザタイプを選択",
+      "basicInfo": "基本情報",
+      "passport": "パスポートアップロード",
+      "uploadPassport": "パスポート写真をアップロード",
+      "documents": "補助書類",
+      "uploadDocuments": "補助書類をアップロード",
+      "review": "確認・提出"
+    },
+    "stepDescriptions": {
+      "step1": "申請したいビザのタイプを選択してください",
+      "step2": "基本情報と旅行詳細を提供してください",
+      "step3": "パスポート情報ページの鮮明な写真をアップロードしてください",
+      "step4": "必要な補助書類をすべてアップロードしてください",
+      "step5": "申請を確認して処理のために提出してください"
+    },
+    "visaTypes": {
+      "tourist": "観光ビザ (TR)",
+      "touristDesc": "観光・レジャー用",
+      "business": "ビジネスビザ (B)",
+      "businessDesc": "商業活動用",
+      "education": "教育ビザ (ED)",
+      "educationDesc": "タイでの勉強用",
+      "retirement": "退職ビザ (O-A)",
+      "retirementDesc": "50歳以上の退職者用",
+      "marriage": "結婚ビザ (O)",
+      "marriageDesc": "タイ国民との結婚者用",
+      "work": "就労ビザ (Non-B)",
+      "workDesc": "タイでの雇用用"
+    },
+    "form": {
+      "nationality": "国籍",
+      "selectNationality": "国籍を選択",
+      "purpose": "訪問目的",
+      "selectPurpose": "目的を選択",
+      "duration": "予定滞在期間",
+      "selectDuration": "期間を選択",
+      "visaType": "ビザタイプ",
+      "passport": "パスポート",
+      "documents": "書類"
+    },
+    "countries": {
+      "us": "アメリカ合衆国",
+      "uk": "イギリス",
+      "ca": "カナダ",
+      "au": "オーストラリア",
+      "de": "ドイツ",
+      "fr": "フランス",
+      "jp": "日本",
+      "other": "その他"
+    },
+    "purposes": {
+      "tourism": "観光",
+      "business": "ビジネス",
+      "education": "教育",
+      "medical": "医療治療",
+      "family": "家族訪問",
+      "other": "その他"
+    },
+    "durations": {
+      "1-7": "1-7日",
+      "8-15": "8-15日",
+      "16-30": "16-30日",
+      "31-60": "31-60日",
+      "61-90": "61-90日",
+      "90+": "90日以上"
+    },
+    "upload": {
+      "passportTitle": "パスポート写真ページをアップロード",
+      "passportDesc": "私たちのAIがOCR技術を使用して情報を抽出します",
+      "documentsTitle": "必要書類をアップロード",
+      "documentsDesc": "銀行取引明細書、ホテル予約、航空券など"
+    },
+    "costs": {
+      "passportUpload": "{{cost}}クレジット必要",
+      "documentsUpload": "{{cost}}クレジット必要"
+    },
+    "status": {
+      "passportUploaded": "パスポートアップロード・処理済み",
+      "uploaded": "アップロード済み ✓",
+      "notUploaded": "未アップロード",
+      "filesUploaded": "{{count}}ファイルアップロード済み"
+    },
+    "review": {
+      "title": "提出準備完了",
+      "description": "申請を確認してAI最終分析のために提出",
+      "finalCost": "最終分析費用",
+      "finalCostDesc": "これには包括的AI分析、適格性評価、詳細レポート生成が含まれます",
+      "summary": "申請概要"
+    },
+    "progress": {
+      "step": "ステップ{{current}}/{{total}}",
+      "complete": "{{percent}}%完了"
+    },
+    "warnings": {
+      "lowCredits": "クレジット不足警告",
+      "lowCreditsDesc": "この申請を完了するのに十分なクレジットがない可能性があります。中断を避けるためにクレジットの追加購入を検討してください。"
+    },
+    "auth": {
+      "loginRequired": "ログインが必要",
+      "loginMessage": "ビザ申請にアクセスするにはログインしてください。"
+    },
+    "actions": {
+      "selectedVisa": "{{type}}ビザタイプを選択",
+      "continueStep": "ステップ{{step}}に進む",
+      "uploadPassport": "パスポート写真をアップロード",
+      "ocrAnalysis": "パスポートOCR分析",
+      "uploadDocuments": "{{count}}書類をアップロード",
+      "documentAnalysis": "AI書類分析",
+      "finalAnalysis": "完全ビザ申請分析",
+      "generateReport": "申請レポート生成",
+      "submitApplication": "申請を提出"
+    },
+    "processing": {
+      "ocrPassport": "OCRでパスポートを処理中..."
+    },
+    "success": {
+      "passportProcessed": "パスポート処理完了！OCRデータ抽出済み。",
+      "documentsAnalyzed": "書類分析完了！",
+      "applicationSubmitted": "ビザ申請提出完了！"
+    },
+    "errors": {
+      "needMoreCredits": "ビザ申請を続行するにはより多くのクレジットが必要です！",
+      "selectVisaType": "まずビザタイプを選択してください",
+      "fillRequiredFields": "すべての必須フィールドを入力してください",
+      "uploadPassport": "パスポート写真をアップロードしてください",
+      "uploadDocuments": "少なくとも1つの補助書類をアップロードしてください",
+      "passportUploadCost": "パスポートアップロードとOCR処理には{{totalCost}}クレジットが必要です。{{credits}}クレジットしかありません。",
+      "needCreditsDocuments": "書類をアップロードするにはより多くのクレジットが必要です！"
+    }
+  },
+  "documentChecker": {
+    "title": "AI書類チェッカー",
+    "subtitle": "先進的人工知能で書類を確認・検証",
+    "creditsAvailable": "{{credits}}クレジット利用可能",
+    "creditsPerDocument": "書類1つにつき15クレジット",
+    "supportedDocuments": "対応書類",
+    "upload": {
+      "title": "書類アップロード",
+      "description": "分析のために書類の画像またはPDFを送信",
+      "dragDrop": "書類をここにドラッグ＆ドロップまたは",
+      "selectFiles": "ファイル選択",
+      "formats": "形式：JPG、PNG、PDF • 最大：ファイル1つにつき10MB"
+    },
+    "formats": {
+      "passport": "パスポート",
+      "id": "身分証明書",
+      "driverLicense": "運転免許証",
+      "birthCertificate": "出生証明書",
+      "incomeProof": "所得証明",
+      "bankStatement": "銀行取引明細書",
+      "vaccinationCertificate": "ワクチン接種証明書"
+    },
+    "types": {
+      "general": "一般書類",
+      "passport": "パスポート",
+      "id": "身分証明書"
+    },
+    "fields": {
+      "documentNumber": "書類番号",
+      "fullName": "氏名",
+      "dateOfBirth": "生年月日",
+      "nationality": "国籍",
+      "issueDate": "発行日",
+      "expiryDate": "有効期限",
+      "issuingAuthority": "発行機関",
+      "placeOfBirth": "出生地",
+      "gender": "性別"
+    },
+    "nationalities": {
+      "brazilian": "ブラジル"
+    },
+    "authorities": {
+      "federalPolice": "連邦警察"
+    },
+    "issues": {
+      "expired": "書類期限切れ",
+      "expiringSoon": "書類が6か月以内に期限切れ",
+      "imageQuality": "画像品質が改善可能",
+      "compliant": "書類が国際基準に準拠"
+    },
+    "recommendations": {
+      "keepOriginal": "原本を安全な場所に保管",
+      "makeBackups": "バックアップ用にデジタルコピーを作成",
+      "renewBeforeTravel": "旅行前の書類更新を検討",
+      "validForTravel": "国際旅行に有効な書類",
+      "checkRequirements": "目的地国の特定要件を確認"
+    },
+    "status": {
+      "uploading": "アップロード中...",
+      "analyzing": "分析中...",
+      "valid": "有効",
+      "warning": "警告",
+      "expired": "期限切れ",
+      "invalid": "無効",
+      "completed": "完了",
+      "error": "エラー",
+      "waiting": "待機中"
+    },
+    "progress": {
+      "uploading": "ファイルアップロード中...",
+      "analyzing": "AIで書類分析中..."
+    },
+    "analysis": {
+      "confidence": "信頼度",
+      "type": "タイプ",
+      "processing": "処理",
+      "extractedData": "抽出データ",
+      "issues": "特定された問題",
+      "recommendations": "推奨事項"
+    },
+    "actions": {
+      "analyzing": "{{fileName}}の分析"
+    },
+    "success": {
+      "analysisComplete": "{{fileName}}の分析完了！",
+      "reportDownloaded": "レポートダウンロード完了！"
+    },
+    "errors": {
+      "unsupportedFormat": "{{fileName}}：サポートされていない形式です。画像またはPDFを使用してください。",
+      "fileTooLarge": "{{fileName}}：ファイルが大きすぎます。最大10MB。",
+      "insufficientCredits": "クレジット不足。書類を分析するには15クレジットが必要です。",
+      "processingError": "書類処理エラー。もう一度お試しください。",
+      "processingFailed": "書類処理エラー。もう一度試すか、ファイルが正しいか確認してください。"
+    },
+    "empty": {
+      "title": "書類がアップロードされていません",
+      "description": "AI分析を開始するために書類をアップロードしてください。"
+    },
+    "report": {
+      "title": "書類分析レポート",
+      "generatedBy": "Thailand Visa AIによって生成",
+      "fileInfo": "ファイル情報",
+      "fileName": "名前",
+      "fileSize": "サイズ",
+      "fileType": "タイプ",
+      "analyzedAt": "分析日時",
+      "analysisResult": "分析結果",
+      "documentType": "書類タイプ",
+      "status": "ステータス",
+      "confidence": "信頼度",
+      "processingTime": "処理時間",
+      "extractedData": "抽出データ",
+      "identifiedIssues": "特定された問題",
+      "noIssues": "問題は特定されませんでした",
+      "recommendations": "推奨事項",
+      "reportPrefix": "レポート",
+      "disclaimer": "このレポートはAIによって自動生成されており、参考用途のみに使用してください。公式な事項については、管轄当局にご相談ください。"
+    }
+  },
+  "support": {
+    "title": "サポートセンター",
+    "subtitle": "タイビザ申請とAIサービスのヘルプを取得",
+    "contact": {
+      "title": "連絡先情報",
+      "email": {
+        "title": "メールサポート",
+        "address": "support@thaivisa.ai"
+      },
+      "phone": {
+        "title": "電話サポート",
+        "number": "+66 2 123 4567"
+      },
+      "hours": {
+        "title": "営業時間",
+        "schedule": "月-金：9時-18時（GMT+7）"
+      }
+    },
+    "response": {
+      "title": "応答時間",
+      "general": "一般的なお問い合わせ",
+      "generalTime": "24時間",
+      "technical": "技術的問題",
+      "technicalTime": "12時間",
+      "urgent": "緊急問題",
+      "urgentTime": "4時間",
+      "phone": "電話サポート",
+      "phoneTime": "即座"
+    },
+    "form": {
+      "title": "サポートチケットを提出",
+      "description": "問題を説明してください。できるだけ早くご連絡いたします",
+      "fields": {
+        "name": "氏名",
+        "email": "メールアドレス",
+        "category": "カテゴリ",
+        "priority": "優先度",
+        "subject": "件名",
+        "message": "メッセージ"
+      },
+      "placeholders": {
+        "category": "カテゴリを選択",
+        "subject": "問題の簡潔な説明",
+        "message": "問題の詳細情報を提供してください..."
+      },
+      "categories": {
+        "visaApplication": "ビザ申請",
+        "creditsBilling": "クレジットと請求",
+        "technicalIssue": "技術的問題",
+        "documentAnalysis": "書類分析",
+        "tripPlanning": "旅行計画",
+        "accountAccess": "アカウントアクセス",
+        "other": "その他"
+      },
+      "priorities": {
+        "low": "低",
+        "normal": "通常",
+        "high": "高",
+        "urgent": "緊急"
+      },
+      "submitting": "送信中...",
+      "submit": "チケット提出",
+      "successMessage": "サポートチケットが正常に提出されました！24時間以内にご連絡いたします。"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "description": "よくある質問への迅速な回答を見つける",
+      "items": {
+        "visaApplication": {
+          "question": "タイビザの申請方法は？",
+          "answer": "AI搭載ビザ申請システムを使用してください。「ビザ申請」に移動し、ビザタイプを選択して、ステップバイステップのプロセスに従ってください。私たちのAIが書類要件と適格性チェックを案内します。"
+        },
+        "creditSystem": {
+          "question": "クレジットシステムはどのように機能しますか？",
+          "answer": "使用するAIサービスごとにクレジットが消費されます。異なるアクションには異なるクレジット費用があります。料金ページからクレジットパッケージを購入できます。クレジットは期限切れになることはなく、すべてのサービスで使用できます。"
+        },
+        "documents": {
+          "question": "ビザ申請にはどのような書類が必要ですか？",
+          "answer": "必要書類はビザタイプによって異なりますが、通常はパスポート、写真、銀行取引明細書、航空券予約、宿泊証明が含まれます。私たちのAIがあなたの申請に基づいて個人向けチェックリストを提供します。"
+        },
+        "aiAccuracy": {
+          "question": "AI書類分析の精度はどの程度ですか？",
+          "answer": "私たちのAIは書類確認と分析で98%の精度率を持っています。一般的な問題を検出し、真正性を確認し、申請成功率を向上させるための推奨事項を提供できます。"
+        },
+        "refunds": {
+          "question": "未使用クレジットの返金は可能ですか？",
+          "answer": "購入後のクレジットは返金不可ですが、期限切れになることはありません。ビザ申請、書類確認、旅行計画を含むすべてのAIサービスで使用できます。"
+        },
+        "processing": {
+          "question": "ビザ処理にはどのくらい時間がかかりますか？",
+          "answer": "処理時間はビザタイプと大使館によって異なります。私たちのAIが推定処理時間を提供し、申請ステータスの追跡を支援できます。典型的な処理は3-15営業日です。"
+        }
+      }
+    },
+    "quickLinks": {
+      "documentation": {
+        "title": "ドキュメント",
+        "description": "包括的なガイドとチュートリアル"
+      },
+      "liveChat": {
+        "title": "ライブチャット",
+        "description": "サポートチームとチャット"
+      },
+      "phoneSupport": {
+        "title": "電話サポート",
+        "description": "専門家と直接話す"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "companyName": "THINKNEO.AI",
+      "parentCompany": "SHK Hong Kong Groupの一部",
+      "description": "人工知能を通じて旅行と移民を革命化。ビザ申請をより速く、よりスマートに、すべての人にとってよりアクセシブルにしています。",
+      "badges": {
+        "shkGroup": "SHK Hong Kong Group",
+        "globalPresence": "グローバル展開",
+        "industryLeader": "業界リーダー"
+      }
+    },
+    "stats": {
+      "countriesServed": "サービス提供国",
+      "visasProcessed": "処理されたビザ",
+      "successRate": "成功率",
+      "customerSatisfaction": "顧客満足度"
+    },
+    "mission": {
+      "title": "私たちのミッション",
+      "description": "人工知能を活用してビザ申請と旅行計画をアクセシブル、正確、ストレスフリーにすることで、グローバル旅行を民主化する。技術は障壁を取り除くべきであり、作るべきではないと信じています。"
+    },
+    "vision": {
+      "title": "私たちのビジョン",
+      "description": "世界で最も信頼されるAI搭載旅行・移民プラットフォームとなり、精度、セキュリティ、顧客満足度の最高基準を維持しながら、何百万人もの旅行者にシームレスなグローバルモビリティを可能にする。"
+    },
+    "values": {
+      "title": "私たちの核となる価値",
+      "subtitle": "私たちが行うすべてを導く原則",
+      "innovation": {
+        "title": "イノベーション",
+        "description": "ビザ処理と旅行計画を革命化するための最先端AI技術の活用。"
+      },
+      "security": {
+        "title": "セキュリティ",
+        "description": "あなたの個人データと書類が常に保護されることを保証するエンタープライズグレードのセキュリティ。"
+      },
+      "customerFirst": {
+        "title": "顧客第一",
+        "description": "私たちが下すすべての決定は、卓越した顧客体験を提供するというコミットメントによって推進されています。"
+      },
+      "accuracy": {
+        "title": "精度",
+        "description": "ビザ適格性と書類確認で98%の精度率を持つ精密駆動AI分析。"
+      }
+    },
+    "timeline": {
+      "title": "私たちの歩み",
+      "subtitle": "スタートアップから業界リーダーへ",
+      "foundation": {
+        "title": "設立",
+        "description": "THINKNEO.AIは、AIを通じて旅行を民主化するビジョンを持ってSHK Hong Kong Groupの一部として設立されました。"
+      },
+      "aiDevelopment": {
+        "title": "AI開発",
+        "description": "最初のAI搭載書類分析システムを立ち上げ、ベータ版で10,000以上の書類を処理しました。"
+      },
+      "globalExpansion": {
+        "title": "グローバル展開",
+        "description": "多言語サポートと地域パートナーシップで25以上の国にサービスを拡大しました。"
+      },
+      "thaiVisaLaunch": {
+        "title": "ThaiVisa.ai立ち上げ",
+        "description": "ThaiVisa.aiを立ち上げ、AI搭載タイビザ申請プラットフォームのリーダーとなりました。"
+      },
+      "marketLeadership": {
+        "title": "市場リーダーシップ",
+        "description": "98%の成功率で100K以上の申請処理を達成し、業界の認知を得ました。"
+      }
+    },
+    "team": {
+      "title": "リーダーシップチーム",
+      "subtitle": "私たちのイノベーションを推進する専門家に会う",
+      "sarahChen": {
+        "name": "サラ・チェン博士",
+        "role": "最高技術責任者",
+        "description": "機械学習とNLPで15年以上の経験を持つ元Google AI研究者。"
+      },
+      "michaelRodriguez": {
+        "name": "マイケル・ロドリゲス",
+        "role": "プロダクト責任者",
+        "description": "ユーザーエクスペリエンスと成長を専門とする元Uberプロダクトリーダー。"
+      },
+      "priyaSharma": {
+        "name": "プリヤ・シャルマ",
+        "role": "オペレーション担当副社長",
+        "description": "世界のビザプロセスに深い知識を持つ移民法専門家。"
+      },
+      "jamesLiu": {
+        "name": "ジェームス・リュー",
+        "role": "最高セキュリティ責任者",
+        "description": "エンタープライズグレードのデータ保護を確保するサイバーセキュリティベテラン。"
+      }
+    },
+    "shkGroup": {
+      "title": "SHK Hong Kong Groupの一部",
+      "subtitle": "数十年のビジネス卓越性に支えられて",
+      "description": "THINKNEO.AIは、技術、金融、国際ビジネスで30年以上の経験を持つ多様化したコングロマリット、SHK Hong Kong Groupの誇り高い一部です。このパートナーシップは、世界クラスのAIソリューションを提供するために必要なリソース、専門知識、グローバルネットワークを提供します。",
+      "highlights": {
+        "experience": {
+          "value": "30年以上",
+          "label": "ビジネス卓越性"
+        },
+        "network": {
+          "value": "グローバルネットワーク",
+          "label": "世界的存在"
+        },
+        "security": {
+          "value": "エンタープライズグレード",
+          "label": "セキュリティとコンプライアンス"
+        }
+      }
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "subtitle": "旅行体験を変革する準備はできましたか？",
+      "headquarters": {
+        "title": "本社",
+        "location": "香港特別行政区",
+        "company": "SHK Hong Kong Group"
+      },
+      "email": {
+        "title": "メール",
+        "general": "info@thinkneo.ai",
+        "support": "support@thaivisa.ai"
+      },
+      "support": {
+        "title": "サポート",
+        "availability": "24時間365日カスタマーサポート",
+        "languages": "多言語対応"
+      },
+      "button": "今すぐお問い合わせ"
+    }
+  },
   "tripPlanner": {
     "title": "AI旅行プランナー",
-    "subtitle": "私たちの先進AIにあなただけの完璧なタイ旅行体験を作成させてください。フライトからアクティビティまで、すべての詳細を処理します。",
+    "subtitle": "私たちの先進的AIにあなたのためだけにカスタマイズされた完璧なタイ旅行体験を作らせてください。フライトからアクティビティまで、すべての詳細を処理します。",
     "progress": {
-      "title": "プラン進捗",
+      "title": "計画進行状況",
       "step": "ステップ",
       "of": "の",
       "basicInfo": "基本情報",
-      "preferences": "好み",
+      "preferences": "設定",
       "interests": "興味",
       "generate": "生成"
     },
@@ -351,69 +606,6 @@
           "label": "旅行者",
           "person": "人",
           "people": "人"
-        }
-      },
-      "step2": {
-        "title": "予算・好み",
-        "description": "あなたの予算と宿泊の好みを理解させてください。",
-        "budget": {
-          "title": "旅行予算",
-          "description": "この旅行の総予算はいくらですか（一人当たり）？",
-          "label": "一人当たり予算"
-        },
-        "accommodation": {
-          "title": "宿泊タイプ",
-          "description": "どのタイプの宿泊を好みますか？"
-        },
-        "transportation": {
-          "title": "交通",
-          "description": "タイでどのように移動したいですか？"
-        }
-      },
-      "step3": {
-        "title": "旅行興味",
-        "description": "行程を個別化するためにあなたの興味を選択してください。",
-        "preferences": {
-          "title": "旅行好み",
-          "description": "どのタイプの体験を求めていますか？"
-        },
-        "activities": {
-          "title": "特定アクティビティ",
-          "description": "旅行にどのアクティビティを含めたいですか？"
-        }
-      },
-      "step4": {
-        "title": "最終詳細・プラン生成",
-        "description": "特別要求を追加し、AI旅行プランサービスレベルを選択してください。",
-        "specialRequests": {
-          "title": "特別要求",
-          "description": "特別要件、食事制限、特定要求はありますか？",
-          "placeholder": "例：ベジタリアン食事、アクセシビリティニーズ、特別機会、特定ホテル..."
-        },
-        "planTypes": {
-          "title": "AI旅行プランを選択",
-          "description": "旅行プランに希望する詳細レベルと個別化を選択してください。",
-          "credits": "クレジット",
-          "basic": {
-            "title": "基本旅行プラン",
-            "description": "フライト、ホテル、交通の基本AI推奨",
-            "button": "基本プラン取得"
-          },
-          "advanced": {
-            "title": "上級旅行プラン",
-            "description": "代替案と最適化を含む詳細行程",
-            "button": "上級プラン取得"
-          },
-          "premium": {
-            "title": "プレミアム旅行プラン",
-            "description": "リアルタイム更新付き完全旅行管理",
-            "button": "プレミアムプラン取得"
-          },
-          "vip": {
-            "title": "VIPコンシェルジュ",
-            "description": "24/7サポート付き個人AI旅行アシスタント",
-            "button": "VIPサービス取得"
-          }
         }
       }
     },
@@ -451,93 +643,22 @@
       "spa": "スパ・ウェルネス",
       "diving": "ダイビング・シュノーケリング"
     },
-    "generating": {
-      "title": "AIがあなたの完璧な旅行を作成中",
-      "description": "私たちの先進AIが数千のオプションを分析して、あなたの個別タイ旅行プランを作成しています..."
-    },
-    "result": {
-      "title": "あなたの個別タイアドベンチャー",
-      "subtitle": "これがあなたのAI作成旅行傑作です",
-      "badge": "AI生成旅行プラン",
-      "actions": {
-        "downloadPDF": "PDF ダウンロード",
-        "share": "プラン共有",
-        "print": "プラン印刷"
-      },
-      "itinerary": {
-        "title": "日別行程",
-        "description": "あなたの個別日別アドベンチャーガイド",
-        "day1": {
-          "title": "1日目：到着・バンコク発見",
-          "activity1": {
-            "title": "空港到着・ホテルチェックイン",
-            "description": "プレミアム空港送迎サービスでの快適到着"
-          },
-          "activity2": {
-            "title": "王宮・ワット・プラケオ",
-            "description": "タイ最神聖寺院と王宮複合施設を探索"
-          },
-          "activity3": {
-            "title": "チャオプラヤ川ディナークルーズ",
-            "description": "伝統タイ料理でのロマンチック夜クルーズ"
-          }
-        },
-        "day2": {
-          "title": "2日目：文化没入体験",
-          "description": "本格タイ文化・伝統への深い没入",
-          "activity1": {
-            "title": "ワット・ポー寺院・タイマッサージ",
-            "description": "伝統タイマッサージの発祥地を訪問"
-          },
-          "activity2": {
-            "title": "チャトゥチャック週末市場",
-            "description": "ユニークお土産を購入し、地元屋台料理を味わう"
-          },
-          "activity3": {
-            "title": "タイ料理教室体験",
-            "description": "専門シェフと本格タイ料理を学ぶ"
-          }
-        }
-      },
-      "recommendations": {
-        "title": "AI推奨",
-        "accommodation": "宿泊",
-        "dining": "食事",
-        "transportation": "交通",
-        "price": "価格",
-        "hotel": {
-          "name": "マンダリン オリエンタル バンコク",
-          "description": "チャオプラヤ川の素晴らしい景色と卓越したサービスの高級リバーサイドホテル",
-          "feature1": "パノラマビューのリバーサイド立地",
-          "feature2": "受賞歴のあるスパ・ウェルネスセンター",
-          "feature3": "ミシュラン星レストランを含む複数ダイニングオプション"
-        },
-        "restaurant": {
-          "name": "ガガン・アナンド",
-          "description": "革新的分子ガストロノミー技術による世界的に有名なプログレッシブインド料理",
-          "feature1": "25コーステイスティングメニュー体験",
-          "feature2": "シェフプレゼンテーション付きインタラクティブダイニング",
-          "feature3": "インド風味とモダン技術のユニーク融合"
-        },
-        "transport": {
-          "name": "プレミアム空港送迎・市内ツアー",
-          "description": "英語対応ドライバーと柔軟スケジューリングの快適プライベート交通",
-          "feature1": "プライベートエアコン車両",
-          "feature2": "プロフェッショナル英語対応ドライバー",
-          "feature3": "柔軟送迎時間とカスタムルート"
-        }
-      },
-      "footer": {
-        "poweredBy": "Thailand Visa AI提供",
-        "description": "この個別旅行プランは先進AI技術を使用して作成され、完璧なタイ体験を保証します。"
-      }
-    },
     "errors": {
-      "insufficientCredits": "このプランタイプには不十分なクレジット。より多くのクレジットを購入してください。",
-      "generationFailed": "旅行プラン生成失敗。再試行してください。"
+      "insufficientCredits": "このプランタイプには十分なクレジットがありません。より多くのクレジットを購入してください。",
+      "generationFailed": "旅行プランの生成に失敗しました。もう一度お試しください。"
     }
   },
   "credits": {
+    "title": "クレジット",
+    "balance": "残高",
+    "purchase": "クレジット購入",
+    "history": "取引履歴",
     "credits": "クレジット"
+  },
+  "pricing": {
+    "title": "料金",
+    "subtitle": "あなたのニーズに合ったプランを選択",
+    "monthly": "月額",
+    "yearly": "年額"
   }
 }

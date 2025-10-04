@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -22,87 +23,89 @@ import {
 } from 'lucide-react';
 
 const AboutUs: React.FC = () => {
+  const { t } = useTranslation();
+
   const stats = [
-    { label: 'Countries Served', value: '50+', icon: Globe },
-    { label: 'Visas Processed', value: '100K+', icon: FileText },
-    { label: 'Success Rate', value: '98%', icon: Award },
-    { label: 'Customer Satisfaction', value: '4.9/5', icon: Star }
+    { label: t('about.stats.countriesServed'), value: '50+', icon: Globe },
+    { label: t('about.stats.visasProcessed'), value: '100K+', icon: FileText },
+    { label: t('about.stats.successRate'), value: '98%', icon: Award },
+    { label: t('about.stats.customerSatisfaction'), value: '4.9/5', icon: Star }
   ];
 
   const values = [
     {
       icon: Zap,
-      title: 'Innovation',
-      description: 'Leveraging cutting-edge AI technology to revolutionize visa processing and travel planning.'
+      title: t('about.values.innovation.title'),
+      description: t('about.values.innovation.description')
     },
     {
       icon: Shield,
-      title: 'Security',
-      description: 'Enterprise-grade security ensuring your personal data and documents are always protected.'
+      title: t('about.values.security.title'),
+      description: t('about.values.security.description')
     },
     {
       icon: Heart,
-      title: 'Customer First',
-      description: 'Every decision we make is driven by our commitment to providing exceptional customer experience.'
+      title: t('about.values.customerFirst.title'),
+      description: t('about.values.customerFirst.description')
     },
     {
       icon: Target,
-      title: 'Accuracy',
-      description: 'Precision-driven AI analysis with 98% accuracy rate for visa eligibility and document verification.'
+      title: t('about.values.accuracy.title'),
+      description: t('about.values.accuracy.description')
     }
   ];
 
   const timeline = [
     {
       year: '2020',
-      title: 'Foundation',
-      description: 'THINKNEO.AI was founded as part of SHK Hong Kong Group with a vision to democratize travel through AI.'
+      title: t('about.timeline.foundation.title'),
+      description: t('about.timeline.foundation.description')
     },
     {
       year: '2021',
-      title: 'AI Development',
-      description: 'Launched our first AI-powered document analysis system, processing over 10,000 documents in beta.'
+      title: t('about.timeline.aiDevelopment.title'),
+      description: t('about.timeline.aiDevelopment.description')
     },
     {
       year: '2022',
-      title: 'Global Expansion',
-      description: 'Expanded to serve 25+ countries with multi-language support and regional partnerships.'
+      title: t('about.timeline.globalExpansion.title'),
+      description: t('about.timeline.globalExpansion.description')
     },
     {
       year: '2023',
-      title: 'ThaiVisa.ai Launch',
-      description: 'Launched ThaiVisa.ai, becoming the leading AI-powered Thai visa application platform.'
+      title: t('about.timeline.thaiVisaLaunch.title'),
+      description: t('about.timeline.thaiVisaLaunch.description')
     },
     {
       year: '2024',
-      title: 'Market Leadership',
-      description: 'Achieved 100K+ processed applications with 98% success rate and industry recognition.'
+      title: t('about.timeline.marketLeadership.title'),
+      description: t('about.timeline.marketLeadership.description')
     }
   ];
 
   const team = [
     {
-      name: 'Dr. Sarah Chen',
-      role: 'Chief Technology Officer',
-      description: 'Former Google AI researcher with 15+ years in machine learning and NLP.',
+      name: t('about.team.sarahChen.name'),
+      role: t('about.team.sarahChen.role'),
+      description: t('about.team.sarahChen.description'),
       image: '👩‍💻'
     },
     {
-      name: 'Michael Rodriguez',
-      role: 'Head of Product',
-      description: 'Ex-Uber product leader specializing in user experience and growth.',
+      name: t('about.team.michaelRodriguez.name'),
+      role: t('about.team.michaelRodriguez.role'),
+      description: t('about.team.michaelRodriguez.description'),
       image: '👨‍💼'
     },
     {
-      name: 'Priya Sharma',
-      role: 'VP of Operations',
-      description: 'Immigration law expert with deep knowledge of visa processes worldwide.',
+      name: t('about.team.priyaSharma.name'),
+      role: t('about.team.priyaSharma.role'),
+      description: t('about.team.priyaSharma.description'),
       image: '👩‍⚖️'
     },
     {
-      name: 'James Liu',
-      role: 'Chief Security Officer',
-      description: 'Cybersecurity veteran ensuring enterprise-grade data protection.',
+      name: t('about.team.jamesLiu.name'),
+      role: t('about.team.jamesLiu.role'),
+      description: t('about.team.jamesLiu.description'),
       image: '👨‍🔒'
     }
   ];
@@ -118,26 +121,25 @@ const AboutUs: React.FC = () => {
                 <Rocket className="h-10 w-10 text-white" />
               </div>
               <div className="text-left">
-                <h1 className="text-5xl font-bold mb-2">THINKNEO.AI</h1>
-                <p className="text-xl text-blue-100">Part of SHK Hong Kong Group</p>
+                <h1 className="text-5xl font-bold mb-2">{t('about.hero.companyName')}</h1>
+                <p className="text-xl text-blue-100">{t('about.hero.parentCompany')}</p>
               </div>
             </div>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              Revolutionizing travel and immigration through artificial intelligence. 
-              We're making visa applications faster, smarter, and more accessible for everyone.
+              {t('about.hero.description')}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Badge variant="secondary" className="text-lg px-4 py-2">
                 <Building2 className="w-4 h-4 mr-2" />
-                SHK Hong Kong Group
+                {t('about.hero.badges.shkGroup')}
               </Badge>
               <Badge variant="secondary" className="text-lg px-4 py-2">
                 <Globe className="w-4 h-4 mr-2" />
-                Global Presence
+                {t('about.hero.badges.globalPresence')}
               </Badge>
               <Badge variant="secondary" className="text-lg px-4 py-2">
                 <Award className="w-4 h-4 mr-2" />
-                Industry Leader
+                {t('about.hero.badges.industryLeader')}
               </Badge>
             </div>
           </div>
@@ -168,14 +170,12 @@ const AboutUs: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center text-2xl">
                 <Target className="w-6 h-6 mr-2 text-blue-600" />
-                Our Mission
+                {t('about.mission.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                To democratize global travel by leveraging artificial intelligence to make visa applications 
-                and travel planning accessible, accurate, and stress-free for everyone. We believe that 
-                technology should remove barriers, not create them.
+                {t('about.mission.description')}
               </p>
             </CardContent>
           </Card>
@@ -184,14 +184,12 @@ const AboutUs: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center text-2xl">
                 <Rocket className="w-6 h-6 mr-2 text-purple-600" />
-                Our Vision
+                {t('about.vision.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                To become the world's most trusted AI-powered travel and immigration platform, 
-                enabling seamless global mobility for millions of travelers while maintaining 
-                the highest standards of accuracy, security, and customer satisfaction.
+                {t('about.vision.description')}
               </p>
             </CardContent>
           </Card>
@@ -200,9 +198,9 @@ const AboutUs: React.FC = () => {
         {/* Values */}
         <Card className="mb-16">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Our Core Values</CardTitle>
+            <CardTitle className="text-2xl text-center">{t('about.values.title')}</CardTitle>
             <CardDescription className="text-center">
-              The principles that guide everything we do
+              {t('about.values.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -225,9 +223,9 @@ const AboutUs: React.FC = () => {
         {/* Company Timeline */}
         <Card className="mb-16">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Our Journey</CardTitle>
+            <CardTitle className="text-2xl text-center">{t('about.timeline.title')}</CardTitle>
             <CardDescription className="text-center">
-              From startup to industry leader
+              {t('about.timeline.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -255,9 +253,9 @@ const AboutUs: React.FC = () => {
         {/* Leadership Team */}
         <Card className="mb-16">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Leadership Team</CardTitle>
+            <CardTitle className="text-2xl text-center">{t('about.team.title')}</CardTitle>
             <CardDescription className="text-center">
-              Meet the experts driving our innovation
+              {t('about.team.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -279,9 +277,9 @@ const AboutUs: React.FC = () => {
         {/* SHK Hong Kong Group */}
         <Card className="mb-16 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Part of SHK Hong Kong Group</CardTitle>
+            <CardTitle className="text-2xl text-center">{t('about.shkGroup.title')}</CardTitle>
             <CardDescription className="text-center">
-              Backed by decades of business excellence
+              {t('about.shkGroup.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -290,25 +288,23 @@ const AboutUs: React.FC = () => {
                 <Building2 className="w-12 h-12 text-white" />
               </div>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6">
-                THINKNEO.AI is proudly part of SHK Hong Kong Group, a diversified conglomerate with over 30 years 
-                of experience in technology, finance, and international business. This partnership provides us with 
-                the resources, expertise, and global network needed to deliver world-class AI solutions.
+                {t('about.shkGroup.description')}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
                 <div className="text-center">
                   <TrendingUp className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                  <div className="font-semibold">30+ Years</div>
-                  <div className="text-sm text-gray-600">Business Excellence</div>
+                  <div className="font-semibold">{t('about.shkGroup.highlights.experience.value')}</div>
+                  <div className="text-sm text-gray-600">{t('about.shkGroup.highlights.experience.label')}</div>
                 </div>
                 <div className="text-center">
                   <Globe className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                  <div className="font-semibold">Global Network</div>
-                  <div className="text-sm text-gray-600">Worldwide Presence</div>
+                  <div className="font-semibold">{t('about.shkGroup.highlights.network.value')}</div>
+                  <div className="text-sm text-gray-600">{t('about.shkGroup.highlights.network.label')}</div>
                 </div>
                 <div className="text-center">
                   <Shield className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                  <div className="font-semibold">Enterprise Grade</div>
-                  <div className="text-sm text-gray-600">Security & Compliance</div>
+                  <div className="font-semibold">{t('about.shkGroup.highlights.security.value')}</div>
+                  <div className="text-sm text-gray-600">{t('about.shkGroup.highlights.security.label')}</div>
                 </div>
               </div>
             </div>
@@ -318,42 +314,42 @@ const AboutUs: React.FC = () => {
         {/* Contact Information */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Get in Touch</CardTitle>
+            <CardTitle className="text-2xl text-center">{t('about.contact.title')}</CardTitle>
             <CardDescription className="text-center">
-              Ready to transform your travel experience?
+              {t('about.contact.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <MapPin className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                <h3 className="font-semibold mb-2">Headquarters</h3>
+                <h3 className="font-semibold mb-2">{t('about.contact.headquarters.title')}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Hong Kong SAR<br />
-                  SHK Hong Kong Group
+                  {t('about.contact.headquarters.location')}<br />
+                  {t('about.contact.headquarters.company')}
                 </p>
               </div>
               <div>
                 <Mail className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-                <h3 className="font-semibold mb-2">Email</h3>
+                <h3 className="font-semibold mb-2">{t('about.contact.email.title')}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  info@thinkneo.ai<br />
-                  support@thaivisa.ai
+                  {t('about.contact.email.general')}<br />
+                  {t('about.contact.email.support')}
                 </p>
               </div>
               <div>
                 <Phone className="w-8 h-8 text-green-600 mx-auto mb-3" />
-                <h3 className="font-semibold mb-2">Support</h3>
+                <h3 className="font-semibold mb-2">{t('about.contact.support.title')}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  24/7 Customer Support<br />
-                  Multiple Languages
+                  {t('about.contact.support.availability')}<br />
+                  {t('about.contact.support.languages')}
                 </p>
               </div>
             </div>
             <div className="text-center mt-8">
               <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                 <Mail className="w-4 h-4 mr-2" />
-                Contact Us Today
+                {t('about.contact.button')}
               </Button>
             </div>
           </CardContent>

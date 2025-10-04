@@ -2,19 +2,31 @@
   "nav": {
     "home": "홈",
     "apply": "비자 신청",
-    "tripPlanner": "여행 플래너",
-    "documentChecker": "문서 검사기",
-    "credits": "크레딧",
-    "profile": "프로필",
+    "tripPlanner": "AI 여행 계획",
+    "documentChecker": "AI 문서 검사",
+    "travelServices": "여행 서비스",
+    "arGuide": "AR 가이드",
+    "support": "지원",
     "login": "로그인",
     "register": "회원가입",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "profile": "프로필",
+    "dashboard": "대시보드",
+    "credits": "크레딧",
+    "language": "언어",
+    "aiTripPlanner": "AI 여행 계획",
+    "aiDocumentChecker": "AI 문서 검사",
+    "marketplace": "마켓플레이스"
+  },
+  "auth": {
+    "logoutSuccess": "로그아웃되었습니다",
+    "logoutError": "로그아웃 오류"
   },
   "home": {
     "hero": {
       "badge": "AI 기반 플랫폼",
-      "title": "당신의 AI 태국 비자",
-      "subtitle": "& 여행 어시스턴트",
+      "title": "AI로 태국 비자를",
+      "subtitle": "여행 어시스턴트와 함께",
       "description": "문서 확인부터 개인 맞춤 여행 계획까지 모든 것을 처리하는 첨단 AI 기술로 비자 처리의 미래를 경험하세요.",
       "startApplication": "신청 시작",
       "getStarted": "시작하기",
@@ -30,278 +42,25 @@
       "title": "AI 기반 기능",
       "description": "우리의 첨단 AI는 전례 없는 정확성과 속도로 태국 비자 여정의 모든 측면을 처리합니다.",
       "documentChecker": {
-        "title": "AI 문서 검사기",
-        "description": "첨단 AI 기술을 사용하여 95% 정확도로 모든 비자 문서를 즉시 확인하고 검증합니다."
+        "title": "AI 문서 검사",
+        "description": "첨단 AI 기술을 사용하여 모든 비자 문서를 95% 정확도로 즉시 확인하고 검증합니다."
       },
       "visaAdvisor": {
         "title": "AI 비자 어드바이저",
         "description": "프로필과 여행 계획을 바탕으로 개인 맞춤 비자 추천을 받으세요."
       },
       "tripPlanner": {
-        "title": "AI 여행 플래너",
+        "title": "AI 여행 계획",
         "description": "완벽한 태국 경험을 위한 AI 추천으로 개인 맞춤 여행 일정을 만드세요."
       },
       "assistantChat": {
         "title": "AI 어시스턴트 채팅",
-        "description": "모든 비자 및 여행 질문에 대한 24/7 AI 지원으로 즉각적이고 정확한 답변을 제공합니다."
-      }
-    },
-    "tripPlannerSection": {
-      "title": "AI 여행 플래너 - 완전한 여행 관리",
-      "description": "태국에서의 항공편, 숙박, 교통, 특별 서비스에 대한 AI 개인 맞춤 추천을 받으세요. 지능적인 여행 계획으로 시간과 돈을 절약하세요.",
-      "services": {
-        "flightRecommendations": {
-          "title": "항공편 추천",
-          "features": {
-            "smartFlightSearch": "스마트 항공편 검색",
-            "pricePredictions": "가격 예측",
-            "bestRouteAnalysis": "최적 경로 분석",
-            "seatRecommendations": "좌석 추천"
-          }
-        },
-        "hotelAccommodation": {
-          "title": "호텔 & 숙박",
-          "features": {
-            "personalizedMatching": "개인 맞춤 매칭",
-            "locationOptimizer": "위치 최적화",
-            "priceComparison": "가격 비교",
-            "amenityMatching": "편의시설 매칭"
-          }
-        },
-        "transportationServices": {
-          "title": "교통 서비스",
-          "features": {
-            "airportTransfers": "공항 픽업",
-            "localTransport": "현지 교통",
-            "carRentalOptimizer": "렌터카 최적화",
-            "routePlanning": "경로 계획"
-          }
-        },
-        "specialServices": {
-          "title": "특별 서비스",
-          "features": {
-            "tourPackages": "투어 패키지",
-            "restaurantRecommendations": "레스토랑 추천",
-            "culturalExperiences": "문화 체험",
-            "emergencySupport": "응급 지원"
-          }
-        }
-      },
-      "interactiveFeatures": {
-        "title": "AI 인터랙티브 기능",
-        "smartItinerary": {
-          "title": "스마트 일정 빌더",
-          "description": "AI가 당신의 관심사와 선호도를 바탕으로 개인 맞춤 일별 여행 계획을 만듭니다."
-        },
-        "budgetOptimizer": {
-          "title": "예산 최적화",
-          "description": "AI가 수천 가지 옵션을 분석하여 여행 예산에 최적의 가치를 찾아줍니다."
-        },
-        "weatherIntegration": {
-          "title": "날씨 통합",
-          "description": "AI가 날씨 예보와 계절 조건을 바탕으로 추천을 조정합니다."
-        },
-        "realTimeUpdates": {
-          "title": "실시간 업데이트",
-          "description": "AI가 실시간 여행 업데이트, 항공편 변경, 대안 추천을 제공합니다."
-        }
-      },
-      "interface": {
-        "title": "AI 여행 플래너 인터페이스",
-        "subtitle": "AI 개인 맞춤 여행 계획",
-        "travelDates": "여행 날짜",
-        "sampleDates": "12월 15일 - 12월 25일, 2024",
-        "budgetRange": "예산 범위",
-        "sampleBudget": "$2,000 - $3,000 USD",
-        "aiRecommendations": "AI 추천",
-        "sampleRecommendations": "15개 개인 맞춤 제안 준비 완료",
-        "generatePlan": "AI 여행 계획 생성"
-      },
-      "creditServices": {
-        "basicPlan": {
-          "title": "기본 여행 플랜",
-          "credits": "크레딧",
-          "description": "항공편, 호텔, 교통에 대한 기본 AI 추천",
-          "button": "기본 플랜 받기"
-        },
-        "advancedPlan": {
-          "title": "고급 여행 플랜",
-          "credits": "크레딧",
-          "description": "대안과 최적화가 포함된 상세 일정",
-          "button": "고급 플랜 받기"
-        },
-        "premiumPlan": {
-          "title": "프리미엄 여행 플랜",
-          "credits": "크레딧",
-          "description": "실시간 업데이트가 포함된 완전한 여행 관리",
-          "button": "프리미엄 플랜 받기"
-        },
-        "vipConcierge": {
-          "title": "VIP 컨시어지",
-          "credits": "크레딧",
-          "description": "24/7 지원이 포함된 개인 AI 여행 어시스턴트",
-          "button": "VIP 서비스 받기"
-        }
-      },
-      "successStories": {
-        "title": "AI 여행 계획 성공 사례",
-        "userBookings": "사용자가 AI 추천 서비스 예약",
-        "averageSavings": "AI 최적화로 평균 절약",
-        "planningRating": "AI 여행 계획 별점",
-        "timeSaved": "AI 리서치로 절약한 시간"
-      },
-      "howItWorks": {
-        "title": "AI 여행 계획 작동 방식",
-        "step1": {
-          "title": "AI에게 선호도 알려주기",
-          "description": "여행 스타일, 예산, 관심사, 날짜를 AI 시스템과 공유하세요."
-        },
-        "step2": {
-          "title": "AI가 옵션 분석",
-          "description": "AI가 수천 개의 항공편, 호텔, 활동을 비교하여 최적의 매치를 찾습니다."
-        },
-        "step3": {
-          "title": "개인 맞춤 플랜 받기",
-          "description": "설명과 대안 옵션이 포함된 맞춤형 추천을 받으세요."
-        },
-        "step4": {
-          "title": "안심하고 예약",
-          "description": "AI가 실시간 정보와 지원으로 여행을 모니터링하고 업데이트합니다."
-        }
-      }
-    },
-    "visaHub": {
-      "title": "완전한 비자 정보 허브",
-      "description": "개인 맞춤 추천이 포함된 모든 태국 비자 유형에 대한 AI 가이드.",
-      "touristVisa": {
-        "title": "관광 비자 (TR)",
-        "badge": "가장 인기",
-        "description": "관광 및 레저 방문을 위한 완전한 가이드와 AI 지원 신청.",
-        "features": {
-          "aiDocumentVerification": "AI 문서 확인",
-          "instantEligibilityCheck": "즉시 자격 확인",
-          "smartFormFilling": "스마트 양식 작성"
-        }
-      },
-      "businessVisa": {
-        "title": "비즈니스 비자 (B)",
-        "badge": "전문가",
-        "description": "비즈니스 활동을 위한 AI 요구사항 및 문서 확인.",
-        "features": {
-          "businessDocumentAnalysis": "비즈니스 문서 분석",
-          "invitationLetterVerification": "초청장 확인",
-          "companyRegistrationCheck": "회사 등록 확인"
-        }
-      },
-      "educationVisa": {
-        "title": "교육 비자 (ED)",
-        "badge": "학생",
-        "description": "교육 기관을 위한 AI 가이드가 포함된 학생 비자 지원.",
-        "features": {
-          "academicDocumentVerification": "학술 문서 확인",
-          "institutionValidation": "기관 검증",
-          "financialProofAnalysis": "재정 증명 분석"
-        }
-      },
-      "transitVisa": {
-        "title": "경유 비자 (TS)",
-        "badge": "빠름",
-        "description": "경유 승객을 위한 AI 지원으로 빠른 처리.",
-        "features": {
-          "flightItineraryVerification": "항공편 일정 확인",
-          "transitTimeCalculation": "경유 시간 계산",
-          "expressProcessing": "특급 처리"
-        }
-      },
-      "specialVisas": {
-        "title": "특별 비자",
-        "badge": "프리미엄",
-        "description": "AI 추천이 포함된 은퇴, 투자 및 기타 특별 비자 카테고리.",
-        "features": {
-          "eligibilityAssessment": "자격 평가",
-          "investmentVerification": "투자 확인",
-          "personalizedGuidance": "개인 맞춤 가이드"
-        }
-      },
-      "aiRecommendations": {
-        "title": "AI 추천",
-        "badge": "스마트",
-        "description": "AI가 프로필을 분석하여 필요에 가장 적합한 비자 유형을 추천하도록 하세요.",
-        "button": "AI 추천 받기"
-      }
-    },
-    "aiPoweredFeatures": {
-      "title": "AI 기반 기능",
-      "description": "최첨단 AI 기술로 비자 처리의 미래를 경험하세요.",
-      "smartDocumentAnalysis": {
-        "title": "스마트 문서 분석",
-        "description": "AI가 몇 초 만에 95% 정확도로 모든 문서를 스캔하고 확인합니다."
-      },
-      "intelligentFormFilling": {
-        "title": "지능형 양식 작성",
-        "description": "OCR + AI가 여권에서 추출한 데이터로 모든 양식을 자동으로 작성합니다."
-      },
-      "riskAssessment": {
-        "title": "위험 평가",
-        "description": "AI가 승인 가능성을 예측하고 제출 전 개선사항을 제안합니다."
-      },
-      "realTimeUpdates": {
-        "title": "실시간 업데이트",
-        "description": "AI가 신청 상태를 모니터링하고 즉시 업데이트를 제공합니다."
-      }
-    },
-    "howItWorks": {
-      "title": "AI가 간단하게 만드는 방법",
-      "description": "첨단 AI로 태국 비자 승인을 받는 4가지 간단한 단계.",
-      "step1": {
-        "title": "여권 업로드",
-        "description": "AI가 첨단 OCR 기술을 사용하여 여권 사진에서 데이터를 즉시 추출합니다."
-      },
-      "step2": {
-        "title": "AI 분석",
-        "description": "AI가 프로필을 분석하고 필요에 가장 적합한 비자 유형을 추천합니다."
-      },
-      "step3": {
-        "title": "문서 확인",
-        "description": "AI가 모든 문서를 확인하고 요구사항과 100% 일치하도록 보장합니다."
-      },
-      "step4": {
-        "title": "스마트 제출",
-        "description": "AI가 신청서를 제출하고 실시간 업데이트로 진행 상황을 모니터링합니다."
-      }
-    },
-    "tripManagement": {
-      "title": "완전한 여행 관리",
-      "description": "AI가 태국 여행의 모든 관료적 측면을 관리하여 재미있는 부분 계획에 집중할 수 있습니다.",
-      "bureaucraticPlanning": {
-        "title": "관료적 계획",
-        "description": "AI가 스마트 스케줄링과 알림으로 모든 서류 작업과 마감일을 처리합니다."
-      },
-      "documentTimeline": {
-        "title": "문서 타임라인",
-        "description": "자동 진행 추적이 포함된 문서 준비의 스마트 스케줄링."
-      },
-      "complianceMonitoring": {
-        "title": "규정 준수 모니터링",
-        "description": "AI가 모든 요구사항이 충족되도록 보장하고 문제를 즉시 알려줍니다."
-      },
-      "emergencySupport": {
-        "title": "응급 지원",
-        "description": "시간에 민감한 비자 및 여행 문제에 대한 긴급 AI 지원."
-      },
-      "aiTravelAssistant": {
-        "title": "AI 여행 어시스턴트",
-        "subtitle": "모든 태국 비자 및 여행 필요에 대한 개인 AI 어시스턴트",
-        "documentStatus": "문서 상태",
-        "allDocumentsVerified": "모든 문서 확인 및 규정 준수 완료",
-        "applicationProgress": "신청 진행률",
-        "nextStep": "다음 단계",
-        "submitFinalDocuments": "12월 15일까지 최종 문서 제출"
+        "description": "모든 비자 및 여행 질문에 대한 24시간 AI 지원으로 즉각적이고 정확한 답변을 받으세요."
       }
     },
     "cta": {
       "title": "태국 여행을 시작할 준비가 되셨나요?",
-      "description": "비자 및 여행 필요를 위해 AI 기반 플랫폼을 신뢰하는 수천 명의 여행자들과 함께하세요.",
+      "description": "비자 및 여행 요구사항을 위해 AI 기반 플랫폼을 신뢰하는 수천 명의 여행자들과 함께하세요.",
       "startApplication": "신청 시작",
       "getStarted": "시작하기",
       "viewPricing": "가격 보기",
@@ -310,15 +69,511 @@
       "aiSupport": "AI 지원"
     }
   },
-  "tripPlanner": {
-    "title": "AI 여행 플래너",
-    "subtitle": "우리의 첨단 AI가 당신만을 위한 완벽한 태국 여행 경험을 만들어 드립니다. 항공편부터 활동까지 모든 세부사항을 처리합니다.",
+  "apply": {
+    "title": "비자 신청",
+    "loadingPage": "비자 신청 페이지 로딩 중",
+    "steps": {
+      "selectVisa": "비자 유형 선택",
+      "selectVisaType": "비자 유형을 선택하세요",
+      "basicInfo": "기본 정보",
+      "passport": "여권 업로드",
+      "uploadPassport": "여권 사진 업로드",
+      "documents": "지원 문서",
+      "uploadDocuments": "지원 문서 업로드",
+      "review": "검토 및 제출"
+    },
+    "stepDescriptions": {
+      "step1": "신청하려는 비자 유형을 선택하세요",
+      "step2": "기본 정보와 여행 세부사항을 제공하세요",
+      "step3": "여권 정보 페이지의 선명한 사진을 업로드하세요",
+      "step4": "필요한 모든 지원 문서를 업로드하세요",
+      "step5": "신청서를 검토하고 처리를 위해 제출하세요"
+    },
+    "visaTypes": {
+      "tourist": "관광 비자 (TR)",
+      "touristDesc": "관광 및 레저용",
+      "business": "비즈니스 비자 (B)",
+      "businessDesc": "상업 활동용",
+      "education": "교육 비자 (ED)",
+      "educationDesc": "태국에서 공부용",
+      "retirement": "은퇴 비자 (O-A)",
+      "retirementDesc": "50세 이상 은퇴자용",
+      "marriage": "결혼 비자 (O)",
+      "marriageDesc": "태국 국민과 결혼한 경우",
+      "work": "취업 비자 (Non-B)",
+      "workDesc": "태국에서 취업용"
+    },
+    "form": {
+      "nationality": "국적",
+      "selectNationality": "국적을 선택하세요",
+      "purpose": "방문 목적",
+      "selectPurpose": "목적을 선택하세요",
+      "duration": "예상 체류 기간",
+      "selectDuration": "기간을 선택하세요",
+      "visaType": "비자 유형",
+      "passport": "여권",
+      "documents": "문서"
+    },
+    "countries": {
+      "us": "미국",
+      "uk": "영국",
+      "ca": "캐나다",
+      "au": "호주",
+      "de": "독일",
+      "fr": "프랑스",
+      "jp": "일본",
+      "other": "기타"
+    },
+    "purposes": {
+      "tourism": "관광",
+      "business": "비즈니스",
+      "education": "교육",
+      "medical": "의료 치료",
+      "family": "가족 방문",
+      "other": "기타"
+    },
+    "durations": {
+      "1-7": "1-7일",
+      "8-15": "8-15일",
+      "16-30": "16-30일",
+      "31-60": "31-60일",
+      "61-90": "61-90일",
+      "90+": "90일 이상"
+    },
+    "upload": {
+      "passportTitle": "여권 사진 페이지를 업로드하세요",
+      "passportDesc": "우리 AI가 OCR 기술을 사용하여 정보를 추출합니다",
+      "documentsTitle": "필요한 문서를 업로드하세요",
+      "documentsDesc": "은행 명세서, 호텔 예약, 항공권 등"
+    },
+    "costs": {
+      "passportUpload": "{{cost}} 크레딧 필요",
+      "documentsUpload": "{{cost}} 크레딧 필요"
+    },
+    "status": {
+      "passportUploaded": "여권 업로드 및 처리 완료",
+      "uploaded": "업로드 완료 ✓",
+      "notUploaded": "업로드되지 않음",
+      "filesUploaded": "{{count}}개 파일 업로드됨"
+    },
+    "review": {
+      "title": "제출 준비 완료",
+      "description": "신청서를 검토하고 AI 최종 분석을 위해 제출하세요",
+      "finalCost": "최종 분석 비용",
+      "finalCostDesc": "포괄적인 AI 분석, 자격 평가 및 상세 보고서 생성이 포함됩니다",
+      "summary": "신청 요약"
+    },
     "progress": {
-      "title": "계획 진행률",
+      "step": "{{total}} 중 {{current}}단계",
+      "complete": "{{percent}}% 완료"
+    },
+    "warnings": {
+      "lowCredits": "크레딧 부족 경고",
+      "lowCreditsDesc": "이 신청을 완료하기에 충분한 크레딧이 없을 수 있습니다. 중단을 피하기 위해 더 많은 크레딧 구매를 고려하세요."
+    },
+    "auth": {
+      "loginRequired": "로그인 필요",
+      "loginMessage": "비자 신청에 액세스하려면 로그인하세요."
+    },
+    "actions": {
+      "selectedVisa": "{{type}} 비자 유형 선택됨",
+      "continueStep": "{{step}}단계로 계속",
+      "uploadPassport": "여권 사진 업로드",
+      "ocrAnalysis": "여권 OCR 분석",
+      "uploadDocuments": "{{count}}개 문서 업로드",
+      "documentAnalysis": "AI 문서 분석",
+      "finalAnalysis": "완전한 비자 신청 분석",
+      "generateReport": "신청 보고서 생성",
+      "submitApplication": "신청서 제출"
+    },
+    "processing": {
+      "ocrPassport": "OCR로 여권 처리 중..."
+    },
+    "success": {
+      "passportProcessed": "여권 처리 완료! OCR 데이터 추출됨.",
+      "documentsAnalyzed": "문서 분석 완료!",
+      "applicationSubmitted": "비자 신청이 성공적으로 제출되었습니다!"
+    },
+    "errors": {
+      "needMoreCredits": "비자 신청을 계속하려면 더 많은 크레딧이 필요합니다!",
+      "selectVisaType": "먼저 비자 유형을 선택하세요",
+      "fillRequiredFields": "모든 필수 필드를 입력하세요",
+      "uploadPassport": "여권 사진을 업로드하세요",
+      "uploadDocuments": "최소 하나의 지원 문서를 업로드하세요",
+      "passportUploadCost": "여권 업로드 및 OCR 처리에는 {{totalCost}} 크레딧이 필요합니다. {{credits}} 크레딧만 있습니다.",
+      "needCreditsDocuments": "문서를 업로드하려면 더 많은 크레딧이 필요합니다!"
+    }
+  },
+  "documentChecker": {
+    "title": "AI 문서 검사",
+    "subtitle": "첨단 인공지능으로 문서를 확인하고 검증하세요",
+    "creditsAvailable": "{{credits}} 크레딧 사용 가능",
+    "creditsPerDocument": "문서당 15 크레딧",
+    "supportedDocuments": "지원되는 문서",
+    "upload": {
+      "title": "문서 업로드",
+      "description": "분석을 위해 문서의 이미지나 PDF를 보내세요",
+      "dragDrop": "문서를 여기에 드래그 앤 드롭하거나",
+      "selectFiles": "파일 선택",
+      "formats": "형식: JPG, PNG, PDF • 최대: 파일당 10MB"
+    },
+    "formats": {
+      "passport": "여권",
+      "id": "신분증",
+      "driverLicense": "운전면허증",
+      "birthCertificate": "출생증명서",
+      "incomeProof": "소득 증명",
+      "bankStatement": "은행 명세서",
+      "vaccinationCertificate": "예방접종 증명서"
+    },
+    "types": {
+      "general": "일반 문서",
+      "passport": "여권",
+      "id": "신분증"
+    },
+    "fields": {
+      "documentNumber": "문서 번호",
+      "fullName": "성명",
+      "dateOfBirth": "생년월일",
+      "nationality": "국적",
+      "issueDate": "발급일",
+      "expiryDate": "만료일",
+      "issuingAuthority": "발급 기관",
+      "placeOfBirth": "출생지",
+      "gender": "성별"
+    },
+    "nationalities": {
+      "brazilian": "브라질"
+    },
+    "authorities": {
+      "federalPolice": "연방 경찰"
+    },
+    "issues": {
+      "expired": "문서 만료됨",
+      "expiringSoon": "문서가 6개월 이내에 만료됨",
+      "imageQuality": "이미지 품질을 개선할 수 있음",
+      "compliant": "문서가 국제 표준에 부합함"
+    },
+    "recommendations": {
+      "keepOriginal": "원본 문서를 안전한 곳에 보관하세요",
+      "makeBackups": "백업용 디지털 사본을 만드세요",
+      "renewBeforeTravel": "여행 전 문서 갱신을 고려하세요",
+      "validForTravel": "국제 여행에 유효한 문서",
+      "checkRequirements": "목적지 국가의 특정 요구사항을 확인하세요"
+    },
+    "status": {
+      "uploading": "업로드 중...",
+      "analyzing": "분석 중...",
+      "valid": "유효함",
+      "warning": "경고",
+      "expired": "만료됨",
+      "invalid": "무효함",
+      "completed": "완료됨",
+      "error": "오류",
+      "waiting": "대기 중"
+    },
+    "progress": {
+      "uploading": "파일 업로드 중...",
+      "analyzing": "AI로 문서 분석 중..."
+    },
+    "analysis": {
+      "confidence": "신뢰도",
+      "type": "유형",
+      "processing": "처리",
+      "extractedData": "추출된 데이터",
+      "issues": "식별된 문제",
+      "recommendations": "권장사항"
+    },
+    "actions": {
+      "analyzing": "{{fileName}} 분석"
+    },
+    "success": {
+      "analysisComplete": "{{fileName}} 분석 완료!",
+      "reportDownloaded": "보고서 다운로드 완료!"
+    },
+    "errors": {
+      "unsupportedFormat": "{{fileName}}: 지원되지 않는 형식입니다. 이미지나 PDF를 사용하세요.",
+      "fileTooLarge": "{{fileName}}: 파일이 너무 큽니다. 최대 10MB.",
+      "insufficientCredits": "크레딧이 부족합니다. 문서를 분석하려면 15 크레딧이 필요합니다.",
+      "processingError": "문서 처리 오류. 다시 시도하세요.",
+      "processingFailed": "문서 처리 오류. 다시 시도하거나 파일이 올바른지 확인하세요."
+    },
+    "empty": {
+      "title": "업로드된 문서 없음",
+      "description": "AI 분석을 시작하려면 문서를 업로드하세요."
+    },
+    "report": {
+      "title": "문서 분석 보고서",
+      "generatedBy": "Thailand Visa AI에서 생성",
+      "fileInfo": "파일 정보",
+      "fileName": "이름",
+      "fileSize": "크기",
+      "fileType": "유형",
+      "analyzedAt": "분석 일시",
+      "analysisResult": "분석 결과",
+      "documentType": "문서 유형",
+      "status": "상태",
+      "confidence": "신뢰도",
+      "processingTime": "처리 시간",
+      "extractedData": "추출된 데이터",
+      "identifiedIssues": "식별된 문제",
+      "noIssues": "식별된 문제 없음",
+      "recommendations": "권장사항",
+      "reportPrefix": "보고서",
+      "disclaimer": "이 보고서는 AI에 의해 자동 생성되었으며 참고용으로만 사용해야 합니다. 공식적인 문제는 관할 당국에 문의하세요."
+    }
+  },
+  "support": {
+    "title": "지원 센터",
+    "subtitle": "태국 비자 신청 및 AI 서비스에 대한 도움을 받으세요",
+    "contact": {
+      "title": "연락처 정보",
+      "email": {
+        "title": "이메일 지원",
+        "address": "support@thaivisa.ai"
+      },
+      "phone": {
+        "title": "전화 지원",
+        "number": "+66 2 123 4567"
+      },
+      "hours": {
+        "title": "영업 시간",
+        "schedule": "월-금: 오전 9시-오후 6시 (GMT+7)"
+      }
+    },
+    "response": {
+      "title": "응답 시간",
+      "general": "일반 문의",
+      "generalTime": "24시간",
+      "technical": "기술적 문제",
+      "technicalTime": "12시간",
+      "urgent": "긴급 문제",
+      "urgentTime": "4시간",
+      "phone": "전화 지원",
+      "phoneTime": "즉시"
+    },
+    "form": {
+      "title": "지원 티켓 제출",
+      "description": "문제를 설명해 주시면 가능한 한 빨리 연락드리겠습니다",
+      "fields": {
+        "name": "성명",
+        "email": "이메일 주소",
+        "category": "카테고리",
+        "priority": "우선순위",
+        "subject": "제목",
+        "message": "메시지"
+      },
+      "placeholders": {
+        "category": "카테고리 선택",
+        "subject": "문제에 대한 간단한 설명",
+        "message": "문제에 대한 자세한 정보를 제공해 주세요..."
+      },
+      "categories": {
+        "visaApplication": "비자 신청",
+        "creditsBilling": "크레딧 및 청구",
+        "technicalIssue": "기술적 문제",
+        "documentAnalysis": "문서 분석",
+        "tripPlanning": "여행 계획",
+        "accountAccess": "계정 액세스",
+        "other": "기타"
+      },
+      "priorities": {
+        "low": "낮음",
+        "normal": "보통",
+        "high": "높음",
+        "urgent": "긴급"
+      },
+      "submitting": "제출 중...",
+      "submit": "티켓 제출",
+      "successMessage": "지원 티켓이 성공적으로 제출되었습니다! 24시간 이내에 연락드리겠습니다."
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "description": "일반적인 질문에 대한 빠른 답변을 찾으세요",
+      "items": {
+        "visaApplication": {
+          "question": "태국 비자는 어떻게 신청하나요?",
+          "answer": "AI 기반 비자 신청 시스템을 사용하세요. \"비자 신청\"으로 이동하여 비자 유형을 선택하고 단계별 프로세스를 따르세요. 우리 AI가 문서 요구사항과 자격 확인을 안내합니다."
+        },
+        "creditSystem": {
+          "question": "크레딧 시스템은 어떻게 작동하나요?",
+          "answer": "사용하는 각 AI 서비스마다 크레딧이 소모됩니다. 다른 작업은 다른 크레딧 비용을 가집니다. 가격 페이지에서 크레딧 패키지를 구매할 수 있습니다. 크레딧은 만료되지 않으며 모든 서비스에서 사용할 수 있습니다."
+        },
+        "documents": {
+          "question": "비자 신청에 어떤 문서가 필요한가요?",
+          "answer": "필요한 문서는 비자 유형에 따라 다르지만 일반적으로 여권, 사진, 은행 명세서, 항공편 예약, 숙박 증명이 포함됩니다. 우리 AI가 신청서를 바탕으로 개인 맞춤 체크리스트를 제공합니다."
+        },
+        "aiAccuracy": {
+          "question": "AI 문서 분석의 정확도는 얼마나 되나요?",
+          "answer": "우리 AI는 문서 확인 및 분석에서 98%의 정확도를 가지고 있습니다. 일반적인 문제를 감지하고 진위를 확인하며 신청 성공률을 향상시키기 위한 권장사항을 제공할 수 있습니다."
+        },
+        "refunds": {
+          "question": "사용하지 않은 크레딧에 대해 환불받을 수 있나요?",
+          "answer": "크레딧은 구매 후 환불되지 않지만 만료되지 않습니다. 비자 신청, 문서 확인, 여행 계획을 포함한 모든 AI 서비스에 사용할 수 있습니다."
+        },
+        "processing": {
+          "question": "비자 처리에는 얼마나 걸리나요?",
+          "answer": "처리 시간은 비자 유형과 대사관에 따라 다릅니다. 우리 AI는 예상 처리 시간을 제공하고 신청 상태를 추적하는 데 도움을 줄 수 있습니다. 일반적인 처리는 3-15 영업일입니다."
+        }
+      }
+    },
+    "quickLinks": {
+      "documentation": {
+        "title": "문서",
+        "description": "포괄적인 가이드 및 튜토리얼"
+      },
+      "liveChat": {
+        "title": "실시간 채팅",
+        "description": "지원팀과 채팅하기"
+      },
+      "phoneSupport": {
+        "title": "전화 지원",
+        "description": "전문가와 직접 통화하기"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "companyName": "THINKNEO.AI",
+      "parentCompany": "SHK Hong Kong Group의 일부",
+      "description": "인공지능을 통해 여행과 이민을 혁신하고 있습니다. 비자 신청을 더 빠르고, 더 스마트하고, 모든 사람이 더 접근하기 쉽게 만들고 있습니다.",
+      "badges": {
+        "shkGroup": "SHK Hong Kong Group",
+        "globalPresence": "글로벌 진출",
+        "industryLeader": "업계 리더"
+      }
+    },
+    "stats": {
+      "countriesServed": "서비스 제공 국가",
+      "visasProcessed": "처리된 비자",
+      "successRate": "성공률",
+      "customerSatisfaction": "고객 만족도"
+    },
+    "mission": {
+      "title": "우리의 사명",
+      "description": "인공지능을 활용하여 비자 신청과 여행 계획을 모든 사람에게 접근 가능하고, 정확하며, 스트레스 없게 만들어 글로벌 여행을 민주화합니다. 기술은 장벽을 제거해야 하며 만들어서는 안 된다고 믿습니다."
+    },
+    "vision": {
+      "title": "우리의 비전",
+      "description": "정확성, 보안, 고객 만족도의 최고 기준을 유지하면서 수백만 명의 여행자에게 원활한 글로벌 이동성을 제공하는 세계에서 가장 신뢰받는 AI 기반 여행 및 이민 플랫폼이 되는 것입니다."
+    },
+    "values": {
+      "title": "우리의 핵심 가치",
+      "subtitle": "우리가 하는 모든 일을 이끄는 원칙",
+      "innovation": {
+        "title": "혁신",
+        "description": "비자 처리와 여행 계획을 혁신하기 위해 최첨단 AI 기술을 활용합니다."
+      },
+      "security": {
+        "title": "보안",
+        "description": "개인 데이터와 문서가 항상 보호되도록 하는 기업급 보안."
+      },
+      "customerFirst": {
+        "title": "고객 우선",
+        "description": "우리가 내리는 모든 결정은 뛰어난 고객 경험을 제공하겠다는 약속에 의해 주도됩니다."
+      },
+      "accuracy": {
+        "title": "정확성",
+        "description": "비자 자격과 문서 확인에서 98% 정확도를 가진 정밀 주도 AI 분석."
+      }
+    },
+    "timeline": {
+      "title": "우리의 여정",
+      "subtitle": "스타트업에서 업계 리더까지",
+      "foundation": {
+        "title": "설립",
+        "description": "THINKNEO.AI는 AI를 통해 여행을 민주화한다는 비전으로 SHK Hong Kong Group의 일부로 설립되었습니다."
+      },
+      "aiDevelopment": {
+        "title": "AI 개발",
+        "description": "첫 번째 AI 기반 문서 분석 시스템을 출시하여 베타에서 10,000개 이상의 문서를 처리했습니다."
+      },
+      "globalExpansion": {
+        "title": "글로벌 확장",
+        "description": "다국어 지원과 지역 파트너십으로 25개 이상의 국가에 서비스를 확장했습니다."
+      },
+      "thaiVisaLaunch": {
+        "title": "ThaiVisa.ai 출시",
+        "description": "ThaiVisa.ai를 출시하여 선도적인 AI 기반 태국 비자 신청 플랫폼이 되었습니다."
+      },
+      "marketLeadership": {
+        "title": "시장 리더십",
+        "description": "98% 성공률로 100K+ 신청 처리를 달성하고 업계 인정을 받았습니다."
+      }
+    },
+    "team": {
+      "title": "리더십 팀",
+      "subtitle": "우리의 혁신을 이끄는 전문가들을 만나보세요",
+      "sarahChen": {
+        "name": "사라 첸 박사",
+        "role": "최고기술책임자",
+        "description": "머신러닝과 NLP 분야에서 15년 이상의 경험을 가진 전 Google AI 연구원."
+      },
+      "michaelRodriguez": {
+        "name": "마이클 로드리게스",
+        "role": "제품 책임자",
+        "description": "사용자 경험과 성장을 전문으로 하는 전 Uber 제품 리더."
+      },
+      "priyaSharma": {
+        "name": "프리야 샤르마",
+        "role": "운영 부사장",
+        "description": "전 세계 비자 프로세스에 대한 깊은 지식을 가진 이민법 전문가."
+      },
+      "jamesLiu": {
+        "name": "제임스 류",
+        "role": "최고보안책임자",
+        "description": "기업급 데이터 보호를 보장하는 사이버보안 베테랑."
+      }
+    },
+    "shkGroup": {
+      "title": "SHK Hong Kong Group의 일부",
+      "subtitle": "수십 년간의 비즈니스 우수성에 의해 뒷받침됨",
+      "description": "THINKNEO.AI는 기술, 금융, 국제 비즈니스 분야에서 30년 이상의 경험을 가진 다각화된 대기업인 SHK Hong Kong Group의 자랑스러운 일부입니다. 이 파트너십은 세계적 수준의 AI 솔루션을 제공하는 데 필요한 자원, 전문 지식, 글로벌 네트워크를 제공합니다.",
+      "highlights": {
+        "experience": {
+          "value": "30년 이상",
+          "label": "비즈니스 우수성"
+        },
+        "network": {
+          "value": "글로벌 네트워크",
+          "label": "전 세계 진출"
+        },
+        "security": {
+          "value": "기업급",
+          "label": "보안 및 규정 준수"
+        }
+      }
+    },
+    "contact": {
+      "title": "연락하기",
+      "subtitle": "여행 경험을 변화시킬 준비가 되셨나요?",
+      "headquarters": {
+        "title": "본사",
+        "location": "홍콩 특별행정구",
+        "company": "SHK Hong Kong Group"
+      },
+      "email": {
+        "title": "이메일",
+        "general": "info@thinkneo.ai",
+        "support": "support@thaivisa.ai"
+      },
+      "support": {
+        "title": "지원",
+        "availability": "24시간 고객 지원",
+        "languages": "다국어 지원"
+      },
+      "button": "오늘 연락하기"
+    }
+  },
+  "tripPlanner": {
+    "title": "AI 여행 계획",
+    "subtitle": "우리의 첨단 AI가 당신만을 위해 맞춤 제작된 완벽한 태국 여행 경험을 만들어 드립니다. 항공편부터 활동까지 모든 세부사항을 처리합니다.",
+    "progress": {
+      "title": "계획 진행 상황",
       "step": "단계",
       "of": "중",
       "basicInfo": "기본 정보",
-      "preferences": "선호도",
+      "preferences": "선호사항",
       "interests": "관심사",
       "generate": "생성"
     },
@@ -333,7 +588,7 @@
         "description": "여행의 기본 사항을 알려주세요 - 어디로 가고 싶은지, 언제 여행하고 싶은지.",
         "destination": {
           "title": "목적지",
-          "description": "태국에서 어디를 방문하고 싶으신가요?",
+          "description": "태국의 어디를 방문하고 싶으신가요?",
           "label": "태국 목적지",
           "placeholder": "예: 방콕, 푸켓, 치앙마이..."
         },
@@ -347,73 +602,10 @@
         },
         "travelers": {
           "title": "여행자 수",
-          "description": "몇 명이 여행하실 예정인가요?",
+          "description": "몇 명이 여행할 예정인가요?",
           "label": "여행자",
           "person": "명",
           "people": "명"
-        }
-      },
-      "step2": {
-        "title": "예산 & 선호도",
-        "description": "예산과 숙박 선호도를 이해할 수 있도록 도와주세요.",
-        "budget": {
-          "title": "여행 예산",
-          "description": "이번 여행의 총 예산은 얼마인가요 (1인당)?",
-          "label": "1인당 예산"
-        },
-        "accommodation": {
-          "title": "숙박 유형",
-          "description": "어떤 유형의 숙박을 선호하시나요?"
-        },
-        "transportation": {
-          "title": "교통",
-          "description": "태국에서 어떻게 이동하고 싶으신가요?"
-        }
-      },
-      "step3": {
-        "title": "여행 관심사",
-        "description": "일정을 개인화할 수 있도록 관심사를 선택해 주세요.",
-        "preferences": {
-          "title": "여행 선호도",
-          "description": "어떤 유형의 경험을 찾고 계신가요?"
-        },
-        "activities": {
-          "title": "특정 활동",
-          "description": "여행에 어떤 활동을 포함하고 싶으신가요?"
-        }
-      },
-      "step4": {
-        "title": "최종 세부사항 & 플랜 생성",
-        "description": "특별 요청을 추가하고 AI 여행 계획 서비스 레벨을 선택하세요.",
-        "specialRequests": {
-          "title": "특별 요청",
-          "description": "특별한 요구사항, 식이 제한 또는 특정 요청이 있으신가요?",
-          "placeholder": "예: 채식 식사, 접근성 요구사항, 특별한 행사, 특정 호텔..."
-        },
-        "planTypes": {
-          "title": "AI 여행 플랜 선택",
-          "description": "여행 계획에 원하는 세부사항과 개인화 수준을 선택하세요.",
-          "credits": "크레딧",
-          "basic": {
-            "title": "기본 여행 플랜",
-            "description": "항공편, 호텔, 교통에 대한 기본 AI 추천",
-            "button": "기본 플랜 받기"
-          },
-          "advanced": {
-            "title": "고급 여행 플랜",
-            "description": "대안과 최적화가 포함된 상세 일정",
-            "button": "고급 플랜 받기"
-          },
-          "premium": {
-            "title": "프리미엄 여행 플랜",
-            "description": "실시간 업데이트가 포함된 완전한 여행 관리",
-            "button": "프리미엄 플랜 받기"
-          },
-          "vip": {
-            "title": "VIP 컨시어지",
-            "description": "24/7 지원이 포함된 개인 AI 여행 어시스턴트",
-            "button": "VIP 서비스 받기"
-          }
         }
       }
     },
@@ -432,112 +624,41 @@
       "mixed": "혼합 교통"
     },
     "preferences": {
-      "culture": "문화 & 역사",
+      "culture": "문화 및 역사",
       "adventure": "모험",
       "relaxation": "휴식",
       "nightlife": "나이트라이프",
-      "food": "음식 & 요리",
+      "food": "음식 및 요리",
       "shopping": "쇼핑",
       "nature": "자연",
       "photography": "사진촬영"
     },
     "activities": {
-      "temples": "사원 & 신사",
+      "temples": "사원 및 신사",
       "beaches": "해변",
       "markets": "시장",
       "museums": "박물관",
       "tours": "가이드 투어",
       "cookingClasses": "요리 수업",
-      "spa": "스파 & 웰니스",
-      "diving": "다이빙 & 스노클링"
-    },
-    "generating": {
-      "title": "AI가 완벽한 여행을 만들고 있습니다",
-      "description": "우리의 첨단 AI가 수천 가지 옵션을 분석하여 개인 맞춤 태국 여행 계획을 만들고 있습니다..."
-    },
-    "result": {
-      "title": "당신의 개인 맞춤 태국 모험",
-      "subtitle": "AI가 만든 여행 걸작입니다",
-      "badge": "AI 생성 여행 플랜",
-      "actions": {
-        "downloadPDF": "PDF 다운로드",
-        "share": "플랜 공유",
-        "print": "플랜 인쇄"
-      },
-      "itinerary": {
-        "title": "일별 일정",
-        "description": "개인 맞춤 일별 모험 가이드",
-        "day1": {
-          "title": "1일차: 도착 & 방콕 탐험",
-          "activity1": {
-            "title": "공항 도착 & 호텔 체크인",
-            "description": "프리미엄 공항 픽업 서비스로 편안한 도착"
-          },
-          "activity2": {
-            "title": "왕궁 & 왓 프라 깨우",
-            "description": "태국의 가장 신성한 사원과 왕궁 단지 탐험"
-          },
-          "activity3": {
-            "title": "차오프라야 강 디너 크루즈",
-            "description": "전통 태국 요리와 함께하는 로맨틱한 저녁 크루즈"
-          }
-        },
-        "day2": {
-          "title": "2일차: 문화 몰입 체험",
-          "description": "진정한 태국 문화와 전통에 깊이 빠져보기",
-          "activity1": {
-            "title": "왓 포 사원 & 태국 마사지",
-            "description": "전통 태국 마사지의 발상지 방문"
-          },
-          "activity2": {
-            "title": "차뚜착 주말 시장",
-            "description": "독특한 기념품 쇼핑과 현지 길거리 음식 맛보기"
-          },
-          "activity3": {
-            "title": "태국 요리 수업 체험",
-            "description": "전문 셰프와 함께 정통 태국 요리 배우기"
-          }
-        }
-      },
-      "recommendations": {
-        "title": "AI 추천",
-        "accommodation": "숙박",
-        "dining": "식사",
-        "transportation": "교통",
-        "price": "가격",
-        "hotel": {
-          "name": "만다린 오리엔탈 방콕",
-          "description": "차오프라야 강의 멋진 전망과 뛰어난 서비스를 자랑하는 럭셔리 리버사이드 호텔",
-          "feature1": "파노라마 뷰의 리버사이드 위치",
-          "feature2": "수상 경력의 스파 & 웰니스 센터",
-          "feature3": "미슐랭 스타 레스토랑을 포함한 다양한 식사 옵션"
-        },
-        "restaurant": {
-          "name": "가간 아난드",
-          "description": "혁신적인 분자 요리법을 사용한 세계적으로 유명한 프로그레시브 인도 요리",
-          "feature1": "25코스 테이스팅 메뉴 경험",
-          "feature2": "셰프 프레젠테이션이 포함된 인터랙티브 다이닝",
-          "feature3": "인도 풍미와 현대 기법의 독특한 융합"
-        },
-        "transport": {
-          "name": "프리미엄 공항 픽업 & 시티 투어",
-          "description": "영어 구사 드라이버와 유연한 스케줄링을 제공하는 편안한 프라이빗 교통",
-          "feature1": "프라이빗 에어컨 차량",
-          "feature2": "전문 영어 구사 드라이버",
-          "feature3": "유연한 픽업 시간과 맞춤 경로"
-        }
-      },
-      "footer": {
-        "poweredBy": "Thailand Visa AI 제공",
-        "description": "이 개인 맞춤 여행 계획은 완벽한 태국 경험을 보장하기 위해 첨단 AI 기술을 사용하여 만들어졌습니다."
-      }
+      "spa": "스파 및 웰니스",
+      "diving": "다이빙 및 스노클링"
     },
     "errors": {
-      "insufficientCredits": "이 플랜 유형에 대한 크레딧이 부족합니다. 더 많은 크레딧을 구매해 주세요.",
-      "generationFailed": "여행 계획 생성에 실패했습니다. 다시 시도해 주세요."
+      "insufficientCredits": "이 계획 유형에 대한 크레딧이 부족합니다. 더 많은 크레딧을 구매하세요.",
+      "generationFailed": "여행 계획 생성에 실패했습니다. 다시 시도하세요."
     }
   },
   "credits": {
+    "title": "크레딧",
+    "balance": "잔액",
+    "purchase": "크레딧 구매",
+    "history": "거래 내역",
     "credits": "크레딧"
+  },
+  "pricing": {
+    "title": "가격",
+    "subtitle": "필요에 맞는 플랜을 선택하세요",
+    "monthly": "월간",
+    "yearly": "연간"
   }
 }
